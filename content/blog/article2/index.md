@@ -7,7 +7,7 @@ description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiu
 
 date: 2018-05-11
 
-cover: /article1/cover.webp
+cover: /article2/cover.webp
 
 ---
 

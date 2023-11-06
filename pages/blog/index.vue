@@ -1,20 +1,20 @@
 <template>
 
 <div class="flex flex-col items-center justify-center">
-    <h1 class="text-3xl lg:text-6xl my-4 lg:my-16">
-            <span class="font-bold">Novinky & </span> 
-            <span class="font-playfair">články</span>
-        </h1>
+    <h1 class="text-3xl lg:text-6xl my-4 lg:mt-16 lg:mb-6">
+        <span class="font-bold">Novinky & </span> 
+        <span class="font-playfair">články</span>
+    </h1>
 
-    <ul>
+    <nuxt-img src="wave.png" class="h-12 mb-16"/>
 
-        <li v-for="{ _path: slug, title } in blogPosts" :key="slug">
+    <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-[1800px] lg:grid-cols-4">
 
-        <NuxtLink :to="slug">{{ title }}</NuxtLink>
+        <template v-for="post in blogPosts" :key="post._path">
+            <BlogPostBox :post="post" />
+        </template>
 
-        </li>
-
-        </ul>
+    </div>
 
 </div>
 

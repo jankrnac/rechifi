@@ -12,16 +12,20 @@
         </div>
 
         <div class="flex">
-          <nuxt-link to="/">
-            <span class="sr-only">Your Company</span>
-            <Logo class="w-12 h-12"/>
-          </nuxt-link>
+          	<nuxt-link to="/" class="flex items-center">
+            	<span class="sr-only">Your Company</span>
+            	<Logo class="w-12 h-12 mr-6" />
+				<h1 class="text-2xl">
+					<span class="font-bold">Chifi.</span> 
+					<span class="font-playfair">blog</span>
+				</h1>
+          	</nuxt-link>
         </div>
 
    
         <!-- Navigation links -->
         <div class="hidden lg:flex lg:gap-x-12 mx-24">
-          <a v-for="item in navigation" :key="item.name" :href="item.href" class="text-base leading-6 text-gray-900">{{ item.name }}</a>
+          <nuxt-link v-for="item in navigation" :key="item.name" :to="item.href" class="text text-base leading-6 text-gray-900">{{ item.name }}</nuxt-link>
         </div>
 
         <!-- Search -->
@@ -35,8 +39,6 @@
         </div>
 
       </nav>
-
-
 
 </header>
 

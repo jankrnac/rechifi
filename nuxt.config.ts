@@ -12,7 +12,8 @@ export default defineNuxtConfig({
 		'@nuxt/content',
 		'@nuxtjs/tailwindcss',
 		'@nuxtjs/color-mode',
-		'@nuxtjs/google-fonts'
+		'@nuxtjs/google-fonts',
+		'@nuxt/image'
 	],
 
 	googleFonts: {
@@ -21,7 +22,7 @@ export default defineNuxtConfig({
 				ital: [700]
 			},
 			Montserrat: {
-				regular: [300,400,800,900]
+				regular: [300,400,600,800,900]
 			}
 		}
 	}
