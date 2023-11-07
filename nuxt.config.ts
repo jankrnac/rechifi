@@ -25,5 +25,10 @@ export default defineNuxtConfig({
 				regular: [300,400,600,800,900]
 			}
 		}
-	}
+	},
+
+	colorMode: {
+        classSuffix: ''
+    },
+
 })

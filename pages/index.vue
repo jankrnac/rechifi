@@ -7,7 +7,7 @@
             <div class="relative relative rounded-xl overflow-hidden shadow-xl mb-4">
 
                 <!-- Image -->
-                <div class="w-full"><nuxt-img :src="featuredPost.featuredCover" class="w-full" /></div>
+                <div class="w-full select-none"><nuxt-img :src="featuredPost!.featuredCover" class="w-full" /></div>
 
                 <!-- Logo -->
                 <div class="absolute inset-0 flex z-10 text-white">
@@ -16,7 +16,7 @@
                 <!-- Title, text -->
                 <div class="absolute inset-0 ml-12 flex items-center font-bold z-10">
                     <div class="inline-flex flex-col text-center ml-[2%] lg:ml-[10%]">
-                        <div class="text-gray-100 text-2xl lg:text-5xl mb-2 lg:mb-6">{{ featuredPost.title }}</div>
+                        <div class="text-gray-100 text-2xl lg:text-5xl mb-2 lg:mb-6">{{ featuredPost!.title }}</div>
                         <div class="text-gray-100 text-xl lg:text-4xl">New diamond standart</div>
                     </div>
                 </div>
@@ -30,8 +30,8 @@
             <Label>Recenze</Label>
 
             <section class="w-2/3">
-                <h1 class="text-5xl mt-8 mb-8 font-bold leading-relaxed text-gray-700">
-                    <nuxt-link to="#">The trick to getting more done is to have the freedom to roam around</nuxt-link>
+                <h1 class="text-5xl mt-8 mb-8 font-bold leading-relaxed">
+                    <nuxt-link :to="featuredPost!._path">The trick to getting more done is to have the freedom to roam around</nuxt-link>
                 </h1>
                 <p class="text-xl leading-loose">Vel lectus vel velit pellentesque dignissim nec id magna. Cras molestie ornare quam at semper. Proin a ipsum ex. Curabitur eu venenatis justo. Nullam felis augue, imperdiet at sodales. Nullam felis libero, congue quis ipsum et, lacinia maximus eros. Vestibulum ante ipsum primis in faucibus.</p>
             </section>
