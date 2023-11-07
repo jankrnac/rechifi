@@ -14,10 +14,10 @@
 
     
         <div class="group relative">
-            <h3 class="mt-6 text-2xl font-bold leading-6 text-gray-700">
+            <h3 class="mt-6 text-2xl font-bold leading-6">
                 <nuxt-link :to="post._path" class="text">{{ post.title }}</nuxt-link>
             </h3>
-            <p class="mt-5 line-clamp-4 text-base leading-6 text-gray-600">{{ post.description }}</p>
+            <p class="mt-5 line-clamp-4 text-base leading-6">{{ post.description }}</p>
         </div>
          
     </div>

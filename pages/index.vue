@@ -1,6 +1,8 @@
 <template>
     <div class="max-w-[1500px] mx-auto mt-12">
 
+        <div class="text-sm text-gray-400 mb-1">Featured post</div>
+
         <!-- Featured post -->
         <article class="mb-24">
 
