@@ -31,4 +31,10 @@ export default defineNuxtConfig({
         classSuffix: ''
     },
 
+	content: {
+		experimental: {
+			search: true
+		}
+	}
+
 })

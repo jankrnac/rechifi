@@ -31,7 +31,7 @@
 
             <section class="w-2/3">
                 <h1 class="text-5xl mt-8 mb-8 font-bold leading-relaxed">
-                    <nuxt-link :to="featuredPost!._path">The trick to getting more done is to have the freedom to roam around</nuxt-link>
+                    <nuxt-link class="text" :to="featuredPost!._path">The trick to getting more done is to have the freedom to roam around</nuxt-link>
                 </h1>
                 <p class="text-xl leading-loose">Vel lectus vel velit pellentesque dignissim nec id magna. Cras molestie ornare quam at semper. Proin a ipsum ex. Curabitur eu venenatis justo. Nullam felis augue, imperdiet at sodales. Nullam felis libero, congue quis ipsum et, lacinia maximus eros. Vestibulum ante ipsum primis in faucibus.</p>
             </section>
