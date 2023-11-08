@@ -110,8 +110,8 @@
     <div class="lg:max-w-7xl mx-auto mt-12">
         <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
             <li v-for="item in headphones" :key="item.source" class="relative">
-            <div class="group aspect-h-10 aspect-w-10 block w-full overflow-hidden rounded-lg bg-gray-100">
-                <nuxt-img :src="item.cover" alt="" class="pointer-events-none object-cover group-hover:opacity-75" />
+            <div class="aspect-h-10 aspect-w-10 block w-full overflow-hidden rounded-lg">
+                <nuxt-img :src="item.cover" alt="" class="pointer-events-none object-cover" />
                 <nuxt-link class="absolute inset-0" :to="item._path"></nuxt-link>
             </div>
             <p class="pointer-events-none mt-2 block truncate text font-bold text-gray-900">{{ item.fullname }}</p>
