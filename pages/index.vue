@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-[1500px] mx-auto mt-12">
+    <div class="max-w-[1500px] mx-auto mt-6 lg:mt-12">
 
         <div class="text-sm text-gray-400 mb-1">Featured post</div>
 
@@ -31,8 +31,8 @@
 
             <Label>Recenze</Label>
 
-            <section class="w-2/3">
-                <h1 class="text-5xl mt-8 mb-8 font-bold leading-relaxed">
+            <section class="lg:w-2/3">
+                <h1 class="text-2xl lg:text-5xl mt-8 mb-8 font-bold leading-relaxed">
                     <nuxt-link class="text" :to="featuredPost!._path">The trick to getting more done is to have the freedom to roam around</nuxt-link>
                 </h1>
                 <p class="text-xl leading-loose">Vel lectus vel velit pellentesque dignissim nec id magna. Cras molestie ornare quam at semper. Proin a ipsum ex. Curabitur eu venenatis justo. Nullam felis augue, imperdiet at sodales. Nullam felis libero, congue quis ipsum et, lacinia maximus eros. Vestibulum ante ipsum primis in faucibus.</p>
@@ -40,7 +40,7 @@
         </article>
 
         <!-- Posts -->
-        <div class="mx-auto mt-32 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <div class="mx-auto lg:mt-32 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
 
             <template v-for="post in blogPosts" :key="post._path">
                 <BlogPostBox :post="post" />

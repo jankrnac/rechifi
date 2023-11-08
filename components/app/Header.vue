@@ -24,7 +24,7 @@
 			<IconsSearch class="w-5 h-5 absolute top-3.5 left-4 text-gray-400" />
             <input 	class="bg-gray-50 p-3 pl-12 rounded-lg border w-full dark:bg-gray-800 dark:border-gray-700" 
 					type="text" 
-					placeholder="Hledej v článcích"
+					placeholder="Hledej v článcích a slúchatkách"
 					v-model="query"
 					@keypress.enter="search()"
 				/>
@@ -110,7 +110,7 @@
 		{ name: 'Domů', href: '/' },
 		{ name: 'Články', href: '/blog' },
 		{ name: 'Recenze', href: '#' },
-		{ name: 'Výrobci', href: '#' },
+		{ name: 'Sluchátka', href: '/sluchatka' },
 	]
   
   	const mobileMenuOpen = ref(false)
