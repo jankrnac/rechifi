@@ -1,20 +1,12 @@
 <template>
 
     <div class="flex flex-col items-center max-w-[1200px] mx-auto leading-loose">
-        <h1 class="text-6xl font-playfair mt-16">
+        <h1 class="text-2xl lg:text-6xl font-bold my-16">
             <ContentSlot :use="$slots.title" unwrap="p"/>
         </h1>
-
-        <time class="mb-16 mt-4 italic text-gray-400">{{ data.date }}</time>
         
         <ContentSlot :use="$slots.content" unwrap="div"/>
 
     </div>
 
 </template>
-
-<script setup>
-
-const { data } = await useAsyncData(() => queryContent().findOne());
-
-</script>
