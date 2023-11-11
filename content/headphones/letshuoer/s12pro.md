@@ -1,8 +1,8 @@
 ---
 
-fullname: Letshuoer S12
+fullname: Letshuoer S12 Pro
 
-name: S12
+name: S12 Pro
 
 drivers: ['planar'] 
 

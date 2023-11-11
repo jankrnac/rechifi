@@ -50,7 +50,7 @@
 
             <!-- Desktop -->
             <div class="mx-auto max-w-3xl text-center lg:max-w-7xl">
-            <div class="py-24">
+            <div class="pb-24 mt-16">
                 <h1 class="text-6xl font-bold tracking-tight text-gray-900">Sluchátka</h1>
                 <p class="mx-auto mt-4 max-w-3xl text-xl text-gray-500">Seznam všech slúchatek čínskych výrobců na jednom místě</p>
             </div>
@@ -133,7 +133,7 @@ const { data:brands } = await useFetch('/api/brands')
 
 
   
-const headphones = await queryContent('/sluchatka')
+const headphones = await queryContent('/headphones')
   
     .sort({ date: -1 }) // show latest articles first
 

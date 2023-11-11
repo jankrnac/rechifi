@@ -9,13 +9,15 @@
   },
   "devDependencies": {
     "@headlessui/vue": "^1.7.16",
-    "@nuxt/content": "^2.8.5",
+    "@nuxt/content": "^2.9.0",
     "@nuxtjs/color-mode": "^3.3.0",
     "@nuxtjs/google-fonts": "^3.0.2",
+    "@nuxtjs/i18n": "8.0.0-rc.5",
     "@nuxtjs/tailwindcss": "^6.9.4",
-    "nuxt": "^3.8.0"
+    "nuxt": "^3.8.1"
   },
   "dependencies": {
-    "@nuxt/image": "^1.0.0"
+    "@nuxt/image": "^1.0.0",
+    "vue3-flip-countdown": "^0.1.6"
   }
 }

@@ -13,7 +13,8 @@ export default defineNuxtConfig({
 		'@nuxtjs/tailwindcss',
 		'@nuxtjs/color-mode',
 		'@nuxtjs/google-fonts',
-		'@nuxt/image'
+		'@nuxt/image',
+		'@nuxtjs/i18n',
 	],
 
 	googleFonts: {
@@ -35,6 +36,22 @@ export default defineNuxtConfig({
 		experimental: {
 			search: true
 		}
-	}
+	},
+
+	i18n: {
+        strategy: 'no_prefix',
+        locales: [
+            {
+                code: 'en',
+                key: 'en',
+                label: 'English'
+            },
+            {
+                code: 'cz',
+                key: 'cz',
+                label: 'Čeština'
+            }
+        ],
+    },
 
 })

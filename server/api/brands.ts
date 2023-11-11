@@ -24,6 +24,9 @@ export default defineEventHandler((event) => {
         {
             label: 'KZ'
         },
+        {
+            label: 'Hidisz'
+        },
         
     ]
   })
