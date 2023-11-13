@@ -49,7 +49,7 @@
             </TransitionRoot>
 
             <!-- Desktop -->
-            <div class="mx-auto max-w-3xl text-center lg:max-w-7xl">
+            <div class="mx-auto max-w-3xl text-center lg:max-w-app">
             <div class="pb-24 mt-16">
                 <h1 class="text-6xl font-bold tracking-tight text-gray-900">Sluchátka</h1>
                 <p class="mx-auto mt-4 max-w-3xl text-xl text-gray-500">Seznam všech slúchatek čínskych výrobců na jednom místě</p>
@@ -107,18 +107,11 @@
     </div>
 
     <!-- Grid -->
-    <div class="lg:max-w-7xl mx-auto mt-12">
+    <div class="lg:max-w-app mx-auto mt-12">
         <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-            <li v-for="item in headphones" :key="item.source" class="relative">
-            <div class="aspect-h-10 aspect-w-10 block w-full overflow-hidden rounded-lg hover:-translate-y-1 transition">
-                <nuxt-img :src="item.cover" alt="" class="pointer-events-none object-cover" />
-                <nuxt-link class="absolute inset-0" :to="item._path"></nuxt-link>
-            </div>
-            <p class="pointer-events-none mt-2 block truncate text font-bold text-gray-900">{{ item.fullname }}</p>
-            <Label class="capitalize my-1">{{ item.drivers[0] }}</Label>
-            <p class="pointer-events-none block text-sm font-medium text-gray-500 capitalize">{{ item.priceRange }}</p>
-
-            </li>
+            <template v-for="item in headphones">
+                <ProductBox :product="item" />
+            </template>
         </ul>
   </div>
 </div>

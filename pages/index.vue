@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-[1500px] mx-auto mt-6 lg:mt-12">
+    <div class="max-w-app mx-auto mt-6 lg:mt-12">
 
         <div class="text-sm text-gray-400 mb-1">Featured post</div>
 

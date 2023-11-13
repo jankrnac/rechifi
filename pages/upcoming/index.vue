@@ -23,11 +23,13 @@
 <script setup lang="ts">
 
 
-      const upcomings = await queryContent('/upcoming')
+      const upcomings = await queryContent('/headphones')
       
         .sort({ releaseDate: 1 }) // show latest articles first
       
         .where({ _partial: false }) // exclude the Partial files
+
+        .where({ released: false })
       
         .find()
         
