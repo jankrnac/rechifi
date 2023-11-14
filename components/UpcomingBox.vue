@@ -22,7 +22,7 @@
             <Label v-if="Date(upcoming.releaseDate) < Date.now()">Released</Label>
             <Label v-else>Planned</Label>
             <p v-if="upcoming.releaseDate" class="mt-3 text-xl leading-5 font-bold">
-                <time :datetime="upcoming.releaseDate">{{ new Date(upcoming.releaseDate).toLocaleDateString() }}</time>
+                <time :datetime="upcoming.releaseDate">{{upcoming.releaseDate}}</time>
             </p>
           </div>
     </div>

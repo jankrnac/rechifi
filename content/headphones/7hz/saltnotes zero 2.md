@@ -14,11 +14,11 @@ priceRange: 2.023 – 2.841 Kč
 
 description: S12 is a pair of Hi-Fi Earphones created for music lovers. It is planar driver in ear monitors with wider stage, better clarity, faster transients, better treble extension and great resolution. It will be your best companion to your everyday music enjoyment.
 
-releaseDate: 2018-05-11
+releaseDate: 11.05.2024
 
 released: false
 
-cover: /letshuoer/s12/image1.webp
+cover: /7hz/saltnotes zero 2/image1.jpg
 
 stats:
     - tonality: 8.5
