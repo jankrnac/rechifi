@@ -10,8 +10,8 @@
     
         <div class="mx-auto lg:mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-app lg:grid-cols-4">
     
-            <template v-for="post in blogPosts" :key="post._path">
-                <BlogPostBox :post="post" />
+            <template v-for="review in reviews" :key="review._path">
+                <ReviewBox :review="review" />
             </template>
     
         </div>
@@ -22,7 +22,7 @@
     
     <script setup lang="ts">
       
-      const blogPosts = await queryContent('/blog')
+      const reviews = await queryContent('/reviews')
       
         .sort({ date: -1 }) // show latest articles first
       

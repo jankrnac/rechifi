@@ -1,0 +1,37 @@
+<template>
+
+    <article class="flex flex-col items-start justify-between">
+        <div class="relative w-full hover:-translate-y-1 transition">
+            <nuxt-img :src="review.cover" alt="" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" />
+            <nuxt-link :to="review._path" class="absolute inset-0"></nuxt-link>
+            <div class="absolute inset-0 flex justify-center items-center">
+                <div class="justify-center items-center flex backdrop-blur-sm rounded-full text-xl font-bold border border-gray-300/50 w-[150px] h-[150px]">8/10</div>
+            </div>
+        </div>
+        
+        <div class="max-w-xl mt-2">
+        
+        
+            <div class="group relative">
+                <h3 class="mt-6 text-2xl font-bold leading-6">
+                    <nuxt-link :to="review._path" class="text">{{ review.title }}</nuxt-link>
+                </h3>
+                <p class="mt-5 line-clamp-4 text-base leading-6">{{ review.description }}</p>
+            </div>
+             
+        </div>
+    
+</article>
+    
+</template>
+    
+<script setup>
+
+const props = defineProps({
+    review: {
+        type: Object,
+        required: true
+    }
+})
+
+</script>
