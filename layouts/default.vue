@@ -39,4 +39,18 @@
 		transform: scaleX(1);
 	}
 
+	
+
+	.content p {
+		@apply py-4
+	}
+
+	.content h1 {
+		@apply text-xl font-bold mt-12 mb-6
+	}
+
+	.content ul {
+		@apply list-disc ml-6
+	}
+
 </style>
