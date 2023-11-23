@@ -18,7 +18,7 @@ releaseDate: 11.05.2024
 
 released: false
 
-cover: /7hz/saltnotes zero 2/image1.jpg
+cover: /7hz/zero2/image1.jpg
 
 stats:
     - tonality: 8.5
