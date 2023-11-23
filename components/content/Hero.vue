@@ -6,7 +6,7 @@
         
         <!-- Image -->
         <div class="w-full select-none">
-            <nuxt-img :src="image" class="w-full" sizes="100vw lg:1500px" :modifiers="{ format : 'webp' }" />
+            <nuxt-img :src="image" class="w-full" sizes="100vw lg:1500px" :modifiers="{ format : 'webp' }" width="1500" height="625"/>
         </div>
 
         <!-- Title, text -->
