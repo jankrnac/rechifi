@@ -22,7 +22,8 @@
                             'bg-yellow-200': signature == 'bright',
                             'bg-gray-200' : signature == 'neutral',
                             'bg-gray-800 text-white' : signature == 'dark',
-                            'bg-orange-200' : signature == 'warm'
+                            'bg-orange-200' : signature == 'bass boost',
+                            'bg-green-400' : signature == 'v-shaped'
                         }"
                     >
                         {{ signature }}
@@ -38,10 +39,10 @@
 
                 <ul class="flex gap-3">
                     <li v-for="driver in doc.drivers" 
-                        class="rounded-xl px-4 py-2 flex items-center justify-center text-sm font-semibold border-4"
+                        class="capitalize rounded-xl px-4 py-2 flex items-center justify-center text-sm font-semibold border-4"
                         :class="{
                             'border-orange-500': driver == 'DD',
-                            'bg-gray-200' : signature == 'neutral',
+                            'border-green-500' : driver == 'planar',
                             'bg-gray-800 text-white' : signature == 'dark',
                             'bg-orange-200' : signature == 'warm'
                         }"
@@ -71,6 +72,6 @@
 <script setup>
 
 const route = useRoute()
-const { data:reviews } = await useAsyncData(() => queryContent(`/reviews/${route.params.slug[0]}/${route.params.slug[1]}`).find())
+const { data:reviews } = await useAsyncData(() => queryContent(`/reviews/${route.params.slug[0]}/${route.params.slug[1]}/`).find())
 
 </script>
