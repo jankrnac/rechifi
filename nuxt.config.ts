@@ -63,6 +63,13 @@ export default defineNuxtConfig({
 			 ? { preset: ['default', { discardComments: { removeAll: true } }] }
 			 : false, // disable cssnano when not in production
 		},
-	 }
+	 },
+
+	 image: {
+		provider: 'netlify',
+		netlify: {
+		  baseURl: process.env.IMAGES_URL
+		}
+	  }
 
 })
