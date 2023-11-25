@@ -7,7 +7,7 @@
           	<nuxt-link to="/" class="flex items-center">
             	<span class="sr-only">Your Company</span>
             	<Logo class="w-12 h-12 mr-6" />
-				<h1 class="hidden md:flex text-2xl">
+				<h1 class="hidden xl:flex text-2xl">
 					<span class="font-bold">Chifi.</span> 
 					<span class="font-playfair">blog</span>
 				</h1>
@@ -15,12 +15,12 @@
         </div>
 		
         <!-- Navigation links -->
-        <div class="hidden xl:flex lg:gap-x-12 mx-24">
+        <div class="hidden xl:flex gap-x-6 mr-8 xl:gap-x-12 xl:mx-24">
           <nuxt-link v-for="item in navigation" :key="item.name" :to="item.href" class="text text-base leading-6">{{ t(item.name) }}</nuxt-link>
         </div>
 
         <!-- Search -->
-        <div class="flex-1 mr-6 lg:mr-24 relative">
+        <div class="flex-1 mr-6 xl:mr-24 relative">
 			<IconsSearch class="w-5 h-5 absolute top-3.5 left-4 text-gray-400" />
             <input 	class="bg-gray-50 p-3 pl-12 rounded-lg border w-full dark:bg-gray-800 dark:border-gray-700" 
 					type="text" 
