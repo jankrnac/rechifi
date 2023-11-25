@@ -66,10 +66,10 @@ export default defineNuxtConfig({
 	 },
 
 	 image: {
-		provider: 'netlify',
+		provider: process.env.NODE_ENV === 'production' ? 'netlify' : 'ipx',
 		netlify: {
-		  baseURl: process.env.IMAGES_URL
-		}
-	  }
+		  	baseURl: process.env.IMAGES_URL
+		},
+	}
 
 })

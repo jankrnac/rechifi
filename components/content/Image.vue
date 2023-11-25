@@ -1,12 +1,12 @@
 <template>
     <div class="w-full flex flex-col items-center justify-center">
-        <nuxt-img :src="image" :class="[width]"/>
-        <div class="text-center text-gray-500 text-sm mt-2">{{ source }}</div>
+        <nuxt-img :src="image" :width="w" :height="h"/>
+        <nuxt-link :to="source" external target="_blank" class="text-center text-gray-500 text-xs mt-1 italic">{{ source }}</nuxt-link>
     </div>
 </template>
 
 <script setup>
 
-defineProps(['image', 'width', 'source'])
+defineProps(['image', 'w', 'h', 'source'])
 
 </script>

@@ -6,7 +6,7 @@
             <span class="font-playfair">Upcoming</span>
         </h1>
     
-        <nuxt-img src="wave.png" class="h-12 mb-16"/>
+        <Wave />
     
         <ul class="divide-y divide-gray-100 w-full max-w-app">
     

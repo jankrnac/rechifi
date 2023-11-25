@@ -6,14 +6,13 @@
 
     <ContentDoc  v-slot="{ doc }">
 
-        <h1 class="text-2xl lg:text-6xl font-bold mt-16 mb-6">
+        <h1 class="text-2xl lg:text-6xl font-bold mt-16 mb-16">
             {{ doc.title }}
         </h1>
 
-        <div class="flex items-center mb-16">
+        <div class="flex items-center justify-between mb-16">
 
-            <div>
-                <div class="text-gray-500">Sound signature</div>
+            <div class="mr-4">
 
                 <ul class="flex gap-3">
                     <li v-for="signature in doc.signature" 
@@ -32,30 +31,17 @@
                 </ul>
             </div>
 
-            <IconsWave class="w-8 h-8 mx-6 mt-8"/>
 
             <div>
-                <div class="text-gray-500">Drivers</div>
 
-                <ul class="flex gap-3">
-                    <li v-for="driver in doc.drivers" 
-                        class="capitalize rounded-xl px-4 py-2 flex items-center justify-center text-sm font-semibold border-4"
-                        :class="{
-                            'border-orange-500': driver == 'DD',
-                            'border-green-500' : driver == 'planar',
-                            'bg-gray-800 text-white' : signature == 'dark',
-                            'bg-orange-200' : signature == 'warm'
-                        }"
-                    >
-                        {{ driver }}
-                    </li>
-                    
-                </ul>
+                <div class="flex gap-3">
+                    <DriverLabel v-for="driver in doc.drivers">{{ driver }}</DriverLabel>
+                </div>
             </div>
 
         </div>
 
-        <div class="mb-16">{{ doc.description }}</div>
+        <div class="mb-16 font-thin text-xl">{{ doc.description }}</div>
 
         <Reviews v-if="reviews.length" :reviews="reviews" class="mb-12"/>
 

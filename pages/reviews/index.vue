@@ -6,7 +6,7 @@
             <span class="font-playfair">score</span>
         </h1>
     
-        <nuxt-img src="wave.png" class="h-12 mb-16"/>
+        <Wave />
     
         <div class="mx-auto lg:mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-app lg:grid-cols-4">
     

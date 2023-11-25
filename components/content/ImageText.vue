@@ -3,7 +3,7 @@
 
         <!-- Left -->
         <div class="basis-2/4 rounded-xl overflow-hidden mb-6 md:mb-0">
-            <nuxt-img :src="image" class="w-full max-h-full max-w-full" />
+            <nuxt-img :src="image" class="max-w-full max-h-full" />
         </div>
 
         <!-- Right -->

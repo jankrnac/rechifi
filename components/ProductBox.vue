@@ -14,8 +14,8 @@
 
     <div v-if="product.released != false" class="pointer-events-none flex mt-1 text-sm font-medium">
         <IconsDollar class="w-5 h-5" :class="[product.priceRange == 'low' || product.priceRange == 'medium' || product.priceRange == 'high' ? 'text-blue-500' : 'text-gray-400']" />
-        <IconsDollar class="w-5 h-5" :class="[product.priceRange == 'medium' ? 'text-blue-500' : 'text-gray-400']" />
-        <IconsDollar class="w-5 h-5" :class="[product.priceRange == 'hight' ? 'text-blue-500' : 'text-gray-400']" />
+        <IconsDollar class="w-5 h-5" :class="[product.priceRange == 'medium' ||  product.priceRange == 'high'  ? 'text-blue-500' : 'text-gray-400']" />
+        <IconsDollar class="w-5 h-5" :class="[product.priceRange == 'high' ? 'text-blue-500' : 'text-gray-400']" />
     </div>
 
     <div v-else>Release date: <b class="font-bold">{{product.releaseDate}}</b></div>
