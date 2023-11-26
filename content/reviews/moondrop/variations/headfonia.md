@@ -1,6 +1,6 @@
 ---
 
-title: Letshuoer S12
+title: Moondrop Variations
 
 reviewer: Headfonia.com
 
@@ -8,7 +8,7 @@ description:  The Variations IEM sounds fun and engaging with plenty of details 
 
 score: 8
 
-cover: /letshuoer/s12/image1.webp
+cover: /moondrop/variations/image1.webp
 
 link: https://www.headfonia.com/moondrop-variations-review/
 

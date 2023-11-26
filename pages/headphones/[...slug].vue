@@ -22,7 +22,9 @@
                             'bg-gray-200' : signature == 'neutral',
                             'bg-gray-800 text-white' : signature == 'dark',
                             'bg-orange-200' : signature == 'bass boost',
-                            'bg-green-400' : signature == 'v-shaped'
+                            'bg-green-400' : signature == 'v-shaped',
+                            'bg-blue-200' : signature == 'u-shaped'
+
                         }"
                     >
                         {{ signature }}

@@ -4,28 +4,37 @@
    <article class="mb-24">
         <div class="relative rounded-xl overflow-hidden shadow-xl mb-4">
         
-        <!-- Image -->
-        <div class="w-full select-none">
-            <nuxt-img :src="image" class="w-full" sizes="100vw lg:1500px" :modifiers="{ format : 'webp' }" width="1500" height="625"/>
+        <!-- Bg -->
+        <div class="w-full select-none relative">
+            <nuxt-img :src="bg" class="w-full" sizes="100vw lg:1500px" :modifiers="{ format : 'webp' }" width="1500" height="625"/>
+
+            <div class="absolute w-1/2 right-0 top-0 z-10">
+                <nuxt-img :src="image" class="fi" sizes="100vw lg:500px" :modifiers="{ format : 'webp' }" width="600" height="600"/>
+            </div>
         </div>
+
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-gray-900 opacity-30 z-9"></div>
 
         <!-- Title, text -->
         <div class="absolute inset-0 ml-12 flex items-center font-bold z-10">
-            <div class="inline-flex flex-col text-center ml-[2%] lg:ml-[10%]">
-                <div class="text-gray-100 text-2xl lg:text-5xl mb-2 lg:mb-6">{{  }}</div>
-                <div class="text-gray-100 text-xl lg:text-4xl">New diamond standart</div>
+            <div class="inline-flex flex-col text-center ml-[2%] lg:ml-[1%] w-1/2">
+                <div class="text-white mb-4 text-xl">Announced</div>
+                <div class="text-white text-xl xl:text-6xl">7 Hertz Saltnotes Zero:2</div>
             </div>
         </div>
-        <!-- Overlay -->
-        <div class="absolute inset-0 bg-gray-900 opacity-40 z-9"></div>
+        
+
         
     </div>
-    <Label>Recenze</Label>
-    <section class="lg:w-2/3">
-        <h1 class="text-2xl lg:text-5xl mt-8 mb-8 font-bold leading-relaxed">
-            <nuxt-link class="text">The trick to getting more done is to have the freedom to roam around</nuxt-link>
+    <Label>{{ type }}</Label>
+    <section class="lg:w-full">
+        <h1 class="text-2xl lg:text-5xl mt-8 mb-8 font-bold">
+            <nuxt-link class="text leading-normal" :to="link"><span class="">7HZ Saltnotes Zero:2 </span>coming soon with new 10mm Dynamic Driver For Tonal Excellence</nuxt-link>
         </h1>
-        <p class="text-xl leading-loose">Vel lectus vel velit pellentesque dignissim nec id magna. Cras molestie ornare quam at semper. Proin a ipsum ex. Curabitur eu venenatis justo. Nullam felis augue, imperdiet at sodales. Nullam felis libero, congue quis ipsum et, lacinia maximus eros. Vestibulum ante ipsum primis in faucibus.</p>
+        <p class="text-xl leading-loose">7HZ and their audio engineers are collaborating yet again, with the founder of In-Ear Fidelity and YouTuber, Crinacle. The 7HZ x Crinacle Zero: 2 is an improved 10mm dynamic driver IEM with enhanced bass and midrange. It also comes with a better stock cable, thus offering a great audio experience at an affordable price.
+
+</p>
     </section>
 </article>
 
@@ -33,6 +42,25 @@
 
 <script setup>
 
-defineProps(['image'])
+defineProps(['image','bg', 'type', 'link'])
 
 </script>
+
+<style scoped>
+
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-10px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+
+.fi{
+    animation: float 4s ease-in-out infinite;
+}
+</style>
