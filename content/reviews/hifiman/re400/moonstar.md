@@ -12,4 +12,6 @@ cover: /hifiman/re400/image1.jpg
 
 link: https://moonstarreviews.net/hifiman_re400_review/
 
+type: text
+
 ---

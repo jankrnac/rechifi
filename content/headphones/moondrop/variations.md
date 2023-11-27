@@ -7,8 +7,10 @@ title: Moondrop Variations
 brand: moondrop
 
 drivers: 
-    - 2 x EST
-    - 2 x BA
+    - EST
+    - EST
+    - BA
+    - BA
     - DD
 
 priceRange: high

@@ -12,4 +12,5 @@ cover: /hifiman/re400/image1.jpg
 
 link: https://english.achoreviews.com/2020/09/review-hifiman-re-400-sub-50.html
 
+type: text
 ---

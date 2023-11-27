@@ -12,4 +12,6 @@ cover: /hifiman/re400/image1.jpg
 
 link: https://www.cnet.com/reviews/hifiman-re-400-review/
 
+type: text
+
 ---

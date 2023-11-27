@@ -8,7 +8,7 @@
     </div>
     <p class="pointer-events-none mt-2 block truncate text font-bold" :class="{'text-orange-500': product.released == false}">{{ product.title }}</p>
     <div v-if="product.released != false" class="flex gap-x-2">
-        <DriverLabel size="small" v-for="driver in product.drivers" class="capitalize my-1">{{ driver }}</DriverLabel>
+        <DriverLabel size="small" class="my-1" v-for="driver in new Set(product.drivers)">{{ product.drivers.filter(e => e == driver).length + ' ' + driver }}</DriverLabel>
     </div>
     <div v-else>Not released yet</div>
 

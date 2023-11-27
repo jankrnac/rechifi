@@ -16,11 +16,14 @@
         <!-- Overlay -->
         <div class="absolute inset-0 bg-gray-900 opacity-30 z-9"></div>
 
+        <!-- Link -->
+        <nuxt-link :to="link" class="block absolute inset-0 z-20"></nuxt-link>
+
         <!-- Title, text -->
         <div class="absolute inset-0 ml-12 flex items-center font-bold z-10">
             <div class="inline-flex flex-col text-center ml-[2%] lg:ml-[1%] w-1/2">
-                <div class="text-white mb-4 text-xl">Announced</div>
-                <div class="text-white text-xl xl:text-6xl">7 Hertz Saltnotes Zero:2</div>
+                <div class="text-white mb-4 text-xl">{{ subtitle }}</div>
+                <div class="text-white text-xl xl:text-6xl">{{ title }}</div>
             </div>
         </div>
         
@@ -30,11 +33,9 @@
     <Label>{{ type }}</Label>
     <section class="lg:w-full">
         <h1 class="text-2xl lg:text-5xl mt-8 mb-8 font-bold">
-            <nuxt-link class="text leading-normal" :to="link"><span class="">7HZ Saltnotes Zero:2 </span>coming soon with new 10mm Dynamic Driver For Tonal Excellence</nuxt-link>
+            <nuxt-link class="text leading-normal" :to="link">{{ text }}</nuxt-link>
         </h1>
-        <p class="text-xl leading-loose">7HZ and their audio engineers are collaborating yet again, with the founder of In-Ear Fidelity and YouTuber, Crinacle. The 7HZ x Crinacle Zero: 2 is an improved 10mm dynamic driver IEM with enhanced bass and midrange. It also comes with a better stock cable, thus offering a great audio experience at an affordable price.
-
-</p>
+        <p class="text-xl leading-loose">{{ desc }}</p>
     </section>
 </article>
 
@@ -42,7 +43,7 @@
 
 <script setup>
 
-defineProps(['image','bg', 'type', 'link'])
+defineProps(['image','bg', 'type', 'link', 'subtitle','title', 'text', 'desc'])
 
 </script>
 

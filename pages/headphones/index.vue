@@ -215,9 +215,11 @@ const filters = [
         id: 'drivers',
         name: 'Drivers',
         options: [
-            { value: 'white', label: 'White' },
-            { value: 'black', label: 'Black' },
-            { value: 'grey', label: 'Grey' },
+            { value: 'DD', label: 'DD' },
+            { value: 'planar', label: 'Planar' },
+            { value: 'BA', label: 'BA' },
+            { value: 'EST', label: 'EST' },
+
         ],
     },
 ]

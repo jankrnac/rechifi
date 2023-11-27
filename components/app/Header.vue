@@ -15,7 +15,7 @@
         </div>
 		
         <!-- Navigation links -->
-        <div class="hidden xl:flex gap-x-6 mr-8 xl:gap-x-12 2xl:mx-24">
+        <div class="hidden xl:flex gap-x-6 mr-8 xl:gap-x-12 2xl:mx-20">
           <nuxt-link v-for="item in navigation" :key="item.name" :to="item.href" class="text text-base leading-6">{{ t(item.name) }}</nuxt-link>
         </div>
 

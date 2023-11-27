@@ -12,4 +12,6 @@ cover: /hifiman/re400/image1.jpg
 
 link: https://www.totallydubbed.net/2015/05/04/review-of-the-hifiman-re-400/
 
+type: text
+
 ---
