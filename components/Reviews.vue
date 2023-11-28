@@ -5,8 +5,9 @@
 	<div class="flex justify-between items-center mb-4">
 		<h2 class="text-xl font-bold">Reviews ({{ reviews.length }})</h2>
 		<ul class="flex gap-x-1 items-center">
-			<li :class="{'bg-gray-800 text-white rounded-lg': activeTypeFilter == 'text'}" class="cursor-pointer px-3 py-0.5" @click="activeTypeFilter = 'text'">Text</li>
+			<li :class="{'bg-gray-800 text-white rounded-lg': activeTypeFilter == 'text'}" class="cursor-pointer px-3 py-0.5" @click="activeTypeFilter = 'text'">Websites</li>
 			<li :class="{'bg-gray-800 text-white rounded-lg': activeTypeFilter == 'youtube'}" class="cursor-pointer px-3 py-0.5" @click="activeTypeFilter = 'youtube'">Youtube</li>
+			<li :class="{'bg-gray-800 text-white rounded-lg': activeTypeFilter == 'people'}" class="cursor-pointer px-3 py-0.5" @click="activeTypeFilter = 'people'">People</li>
 			<li :class="{'bg-gray-800 text-white rounded-lg': activeTypeFilter == 'all'}" class="cursor-pointer px-3 py-0.5" @click="activeTypeFilter = 'all'">All</li>
 
 		</ul>
@@ -28,11 +29,12 @@
                 allowfullscreen>
             </iframe>
 
-			<div class="mt-4 text-base">{{ review.reviewer }}</div>
-
 			<div v-if="review.type != 'youtube'" class="mt-4 text-sm line-clamp-4">{{ review.description }}</div>
 
 			<a  v-if="review.type != 'youtube'" :href="review.link" target="_blank" class="absolute inset-0"></a>
+
+			<div class="w-full mt-4 text-sm font-semibold">{{ review.reviewer }}</div>
+
 		</li>
 	</ul>
 

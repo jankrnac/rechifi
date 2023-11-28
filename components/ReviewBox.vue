@@ -5,7 +5,7 @@
         <div class="relative w-full hover:-translate-y-1 transition h-full flex items-center">
            
             
-            <iframe v-if="review.type == 'youtube'" width="100%" class="aspect-video rounded-xl" src="https://www.youtube.com/embed/YRZnahriSUE?si=1f3eV14oVdwKLvQR" 
+            <iframe v-if="review.type == 'youtube'" width="500" class="aspect-video rounded-xl" src="https://www.youtube.com/embed/YRZnahriSUE?si=1f3eV14oVdwKLvQR" 
                 title="YouTube video player" 
                 frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -34,7 +34,7 @@
                     <nuxt-link :to="review._path" class="text">{{ review.title }}</nuxt-link>
                 </h3>
                 <div class="mt-2 italic">by {{ review.reviewer }}</div>
-                <p class="mt-5 line-clamp-4 text-base leading-6">{{ review.description }}</p>
+                <p class="mt-5 line-clamp-4 text-base leading-6 min-h-[96px]">{{ review.description }}</p>
             </div>
              
         </div>

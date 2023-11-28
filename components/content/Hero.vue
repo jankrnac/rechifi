@@ -8,8 +8,9 @@
         <div class="w-full select-none relative">
             <nuxt-img :src="bg" class="w-full" sizes="100vw lg:1500px" :modifiers="{ format : 'webp' }" width="1500" height="625"/>
 
-            <div class="absolute w-1/2 right-0 top-0 z-10">
-                <nuxt-img :src="image" class="fi" sizes="100vw lg:500px" :modifiers="{ format : 'webp' }" width="600" height="600"/>
+            <!-- Floating image -->
+            <div class="absolute w-1/2 right-0 top-0 z-10 max-h-full">
+                <nuxt-img :src="image" class="floating max-h-full" sizes="100vw lg:500px" :modifiers="{ format : 'webp' }" width="600" height="600"/>
             </div>
         </div>
 
@@ -61,7 +62,7 @@ defineProps(['image','bg', 'type', 'link', 'subtitle','title', 'text', 'desc'])
 	}
 }
 
-.fi{
+.floating{
     animation: float 4s ease-in-out infinite;
 }
 </style>

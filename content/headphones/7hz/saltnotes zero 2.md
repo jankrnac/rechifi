@@ -26,7 +26,11 @@ cover: /7hz/zero2/featured.png
 image: /7hz/zero2/image2.webp 
 ---
 # 7HZ x Crinacle: The Collaboration That Made History
-The original Zero, which was made in collaboration between 7HZ and Crinacle, made history by being one of the best performing budget IEM’s in the market. Crinacle is a world renown reviewer, whose frequency graph database has changed the audio market forever. Using his prolific experience with IEM and headphone sound profiles, Crinacle has provided guidance in tuning the Zero once again to have the best tonal balance possible. The updated Zero:2 features Crinacle’s inputs in order to refine this tried-and-true model in order to take it to the next level.
+The original Zero, which was made in collaboration between 7HZ and Crinacle, made history by being one of the best performing budget IEM’s in the market. Crinacle is a world renown reviewer, whose frequency graph database has changed the audio market forever. 
+
+Using his prolific experience with IEM and headphone sound profiles, Crinacle has provided guidance in tuning the Zero once again to have the best tonal balance possible. 
+
+The updated Zero:2 features Crinacle’s inputs in order to refine this tried-and-true model in order to take it to the next level.
 ::
 
 
@@ -36,7 +40,11 @@ image: /7hz/zero2/image3.webp
 reversed: true
 ---
 # More Bass, Keeping Tonal Excellence
-The original Zero had one of the best-in-class tonal balance for a budget single dynamic driver IEM. However, this tonal balance also meant taming the bass, which may have been lacking for audiences wanting a more exciting sound. The Zero:2 maintains the perfect sound signature whilst adding on 3dB more in the low frequencies, which provides an engaging and powerful bass presence to bring your music to life. Bass impact and extension are markedly improved, providing more texture and tactile hits to the lows. Additionally, the midrange has a slightly improved body and warmth compared  to the original Zero. The slight warmth in the low-mids provides a fuller sound to instrument and vocal fundamental frequencies, yet still keeping the melodies clean and free from bass bleed. 
+The original Zero had one of the best-in-class tonal balance for a budget single dynamic driver IEM. However, this tonal balance also meant taming the bass, which may have been lacking for audiences wanting a more exciting sound. 
+
+The Zero:2 maintains the perfect sound signature whilst adding on 3dB more in the low frequencies, which provides an engaging and powerful bass presence to bring your music to life. Bass impact and extension are markedly improved, providing more texture and tactile hits to the lows. 
+
+Additionally, the midrange has a slightly improved body and warmth compared  to the original Zero. The slight warmth in the low-mids provides a fuller sound to instrument and vocal fundamental frequencies, yet still keeping the melodies clean and free from bass bleed. 
 ::
 
 
@@ -45,7 +53,11 @@ The original Zero had one of the best-in-class tonal balance for a budget single
 image: /7hz/zero2/image4.webp 
 ---
 # New 10mm Dynamic Driver
-The improvements in the tonal characteristics of the Zero:2 were made possible thanks to a newly developed 10mm dual cavity dynamic driver. With an upgraded PU+Metal composite diaphragm, the driver is significantly more responsive, allowing faster diaphragm movement. This allows for harder hitting bass, while maintaining crispness and precision with each note. With a frequency range of 10Hz to 20kHz, the improvements in the new driver is immediately noticeable. 
+The improvements in the tonal characteristics of the Zero:2 were made possible thanks to a newly developed 10mm dual cavity dynamic driver. 
+
+With an upgraded PU+Metal composite diaphragm, the driver is significantly more responsive, allowing faster diaphragm movement. 
+
+This allows for harder hitting bass, while maintaining crispness and precision with each note. With a frequency range of 10Hz to 20kHz, the improvements in the new driver is immediately noticeable. 
 ::
 
 

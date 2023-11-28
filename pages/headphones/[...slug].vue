@@ -1,6 +1,6 @@
 <template>  
 
-<div class="flex flex-col items-center max-w-app mx-auto leading-loose">
+<div class="flex flex-col items-center max-w-[1200px] mx-auto leading-loose">
     
 
 
@@ -37,7 +37,7 @@
             <div>
 
                 <div class="flex gap-3">
-                    <DriverLabel v-for="driver in new Set(doc.drivers)">{{ doc.drivers.filter(e => e == driver).length + ' ' + driver }}</DriverLabel>
+                    <DriverLabel v-for="driver in new Set(doc.drivers)">{{ doc.drivers.filter(e => e == driver).length > 1 ? doc.drivers.filter(e => e == driver).length + ' ' + driver : driver }}</DriverLabel>
                 </div>
             </div>
 
