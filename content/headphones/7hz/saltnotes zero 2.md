@@ -4,7 +4,7 @@ name: Saltnotes Zero:2
 
 title: 7Hertz Saltnotes Zero:2
 
-brand: 7Hertz
+brand: 7hertz
 
 drivers: 
     - DD
@@ -17,13 +17,13 @@ releaseDate: 27.11.2023
 
 released: true
 
-cover: /7hz/zero2/featured.png
+cover: /7hertz/zero2/featured.png
 
 ---
 
 ::ImageText
 ---
-image: /7hz/zero2/image2.webp 
+image: /7hertz/zero2/image2.webp 
 ---
 # 7HZ x Crinacle: The Collaboration That Made History
 The original Zero, which was made in collaboration between 7HZ and Crinacle, made history by being one of the best performing budget IEM’s in the market. Crinacle is a world renown reviewer, whose frequency graph database has changed the audio market forever. 
@@ -36,7 +36,7 @@ The updated Zero:2 features Crinacle’s inputs in order to refine this tried-an
 
 ::ImageText
 ---
-image: /7hz/zero2/image3.webp 
+image: /7hertz/zero2/image3.webp 
 reversed: true
 ---
 # More Bass, Keeping Tonal Excellence
@@ -50,7 +50,7 @@ Additionally, the midrange has a slightly improved body and warmth compared  to 
 
 ::ImageText
 ---
-image: /7hz/zero2/image4.webp 
+image: /7hertz/zero2/image4.webp 
 ---
 # New 10mm Dynamic Driver
 The improvements in the tonal characteristics of the Zero:2 were made possible thanks to a newly developed 10mm dual cavity dynamic driver. 
@@ -65,7 +65,7 @@ This allows for harder hitting bass, while maintaining crispness and precision w
 
 ::ImageText
 ---
-image: /7hz/zero2/image5.jpg 
+image: /7hertz/zero2/image5.jpg 
 reversed: true
 ---
 # Improved Custom Cable

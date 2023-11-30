@@ -5,14 +5,15 @@
 
 
     <ContentDoc  v-slot="{ doc }">
+        <nuxt-img :src="doc.brand +'/logo.webp'" width="150" class="mt-6"/>
 
-        <h1 class="text-2xl lg:text-6xl font-bold mt-16 mb-16">
+        <h1 class="text-2xl lg:text-6xl font-bold mt-6 mb-16 flex items-center">
             {{ doc.title }}
         </h1>
 
         <div class="flex items-center justify-between mb-16">
 
-            <div class="mr-4">
+            <div v-if="doc.signature" class="mr-4">
 
                 <ul class="flex gap-3">
                     <li v-for="signature in doc.signature" 

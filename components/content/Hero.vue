@@ -9,8 +9,8 @@
             <nuxt-img :src="bg" class="w-full" sizes="100vw lg:1500px" :modifiers="{ format : 'webp' }" width="1500" height="625"/>
 
             <!-- Floating image -->
-            <div class="absolute w-1/2 right-0 top-0 z-10 max-h-full">
-                <nuxt-img :src="image" class="floating max-h-full" sizes="100vw lg:500px" :modifiers="{ format : 'webp' }" width="600" height="600"/>
+            <div class="absolute w-1/2 right-0 top-0 z-10 flex items-center h-full">
+                <nuxt-img :src="image" class="floating object-contain aspect-square" :modifiers="{ format : 'webp' }" width="600" height="600"/>
             </div>
         </div>
 

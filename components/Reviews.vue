@@ -22,12 +22,7 @@
 				<div class="text-base font-bold mt-5 text-gray-500">/10</div>
 			</div>
 
-			<iframe v-if="review.type == 'youtube'" width="100%" class="aspect-video rounded-xl" :src="`https://www.youtube.com/embed/${review.videoid}`"
-                title="YouTube video player" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
+			<img v-if="review.type == 'youtube'" :src="`https://img.youtube.com/vi/${review.videoid}/mqdefault.jpg`" width="600" class="rounded-lg"/>
 
 			<div v-if="review.type != 'youtube'" class="mt-4 text-sm line-clamp-4">{{ review.description }}</div>
 
