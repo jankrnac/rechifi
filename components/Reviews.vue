@@ -53,7 +53,7 @@ const route = useRoute()
 const activeTypeFilter = ref('all')
 
 const activeTypeFilterApi = computed(() => {
-	if(activeTypeFilter.value == 'all') return ['text','youtube']
+	if(activeTypeFilter.value == 'all') return [null]
 	return activeTypeFilter.value
 })
 

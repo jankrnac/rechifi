@@ -2,13 +2,13 @@
 
 <article class="flex flex-col items-start justify-between">
     <div class="relative w-full hover:-translate-y-1 transition">
-        <nuxt-img :src="post.cover" alt="" class="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover" width="480" height="270"/>
+        <nuxt-img :src="post.cover" alt="" class="aspect-[3/2] w-full rounded-2xl bg-gray-100 object-cover" width="480" height="270"/>
         <nuxt-link :to="post._path" class="absolute inset-0"></nuxt-link>
     </div>
     
     <div class="max-w-xl mt-2">
 		<div class="flex justify-between">
-			<Label>Recenze</Label>
+			<Label class="capitalize" type="">{{ post.label }}</Label>
 			<time class="text-gray-500 text-sm">{{ post.date.split('T')[0] }}</time>
 		</div>
 

@@ -46,7 +46,7 @@
 	}
 
 	.content h1 {
-		@apply text-xl font-bold mt-12 mb-6
+		@apply text-xl font-bold mt-6
 	}
 
 	.content ul {
