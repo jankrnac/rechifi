@@ -16,11 +16,13 @@ label: article
 {{ $doc.title }}
 ::
 
-AES / EBU – Audio Engineering Society / European Broadcasting Union – (Also known as AES3) A standard for the exchange of digital audio signals between professional audio devices. An AES3 signal can carry two channels of PCM audio over several transmission media including balanced lines, unbalanced lines, and optical fiber.
+:alphabet
 
-Airy – Describes the space and openness of the product usually associated with open back headphones and live music.
+[A]{.text-3xl .font-bold #a}
 
-ALAC – Apple Lossless Audio Codec – A reference audio coding implementation and format developed by Apple. Claimed that audio files compressed with this codec will be about half the file size of the original uncompressed data.
+[Airy]{.font-bold} – Describes the space and openness of the notes. Reproducing audio in a free, open and fresh manner around instruments and vocalists. Airy is not restricted only to the upper treble frequencies but is audible in the entire frequency range.
+
+[ALAC]{.font-bold} – Apple Lossless Audio Codec – A reference audio coding implementation and format developed by Apple. Claimed that audio files compressed with this codec will be about half the file size of the original uncompressed data.
 
 Ambience – The overall impression, feeling, or mood evoked by an environment or acoustical space, such as the performance hall in which a recording was made.
 
