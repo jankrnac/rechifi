@@ -45,7 +45,7 @@
 		@apply py-4
 	}
 
-	.content h1 {
+	.content h2 {
 		@apply text-xl font-bold mt-6
 	}
 

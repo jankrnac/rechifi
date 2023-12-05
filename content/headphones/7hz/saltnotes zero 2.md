@@ -25,7 +25,7 @@ cover: /7hertz/zero2/featured.png
 ---
 image: /7hertz/zero2/image2.webp 
 ---
-# 7HZ x Crinacle: The Collaboration That Made History
+## 7HZ x Crinacle: The Collaboration That Made History
 The original Zero, which was made in collaboration between 7HZ and Crinacle, made history by being one of the best performing budget IEM’s in the market. Crinacle is a world renown reviewer, whose frequency graph database has changed the audio market forever. 
 
 Using his prolific experience with IEM and headphone sound profiles, Crinacle has provided guidance in tuning the Zero once again to have the best tonal balance possible. 
@@ -39,7 +39,7 @@ The updated Zero:2 features Crinacle’s inputs in order to refine this tried-an
 image: /7hertz/zero2/image3.webp 
 reversed: true
 ---
-# More Bass, Keeping Tonal Excellence
+## More Bass, Keeping Tonal Excellence
 The original Zero had one of the best-in-class tonal balance for a budget single dynamic driver IEM. However, this tonal balance also meant taming the bass, which may have been lacking for audiences wanting a more exciting sound. 
 
 The Zero:2 maintains the perfect sound signature whilst adding on 3dB more in the low frequencies, which provides an engaging and powerful bass presence to bring your music to life. Bass impact and extension are markedly improved, providing more texture and tactile hits to the lows. 
@@ -52,7 +52,7 @@ Additionally, the midrange has a slightly improved body and warmth compared  to 
 ---
 image: /7hertz/zero2/image4.webp 
 ---
-# New 10mm Dynamic Driver
+## New 10mm Dynamic Driver
 The improvements in the tonal characteristics of the Zero:2 were made possible thanks to a newly developed 10mm dual cavity dynamic driver. 
 
 With an upgraded PU+Metal composite diaphragm, the driver is significantly more responsive, allowing faster diaphragm movement. 
@@ -68,7 +68,7 @@ This allows for harder hitting bass, while maintaining crispness and precision w
 image: /7hertz/zero2/image5.jpg 
 reversed: true
 ---
-# Improved Custom Cable
+## Improved Custom Cable
 The Zero II has been upgraded with a new high-purity oxygen-free copper cable with silver plating. Arranged in a coaxial structure, each wire is woven with 140.06 and 250.06 winding to strengthen the cable, as well as bringing about better audio transmission. The cable is removable to customize your listening experience as well as enhance the longevity of your IEM. 
 ::
 
