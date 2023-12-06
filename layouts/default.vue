@@ -1,6 +1,6 @@
 <template>
 
-    <div class="font-sans mx-6">
+    <div class="font-sans">
   
         <AppHeader />
   

@@ -37,7 +37,6 @@ The updated Zero:2 features Crinacle’s inputs in order to refine this tried-an
 ::ImageText
 ---
 image: /7hertz/zero2/image3.webp 
-reversed: true
 ---
 ## More Bass, Keeping Tonal Excellence
 The original Zero had one of the best-in-class tonal balance for a budget single dynamic driver IEM. However, this tonal balance also meant taming the bass, which may have been lacking for audiences wanting a more exciting sound. 
@@ -66,10 +65,21 @@ This allows for harder hitting bass, while maintaining crispness and precision w
 ::ImageText
 ---
 image: /7hertz/zero2/image5.jpg 
-reversed: true
 ---
 ## Improved Custom Cable
 The Zero II has been upgraded with a new high-purity oxygen-free copper cable with silver plating. Arranged in a coaxial structure, each wire is woven with 140.06 and 250.06 winding to strengthen the cable, as well as bringing about better audio transmission. The cable is removable to customize your listening experience as well as enhance the longevity of your IEM. 
 ::
 
 
+::Technical
+---
+technicals:
+    - Frequency response range: 10HZ-20KHz
+    - Impedance: 32 ohms
+    - Total Harmonic Distortion (THD): <1% at 1KHz
+    - Driver: 10mm dynamic driver
+    - Cable Interface: 3.5mm
+    - Plug Type: Detachable 0.78mm 2Pin
+
+---
+::

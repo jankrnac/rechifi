@@ -1,6 +1,6 @@
 <template>  
 
-<div class="flex flex-col items-center max-w-[1200px] mx-auto leading-loose">
+<div class="flex flex-col items-center mx-auto leading-loose">
     
 
 
@@ -44,11 +44,11 @@
 
         </div>
 
-        <div class="mb-16 font-thin text-xl">{{ doc.description }}</div>
+        <div class="mb-16 text-xl leading-8 max-w-[1200px]">{{ doc.description }}</div>
 
-        <Reviews class="mb-12"/>
+        <Reviews class="mb-12 max-w-[1200px]"/>
 
-        <div class="content w-full max-w-[1200px]">
+        <div class="content w-full">
             <ContentRenderer :value="doc"/>
         </div>
 

@@ -12,6 +12,10 @@ label: article
 
 ---
 
+::PostTitle
+All brands
+:: 
+
 ::BrandsList
 
 ::

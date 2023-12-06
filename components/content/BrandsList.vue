@@ -2,7 +2,7 @@
 
     <div class="flex gap-12 my-24 flex-wrap">
         <div v-for="brand in brands" class="relative flex flex-col justify-center items-center">
-            <div v-if="brand.logo" class="w-32 h-32 flex items-center"><nuxt-img :src="brand.logo"/></div>
+            <div v-if="brand.logo" class="w-32 h-32 flex items-center justify-center"><nuxt-img :src="brand.logo"/></div>
             <div>{{ brand.label }}</div>
 
             <a :href="brand.link" target="_blank" class="absolute inset-0"/>

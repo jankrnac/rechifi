@@ -120,14 +120,14 @@ export default defineEventHandler((event) => {
         {
             value: 'softears',
             label: 'Softears',
-            logo: '',
+            logo: 'softears/logo.webp',
             link: ''
         },
 
         {
             value: 'tanchjim',
             label: 'Tanchjim',
-            logo: '',
+            logo: 'tanchjim/logo.webp',
             link: ''
         },
 
@@ -141,28 +141,28 @@ export default defineEventHandler((event) => {
         {
             value: 'qdc',
             label: 'QDC',
-            logo: '',
+            logo: 'qdc/logo.png',
             link: ''
         },
 
         {
             value: 'shozy',
             label: 'Shozy',
-            logo: '',
+            logo: 'shozy/logo.png',
             link: ''
         },
 
         {
             value: 'tipsy',
             label: 'Tipsy',
-            logo: '',
+            logo: 'tipsy/logo.jpg',
             link: ''
         },
 
         {
             value: 'tfz',
             label: 'TFZ',
-            logo: '',
+            logo: 'tfz/logo.jpg',
             link: ''
         },
 
@@ -176,7 +176,7 @@ export default defineEventHandler((event) => {
         {
             value: 'tansio-mirai',
             label: 'Tansio Mirai',
-            logo: '',
+            logo: 'tansio-mirai/logo.png',
             link: ''
         },
 
@@ -190,7 +190,7 @@ export default defineEventHandler((event) => {
         {
             value: 'seeaudio',
             label: 'SeeAudio',
-            logo: '',
+            logo: 'seeaudio/logo.jpg',
             link: ''
         },
         {
@@ -214,7 +214,7 @@ export default defineEventHandler((event) => {
         {
             value: 'sabbat',
             label: 'Sabbat',
-            logo: '',
+            logo: 'sabbat/logo.webp',
             link: ''
         },
         {
