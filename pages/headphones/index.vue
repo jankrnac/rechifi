@@ -83,7 +83,7 @@
                         <ListboxButton class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none  sm:text-sm sm:leading-6">
                             <span class="block truncate">{{ activeSort.label }}</span>
                             <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                            <ChevronUpDownIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
+                            <i class="h-5 w-5 text-gray-400" aria-hidden="true" />
                             </span>
                         </ListboxButton>
 
@@ -94,7 +94,7 @@
                                 <span :class="[selected ? 'font-semibold' : 'font-normal', 'block truncate']">{{ sort.label }}</span>
 
                                 <span v-if="selected" :class="[active ? 'text-white' : 'text-indigo-600', 'absolute inset-y-0 right-0 flex items-center pr-4']">
-                                    <CheckIcon class="h-5 w-5" aria-hidden="true" />
+                                    <i class="h-5 w-5" aria-hidden="true" />
                                 </span>
                                 </li>
                             </ListboxOption>
@@ -110,7 +110,7 @@
                     <div>
                         <PopoverButton class="group inline-flex items-center justify-center text-sm font-medium text-gray-700 hover:text-gray-900 outline-none">
                         <span>{{ filter.name }}</span>
-                        <IconsCaretDown  class="-mr-1 ml-1 h-4 w-4 flex-shrink-0 text-gray-400 group-hover:text-gray-500" aria-hidden="true" />
+                        <i  class="-mr-1 ml-1 h-4 w-4 flex-shrink-0 text-gray-400 group-hover:text-gray-500" aria-hidden="true" />
                         </PopoverButton>
                     </div>
 
@@ -154,11 +154,15 @@ const route = useRoute()
 
 const activeFilters = ref({})
 
-activeFilters.value.signature = [].concat(route.query['signature'] ?? [])
-activeFilters.value.drivers = [].concat(route.query['drivers'] ?? [])
-activeFilters.value.brand = [].concat(route.query['brand'] ?? [])
+activeFilters.value.signature = []
+activeFilters.value.drivers = []
+activeFilters.value.brand = []
 
-console.log(route)
+const driverFilter = computed(() => {
+    console.log(activeFilters.value.brand.length)
+    if (activeFilters.value.brand.length) return { $in: activeFilters.value.brand }
+    return  {}
+})
 
 const { data:headphones, refresh } = await useAsyncData('home', () => queryContent('/headphones')
   
@@ -166,9 +170,7 @@ const { data:headphones, refresh } = await useAsyncData('home', () => queryConte
 
     .where({ _partial: false }) // exclude the Partial files
 
-    .where({ 'signature': { $contains: activeFilters.value.signature }})
-    .where({ 'brand': { $contains: activeFilters.value.brand }})
-    .where({ 'drivers': { $contains: activeFilters.value.drivers }})
+    .where({ 'drivers': driverFilter.value })
 
     .find()
 )

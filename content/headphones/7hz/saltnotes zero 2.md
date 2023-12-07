@@ -74,12 +74,15 @@ The Zero II has been upgraded with a new high-purity oxygen-free copper cable wi
 ::Technical
 ---
 technicals:
-    - Frequency response range: 10HZ-20KHz
+    - Frequency response range: 10HZ - 20KHz
     - Impedance: 32 ohms
     - Total Harmonic Distortion (THD): <1% at 1KHz
     - Driver: 10mm dynamic driver
     - Cable Interface: 3.5mm
     - Plug Type: Detachable 0.78mm 2Pin
 
+package: 
+    - 1 x 7HZ x Crinacle Zero:2
+    - User Manual
 ---
 ::

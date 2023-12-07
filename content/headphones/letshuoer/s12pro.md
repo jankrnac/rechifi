@@ -1,10 +1,12 @@
 ---
 
-fullname: Letshuoer S12 Pro
-
-name: S12 Pro
-
 title: Letshuoer S12 Pro
+
+description: LETSHUOER S12 PRO utilizes a custom 14.8mm large diaphragm driver with great details retrieval, punchy bass and clear trebles. 102db high sensitivity means that it can be easily driven to volume, be it a cell phone or dongle DACs, LETSHUOER S1 PRO will sound optimal pairing with most source / amps.
+
+model: S12 Pro
+
+brand: letshuoer
 
 drivers: 
     - planar 
@@ -16,26 +18,67 @@ signature:
     - v-shaped
     - bass boost
 
-description: S12 is a pair of Hi-Fi Earphones created for music lovers. It is planar driver in ear monitors with wider stage, better clarity, faster transients, better treble extension and great resolution. It will be your best companion to your everyday music enjoyment.
+releaseDate: 2022-06-10
 
-released: 2018-05-11
+released: true
 
 cover: /letshuoer/s12pro/image1.webp
 
+type: website
+
 ---
 
-#content
-S12 is a pair of Hi-Fi Earphones created for music lovers. It is planar driver in ear monitors with wider stage, better clarity, faster transients, better treble extension and great resolution. It will be your best companion to your everyday music enjoyment.
 
-:Reviews{:reviews="reviews"}
+::ImageText
+---
+image: /letshuoer/s12pro/image1.webp
+---
+## Large diaphragm
+Planar diaphragm that is 14.8mm in size with 102dB sensitivity that can be driven by most devices.
 
-:BlogImage{src="/letshuoer/s12/image2.jpg"}
+## Professional tuning
+Tuning with wider stage, better clarity, faster transients, better treble extension and great resolution.
+::
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+::ImageText
+---
+image: /letshuoer/s12/image2.jpg
+---
+
+## 128 strands silver-plated copper cable
+Thickness ensures cables does not have internal resistance, yet soft enough to not tangle up.
+
+## 5-axis CNC processing
+Chassis is milled down by a 5-axis process that’s lightweight, durable and smooth to the touch
+::
 
 
-    :::BlogImageLeft{src="/letshuoer/s12/image3.jpg"}
+::ImageText
+---
+image: /letshuoer/s12/image3.jpg
+---
 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+## Ergonomic design details
+The earphone connector protrudes slightly from the side of the IEM so the earhook on the cable can sit comfortably on the ear without twisting inwards. The receptor is slightly indented into the chassis to ensure product longevity as well.
 
-    :::
+## Dual vent hole design
+The chassis has two vent holes drilled to the side of the unit to reduce pressure against the ear drums, which in turns protect users’ hearing.
+
+::
+
+::Technical
+---
+technicals:
+    - Frequency response: 20-30000Hz
+    - Impedance: 16Ω
+    - Sensitivity: 102dB/mW
+    - Cable length: 1.2m
+    - IP Rating: IPX3
+
+package: 
+    - IEM units
+    - Foam, standard and clear ear tips in S/M/L sizes
+    - 3.5mm single-ended cable / 4.4mm balanced connector
+    - LETSHUOER faux-leather caseUser manual
+---
+::
