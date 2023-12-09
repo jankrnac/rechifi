@@ -60,7 +60,7 @@
             <div class="text-left h-12">
                 <ul class="text-sm mb-4 flex gap-x-3">
                     <template v-for="[key, values] of Object.entries(activeFilters)">
-                    <li v-if="values.length" class="flex items-center">
+                    <li v-if="values.length" class="flex items-center gap-1">
                         <template v-if="values.length">
                             <div class="mr-2 capitalize">{{ key }}:</div>
                             <div v-for="value in values" class="flex items-center gap-x-2 bg-gray-200 rounded px-2 py-1">
@@ -110,7 +110,7 @@
                     <div>
                         <PopoverButton class="group inline-flex items-center justify-center text-sm font-medium text-gray-700 hover:text-gray-900 outline-none">
                         <span>{{ filter.name }}</span>
-                        <i  class="-mr-1 ml-1 h-4 w-4 flex-shrink-0 text-gray-400 group-hover:text-gray-500" aria-hidden="true" />
+                        <IconsCaretDown  class="-mr-1 ml-1 h-4 w-4 flex-shrink-0 text-gray-400 group-hover:text-gray-500" aria-hidden="true" />
                         </PopoverButton>
                     </div>
 
@@ -150,6 +150,20 @@ import { Listbox,ListboxLabel ,Popover,PopoverButton,PopoverGroup,PopoverPanel,T
 
 const { data:brands } = await useFetch('/api/brands')
 
+brands.value.sort((a, b) => {
+  const nameA = a.value.toUpperCase(); // ignore upper and lowercase
+  const nameB = b.value.toUpperCase(); // ignore upper and lowercase
+  if (nameA < nameB) {
+    return -1;
+  }
+  if (nameA > nameB) {
+    return 1;
+  }
+
+  // names must be equal
+  return 0;
+});
+
 const route = useRoute()
 
 const activeFilters = ref({})
@@ -158,11 +172,25 @@ activeFilters.value.signature = []
 activeFilters.value.drivers = []
 activeFilters.value.brand = []
 
+const signatureFilter = computed(() => {
+    console.log(activeFilters.value.signature.length)
+    if (activeFilters.value.signature.length) return { $in: activeFilters.value.signature }
+    return  {}
+})
+
 const driverFilter = computed(() => {
+    console.log(activeFilters.value.drivers.length)
+    if (activeFilters.value.drivers.length) return { $in: activeFilters.value.drivers }
+    return  {}
+})
+
+
+const brandFilter = computed(() => {
     console.log(activeFilters.value.brand.length)
     if (activeFilters.value.brand.length) return { $in: activeFilters.value.brand }
     return  {}
 })
+
 
 const { data:headphones, refresh } = await useAsyncData('home', () => queryContent('/headphones')
   
@@ -170,7 +198,9 @@ const { data:headphones, refresh } = await useAsyncData('home', () => queryConte
 
     .where({ _partial: false }) // exclude the Partial files
 
+    .where({ 'signature': signatureFilter.value })
     .where({ 'drivers': driverFilter.value })
+    .where({ 'brand': brandFilter.value })
 
     .find()
 )

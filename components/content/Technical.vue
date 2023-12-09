@@ -32,6 +32,6 @@
 
 <script setup>
 
- defineProps(['technicals','package'])
+    defineProps(['technicals','package'])
 
 </script>

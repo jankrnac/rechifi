@@ -29,7 +29,8 @@ export default defineNuxtConfig({
 	},
 
 	image: {
-		provider: 'ipx'
+		provider: 'ipx',
+		densities: [1],
 	},
 
 	colorMode: {
