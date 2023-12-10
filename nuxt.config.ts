@@ -15,7 +15,12 @@ export default defineNuxtConfig({
 		'@nuxtjs/google-fonts',
 		'@nuxt/image',
 		'@nuxtjs/i18n',
+		'@nuxtjs/supabase'
 	],
+
+	supabase:{
+		redirect: false
+	},
 
 	googleFonts: {
 		families: {

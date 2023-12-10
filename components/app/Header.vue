@@ -47,9 +47,13 @@
 				</PopoverButton>
 
 				<transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-1" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
-					<PopoverPanel class="absolute right-0 top-full z-10 mt-3 w-screen max-w-xs overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-gray-900/5">
-					<div class="p-4">
-						dsf
+					<PopoverPanel v-slot="{ close }" class="absolute right-0 top-full z-10 mt-3 w-screen max-w-xs overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-gray-900/5">
+					<div class="p-2">
+						<nuxt-link to="/login" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="close">
+							<IconsLogin class="w-5 h-5"/>
+							<div>Login</div>
+						</nuxt-link>
+
 					</div>
 			
 					</PopoverPanel>
