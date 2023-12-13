@@ -45,6 +45,10 @@
 		@apply py-4
 	}
 
+	.content h1 {
+		@apply text-4xl font-bold mt-6
+	}
+
 	.content h2 {
 		@apply text-xl font-bold mt-6
 	}
