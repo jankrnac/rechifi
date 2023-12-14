@@ -21,6 +21,7 @@
     "@nuxt/image": "^1.1.0",
     "@tiptap/pm": "^2.1.13",
     "@tiptap/starter-kit": "^2.1.13",
-    "@tiptap/vue-3": "^2.1.13"
+    "@tiptap/vue-3": "^2.1.13",
+    "vuedraggable": "^4.1.0"
   }
 }

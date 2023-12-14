@@ -53,7 +53,14 @@ const login = async () => {
         email: email.value,
         password: password.value
     })
-    if (error) console.log(error)
+
+    if (error) {
+		
+	}
+	else
+	{
+		await navigateTo('/')
+	}
 }
 
 </script>

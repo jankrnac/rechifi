@@ -64,7 +64,7 @@
 							<IconsGear class="w-5 h-5"/>
 							<div>Settings</div>
 						</nuxt-link>
-						<nuxt-link v-if="user" to="/settings" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="close">
+						<nuxt-link v-if="user" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="logout">
 							<IconsLogout class="w-5 h-5"/>
 							<div>Logout</div>
 						</nuxt-link>
@@ -125,6 +125,7 @@
 
 	import { Dialog, DialogPanel, Popover, PopoverButton, PopoverGroup, PopoverPanel } from '@headlessui/vue'
 	
+	const supabase = useSupabaseClient()
 	const user = useSupabaseUser()
 
 	const { t } = useI18n({
@@ -153,6 +154,11 @@
 	const search = async () => {
 		await navigateTo(`/search/${query.value}`)
 	}
+
+	const logout = async () => {
+		await supabase.auth.signOut()
+	}
+
 </script>
 
 <i18n lang="yaml">
