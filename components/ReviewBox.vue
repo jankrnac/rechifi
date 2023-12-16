@@ -13,7 +13,7 @@
             </iframe>
 
             <template v-else>
-                <nuxt-img :src="review.cover" alt="" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" />
+                <nuxt-img v-if="review.cover" :src="review.cover" alt="" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" />
                 <nuxt-link :to="review._path" class="absolute inset-0"></nuxt-link>
             
                 <div class="absolute inset-0 flex">

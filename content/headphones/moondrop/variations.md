@@ -1,10 +1,12 @@
 ---
 
-name: Variations
-
 title: Moondrop Variations
 
+description: Advanced transducer unit and rigorous acoustic structure design, coupled with carefully polished physical filtering and crossover circuits, make Variations outstanding results in both linear and nonlinear distortions. Phase exhibits a high degree of uniformity across all the frequency, eliminating the common connection problems of multi-unit tribrid earphones, making the three-frequency sound fit accurately, and the sound field image is true and accurate. With the reasonable unit configuration, the total harmonic distortion of the whole frequency is less than 1%, and the odd and even harmonics are evenly distributed, and the overall tone is harmonious and clean.
+
 brand: moondrop
+
+model: Variations
 
 drivers: 
     - EST
@@ -15,7 +17,6 @@ drivers:
 
 priceRange: high
 
-description: Advanced transducer unit and rigorous acoustic structure design, coupled with carefully polished physical filtering and crossover circuits, make Variations outstanding results in both linear and nonlinear distortions. Phase exhibits a high degree of uniformity across all the frequency, eliminating the common connection problems of multi-unit tribrid earphones, making the three-frequency sound fit accurately, and the sound field image is true and accurate. With the reasonable unit configuration, the total harmonic distortion of the whole frequency is less than 1%, and the odd and even harmonics are evenly distributed, and the overall tone is harmonious and clean.
 
 releaseDate: 2013-01-04
 

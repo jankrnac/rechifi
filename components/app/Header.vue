@@ -60,6 +60,10 @@
 							<IconsPlus class="w-5 h-5"/>
 							<div>Add review</div>
 						</nuxt-link>
+						<nuxt-link v-if="user" to="/reviews/my" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="close">
+							<IconsHamburger class="w-5 h-5"/>
+							<div>My reviews</div>
+						</nuxt-link>
 						<nuxt-link v-if="user" to="/settings" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="close">
 							<IconsGear class="w-5 h-5"/>
 							<div>Settings</div>
