@@ -3,7 +3,10 @@
 <div class="max-w-app mx-auto">
     
     <div class="flex justify-between py-2 items-center">
-        <ElementsAvailable />
+        <div class="flex items-center gap-5">
+            <ElementsAvailable />
+            <ModelCombobox />
+        </div>
         <div class="flex items-center gap-5">
             <div class="bg-green-300 px-4 py-1.5 rounded-lg text-sm flex items-center cursor-pointer" @click="save">
                 <IconsSave class="w-4 h-4 mr-2"/>
