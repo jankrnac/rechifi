@@ -30,6 +30,13 @@ export default defineNuxtConfig({
 		}
 	},
 
+	supabase: {
+		cookieOptions: {
+		  secure: process.env.NODE_ENV === 'production',
+		},
+		redirect: false
+	},
+
 	image: {
 		provider: 'ipx',
 		densities: [1],

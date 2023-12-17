@@ -1,6 +1,6 @@
 <template>
-	<h1 class="mb-5 text-xl font-semibold outline-none">
-		<span :contenteditable="editable" :spellcheck="false">{{element.data.text.value}}</span>
+	<h1 class="mb-5 text-xl font-semibold">
+		<span :contenteditable="editable" :spellcheck="false" class="outline-none" @input="update">{{element.data.text}}</span>
 	</h1>
 </template>
 
@@ -9,9 +9,21 @@
 	const props = defineProps({
 		element: {
 			type: Object
+		},
+		editable: {
+			type: Boolean,
+			default: false
 		}
 	})
 
-	const editable = ref(true)
+	const emits = defineEmits(['change'])
+
+	const update = (e) => {
+		emits('change', {
+			type: 'text',
+			value: e.target.innerText
+		})
+	}
+
 
 </script>

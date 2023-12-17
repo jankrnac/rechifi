@@ -1,11 +1,10 @@
 <template>
 
 <div class="flex flex-grow flex-shrink-1">
-
-        <div class="bg-white rounded-xl flex flex-1 border min-h-screen border-gray-300 content">
+        <div class="bg-white flex flex-1 min-h-screen content" :class="{'border rounded-xl border-gray-300':editable}">
             <draggable
                 class="min-h-screen w-full max-w-app p-6 mx-auto flex flex-col gap-y-12"
-                v-model="local.elements"
+                v-model="local"
                 group="elements"
                 item-key="id"
                 @change="$emit('change', local)"
@@ -13,9 +12,10 @@
 
                 <template #item="{ element, index }">
                     <ElementsWrapper
-                        :editable="true" 
+                        :editable="editable" 
                         :element="element"
                         @deleted="onRemove(element.id, index)"
+                        @change="onChange(element.id, $event)"
                     />
                 </template>
 
@@ -30,17 +30,17 @@
 import draggable from "vuedraggable";
 
 const props = defineProps({
-    layout: {
-        type: Object,
-        default(rawProps) {
-            return {
-                elements: []
-            }
-        }
+    elements: {
+        type: Array,
+        default: () => []
+    },
+    editable:{
+        type: Boolean,
+        default: false
     }
 })
 
-const local = ref(props.layout)
+const local = ref(props.elements)
 const project = useState('project')
 
 const menuElement = ref({})
@@ -53,8 +53,12 @@ const showMenu = (element) => {
 
 }
 
+const onChange = (elementid, data) => {
+    props.elements.find(obj => obj.id == elementid).data[data.type] = data.value
+}
+
 const onRemove = async (elementid) => {
-    props.layout.elements.splice(props.layout.elements.findIndex(obj => obj.id == elementid), 1) 
+    props.elements.splice(props.layout.elements.findIndex(obj => obj.id == elementid), 1) 
 }
 
 const onImageChange = async (path) => {

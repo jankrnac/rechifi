@@ -42,7 +42,7 @@
     </div>
 </template>
   
-<script setup lang="ts">
+<script setup>
 
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 import draggable from "vuedraggable";

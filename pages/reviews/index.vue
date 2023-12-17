@@ -21,7 +21,13 @@
     </template>
     
 <script setup lang="ts">
-    
-    const { data:reviews } = await useFetch('/api/reviews/my')
+
+    const client = useSupabaseClient()
+
+    const { data:reviews } = await useAsyncData('reviews', async () => {
+        const { data } = await client.from('reviews').select(`id, model, brand, slug, cover, created_at, profiles (username)`).order('created_at')
+
+        return data
+    })
       
 </script>

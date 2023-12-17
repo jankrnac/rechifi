@@ -6,13 +6,18 @@
         @mouseout="hideHover" 
         >
 
-        <div class="absolute p-2 bg-teal-500 text-white top-2 left-2 rounded-sm cursor-move z-40" v-show="optionsVisible">
-            <IconsGrab class="w-6 h-6"/>
+        <div class="absolute p-1 bg-teal-500 text-white top-2 left-2 rounded cursor-move z-40" v-show="optionsVisible">
+            <IconsUpdown class="w-6 h-6"/>
         </div>
         
-    	<component :is="componentsMap[element.type]" :data="element.data" :element="element"></component>
-
-
+    	<component 
+            :is="componentsMap[element.type]" 
+            :data="element.data" 
+            :element="element" 
+            :editable="editable"
+            @change="changed"
+        >
+        </component>
 
 	</div>
 
@@ -30,12 +35,16 @@
             type: Object,
             required: true
         },
+        editable: {
+            type: Boolean,
+            default: false
+        }
     })
 
     const optionsVisible = ref(false)
 
     const showHover = () => { 
-        optionsVisible.value = true
+        if(props.editable) optionsVisible.value = true
     }
 
     const hideHover = () => {
@@ -43,16 +52,18 @@
     }
 
 
-    const emit = defineEmits(['clicked', 'deleted'])
+    const emits = defineEmits(['change', 'deleted'])
 
+    const changed = (e) => {
+        emits('change', e)
+    }
 
     const removed = (el) => {
-        emit('deleted', el)
+        emits('deleted', el)
     }
 
     const componentsMap = {
         header: resolveComponent('ElementsHeader'),
-
 
     }
 
