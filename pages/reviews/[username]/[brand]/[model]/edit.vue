@@ -37,6 +37,8 @@ const { data:review } = await useFetch('/api/reviews/layout', {
     }
 })
 
+const activeElements = [...review.value.elements]
+
 const updatePage = async (data) => {
     review.value.elements = data
 }
@@ -50,11 +52,12 @@ const save = async () => {
             await client.from('elements').insert({
                 data: element.data,
                 type: element.type,
+                review_id: review.value.id,
                 order: index
             })
         }
 
-        //  Existing element
+        // Existing element
         if (Number.isInteger(element.id))
         {
             await client.from('elements').update({
@@ -62,6 +65,26 @@ const save = async () => {
                 order: index
             }).eq('id', element.id)
         }
+
+    }
+
+    // Deleting elements
+    if(review.value.elements.length > 0)
+    {
+        activeElements.forEach(async (item) => {
+            console.log(item)
+            if(!review.value.elements.map(e => e.id).includes(item.id))
+            {
+                await client.from('elements').delete().eq('id', item.id)
+            }
+        })
+    }
+    else
+    {
+        activeElements.forEach(async (item) => {
+            const element = await Element.findOrFail(item.id)
+            await element.delete()
+        })
     }
 }
 

@@ -41,24 +41,16 @@ const props = defineProps({
 })
 
 const local = ref(props.elements)
-const project = useState('project')
 
 const menuElement = ref({})
 const emit = defineEmits(['change'])
-
-const options = ref()
-const showMenu = (element) => {
-    menuElement.value = element
-    options.value.$.exposed.open()
-
-}
 
 const onChange = (elementid, data) => {
     props.elements.find(obj => obj.id == elementid).data[data.type] = data.value
 }
 
 const onRemove = async (elementid) => {
-    props.elements.splice(props.layout.elements.findIndex(obj => obj.id == elementid), 1) 
+    props.elements.splice(props.elements.findIndex(obj => obj.id == elementid), 1) 
 }
 
 const onImageChange = async (path) => {

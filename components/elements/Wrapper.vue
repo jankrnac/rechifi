@@ -6,8 +6,9 @@
         @mouseout="hideHover" 
         >
 
-        <div class="absolute p-1 bg-teal-500 text-white top-2 left-2 rounded cursor-move z-40" v-show="optionsVisible">
-            <IconsUpdown class="w-6 h-6"/>
+        <div class="absolute text-white top-2 left-2" v-show="optionsVisible">
+            <div class="cursor-move mb-1 bg-teal-500 p-1 rounded"><IconsUpdown class="w-6 h-6"/></div>
+            <ElementsOptions @delete="deleted"/>
         </div>
         
     	<component 
@@ -27,8 +28,6 @@
 </template>
 
 <script setup>
-
-    import { onClickOutside } from '@vueuse/core'
 
     const props = defineProps({
         element: {
@@ -58,12 +57,13 @@
         emits('change', e)
     }
 
-    const removed = (el) => {
-        emits('deleted', el)
+    const deleted = () => {
+        emits('deleted', props.element)
     }
 
     const componentsMap = {
         header: resolveComponent('ElementsHeader'),
+        paragraph: resolveComponent('ElementsParagraph'),
 
     }
 
