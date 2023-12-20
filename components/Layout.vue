@@ -3,7 +3,7 @@
 <div class="flex flex-grow flex-shrink-1">
         <div class="bg-white flex flex-1 min-h-screen content" :class="{'border rounded-xl border-gray-300':editable}">
             <draggable
-                class="min-h-screen w-full max-w-app p-6 mx-auto flex flex-col gap-y-12"
+                class="min-h-screen w-full max-w-app p-6 mx-auto flex flex-col gap-y-6"
                 v-model="local"
                 group="elements"
                 item-key="id"

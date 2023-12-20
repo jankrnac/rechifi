@@ -2,9 +2,13 @@ export default defineEventHandler((event) => {
     return [
 
         {
-            id: 1, type: 'header', caption: 'Header', data: {
+            id: 1, type: 'header', caption: 'Header', 
+            data: {
                 text: 'Header text'
-            }
+            },
+            options: [
+                'textalign'
+            ]
         },
 
         {
@@ -15,7 +19,7 @@ export default defineEventHandler((event) => {
 
         {
             id: 3, type: 'image', caption: 'Image', data: {
-                image: null
+                image: 'placeholder.webp'
             }
         },
 

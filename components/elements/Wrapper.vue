@@ -6,9 +6,10 @@
         @mouseout="hideHover" 
         >
 
-        <div class="absolute text-white top-2 left-2" v-show="optionsVisible">
+        <div class="absolute text-white top-2 left-2 z-[9]" v-show="optionsVisible">
             <div class="cursor-move mb-1 bg-teal-500 p-1 rounded"><IconsUpdown class="w-6 h-6"/></div>
-            <ElementsOptions @delete="deleted"/>
+            {{ elements.find(e => e.type == element.type) }}
+            <ElementsOptions @delete="deleted" :options="elements.find(e => e.type == element.type).options"/>
         </div>
         
     	<component 
@@ -40,6 +41,8 @@
         }
     })
 
+    const { data:elements } = await useFetch('/api/elements')
+
     const optionsVisible = ref(false)
 
     const showHover = () => { 
@@ -64,7 +67,7 @@
     const componentsMap = {
         header: resolveComponent('ElementsHeader'),
         paragraph: resolveComponent('ElementsParagraph'),
-
+        image: resolveComponent('ElementsImage'),
     }
 
 </script>

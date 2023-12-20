@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@nuxt/image": "^1.1.0",
+    "@tiptap/extension-text-align": "^2.1.13",
     "@tiptap/pm": "^2.1.13",
     "@tiptap/starter-kit": "^2.1.13",
     "@tiptap/vue-3": "^2.1.13",
