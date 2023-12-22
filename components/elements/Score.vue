@@ -1,7 +1,7 @@
 <template>
 
     <div class="flex justify-center">
-        <div>{{ element.data.score }}</div>
+        <div class="">{{ element.data.score }}</div>
         <div>/10</div>
     </div>
 
