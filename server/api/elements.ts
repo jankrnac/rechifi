@@ -6,9 +6,6 @@ export default defineEventHandler((event) => {
             data: {
                 text: 'Header text'
             },
-            options: [
-                'textalign'
-            ]
         },
 
         {
@@ -19,10 +16,23 @@ export default defineEventHandler((event) => {
 
         {
             id: 3, type: 'image', caption: 'Image', data: {
-                image: 'placeholder.webp'
-            }
+                image: 'placeholder.webp',
+                textAlign: 'center' 
+            },
         },
 
+        {
+            id: 3, type: 'proscons', caption: 'Pros and cons', data: {
+                pros: ['This is one pros bullet'],
+                cons: ['This is one cons bullet'] 
+            },
+        },
+
+        {
+            id: 4, type: 'score', caption: 'Score', data: {
+                score: 5,
+            },
+        },
 
     ]
 })

@@ -8,6 +8,7 @@
                 group="elements"
                 item-key="id"
                 @change="$emit('change', local)"
+                :disabled="!editable" 
             >
 
                 <template #item="{ element, index }">
@@ -16,6 +17,7 @@
                         :element="element"
                         @deleted="onRemove(element.id, index)"
                         @change="onChange(element.id, $event)"
+                        :elements="elements"
                     />
                 </template>
 
@@ -39,6 +41,8 @@ const props = defineProps({
         default: false
     }
 })
+
+const { data:elements } = await useFetch('/api/elements')
 
 const local = ref(props.elements)
 

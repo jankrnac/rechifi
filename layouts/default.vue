@@ -1,10 +1,10 @@
 <template>
 
-    <div class="font-sans">
+    <div class="font-sans flex flex-col flex-1">
   
         <AppHeader />
   
-      	<main>
+      	<main class="flex flex-col flex-1">
             <slot />
       	</main>
 
@@ -15,6 +15,10 @@
 </template>
 
 <style>
+
+	#__nuxt{
+		@apply min-h-screen flex flex-col
+	}
 
 	a.text {
 		position: relative;

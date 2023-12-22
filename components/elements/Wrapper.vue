@@ -8,13 +8,11 @@
 
         <div class="absolute text-white top-2 left-2 z-[9]" v-show="optionsVisible">
             <div class="cursor-move mb-1 bg-teal-500 p-1 rounded"><IconsUpdown class="w-6 h-6"/></div>
-            {{ elements.find(e => e.type == element.type) }}
-            <ElementsOptions @delete="deleted" :options="elements.find(e => e.type == element.type).options"/>
+            <ElementsOptions @delete="deleted" @change="changed" :data="elements.find(e => e.type == element.type).data"/>
         </div>
         
     	<component 
             :is="componentsMap[element.type]" 
-            :data="element.data" 
             :element="element" 
             :editable="editable"
             @change="changed"
@@ -38,10 +36,11 @@
         editable: {
             type: Boolean,
             default: false
+        },
+        elements: {
+            type: Array
         }
     })
-
-    const { data:elements } = await useFetch('/api/elements')
 
     const optionsVisible = ref(false)
 
@@ -68,6 +67,8 @@
         header: resolveComponent('ElementsHeader'),
         paragraph: resolveComponent('ElementsParagraph'),
         image: resolveComponent('ElementsImage'),
+        proscons: resolveComponent('ElementsProsCons'),
+        score: resolveComponent('ElementsScore'),
     }
 
 </script>

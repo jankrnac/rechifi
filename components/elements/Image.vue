@@ -1,6 +1,11 @@
 <template>
-    <div class="relative">
-        <nuxt-img :src="element.data.image" />
+    <div class="relative" :class="[element.data.textAlign]">
+		<div class="inline-block relative group">
+        	<nuxt-img :src="element.data.image" class="inline-block" densities="x1"/>
+			<UploadSingle v-if="editable" @uploaded="imageChanged" class="group-hover:flex hidden absolute inset-0 flex-col flex-1 justify-center items-center">
+				<div class="bg-gray-100/80 px-4 py-2 rounded-lg">Click to change image</div>
+        	</UploadSingle>	
+		</div>
     </div>
 </template>
 
@@ -23,6 +28,11 @@
 			type: 'text',
 			value: e.target.innerText
 		})
+	}
+
+	const imageChanged = (data) => {
+		props.element.data.image = data.blob
+		props.element.data.upload = data.form
 	}
 
 

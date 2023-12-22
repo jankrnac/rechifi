@@ -1,6 +1,6 @@
 <template>
 
-<div class="max-w-app mx-auto">
+<div class="max-w-app w-full mx-auto">
     <div class="flex justify-between py-2 items-center">
         <div class="flex items-center gap-5">
             <ElementsAvailable />
@@ -76,13 +76,27 @@ const save = async () => {
             }).eq('id', element.id)
         }
 
+        // Upload
+        if(element.data.upload)
+        {
+            const { data:path } = await useFetch('/api/files', {
+                method: 'POST',
+                body: element.data.upload
+            })
+
+            element.data.image = path
+
+            await client.from('elements').update({
+                data: element.data,
+            }).eq('id', element.id)
+        }
+
     }
 
     // Deleting elements
     if(review.value.elements.length > 0)
     {
         activeElements.forEach(async (item) => {
-            console.log(item)
             if(!review.value.elements.map(e => e.id).includes(item.id))
             {
                 await client.from('elements').delete().eq('id', item.id)
