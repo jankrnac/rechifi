@@ -20,6 +20,9 @@ dependencies:
   '@tiptap/vue-3':
     specifier: ^2.1.13
     version: 2.1.13(@tiptap/core@2.1.13)(@tiptap/pm@2.1.13)(vue@3.3.11)
+  vue-ellipse-progress:
+    specifier: ^2.1.2
+    version: 2.1.2(vue@3.3.11)
   vuedraggable:
     specifier: ^4.1.0
     version: 4.1.0(vue@3.3.11)
@@ -9264,6 +9267,14 @@ packages:
   /vue-devtools-stub@0.1.0:
     resolution: {integrity: sha512-RutnB7X8c5hjq39NceArgXg28WZtZpGc3+J16ljMiYnFhKvd8hITxSWQSQ5bvldxMDU6gG5mkxl1MTQLXckVSQ==}
     dev: true
+
+  /vue-ellipse-progress@2.1.2(vue@3.3.11):
+    resolution: {integrity: sha512-CQl2DMx7uvWyD+1vFd8cNjLQ0l1d6ZD3pTVZaUgsPev1S/9Jo8LGKX7TXxeTyf18y7ckMmeFt/cQY4Rt4CoEsg==}
+    peerDependencies:
+      vue: ^3
+    dependencies:
+      vue: 3.3.11
+    dev: false
 
   /vue-i18n-routing@1.2.0(vue-i18n@9.5.0)(vue@3.3.11):
     resolution: {integrity: sha512-pn+bIFRMX5BN1BVQJ5rn05dYVnBhU/QnkxhjEJAe9HnYtJhDubetvoY+yfgDNWwesNWfHbbvsilsgSGL6DJyeA==}

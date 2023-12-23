@@ -84,6 +84,9 @@ import TextAlign from '@tiptap/extension-text-align'
 
 	const emits = defineEmits(['change'])
 
+	watch(() => props.editable, (value) => {
+		editor.value.setOptions({editable: value});
+	})
 
 </script>
 

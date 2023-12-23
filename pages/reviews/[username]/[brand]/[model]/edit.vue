@@ -1,12 +1,24 @@
 <template>
 
 <div class="max-w-app w-full mx-auto">
-    <div class="flex justify-between py-2 items-center">
-        <div class="flex items-center gap-5">
-            <ElementsAvailable />
+
+    <div v-show="editable" class="flex items-center gap-5 fixed left-0">
+        <ElementsAvailable />
+    </div>
+
+    <div class="flex justify-between py-2 items-center text-sm">
+        <div class="flex gap-2">
+            <div class="bg-orange-300 px-4 py-1.5 rounded-lg text-sm flex items-center cursor-pointer" @click="editable = !editable">
+                <IconsEye v-if="editable" class="w-4 h-4 mr-2"/>
+                <IconsEdit v-else class="w-4 h-4 mr-2"/>
+
+                <span v-if="editable">Preview</span>
+                <span v-else>Edit</span>
+            </div>
         </div>
         <div class="flex items-center gap-5">
-            <button class="relative bg-green-300 px-4 py-1.5 rounded-lg text-sm flex items-center cursor-pointer" @click="save">
+           
+            <button v-show="editable" class="relative bg-green-300 px-4 py-1.5 rounded-lg text-sm flex items-center cursor-pointer" @click="save">
                 <template v-if="saving">
                     <div class="inset-0 rounded-lg absolute bg-green-300 flex justify-center items-center">
                         <svg aria-hidden="true" class="w-4 h-4 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -18,14 +30,15 @@
                     <IconsSave class="w-4 h-4 mr-2"/>
                     Save
             </button>
-            <div class="bg-gray-100 border px-4 py-1.5 rounded-lg text-sm flex items-center cursor-pointer">
+            
+            <div v-show="editable" class="bg-gray-100 px-4 py-1.5 rounded-lg flex items-center cursor-pointer">
                 <IconsUpload class="w-4 h-4 mr-2"/>
                 Publish
             </div>
         </div>
     </div>
 
-    <Layout @change="updatePage" :elements="review.elements" :editable="true" />
+    <Layout @change="updatePage" :elements="review.elements" :editable="editable" />
 
 </div>
 </template>
@@ -36,6 +49,9 @@
 const route = useRoute()
 const client = useSupabaseClient()
 
+const editable = ref(true)
+
+// Get the review with shole layout
 const { data:review } = await useFetch('/api/reviews/layout', {
     method: "POST",
     body: {
@@ -44,6 +60,10 @@ const { data:review } = await useFetch('/api/reviews/layout', {
         model: route.params.model,
     }
 })
+
+// Extract sections elements for navigation (in Header element)
+const nav = review.value.elements.filter(e => e.type == 'section')
+provide('nav',nav)
 
 const activeElements = [...review.value.elements]
 
@@ -70,14 +90,18 @@ const save = async () => {
         // Existing element
         if (Number.isInteger(element.id))
         {
-            await client.from('elements').update({
-                data: element.data,
-                order: index
-            }).eq('id', element.id)
+            // is not image
+            if (element.type != 'image')
+            {
+                await client.from('elements').update({
+                    data: element.data,
+                    order: index
+                }).eq('id', element.id)
+            }
         }
 
         // Upload
-        if(element.data.upload)
+        if(element.data.uploadNeeded)
         {
             const { data:path } = await useFetch('/api/files', {
                 method: 'POST',
@@ -85,6 +109,7 @@ const save = async () => {
             })
 
             element.data.image = path
+            element.data.uploadNeeded = false
 
             await client.from('elements').update({
                 data: element.data,

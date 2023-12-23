@@ -23,7 +23,7 @@
 
     <div class="w-full max-w-app mx-auto">
 
-        <Layout @change="updatePage" :elements="review.elements" />
+        <Layout :elements="review.elements" />
 
     </div>
 
@@ -44,5 +44,11 @@
             model: route.params.model,
         }
     })
+
+    // Extract sections elements for navigation (in Header element)
+    const nav = review.value.elements.filter(e => e.type == 'section')
+    provide('nav',nav)
+
+    provide('date', review.value.created_at)
 
 </script>

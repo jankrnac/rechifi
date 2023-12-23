@@ -23,6 +23,7 @@
     "@tiptap/pm": "^2.1.13",
     "@tiptap/starter-kit": "^2.1.13",
     "@tiptap/vue-3": "^2.1.13",
+    "vue-ellipse-progress": "^2.1.2",
     "vuedraggable": "^4.1.0"
   }
 }

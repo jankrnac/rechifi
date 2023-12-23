@@ -11,6 +11,7 @@ export default eventHandler(async (event) =>
     .eq('brand', body.brand )
     .eq('model', body.model )
     .eq('profiles.username', body.username )
+    .order('order', { referencedTable: 'elements', ascending: true })
     .single()
 
     return data

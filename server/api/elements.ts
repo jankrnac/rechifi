@@ -34,5 +34,12 @@ export default defineEventHandler((event) => {
             },
         },
 
+        {
+            id: 5, type: 'section', caption: 'Section start', data: {
+                name: 'Section name',
+            },
+        },
+
+
     ]
 })
