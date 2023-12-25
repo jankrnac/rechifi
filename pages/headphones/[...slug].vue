@@ -1,10 +1,13 @@
 <template>  
 
-<div class="flex flex-col items-center mx-auto leading-loose">
+<div class="flex flex-1 flex-col items-center mx-auto leading-loose">
     
 
 
-    <ContentDoc  v-slot="{ doc }">
+    <ContentDoc>
+
+        <template v-slot="{ doc }">
+
         <nuxt-img :src="doc.brand +'/logo.webp'" width="150" class="mt-6"/>
 
         <h1 class="text-2xl lg:text-6xl font-bold mt-6 mb-16 flex items-center">
@@ -51,6 +54,15 @@
         <div class="content w-full">
             <ContentRenderer :value="doc"/>
         </div>
+
+        </template>
+
+        <template #empty>
+            <div class="flex flex-1 flex-col justify-center items-center">
+                <nuxt-img src="wip.png" width="200" height="200"/>
+                <div class="text-5xl mt-12 font-thin">Work in progress</div>
+            </div>
+        </template>
 
     </ContentDoc>
   

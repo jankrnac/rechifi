@@ -70,6 +70,7 @@
         proscons: resolveComponent('ElementsProsCons'),
         score: resolveComponent('ElementsScore'),
         section: resolveComponent('ElementsSection'),
+        imagetext: resolveComponent('ElementsImageText'),
 
     }
 

@@ -1,9 +1,8 @@
 <template>
 
 <li :key="product.source" class="relative">
-
     <div class="relative aspect-square block w-full overflow-hidden rounded-lg hover:-translate-y-1 transition">
-        <nuxt-img :src="product.cover" alt="" class="pointer-events-none object-cover" />
+        <nuxt-img :src="product.cover ? product.cover : 'placeholder.webp'" alt="" class="pointer-events-none object-cover" />
         <nuxt-link class="absolute inset-0" :to="product._path"></nuxt-link>
     </div>
     <p class="pointer-events-none mt-2 block truncate text font-bold" :class="{'text-orange-500': product.released == false}">{{ product.title }}</p>

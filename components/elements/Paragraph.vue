@@ -10,9 +10,10 @@
 				<IconsBold />
 			</button>
 			<button  class="border border-gray-500 bg-white rounded px-3 py-2 text-sm shadow-xl" @click="editor.chain().focus().toggleItalic().run()" :class="{ 'is-active': editor.isActive('italic') }">
-				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M204,56a12,12,0,0,1-12,12H160.65l-40,120H144a12,12,0,0,1,0,24H64a12,12,0,0,1,0-24H95.35l40-120H112a12,12,0,0,1,0-24h80A12,12,0,0,1,204,56Z"></path></svg>
+				<IconsItalic />
 			</button>
 			<button class="border border-gray-500 bg-white rounded px-3 py-2 text-sm shadow-xl"  @click="editor.chain().focus().toggleStrike().run()" :class="{ 'is-active': editor.isActive('strike') }">
+				<IconsStrike />
 			</button>
 
 			<button class="border border-gray-500 bg-white rounded px-3 py-2 text-sm shadow-xl"  @click="editor.chain().focus().setTextAlign('left').run()" :class="{ 'is-active': editor.isActive('strike') }">

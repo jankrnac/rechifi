@@ -139,4 +139,7 @@ const save = async () => {
     saving.value = false
 }
 
+provide('date', review.value.created_at)
+
+
 </script>
