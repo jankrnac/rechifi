@@ -1,5 +1,5 @@
 <template>
-    <div class="flex my-12 justify-evenly gap-12 items-center" :class="{'flex-row-reverse':element.data.reversed}">
+    <div class="flex my-12 justify-evenly gap-12 items-center px-24" :class="{'flex-row-reverse':element.data.reversed}">
 
 		<div class="basis-1/2 flex justify-center">
         	<nuxt-img :src="element.data.image" class="inline-block rounded-lg w-2/3" densities="x1"/>
@@ -8,7 +8,7 @@
         	</UploadSingle>	
 		</div>
 
-        <div class="basis-1/2 text-lg mr-24">
+        <div class="basis-1/2 text-lg">
             <ElementsParagraph :element="element" :editable="editable" @change="update"/>
         </div>
     </div>

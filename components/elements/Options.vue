@@ -18,7 +18,7 @@
             	<div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black/5">
                 	<div class="relative bg-white p-2 text-gray-800 text-left flex flex-col gap-2">
 						<div v-for="[key, value] of Object.entries(data)">
-							<component :is="componentsMap[key]" @change="changed"></component>
+							<component :is="componentsMap[key]" model="reversed" @change="changed"></component>
 						</div>
 						
                     	<div class="flex items-center gap-2 hover:bg-red-100 px-4 py-3 rounded-lg cursor-pointer " @click="$emit('delete')">
@@ -50,7 +50,8 @@ const changed = (data) => {
 
 const componentsMap = {
 	textAlign: resolveComponent('ElementsOptionsTextalign'),
-	image: resolveComponent('ElementsOptionsImage')
+	image: resolveComponent('ElementsOptionsImage'),
+	reversed: resolveComponent('ElementsOptionsToggle')
 }
 
   

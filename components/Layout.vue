@@ -53,7 +53,7 @@ const menuElement = ref({})
 const emit = defineEmits(['change'])
 
 const onChange = (elementid, data) => {
-    props.elements.find(obj => obj.id == elementid).data[data.type] = data.value
+    props.elements.find(obj => obj.id == elementid).data[Object.keys(data)[0]] = Object.values(data)[0]
 }
 
 const onRemove = async (elementid) => {
