@@ -15,21 +15,9 @@
 
 	<template v-if="reviews.length">
 
-	<ul class="grid grid-cols-4 gap-5">
-		<li v-for="review in reviews" class="relative flex flex-col items-center justify-center bg-gray-100/50 p-5 rounded-xl border hover:border-gray-200 transition border-transparent">
-			<div v-if="review.type != 'youtube'" class="flex justify-center items-center">
-				<div class="text-5xl font-bold">{{  review.score  }}</div>
-				<div class="text-base font-bold mt-5 text-gray-500">/10</div>
-			</div>
-
-			<img v-if="review.type == 'youtube'" :src="`https://img.youtube.com/vi/${review.videoid}/mqdefault.jpg`" width="600" class="rounded-lg"/>
-
-			<div v-if="review.type != 'youtube'" class="mt-4 text-sm line-clamp-4">{{ review.description }}</div>
-
-			<a  v-if="review.type != 'youtube'" :href="review.link" target="_blank" class="absolute inset-0"></a>
-
-			<div class="w-full mt-4 text-sm font-semibold">{{ review.reviewer }}</div>
-
+	<ul class="grid grid-cols-5 gap-5">
+		<li v-for="review in reviews">
+			<ReviewBox :review="review" size="small" />
 		</li>
 	</ul>
 
@@ -49,6 +37,7 @@
 <script setup>
 
 const route = useRoute()
+const client = useSupabaseClient()
 
 const activeTypeFilter = ref('all')
 
@@ -57,14 +46,9 @@ const activeTypeFilterApi = computed(() => {
 	return activeTypeFilter.value
 })
 
-const { data:reviews } = await useAsyncData('reviews',
-    () => queryContent(`/reviews/${route.params.slug[0]}/${route.params.slug[1]}/`)
-        .where({'type': { $in: activeTypeFilterApi.value}})
-        .find(), {
-			watch: [activeTypeFilterApi]
-		}
-)
+const { data:reviews } = await client.from('reviews').select('*, profiles(*)').eq('brand', route.params.brand).eq('model', route.params.model)
 
+console.log(route.params.model)
 const { t } = useI18n({
     useScope: 'local'
 })

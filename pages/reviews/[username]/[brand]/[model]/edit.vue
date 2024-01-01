@@ -6,6 +6,7 @@
         <ElementsAvailable />
     </div>
 
+
     <div class="flex justify-between py-2 items-center text-sm">
         <div class="flex gap-2">
             <div class="bg-orange-300 px-4 py-1.5 rounded-lg text-sm flex items-center cursor-pointer" @click="editable = !editable">
@@ -14,6 +15,11 @@
 
                 <span v-if="editable">Preview</span>
                 <span v-else>Edit</span>
+            </div>
+
+            <div class="bg-blue-300 px-4 py-1.5 rounded-lg text-sm flex items-center cursor-pointer" @click="settingsVisible = !settingsVisible">
+                <IconsGear class="w-4 h-4 mr-2"/>
+                Settings
             </div>
         </div>
         <div class="flex items-center gap-5">
@@ -34,6 +40,30 @@
             <div v-show="editable" class="bg-gray-100 px-4 py-1.5 rounded-lg flex items-center cursor-pointer">
                 <IconsUpload class="w-4 h-4 mr-2"/>
                 Publish
+            </div>
+        </div>
+    </div> 
+
+    <!-- Settings -->
+    <div v-if="settingsVisible && editable" class="border rounded-lg p-6 my-6">
+        <div class="flex gap-5">
+            <div>
+                <div class="mb-2 font-semibold text-sm">Cover</div>
+                <div class="relative w-[300px] group">
+                    <nuxt-img :src="review.cover ? review.cover : 'placeholder.webp'" width="300px" class="rounded-lg group"/>
+
+                    <UploadSingle @uploaded="coverChanged" class="group-hover:flex hidden absolute inset-0 flex-col flex-1 justify-center items-center">
+                        <div class="bg-gray-100/80 px-4 py-2 rounded-lg">Click to change image</div>
+                    </UploadSingle>	       
+                </div>
+            </div>
+
+            <div class="flex flex-col w-full max-w-[500px]">
+                <div class="text-sm font-semibold mb-2">Title</div>
+                <input type="text" v-model="review.title" class="border rounded-lg px-4 py-2"/>
+
+                <div class="text-sm font-semibold mt-4 mb-2">Description</div>
+                <textarea type="text" v-model="review.description" class="border rounded-lg px-4 py-2 resize-none h-full text-sm"></textarea>
             </div>
         </div>
     </div>
@@ -72,6 +102,8 @@ const updatePage = async (data) => {
 }
 
 const saving = ref(false)
+
+// After the click on save button, only then we will update DB
 const save = async () => {
     saving.value = true
     for (let [index, element] of review.value.elements.entries()) {
@@ -136,10 +168,41 @@ const save = async () => {
         })
     }
 
+    // Last save the review
+    if (review.value.uploadNeeded)
+    {
+        const { data:path } = await useFetch('/api/files', {
+            method: 'POST',
+            body: review.value.upload
+        })
+
+        review.value.cover = path
+
+        await client.from('reviews').update({
+            cover: review.value.cover,
+        }).eq('id', review.value.id)
+
+        review.value.uploadNeeded = false
+    }
+
+    await client.from('reviews').update({
+        title: review.value.title,
+        description: review.value.description
+    }).eq('id', review.value.id)
+
+
     saving.value = false
 }
 
 provide('date', review.value.created_at)
 
+
+const settingsVisible = ref(false)
+
+const coverChanged = (data) => {
+    review.value.cover = data.blob
+    review.value.upload  = data.form
+    review.value.uploadNeeded = true
+}
 
 </script>

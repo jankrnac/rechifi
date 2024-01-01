@@ -7,8 +7,8 @@
             	<span class="sr-only">Your Company</span>
             	<Logo class="w-12 h-12 mr-6" />
 				<h1 class="hidden 2xl:flex text-2xl">
-					<span class="font-bold">Chifi.</span> 
-					<span class="font-playfair -mt-0.5">blog</span>
+					<span class="font-bold">Rechifi.</span> 
+					<span class="font-playfair -mt-0.5">com</span>
 				</h1>
           	</nuxt-link>
         </div>
@@ -37,7 +37,7 @@
 				<template #fallback>
 					<IconsMoon class="w-6 h-6 cursor-pointer mr-5" />
 				</template>
-			</ClientOnly>
+			
 
 			<PopoverGroup class="flex gap-x-12">
 				<Popover class="relative">
@@ -79,6 +79,7 @@
 				</transition>
 				</Popover>
 			</PopoverGroup>
+		</ClientOnly>
 
 			<!-- Mobile only -->
 			<div class="flex ml-4 justify-end xl:hidden">
@@ -140,7 +141,7 @@
 		{ name: 'home', href: '/' },
 		{ name: 'articles', href: '/blog' },
 		{ name: 'reviews', href: '/reviews' },
-		{ name: 'headphones', href: '/headphones' },
+		{ name: 'iems', href: '/iems' },
 		{ name: 'upcoming', href: '/upcoming' },
 
 	]
@@ -170,14 +171,14 @@
   home: 'Home'
   articles: 'Articles'
   reviews: 'Reviews'
-  headphones: 'Headphones'
+  iems: 'In-Ear Monitors'
   upcoming: 'Upcoming'
   search-placeholder: 'Search for articles and headphones'
  cz:
   home: 'Domů'
   articles: 'Články'
   reviews: 'Recenze'
-  headphones: 'Sluchátka' 
+  iems: 'Sluchátka' 
   upcoming: 'Novinky'
   search-placeholder: 'Hledej v článcích a slúchatkách'
 </i18n>

@@ -1,9 +1,9 @@
 <template>
     <Combobox as="div" v-model="selected" >
-      <div class="relative w-[300px]">
-        <ComboboxInput class="w-full rounded-md border-0 bg-white py-1.5 pl-3 pr-8 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 text-sm sm:leading-6" @change="query = $event.target.value" :display-value="(headphone) => headphone?.model" />
+      <div class="relative w-[400px]">
+        <ComboboxInput class="w-full rounded-md border-0 bg-white py-3.5 pl-4 pr-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 text-lg sm:leading-6" @change="query = $event.target.value" :display-value="(headphone) => headphone?.model" />
         <ComboboxButton class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
-          <IconsCaretDown class="h-4 w-4 text-gray-400" aria-hidden="true" />
+          <IconsCaretDown class="h-5 w-5 text-gray-400 mr-1" aria-hidden="true" />
         </ComboboxButton>
   
         <ComboboxOptions v-if="filtered.length > 0" class="absolute z-10 mt-1 max-h-100 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
@@ -32,7 +32,7 @@
 
 import { Combobox, ComboboxButton, ComboboxInput, ComboboxLabel, ComboboxOption, ComboboxOptions } from '@headlessui/vue'
   
-    const { data:headphones } = await useAsyncData('combobox', () => queryContent('headphones').only(['model', 'brand']).find())
+    const { data:headphones } = await useAsyncData('combobox', () => queryContent('iems').only(['model', 'brand']).find())
   
     const query = ref('')
     const selected = ref(null)

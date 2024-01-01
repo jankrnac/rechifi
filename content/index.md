@@ -5,8 +5,8 @@
 ::Hero
 ---
 bg: bg2.jpg
-image: 7hertz/zero2/featured.png
-link: http://chifi.test:3003/headphones/7hz/saltnotes-zero-2
+image: 7hz/zero2/featured.png
+link: http://chifi.test:3003/iems/7hz/saltnotes-zero2
 type: heaphones
 subtitle: Just released 
 title: 7Hertz Saltnotes Zero:2
@@ -15,4 +15,4 @@ desc: 7HZ and their audio engineers are collaborating yet again, with the founde
 ---
 ::
 
-:PostsList
+:Postslist

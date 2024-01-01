@@ -1,14 +1,12 @@
 <template>  
 
-<div class="flex flex-1 flex-col items-center mx-auto leading-loose">
+<div class="flex flex-1 flex-col items-center mx-auto leading-loose w-full">
     
 
 
-    <ContentDoc>
+    <ContentDoc v-slot="{ doc }">
 
-        <template v-slot="{ doc }">
-
-        <nuxt-img :src="doc.brand +'/logo.webp'" width="150" class="mt-6"/>
+        <nuxt-img :src="doc.brand +'/logo.webp'" width="150" class="mt-6" format="webp"/>
 
         <h1 class="text-2xl lg:text-6xl font-bold mt-6 mb-16 flex items-center">
             {{ doc.title }}
@@ -37,9 +35,7 @@
                 </ul>
             </div>
 
-
-            <div>
-
+            <div v-if="doc.drivers && doc.drivers.length">
                 <div class="flex gap-3">
                     <DriverLabel v-for="driver in new Set(doc.drivers)">{{ doc.drivers.filter(e => e == driver).length > 1 ? doc.drivers.filter(e => e == driver).length + ' ' + driver : driver }}</DriverLabel>
                 </div>
@@ -55,14 +51,6 @@
             <ContentRenderer :value="doc"/>
         </div>
 
-        </template>
-
-        <template #empty>
-            <div class="flex flex-1 flex-col justify-center items-center">
-                <nuxt-img src="wip.png" width="200" height="200"/>
-                <div class="text-5xl mt-12 font-thin">Work in progress</div>
-            </div>
-        </template>
 
     </ContentDoc>
   

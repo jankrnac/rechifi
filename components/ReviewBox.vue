@@ -15,15 +15,7 @@
         <template v-else>
             <nuxt-img v-if="review.cover" :src="review.cover" alt="" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" />
             <nuxt-link :to="review._path" class="absolute inset-0"></nuxt-link>
-        
-            <div class="absolute inset-0 flex">
-                <div class="justify-center items-center flex backdrop-blur-lg rounded-full text-2xl font-bold border border-gray-300/50 w-[100px] h-[100px]">
-                    
-                    <div>{{ review.score }}</div>
-                    <div class="text-base mt-1 text-gray-500">/10</div>
-                </div>
-            </div>
-
+    
             <nuxt-link :to="'/reviews/' + review.profiles.username + '/' + review.brand + '/' + review.model" class="absolute inset-0 flex"></nuxt-link>
 
         </template>
@@ -33,19 +25,26 @@
     <div class="max-w-xl mt-2">
                 
         <div class="group relative">
-            <h3 class="mt-6 text-2xl font-bold leading-6">
+            <h3 v-if="size == 'normal'" class="mt-6 mb-1 text-2xl font-bold leading-6">
                 <nuxt-link :to="'/reviews/' + review.profiles.username + '/' + review.brand + '/' + review.model" class="text">{{ review.brand + ' ' + makeTitle(review.model) }}</nuxt-link>
             </h3>
-            <div class="flex items-center mt-2 gap-3">
-                <div class="italic">
-                    by {{ review.profiles.username }}
+            <div class="flex items-center gap-3">
+                <div class="flex justify-center gap-4 text-sm">
+                    <div class="text-gray-500 italic mt-2 flex items-center justify-center">
+                        <IconsUser class="w-4 h-4 mr-1" />
+                        {{  review.profiles.username }}
+                    </div>
+                    <div class="text-gray-500 italic mt-2 flex items-center justify-center">
+                        <IconsCalendar class="w-4 h-4 mr-1" />
+                        {{ new Date(review.created_at).toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'}) }}
+                    </div>
                 </div>
 
                 <div v-if="!review.published">
                     <div class="rounded text-xs px-2 py-1 bg-gray-500 text-white">Unpublished</div>
                 </div>
             </div>
-            <p class="mt-5 line-clamp-4 text-base leading-6 min-h-[96px]">{{ review.description }}</p>
+            <p v-if="size == 'normal'" class="mt-5 line-clamp-5 text-sm leading-6 min-h-[96px]">{{ review.description }}</p>
         </div>
             
     </div>
@@ -60,6 +59,10 @@ const props = defineProps({
     review: {
         type: Object,
         required: true
+    },
+    size: {
+        type: String,
+        default: 'normal'
     }
 })
 

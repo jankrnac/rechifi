@@ -1,8 +1,8 @@
 <template>
 
 <div class="bg-gray-800 text-white py-24 mt-36 flex justify-center">
-    <div class="flex flex-1 max-w-[1200px] gap-6 items-start">
-        <table class="divide-gray-300 w-full mx-auto">
+    <div class="flex flex-1 max-w-[1200px] gap-6 items-start justify-evenly flex-wrap">
+        <table class="divide-gray-300 mx-auto flex-1">
             <h2 class="text-2xl text-bold mb-6 w-full">Technical details</h2>
 
             <tbody class="divide-y divide-gray-600">
@@ -15,7 +15,7 @@
             </tbody>
         </table>
 
-        <table class="divide-gray-300 w-full mx-auto">
+        <table class="divide-gray-300 mx-auto flex-1">
             <h2 class="text-2xl text-bold mb-6">Package content</h2>
             <tbody class="divide-y divide-gray-600">
                 <tr v-for="item in package" :key="item">

@@ -52,12 +52,12 @@
 
             <!-- Desktop -->
             <div class="mx-auto max-w-3xl text-center lg:max-w-app">
-            <div class="pb-16 mt-16">
-                <h1 class="text-6xl font-bold tracking-tight text-gray-900">{{ t('headphones') }}</h1>
-                <p class="mx-auto mt-4 max-w-3xl text-xl text-gray-500">{{t('slogan')}}</p>
+            <div class="pb-10 mt-10 lg:mt-16 lg:pb-24">
+                <h1 class="text-3xl lg:text-6xl font-bold tracking-tight text-gray-900">{{ t('iems') }}</h1>
+                <p class="text-center mx-auto mt-4 max-w-3xl text-lg lg:text-xl text-gray-500">{{t('slogan')}}</p>
             </div>
-
-            <div class="text-left h-12">
+            
+            <div v-if="activeFilters.signature.length || activeFilters.brand.length || activeFilters.drivers.length" class="text-left h-12">
                 <ul class="text-sm mb-4 flex gap-x-3">
                     <template v-for="[key, values] of Object.entries(activeFilters)">
                     <li v-if="values.length" class="flex items-center gap-1">
@@ -77,15 +77,20 @@
                 <h2 id="filter-heading" class="sr-only">Product filters</h2>
 
                 <div class="flex items-center justify-between">
+
                     <Listbox as="div" class="w-[200px] flex items-center" v-model="activeSort">
+                        <ClientOnly>
                         <ListboxLabel class="block text-sm font-medium leading-6 mr-2">{{ t('sort') }}:</ListboxLabel>
+                        </ClientOnly>
                         <div class="relative flex-1">
+                        <ClientOnly>
                         <ListboxButton class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none  sm:text-sm sm:leading-6">
                             <span class="block truncate">{{ activeSort.label }}</span>
                             <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                             <i class="h-5 w-5 text-gray-400" aria-hidden="true" />
                             </span>
                         </ListboxButton>
+                        </ClientOnly>
 
                         <transition leave-active-class="transition ease-in duration-100" leave-from-class="opacity-100" leave-to-class="opacity-0">
                             <ListboxOptions class="text-left absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
@@ -102,9 +107,9 @@
                         </transition>
                         </div>
                     </Listbox>
-
                 <button type="button" class="inline-block text-sm font-medium sm:hidden" @click="open = true">Filters</button>
 
+                <ClientOnly>
                 <PopoverGroup class="hidden sm:flex sm:items-baseline sm:space-x-8">
                     <Popover as="div" v-for="(filter, filterIdx) in filters" :key="filter.name" :id="`desktop-menu-${filterIdx}`" class="relative inline-block text-left">
                     <div>
@@ -126,6 +131,7 @@
                     </transition>
                     </Popover>
                 </PopoverGroup>
+                </ClientOnly>
                 </div>
             </section>
             </div>
@@ -173,26 +179,23 @@ activeFilters.value.drivers = []
 activeFilters.value.brand = []
 
 const signatureFilter = computed(() => {
-    console.log(activeFilters.value.signature.length)
     if (activeFilters.value.signature.length) return { $in: activeFilters.value.signature }
     return  {}
 })
 
 const driverFilter = computed(() => {
-    console.log(activeFilters.value.drivers.length)
     if (activeFilters.value.drivers.length) return { $in: activeFilters.value.drivers }
     return  {}
 })
 
 
 const brandFilter = computed(() => {
-    console.log(activeFilters.value.brand.length)
     if (activeFilters.value.brand.length) return { $in: activeFilters.value.brand }
     return  {}
 })
 
 
-const { data:headphones, refresh } = await useAsyncData('home', () => queryContent('/headphones')
+const { data:headphones, refresh } = await useAsyncData('home', () => queryContent('/iems')
   
     .sort({ date: -1 }) // show latest articles first
 
@@ -274,9 +277,9 @@ watch(activeFilters, async (value) => {
 
 <i18n lang="yaml">
     en:
-     headphones: 'Headphones'
+     iems: 'In-Ear Monitors'
      sort: 'Sort'
-     slogan: All headphones from asian country manufacturers in one place
+     slogan: All IEMs from asian country manufacturers in one place
      name: 'By name'
     cz:
      headphones: "Sluchátka"

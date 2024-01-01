@@ -2,8 +2,8 @@
 
 <div class="flex flex-col items-center justify-center">
     <h1 class="text-3xl lg:text-6xl my-4 lg:mt-16 lg:mb-6">
-        <span class="font-bold">Novinky & </span> 
-        <span class="font-playfair">články</span>
+        <span class="font-bold">News & </span> 
+        <span class="font-playfair">articles</span>
     </h1>
 
     <Wave />
