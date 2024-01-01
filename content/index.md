@@ -2,7 +2,7 @@
 
 
 ---
-::Hero
+::hero
 ---
 bg: bg2.jpg
 image: 7hz/zero2/featured.png

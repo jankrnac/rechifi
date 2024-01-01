@@ -8,7 +8,7 @@
     
 </template>
 
-<script setup lang="ts">
+<script setup>
   
     const { data:blogPosts } = await useAsyncData('posts', () => queryContent('/blog')
         .sort({ date: -1 }) // show latest articles first
