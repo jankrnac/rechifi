@@ -29,7 +29,7 @@ type: website
 ---
 
 
-::ImageText
+::image-text
 ---
 image: /letshuoer/s12pro/jacks.webp
 ---
@@ -43,7 +43,7 @@ Custom 14.8mm large diaphragm driver with great details retrieval, punchy bass a
 that it can be easily driven to volume, be it a cell phone or dongle DACs.
 ::
 
-::ImageText
+::image-text
 ---
 image: /letshuoer/s12/image2.jpg
 ---
@@ -54,7 +54,7 @@ LETSHUOER S12 PRO’s aluminum chassis is shaped to have a snug fit in the conch
 ::
 
 
-::ImageText
+::image-text
 ---
 image: /letshuoer/s12/image3.jpg
 ---

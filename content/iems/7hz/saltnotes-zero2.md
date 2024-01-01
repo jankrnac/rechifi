@@ -22,7 +22,7 @@ cover: /7hz/zero2/featured.png
 
 ---
 
-::ImageText
+::image-text
 ---
 image: /7hz/zero2/image2.webp 
 ---
@@ -35,7 +35,7 @@ The updated Zero:2 features Crinacle’s inputs in order to refine this tried-an
 ::
 
 
-::ImageText
+::image-text
 ---
 image: /7hz/zero2/image3.webp 
 ---
@@ -48,7 +48,7 @@ Additionally, the midrange has a slightly improved body and warmth compared  to 
 ::
 
 
-::ImageText
+::image-text
 ---
 image: /7hz/zero2/image4.webp 
 ---
@@ -63,7 +63,7 @@ This allows for harder hitting bass, while maintaining crispness and precision w
 
 
 
-::ImageText
+::image-text
 ---
 image: /7hz/zero2/image5.jpg 
 ---
@@ -72,7 +72,7 @@ The Zero II has been upgraded with a new high-purity oxygen-free copper cable wi
 ::
 
 
-::Technical
+::technical
 ---
 technicals:
     - Frequency response range: 10HZ - 20KHz

@@ -6,7 +6,7 @@ description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiu
 
 date: 30.11.2023
 
-cover: /audiophile vocabulary/cover.jpg
+cover: /audiophile-vocabulary/cover.jpg
 
 label: article
 
