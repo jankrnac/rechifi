@@ -18,6 +18,7 @@
     "nuxt": "^3.9.0"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.484.0",
     "@nuxt/image": "^1.1.0",
     "@tiptap/extension-text-align": "^2.1.13",
     "@tiptap/pm": "^2.1.13",

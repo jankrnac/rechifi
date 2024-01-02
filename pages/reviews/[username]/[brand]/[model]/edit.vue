@@ -171,7 +171,7 @@ const save = async () => {
     // Last save the review
     if (review.value.uploadNeeded)
     {
-        const { data:path } = await useFetch('/api/files', {
+        const { data:path } = await useFetch('/api/files/r2', {
             method: 'POST',
             body: review.value.upload
         })

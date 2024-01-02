@@ -22,6 +22,10 @@
     
 <script setup lang="ts">
 
+    useSeoMeta({
+        title: 'Reviews - Rechifi'
+    })
+
     const client = useSupabaseClient()
 
     const { data:reviews } = await useAsyncData('reviews', async () => {
@@ -29,5 +33,6 @@
 
         return data
     })
+      
       
 </script>

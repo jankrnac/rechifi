@@ -5,3 +5,11 @@
 
     </div>
 </template>
+
+<script setup>
+
+useSeoMeta({
+    title: 'Rechifi - Chi-fi IEMs'
+})
+
+</script>
