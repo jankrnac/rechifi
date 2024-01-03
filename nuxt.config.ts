@@ -38,7 +38,16 @@ export default defineNuxtConfig({
 	},
 
 	image: {
-		provider: 'ipx',
+		providers: {
+			myProvider: {
+			  	name: 'r2',
+			  	provider: '~/providers/r2.ts',
+			  	options: {
+					baseURL: "https://media.rechifi.com"
+			  	}
+			}
+		},
+		provider: 'r2',
 		densities: [1],
 	},
 
