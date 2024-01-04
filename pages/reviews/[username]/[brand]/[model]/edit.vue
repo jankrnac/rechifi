@@ -81,6 +81,10 @@ const client = useSupabaseClient()
 
 const editable = ref(true)
 
+const user = useSupabaseUser()
+
+const { data:profile } = useFetch('/api/users/' + user.value.id)
+
 // Get the review with shole layout
 const { data:review } = await useFetch('/api/reviews/layout', {
     method: "POST",
@@ -171,12 +175,12 @@ const save = async () => {
     // Last save the review
     if (review.value.uploadNeeded)
     {
-        const { data:path } = await useFetch('/api/files/r2', {
+        const { data:cdnFilename } = await useFetch(`/api/files/${profile.value.username}`, {
             method: 'POST',
             body: review.value.upload
         })
 
-        review.value.cover = path
+        review.value.cover = cdnFilename
 
         await client.from('reviews').update({
             cover: review.value.cover,
@@ -200,6 +204,7 @@ provide('date', review.value.created_at)
 const settingsVisible = ref(false)
 
 const coverChanged = (data) => {
+    console.log(data.blob)
     review.value.cover = data.blob
     review.value.upload  = data.form
     review.value.uploadNeeded = true

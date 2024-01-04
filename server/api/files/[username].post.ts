@@ -3,6 +3,10 @@ import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 export default eventHandler(async (event) => 
 {
 
+    const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    const username = getRouterParam(event, 'username')
+
     function generateString(length) {
         let result = '';
         const charactersLength = characters.length;
@@ -30,15 +34,17 @@ export default eventHandler(async (event) =>
     const random = generateString(12)
     const ext = filename.split('.')[1]
 
+    const newFilename = random + '.' + ext
+
     await S3.send(
         new PutObjectCommand({
             Body: formData[0].data,
             Bucket: 'rechifi',
-            Key: random + '.' + ext,
+            Key: username + '/' + newFilename,
             ACL: "public-read",
             ContentType:  formData[0].type,
         })
     )
 
-    return 
+    return username + '/' + newFilename
 })

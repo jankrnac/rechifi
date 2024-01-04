@@ -1,6 +1,6 @@
 <template>
 
-<div class="flex flex-col items-center justify-center">
+<div class="flex flex-col items-center justify-center max-w-app">
 
     <h1 class="text-3xl lg:text-6xl my-4 lg:mt-16 lg:mb-16">
         <span class="font-bold">Search: </span> 
@@ -9,9 +9,13 @@
 
     <div v-if="posts.length">
         <h2 class="text-2xl">Articles: <small class="text-gray-500">{{ posts.length }} found</small></h2>
-        <template v-for="post in posts" :key="post._path">
-                <BlogPostBox :post="post" />
-        </template>
+        
+        <div class="grid grid-cols-4 gap-5">
+
+            <template v-for="post in posts" :key="post._path">
+                    <BlogPostBox :post="post" />
+            </template>
+        </div>
     </div>
 
     <div v-if="headphones.length">
@@ -33,6 +37,6 @@
     const route = useRoute()
     
     const posts = await queryContent('blog').where({ 'title': { $icontains: route.params.query } }).find()
-    const headphones = await queryContent('headphones').where({ 'title': { $icontains: route.params.query } }).find()
+    const headphones = await queryContent('iems').where({ 'title': { $icontains: route.params.query } }).find()
 
 </script>

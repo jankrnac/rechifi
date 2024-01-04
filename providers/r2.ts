@@ -16,7 +16,9 @@ export const getImage: ProviderGetImage = (
 
   const operations = operationsGenerator(modifiers)
 
+  const finalUrl = src.includes('blob') ? src : joinURL(baseURL, src + (operations ? '?' + operations : ''))
+  
   return {
-    url: joinURL(baseURL, src + (operations ? '?' + operations : '')),
+    url: finalUrl,
   }
 }
