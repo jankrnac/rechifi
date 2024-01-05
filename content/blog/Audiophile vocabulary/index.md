@@ -12,7 +12,7 @@ label: article
 
 ---
 
-::postTitle
+::post-title
 {{ $doc.title }}
 ::
 

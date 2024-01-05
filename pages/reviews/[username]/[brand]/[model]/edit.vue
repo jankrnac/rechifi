@@ -139,12 +139,12 @@ const save = async () => {
         // Upload
         if(element.data.uploadNeeded)
         {
-            const { data:path } = await useFetch('/api/files', {
+            const { data:cdnFilename } = await useFetch(`/api/files/${profile.value.username}`, {
                 method: 'POST',
                 body: element.data.upload
             })
 
-            element.data.image = path
+            element.data.image = cdnFilename
             element.data.uploadNeeded = false
 
             await client.from('elements').update({

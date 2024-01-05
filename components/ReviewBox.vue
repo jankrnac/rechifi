@@ -2,7 +2,7 @@
 
 <article class="flex flex-col items-start justify-between">
 
-    <div class="relative w-full hover:-translate-y-1 transition h-full flex items-center">
+    <div class="relative w-full  transition h-full flex items-center">
         
         
         <iframe v-if="review.type == 'youtube'" width="500" class="aspect-video rounded-xl" src="https://www.youtube.com/embed/YRZnahriSUE?si=1f3eV14oVdwKLvQR" 
@@ -22,21 +22,21 @@
 
     </div>
     
-    <div class="max-w-xl mt-2">
+    <div class="w-full mt-2">
                 
         <div class="group relative">
             <h3 v-if="size == 'normal'" class="mt-6 mb-1 text-2xl font-bold leading-6">
                 <nuxt-link :to="'/reviews/' + review.profiles.username + '/' + review.brand + '/' + review.model" class="text">{{ review.brand + ' ' + makeTitle(review.model) }}</nuxt-link>
             </h3>
-            <div class="flex items-center gap-3">
-                <div class="flex justify-center gap-4 text-sm">
+            <div class="flex w-full items-center gap-3">
+                <div class="flex flex-1 justify-between gap-4" :class="[size == 'normal' ? 'text-sm' : 'text-xs']">
                     <div class="text-gray-500 italic mt-2 flex items-center justify-center">
                         <IconsUser class="w-4 h-4 mr-1" />
                         {{  review.profiles.username }}
                     </div>
                     <div class="text-gray-500 italic mt-2 flex items-center justify-center">
                         <IconsCalendar class="w-4 h-4 mr-1" />
-                        {{ new Date(review.created_at).toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'}) }}
+                        {{ new Date(review.created_at).toLocaleString('en-us',{month:'short', day:'numeric', year:'numeric'}) }}
                     </div>
                 </div>
 

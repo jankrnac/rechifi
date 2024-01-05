@@ -12,10 +12,8 @@ label: article
 
 ---
 
-::PostTitle
+::post-title
 All brands
 :: 
 
-::BrandsList
-
-::
+:brands-list
