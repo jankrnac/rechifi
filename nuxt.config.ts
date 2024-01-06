@@ -41,7 +41,7 @@ export default defineNuxtConfig({
 
 	supabase: {
 		cookieOptions: {
-		  secure: process.env.NODE_ENV === 'production',
+		  	secure: process.env.NODE_ENV === 'production',
 		},
 		redirect: false
 	},

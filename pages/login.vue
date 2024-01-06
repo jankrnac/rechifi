@@ -10,7 +10,7 @@
         	<div>
             	<label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
             	<div class="mt-2">
-              		<input v-model="email" id="email" name="email" type="email" autocomplete="email" required="true" class="block w-full rounded-md border-0 px-3 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset
+              		<input v-model="email" id="email" name="email" type="email" autocomplete="email" :required="true" class="block w-full rounded-md border-0 px-3 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset
                		ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6" />
             	</div>
           	</div>
@@ -24,7 +24,7 @@
             	</div>
             	
 				<div class="mt-2">
-              		<input v-model="password" id="password" name="password" type="password" autocomplete="current-password" required="true" class="block w-full rounded-md border-0 px-3 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset 
+              		<input v-model="password" id="password" name="password" type="password" autocomplete="current-password" :required="true" class="block w-full rounded-md border-0 px-3 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset 
               		ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6" />
             	</div>
           	</div>
@@ -36,13 +36,19 @@
 			<div class="text-center">
 				<nuxt-link to="/signup" class="text-sm">Not a member? <b class="font-semibold">Sign up</b></nuxt-link>
 			</div>
+
+			<div @click="handleSignInWithGoogle">Google</div>
+
         </form>
-    </div>
+</div>
+		
 </div>
 
 </template>
   
 <script setup lang="ts">
+
+import crypto from 'crypto'
 
 const supabase = useSupabaseClient()
 const email = ref('')
@@ -61,6 +67,14 @@ const login = async () => {
 	{
 		await navigateTo('/')
 	}
+}
+
+
+
+const handleSignInWithGoogle = () => {
+	supabase.auth.signInWithOAuth({
+  		provider: 'google',
+	})
 }
 
 </script>
