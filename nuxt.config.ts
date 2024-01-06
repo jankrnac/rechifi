@@ -8,6 +8,15 @@ export default defineNuxtConfig({
     	port: 3003
 	},
 
+	app: {
+		head: {
+			meta: [{
+				name: "robots",
+				content: "noindex, nofollow"
+			}]
+		}
+	},
+	
   	modules: [
 		'@nuxt/content',
 		'@nuxtjs/tailwindcss',
