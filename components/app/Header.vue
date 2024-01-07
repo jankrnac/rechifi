@@ -42,34 +42,34 @@
 
 					<PopoverGroup class="flex gap-x-12">
 						<Popover class="relative">
-						<PopoverButton class="flex items-center gap-x-1 text-sm font-semibold leading-6">
+						<PopoverButton class="flex items-center gap-x-1 text-sm font-semibold leading-6 focus:outline-0">
 							<IconsUser class="w-6 h-6" />
 						</PopoverButton>
 
 						<transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-1" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
-							<PopoverPanel v-slot="{ close }" class="absolute right-0 top-full z-10 mt-3 w-screen max-w-xs overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-gray-900/5">
+							<PopoverPanel v-slot="{ close }" class="absolute right-0 top-full z-10 mt-3 w-screen max-w-xs overflow-hidden rounded-lg dark:bg-gray-700 shadow-lg ring-1 ring-gray-900/5">
 							<div class="p-2">
 
 								<!-- Guest -->
-								<nuxt-link v-if="!user" to="/login" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="close">
+								<nuxt-link v-if="!user" to="/login" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
 									<IconsLogin class="w-5 h-5"/>
 									<div>Login</div>
 								</nuxt-link>
 
 								<!-- Authenticated -->
-								<nuxt-link v-if="user" to="/reviews/new" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="close">
+								<nuxt-link v-if="user" to="/reviews/new" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
 									<IconsPlus class="w-5 h-5"/>
 									<div>Add review</div>
 								</nuxt-link>
-								<nuxt-link v-if="user" to="/reviews/my" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="close">
+								<nuxt-link v-if="user" to="/reviews/my" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
 									<IconsArticle class="w-5 h-5"/>
 									<div>My reviews</div>
 								</nuxt-link>
-								<nuxt-link v-if="user" to="/settings" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="close">
+								<nuxt-link v-if="user" to="/settings" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
 									<IconsGear class="w-5 h-5"/>
 									<div>Settings</div>
 								</nuxt-link>
-								<nuxt-link v-if="user" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="logout">
+								<nuxt-link v-if="user" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="logout">
 									<IconsLogout class="w-5 h-5"/>
 									<div>Logout</div>
 								</nuxt-link>
@@ -95,17 +95,19 @@
         </div>
 
       </nav>
-
+	  
 	  <ClientOnly>
 		
 		<Dialog as="div" class="xl:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
 		<div class="fixed inset-0 z-10" />
-		<DialogPanel class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-7 py-10 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-			<div class="flex items-center justify-between">
-			<a href="#" class="-m-1.5 p-1.5">
-				<span class="sr-only">Your Company</span>
-			</a>
-			<button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = false">
+		<DialogPanel class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white dark:bg-gray-900 px-7 py-10 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:text-gray-200">
+			<div class="flex items-center justify-end">
+		
+			<div>
+				<IconsSun v-if="colorMode.preference == 'dark'" class="w-6 h-6 mr-5 cursor-pointer"  @click="setColorMode('light')"/>
+				<IconsMoon v-else class="w-6 h-6 cursor-pointer mr-5"  @click="setColorMode('dark')"/>
+			</div>
+			<button type="button" class="-m-2.5 rounded-md p-2.5" @click="mobileMenuOpen = false">
 				<span class="sr-only">Close menu</span>
 				<IconsCross class="w-6 h-6" aria-hidden="true" />
 			</button>
@@ -116,7 +118,7 @@
 				
 				<!-- Navigation section -->
 				<div class="space-y-2 py-6">
-					<a v-for="item in navigation" :key="item.name" :href="item.href" class="block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ t(item.name) }}</a>
+					<a v-for="item in navigation" :key="item.name" :href="item.href" class="block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50">{{ t(item.name) }}</a>
 				</div>
 
 				<!-- User section -->

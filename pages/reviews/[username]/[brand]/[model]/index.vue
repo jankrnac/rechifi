@@ -22,6 +22,7 @@
         </div>
     </div>
 
+    
     <div class="w-full max-w-app mx-auto">
 
         <Layout :elements="review.elements" />
@@ -45,6 +46,15 @@
             brand: route.params.brand,
             model: route.params.model,
         }
+    })
+    useSeoMeta
+    ({
+        title: review.value.title + ' - Rechifi',
+        ogTitle: 'My Amazing Site',
+        description: 'This is my amazing site, let me tell you all about it.',
+        ogDescription: 'This is my amazing site, let me tell you all about it.',
+        ogImage: 'https://example.com/image.png',
+        twitterCard: 'summary_large_image',
     })
 
     // Extract sections elements for navigation (in Header element)

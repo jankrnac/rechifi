@@ -1,6 +1,6 @@
 <template>
 
-<div class="flex justify-between max-w-[800px] mx-auto py-12">
+<div class="block lg:flex justify-between max-w-[800px] mx-auto lg:py-12">
 
     <div class="text-left">
 		<div class="flex items-center mb-4">

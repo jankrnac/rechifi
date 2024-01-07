@@ -1,6 +1,6 @@
 <template>
 
-<div :id="element.data.name" class="pb-3" :class="{'opacity-0 pb-0':!editable}">
+<div :id="element.data.name" class="pb-3" :class="{'opacity-0 pb-0 h-0':!editable}">
     <div class="text-left bg-white relative z-[12] inline-block px-2 outline-none" contenteditable="true" spellcheck="false" @input="update">{{element.data.name}}</div>
     <div class="border-b -mt-3 relative z-[11] border-blue-200 border-dashed"></div>
 </div>

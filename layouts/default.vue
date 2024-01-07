@@ -50,7 +50,7 @@
 	}
 
 	.content h1 {
-		@apply text-4xl font-bold mt-6
+		@apply text-xl lg:text-4xl font-bold mt-6
 	}
 
 	.content h2 {
