@@ -1,6 +1,6 @@
 <template>
     <div class="max-w-app">
-<h1 class="font-bold mb-6">Privacy Policy of Rechify</h1>
+<h1>Privacy Policy of Rechify</h1>
 
 <p>Rechify operates the https://www.rechify.com website, which provides the SERVICE.</p>
 
@@ -60,3 +60,20 @@
 <p>If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us.</p>
 </div>
 </template>
+
+<style scoped>
+
+p {
+    @apply py-4
+}
+
+h1 {
+    @apply font-bold text-xl mb-6
+}
+
+h2 {
+    @apply font-bold mt-6
+}
+
+
+</style>
