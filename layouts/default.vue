@@ -4,7 +4,7 @@
   
         <AppHeader />
   
-      	<main class="flex flex-1 justify-center mx-6 lg:mx-0">
+      	<main class="flex flex-1 justify-center mx-4 lg:mx-0">
             <slot />
       	</main>
 
