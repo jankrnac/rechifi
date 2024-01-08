@@ -1,5 +1,5 @@
 <template>
-    <div class="relative my-12" :class="[element.data.textAlign]">
+    <div class="relative lg:mt-12" :class="[element.data.textAlign]">
 		<div class="inline-block relative group max-w-[800px]">
         	<nuxt-img :src="element.data.image" class="inline-block rounded-lg" densities="x1"/>
 			<UploadSingle v-if="editable" @uploaded="imageChanged" class="group-hover:flex hidden absolute inset-0 flex-col flex-1 justify-center items-center">

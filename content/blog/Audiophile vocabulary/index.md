@@ -24,69 +24,65 @@ label: article
 
 [ALAC]{.font-bold} – Apple Lossless Audio Codec – A reference audio coding implementation and format developed by Apple. Claimed that audio files compressed with this codec will be about half the file size of the original uncompressed data.
 
-Ambience – The overall impression, feeling, or mood evoked by an environment or acoustical space, such as the performance hall in which a recording was made.
+[Ambience]{.font-bold} – The overall impression, feeling, or mood evoked by an environment or acoustical space, such as the performance hall in which a recording was made.
 
-Amp/Amplifier – An electronic device that increases the power of, in this case, an analog signal to the output or speaker. It is a two-port electrical circuit that utilizes electric power from a power supply to increase the amplitude of the signal. Click here to shop amplifiers.
+[Amp/Amplifier]{.font-bold} – An electronic device that increases the power of, in this case, an analog signal to the output or speaker. It is a two-port electrical circuit that utilizes electric power from a power supply to increase the amplitude of the signal. Click here to shop amplifiers.
 
-Amplitude – The displacement of a wave from its mean value. In sound, it refers to the extent which air particles are displaced and is experienced as the loudness of sound. The higher the amplitude, the louder the sound.
+[Amplitude]{.font-bold} – The displacement of a wave from its mean value. In sound, it refers to the extent which air particles are displaced and is experienced as the loudness of sound. The higher the amplitude, the louder the sound.
 
-Analog (Audio) – Sound that has been recorded onto an analog medium like vinyl or tape. The recording on the medium, however, can have small imperfections that can cause audio artifacts in the playback.
+[Analog]{.font-bold} (Audio) – Sound that has been recorded onto an analog medium like vinyl or tape. The recording on the medium, however, can have small imperfections that can cause audio artifacts in the playback.
 
-Analytical – Sound with a high emphasis on detail, achieved through a boosting of the high frequencies.
+[Analytical]{.font-bold} – Sound with a high emphasis on detail, achieved through a boosting of the high frequencies.
 
-APE – From Monkey’s Audio – A free and efficient high-resolution codec that provides lossless audio data compression. (APE files can be decompressed into identical copies of the original digital recording.) APE has better compression rates than FLAC but has limited support and is taxing to decode.
+[APE]{.font-bold} – From Monkey’s Audio – A free and efficient high-resolution codec that provides lossless audio data compression. (APE files can be decompressed into identical copies of the original digital recording.) APE has better compression rates than FLAC but has limited support and is taxing to decode.
 
-ASP – Analog Signal Processing-An analog signal is one represented by a continuous stream of data, in this case along an electrical circuit in the form of voltage or current. Analog signal processing then involves physically altering the continuous signal by changing the voltage, current or charge via various electrical means. Examples include crossover filters in loudspeakers, “bass, treble and volume” controls on stereos and “tint” controls on TVs. Also considered capacitors, resistors, and inductors (passive), and active elements such as transistors/operational amplifiers.
+[ASP]{.font-bold} – Analog Signal Processing-An analog signal is one represented by a continuous stream of data, in this case along an electrical circuit in the form of voltage or current. Analog signal processing then involves physically altering the continuous signal by changing the voltage, current or charge via various electrical means. Examples include crossover filters in loudspeakers, “bass, treble and volume” controls on stereos and “tint” controls on TVs. Also considered capacitors, resistors, and inductors (passive), and active elements such as transistors/operational amplifiers.
 
-Attenuator – A device or component that lowers the volume of an audio signal (example: volume control on an amplifier).
+[Attenuator]{.font-bold} – A device or component that lowers the volume of an audio signal (example: volume control on an amplifier).
 
-Audiophile – An individual who is enthusiastic about high-fidelity sound reproduction. An audiophile seeks to reproduce the sound of a live musical performance, typically in a room with great acoustics.
+[Audiophile]{.font-bold} – An individual who is enthusiastic about high-fidelity sound reproduction. An audiophile seeks to reproduce the sound of a live musical performance, typically in a room with great acoustics.
 
-Back to Top
 
-B
-Balance – Refers to the tuning of a headphone. A well-balanced headphone would not have one particularly dominant frequency, but rather all would be “balanced.”
+[B]{.text-3xl .font-bold #b }
 
-Balanced (Audio) – a method of interconnecting audio equipment using impedance-balanced lines. Balanced connections use three-conductor connectors, usually an XLR or TRS jacks (a plus, a minus, and a ground). Using balanced audio can also reduce noise (especially) if using a long cable. 4-pin XLR, TRRS, and Pentaconn connections are the most commonly used balanced connectors for headphones. Standard XLR and TRS are balanced but you would typically need two of them for a pair of headphones (i.e. one TRS cable for the left ear cup and another for the right; the same would apply with 3-pin XLR connectors).
+[Balance]{.font-bold} – Refers to the tuning of a headphone. A well-balanced headphone would not have one particularly dominant frequency, but rather all would be “balanced.”
 
-Balanced Armature Driver – A type of driver most commonly used in hearing aids. Balanced armature drivers are designed to only reproduce a set part of the audible spectrum of sound, and as a result, are far more detailed in their sound reproduction within their set piece of the spectrum of sound. Because of this, it is generally necessary to use more than one balanced armature driver per earphone to cover the entire audible spectrum of sound. However, due to the need for a cross-over circuit to split the different parts of sound between the drivers, many would say that balanced armature drivers are less natural sounding than dynamic drivers.
+[Balanced]{.font-bold} (Audio) – a method of interconnecting audio equipment using impedance-balanced lines. Balanced connections use three-conductor connectors, usually an XLR or TRS jacks (a plus, a minus, and a ground). Using balanced audio can also reduce noise (especially) if using a long cable. 4-pin XLR, TRRS, and Pentaconn connections are the most commonly used balanced connectors for headphones. Standard XLR and TRS are balanced but you would typically need two of them for a pair of headphones (i.e. one TRS cable for the left ear cup and another for the right; the same would apply with 3-pin XLR connectors).
 
-Bass – The lower end frequency of human hearing. Bass can be measured in quantity (heaviness) and quality (clarity). Other bass descriptors are “muddy” and “boomy.”
+[Balanced Armature Driver]{.font-bold} – A type of driver most commonly used in hearing aids. Balanced armature drivers are designed to only reproduce a set part of the audible spectrum of sound, and as a result, are far more detailed in their sound reproduction within their set piece of the spectrum of sound. Because of this, it is generally necessary to use more than one balanced armature driver per earphone to cover the entire audible spectrum of sound. However, due to the need for a cross-over circuit to split the different parts of sound between the drivers, many would say that balanced armature drivers are less natural sounding than dynamic drivers.
 
-Bit Rate – Refers to how much data is being stored per second (digital audio).
+[Bass]{.font-bold} – The lower end frequency of human hearing. Bass can be measured in quantity (heaviness) and quality (clarity). Other bass descriptors are “muddy” and “boomy.”
 
-Bit Depth – Refers to how much data is recorded per sample (digital audio). The more information (higher sample/bit rates and depth) the better quality and larger the file size, generally speaking.
+[Bit Rate]{.font-bold} – Refers to how much data is being stored per second (digital audio).
 
-Bloat – A lack of definition and clarity in the mid-bass range. Overly-accentuated bass makes the signature sound heavy and poorly tuned. Bloat is commonly associated with dark, or overly warm, sound signatures.
+[Bit Depth]{.font-bold} – Refers to how much data is recorded per sample (digital audio). The more information (higher sample/bit rates and depth) the better quality and larger the file size, generally speaking.
 
-Bloom – A quality of expansiveness, richness, and warmth in music.
+[Bloat]{.font-bold} – A lack of definition and clarity in the mid-bass range. Overly-accentuated bass makes the signature sound heavy and poorly tuned. Bloat is commonly associated with dark, or overly warm, sound signatures.
 
-BNC – A type of locking connector used for digital connections.
+[Bloom]{.font-bold} – A quality of expansiveness, richness, and warmth in music.
 
-Brain Tickle – An audio phenomenon that produces a warm, tingling sensation in the head that can travel down the spine. May be referred to as a brain massage.
+[BNC]{.font-bold} – A type of locking connector used for digital connections.
 
-Breakup – When different points on the surface of a diaphragm begin to move out of sync, causing distortion. Breakup often occurs in dynamic drivers at high volumes as forces on the diaphragm increase. Breakup is less likely to occur at lower volumes or in planar magnetic or electrostatic headphone drivers.
+[Brain Tickle]{.font-bold} – An audio phenomenon that produces a warm, tingling sensation in the head that can travel down the spine. May be referred to as a brain massage.
 
-Bright/Brightness – A boost in the upper frequencies or upper-mid range. Brightness is a feature enjoyed by many but walks a thin line to becoming unpleasant due to a potential of treble peaking.
+[Breakup]{.font-bold} – When different points on the surface of a diaphragm begin to move out of sync, causing distortion. Breakup often occurs in dynamic drivers at high volumes as forces on the diaphragm increase. Breakup is less likely to occur at lower volumes or in planar magnetic or electrostatic headphone drivers.
 
-Brilliance – High frequencies from 5kHz up to 20kHz. Not enough? Sound will be muddy. Too much? You'll hear hissing and sibilance.
+[Bright/Brightness]{.font-bold} – A boost in the upper frequencies or upper-mid range. Brightness is a feature enjoyed by many but walks a thin line to becoming unpleasant due to a potential of treble peaking.
 
-Back to Top
+[Brilliance]{.font-bold} – High frequencies from 5kHz up to 20kHz. Not enough? Sound will be muddy. Too much? You'll hear hissing and sibilance.
 
-C
-Cable Attachment-Style: Wired headphones come in two styles:
 
-Detachable and interchangeable.
-Hardwired. Hardwired headphones can be “Hacked” for better performance.
-Caps – Shorthand for a capacitor. Capacitors store energy inside a device temporarily, which can have a number of functions: in an amp power supply, DC coupling, tone controls, and filtering.
+[C]{.text-3xl .font-bold #c }
 
-Circum-aural – Refers to full-size headphones that fit over the ear.
+[Caps]{.font-bold} – Shorthand for a capacitor. Capacitors store energy inside a device temporarily, which can have a number of functions: in an amp power supply, DC coupling, tone controls, and filtering.
 
-Clarity – Macro details in sound. You hear every sound distinctly.
+[Circum-aural]{.font-bold} – Refers to full-size headphones that fit over the ear.
 
-Coloration – the effect of a device on the music signal. The opposite of “neutral.” Various aspects can affect the tone, responsiveness or the frequency response of the music/audio.
+[Clarity]{.font-bold} – Macro details in sound. You hear every sound distinctly.
 
-Congestion – Poor clarity caused by overlapping sounds. Congested sound signatures lack detail and clarity, making it hard to hear separate instruments and may also be called muddy or muffled.
+[Coloration]{.font-bold} – the effect of a device on the music signal. The opposite of “neutral.” Various aspects can affect the tone, responsiveness or the frequency response of the music/audio.
+
+[Congestion]{.font-bold} – Poor clarity caused by overlapping sounds. Congested sound signatures lack detail and clarity, making it hard to hear separate instruments and may also be called muddy or muffled.
 
 Cranial Geometry – The unique contours of the human cranium that can impact a headphone’s “fit” or the level of comfort around the user’s head. This makes certain headphones a better fit for users with varying head shapes and sizes. If the geometry of the headphone does not align with a user’s unique head and ear geometry, this can impact the headphone’s “sealing condition,” and cause the sound to “leak” out. When this occurs, the headphone’s impressive sense of presentation and comfort-level may be compromised, entirely.
 

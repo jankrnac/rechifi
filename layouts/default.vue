@@ -4,7 +4,7 @@
   
         <AppHeader />
   
-      	<main class="flex flex-col flex-1 items-center mx-4 lg:mx-0">
+      	<main class="flex flex-1 justify-center mx-6 lg:mx-0">
             <slot />
       	</main>
 
@@ -50,7 +50,7 @@
 	}
 
 	.content h1 {
-		@apply text-xl lg:text-4xl font-bold mt-6
+		@apply text-2xl lg:text-4xl font-bold mt-6
 	}
 
 	.content h2 {

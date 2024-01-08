@@ -1,8 +1,8 @@
 <template>
 
-<div class="flex flex-col flex-1">
+<div class="flex-1">
   
-    <div v-if="user && review.profile_id == user.id" class="border-y p-5 mb-2">
+    <div v-if="user && review.profile_id == user.id" class="border-y py-2 lg:p-5 mb-2">
 
         <div class="max-w-app mx-auto flex gap-2">
             <nuxt-link :to="'/reviews/' + review.profiles.username + '/' + review.brand + '/' + review.model + '/edit'" class="bg-blue-200 rounded px-4 py-2.5 text-sm flex items-center">

@@ -1,6 +1,6 @@
 <template>
 
-    <div class="flex flex-col items-center justify-center">
+    <div class="flex flex-col items-center">
         <h1 class="text-3xl lg:text-6xl my-4 lg:mt-16 lg:mb-6">
             <span class="font-bold">Announced & </span> 
             <span class="font-playfair">Upcoming</span>
@@ -18,7 +18,7 @@
     
     </div>
     
-    </template>
+</template>
     
 <script setup lang="ts">
 

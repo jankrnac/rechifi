@@ -1,11 +1,11 @@
 <template>
-    <div class="flex my-12 justify-evenly gap-12 items-center px-24" :class="{'flex-row-reverse':element.data.reversed}">
+    <div class="block lg:flex my-12 justify-between gap-24 items-center lg:px-24" :class="{'flex-row-reverse':element.data.reversed}">
 
 		<div class="basis-1/2 flex justify-center">
         	<ElementsImage :element="element" :editable="editable"/>
 		</div>
 
-        <div class="basis-1/2 text-lg">
+        <div class="basis-1/2">
             <ElementsParagraph :element="element" :editable="editable" @change="update"/>
         </div>
     </div>

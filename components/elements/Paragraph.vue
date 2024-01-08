@@ -64,7 +64,7 @@ import TextAlign from '@tiptap/extension-text-align'
 			StarterKit.configure({
 				paragraph: {
 					HTMLAttributes:{
-						class: 'text-lg outline-none border-none'
+						class: 'lg:text-lg outline-none border-none'
 					}
 				}
 			}),
