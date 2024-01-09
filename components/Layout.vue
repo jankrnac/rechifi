@@ -11,13 +11,7 @@
         >
 
             <template #item="{ element, index }">
-                <ElementsWrapper
-                    :editable="editable" 
-                    :element="element"
-                    @deleted="onRemove(element.id, index)"
-                    @change="onChange(element.id, $event)"
-                    :elements="elements"
-                />
+                {{ element }}
             </template>
 
         </draggable>      
