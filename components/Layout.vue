@@ -1,6 +1,7 @@
 <template>
 
 <div class="flex flex-1 min-h-screen content border" :class="[editable ? 'rounded-xl border-gray-300' : 'border-transparent']">
+    <ClientOnly>
         <draggable
             class="min-h-screen w-full max-w-app flex flex-col gap-y-6"
             v-model="local"
@@ -11,10 +12,17 @@
         >
 
             <template #item="{ element, index }">
-                {{ element }}
+                <ElementsWrapper
+                    :editable="editable" 
+                    :element="element"
+                    @deleted="onRemove(element.id, index)"
+                    @change="onChange(element.id, $event)"
+                    :elements="elements"
+                />
             </template>
 
-        </draggable>      
+        </draggable> 
+    </ClientOnly>     
 </div>
         
 
