@@ -25,7 +25,6 @@
     
     <div class="w-full max-w-app mx-auto">
 
-        <Layout :elements="review.elements" />
 
     </div>
 
