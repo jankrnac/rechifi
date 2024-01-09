@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="relative z-[504]">
     <Popover v-slot="{ open }" class="relative">
         <PopoverButton class="group inline-flex items-center rounded-r-md bg-blue-300 px-3 py-4 text-sm focus:outline-none text-gray-600 [writing-mode:vertical-lr] [text-orientation:upright] hover:bg-blue-400 transition hover:text-white">
           	<span class="font-bold">ADD</span>
