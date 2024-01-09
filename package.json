@@ -15,7 +15,7 @@
     "@nuxtjs/i18n": "8.0.0-rc.5",
     "@nuxtjs/supabase": "^1.1.5",
     "@nuxtjs/tailwindcss": "^6.10.3",
-    "nuxt": "^3.9.0"
+    "nuxt": "^3.9.1"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.484.0",
