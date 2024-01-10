@@ -7,8 +7,10 @@
     <ModelCombobox v-if="!manualMode" v-model="headphone"/>
     <input v-else v-model="headphone" type="text" class="border rounded-lg px-5 py-4 w-[400px] text-sm" placeholder="Type the brand and model name"/>
 
-    <div v-if="!manualMode" class="text-sm mt-2 text-gray-500 cursor-pointer" @click="manualMode = true">Item not in list. Enter manually</div>
-    <div v-else class="text-sm mt-2 text-gray-500 cursor-pointer" @click="manualMode = false">Choose from list</div>
+    <div v-if="!manualMode" class="text-sm mt-2 text-gray-500 cursor-pointer flex items-center" @click="manualMode = true">Item not in list?
+        <div class="border rounded ml-2 px-2 py-0.5 hover:bg-gray-100 transition">Enter manually</div>
+    </div>
+    <div v-else class="border rounded ml-2 px-2 py-0.5 hover:bg-gray-100 transition text-sm text-gray-500 mt-2 cursor-pointer" @click="manualMode = false">Choose from list</div>
 
     <div class="mt-6 rounded-lg px-4 py-2 bg-green-700 text-white opacity-0 cursor-default hover:bg-green-800" :class="{'opacity-100 cursor-pointer':headphone}" @click="save">Next</div>
 

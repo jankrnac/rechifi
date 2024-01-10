@@ -23,7 +23,7 @@
 <script setup lang="ts">
 
 
-      const upcomings = await queryContent('/headphones')
+      const upcomings = await queryContent('/iems')
       
         .sort({ releaseDate: 1 }) // show latest articles first
       

@@ -47,6 +47,7 @@
             model: route.params.model,
         }
     })
+        
     useSeoMeta
     ({
         title: review.value.title + ' - Rechifi',

@@ -171,12 +171,11 @@
 	})
 
 	const navigation = [
-		{ name: 'home', href: '/' },
 		{ name: 'articles', href: '/blog' },
 		{ name: 'reviews', href: '/reviews' },
 		{ name: 'iems', href: '/iems' },
 		{ name: 'upcoming', href: '/upcoming' },
-
+		{ name: 'sales', href:"/sales" }
 	]
   
   	const mobileMenuOpen = ref(false)
@@ -209,6 +208,7 @@
   iems: 'In-Ear Monitors'
   upcoming: 'Upcoming'
   search-placeholder: 'Search for articles and products'
+  sales: 'Sales'
  cz:
   home: 'Domů'
   articles: 'Články'
@@ -216,4 +216,5 @@
   iems: 'Sluchátka' 
   upcoming: 'Novinky'
   search-placeholder: 'Hledej v článcích a slúchatkách'
+  sales: 'Slevy'
 </i18n>

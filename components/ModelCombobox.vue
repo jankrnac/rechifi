@@ -41,6 +41,6 @@ import { Combobox, ComboboxButton, ComboboxInput, ComboboxLabel, ComboboxOption,
     query.value === ''
       ? headphones.value
       : headphones.value.filter((headphone) => {
-          return headphone.model.toLowerCase().includes(query.value.toLowerCase())
+          return headphone.model.toLowerCase().includes(query.value.toLowerCase()) || headphone.brand.toLowerCase().includes(query.value.toLowerCase())
         }))
 </script>

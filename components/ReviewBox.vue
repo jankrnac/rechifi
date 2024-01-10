@@ -21,7 +21,11 @@
         </template>
 
     </div>
-    
+
+    <div v-if="!review.published" class="mt-2">
+            <div class="rounded text-xs px-2 py-1 bg-gray-500 text-white">Unpublished</div>
+    </div>
+
     <div class="w-full mt-2">
                 
         <div class="group relative">
@@ -38,10 +42,6 @@
                         <IconsCalendar class="w-4 h-4 mr-1" />
                         {{ new Date(review.created_at).toLocaleString('en-us',{month:'short', day:'numeric', year:'numeric'}) }}
                     </div>
-                </div>
-
-                <div v-if="!review.published">
-                    <div class="rounded text-xs px-2 py-1 bg-gray-500 text-white">Unpublished</div>
                 </div>
             </div>
             <p v-if="size == 'normal'" class="mt-5 line-clamp-5 text-sm leading-6 min-h-[96px]">{{ review.description }}</p>

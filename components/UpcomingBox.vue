@@ -8,7 +8,7 @@
             <p class="text-xl leading-6 text-gray-900 mb-2">
                 <nuxt-link :to="upcoming._path" class="text">
                     <span class="absolute inset-x-0 -top-px bottom-0" />
-                    {{ upcoming.name }}
+                    {{ upcoming.title }}
                 </nuxt-link>
             </p>
             
