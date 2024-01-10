@@ -26,11 +26,12 @@
 		</template>
 	</nav>
 	
+	<ClientOnly>
 	<Menu as="div" class="relative w-full inline-block text-left px-1 mt-1 lg:hidden">
 		<div>
 		<MenuButton class="inline-flex w-full justify-left gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
 			Jump to
-			<ChevronDownIcon class="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
+			<IconsCaretDown class="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
 		</MenuButton>
 		</div>
 
@@ -44,7 +45,7 @@
 		</MenuItems>
 		</transition>
 	</Menu>
-
+	</ClientOnly>
 		<div class="flex flex-row justify-end items-center gap-1 mt-2">
 			<div class="text-gray-500 text-sm mr-1">Share on:</div>
 			<IconsFacebook class="w-6 h-6 text-[#4267B2]" @click="share('fb')"/>

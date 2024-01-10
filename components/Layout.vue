@@ -1,6 +1,20 @@
 <template>
 
-<div class="flex flex-1 min-h-screen content border" :class="[editable ? 'rounded-xl border-gray-300' : 'border-transparent']">
+<div class="flex flex-1 min-h-screen content border relative z-[99]" :class="[editable ? 'rounded-xl border-gray-300' : 'border-transparent']">
+  
+    <template v-if="useRoute().name == 'reviews-username-brand-model'">
+        <div class="flex flex-col gap-y-6 min-h-screen w-full">
+            <ElementsWrapper
+                v-for="element in elements"
+                :editable="editable" 
+                :element="element"
+                :elements="elements"
+            />
+        </div>
+    </template>
+
+    <template v-else>
+    <ClientOnly>
         <draggable
             class="min-h-screen w-full max-w-app flex flex-col gap-y-6"
             v-model="local"
@@ -16,11 +30,13 @@
                     :element="element"
                     @deleted="onRemove(element.id, index)"
                     @change="onChange(element.id, $event)"
-                    :elements="elements"
+                    :elements="availableElements"
                 />
             </template>
 
-        </draggable>      
+        </draggable> 
+    </ClientOnly>   
+    </template>  
 </div>
         
 
@@ -43,7 +59,7 @@ const props = defineProps({
     }
 })
 
-const { data:elements } = await useFetch('/api/elements')
+const { data:availableElements } = await useFetch('/api/elements')
 
 const local = ref(props.elements)
 

@@ -2,12 +2,12 @@
 
 <div class="max-w-app w-full mx-auto">
 
-    <div v-show="editable" class="flex items-center gap-5 fixed left-0">
+    <div v-show="editable" class="flex items-center gap-5 fixed left-0 z-[999]">
         <ElementsAvailable />
     </div>
 
 
-    <div class="flex justify-between py-2 items-center text-sm">
+    <div class="flex justify-end lg:justify-between py-2 items-center text-sm">
         <div class="flex gap-2">
             <div class="bg-orange-300 px-4 py-1.5 rounded-lg text-sm flex items-center cursor-pointer" @click="editable = !editable">
                 <IconsEye v-if="editable" class="w-4 h-4 mr-2"/>
@@ -17,9 +17,9 @@
                 <span v-else>Edit</span>
             </div>
 
-            <div class="bg-blue-300 px-4 py-1.5 rounded-lg text-sm flex items-center cursor-pointer" @click="settingsVisible = !settingsVisible">
-                <IconsGear class="w-4 h-4 mr-2"/>
-                Settings
+            <div class="mr-2 bg-blue-300 px-4 py-1.5 rounded-lg text-sm flex items-center cursor-pointer" @click="settingsVisible = !settingsVisible">
+                <IconsGear class="w-4 h-4 lg:mr-2"/>
+                <span class="hidden lg:inline">Settings</span>
             </div>
         </div>
         <div class="flex items-center gap-5">
@@ -33,13 +33,13 @@
                         </svg>
                     </div>
                 </template>
-                    <IconsSave class="w-4 h-4 mr-2"/>
-                    Save
+                    <IconsSave class="w-4 h-4 lg:mr-2"/>
+                    <span class="hidden lg:inline">Save</span>
             </button>
             
             <div v-show="editable" class="bg-gray-100 px-4 py-1.5 rounded-lg flex items-center cursor-pointer">
-                <IconsUpload class="w-4 h-4 mr-2"/>
-                Publish
+                <IconsUpload class="w-4 h-4 lg:mr-2"/>
+                <span class="hidden lg:inline">Publish</span>
             </div>
         </div>
     </div> 

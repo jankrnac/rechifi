@@ -1,6 +1,7 @@
 <template>
 
 <div>
+	<ClientOnly>
     <Popover v-slot="{ open }" class="relative">
         <PopoverButton class="group inline-flex items-center rounded-md bg-blue-300 p-1 text-sm focus:outline-none">
             <IconsGear class="w-6 h-6"/>
@@ -30,6 +31,7 @@
 			</PopoverPanel>
 		</transition>
 	</Popover>
+	</ClientOnly>
 </div>
 </template>
   
