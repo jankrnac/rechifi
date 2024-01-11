@@ -1,7 +1,6 @@
 <template>
 
 <div class="flex flex-1 min-h-screen content border relative z-[99]" :class="[editable ? 'rounded-xl border-gray-300' : 'border-transparent']">
-  
     <template v-if="useRoute().name == 'reviews-username-brand-model'">
         <div class="flex flex-col gap-y-6 min-h-screen w-full">
             <ElementsWrapper
@@ -67,7 +66,7 @@ const menuElement = ref({})
 const emit = defineEmits(['change'])
 
 const onChange = (elementid, data) => {
-    props.elements.find(obj => obj.id == elementid).data[Object.keys(data)[0]] = Object.values(data)[0]
+    props.elements.find(obj => obj.id == elementid).data[Object.values(data)[0]] = Object.values(data)[1]
 }
 
 const onRemove = async (elementid) => {

@@ -22,7 +22,7 @@
                 <span class="hidden lg:inline">Settings</span>
             </div>
         </div>
-        <div class="flex items-center gap-5">
+        <div class="flex items-center gap-2">
            
             <button v-show="editable" class="relative bg-green-300 px-4 py-1.5 rounded-lg text-sm flex items-center cursor-pointer" @click="save">
                 <template v-if="saving">
@@ -102,6 +102,7 @@ provide('nav',nav)
 const activeElements = [...review.value.elements]
 
 const updatePage = async (data) => {
+    console.log(data)
     review.value.elements = data
 }
 
