@@ -1,7 +1,7 @@
 <template>
 
 <div class="flex">
-	<div class="w-full text-center relative border" :class="[optionsVisible ? 'border-blue-400 border-dashed':'border-white']" 
+	<div class="w-full text-center relative border" :class="[optionsVisible ? 'border-blue-400 border-dashed':'border-white dark:border-gray-950']" 
         @mouseover="showHover" 
         @mouseout="hideHover" 
         >

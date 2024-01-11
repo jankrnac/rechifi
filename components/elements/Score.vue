@@ -12,7 +12,7 @@
 		line-mode="out 5"
 		dash="10 2"
 		color="#88bedf"
-		:legend-formatter="({ currentValue }) => `<span class='font-bold text-gray-700'>${currentValue}</span>`"
+		:legend-formatter="({ currentValue }) => `<span class='font-bold text-gray-700 dark:text-gray-200'>${currentValue}</span>`"
 	/>
     </client-only>
 </div>

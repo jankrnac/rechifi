@@ -5,11 +5,11 @@
 			<span :contenteditable="editable" :spellcheck="false" class="outline-none" @input="update">{{element.data.text}}</span>
 		</h1>
 		<div class="flex justify-center gap-4 text-sm">
-			<div class="text-gray-500 italic mt-2 flex items-center justify-center">
+			<div class="text-gray-500 dark:text-gray-200 italic mt-2 flex items-center justify-center">
 				<IconsUser class="w-4 h-4 mr-1" />
 				{{  useRoute().params.username }}
 			</div>
-			<div class="text-gray-500 italic mt-2 flex items-center justify-center">
+			<div class="text-gray-500 dark:text-gray-200 italic mt-2 flex items-center justify-center">
 				<IconsCalendar class="w-4 h-4 mr-1" />
 				{{ new Date(date).toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'}) }}
 			</div>
@@ -17,7 +17,7 @@
 	</div>
 		
 	<div class="text-sm text-left text-gray-400 ml-1">Navigation</div>
-	<nav class="hidden lg:flex justify-center items-center gap-4 bg-gray-50 border p-5 rounded-lg">
+	<nav class="hidden lg:flex justify-center items-center gap-4 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 border p-5 rounded-lg">
 		<template v-for="(item, index) in nav">
 		<a class="text" :href="'#'+item.data.name">
 			{{ item.data.name }}
