@@ -1,6 +1,6 @@
 <template>
 
-<div>
+<div class="w-full">
     <!-- Filters -->
     <div>
 
@@ -144,7 +144,7 @@
                 <ProductBox :product="item" />
             </template>
         </ul>
-  </div>
+    </div>
 </div>
 </template>
 
@@ -201,9 +201,27 @@ const brandFilter = computed(() => {
 })
 
 
+const { t } = useI18n({
+	useScope: 'local'
+})
+
+const sortOptions = [
+    { label: t('name'), value:'name' },
+    { label: t('releaseDate'), value: 'releaseDate' },
+]
+
+const activeSort = ref(sortOptions[0])
+
+
+const sortPayload = computed(() => {
+    return {
+        [activeSort.value.value]:1
+    }
+})
+
 const { data:headphones, refresh } = await useAsyncData('home', () => queryContent('/iems')
   
-    .sort({ title: 1 })
+    .sort(sortPayload.value)
 
     .where({ _partial: false }) // exclude the Partial files
 
@@ -213,22 +231,6 @@ const { data:headphones, refresh } = await useAsyncData('home', () => queryConte
 
     .find()
 )
-
-
-
-
-const { t } = useI18n({
-	useScope: 'local'
-})
-
-
-const sortOptions = [
-    { label: t('name'), value:'name' },
-    { label: 'Dle hodnocení', value: 'rating' },
-    { label: 'Nejnovejší', value: 'released' },
-]
-
-const activeSort = ref(sortOptions[0])
 
 
 const filters = [
@@ -278,6 +280,12 @@ watch(activeFilters, async (value) => {
 })
 }, { deep: true })
 
+watch(sortPayload, async (value) => {
+    
+    await refresh()
+
+}, { deep: true })
+
 </script>
 
 
@@ -287,6 +295,7 @@ watch(activeFilters, async (value) => {
      sort: 'Sort'
      slogan: All IEMs from asian country manufacturers in one place
      name: 'By name'
+     releaseDate: 'By release date'
     cz:
      headphones: "Sluchátka"
      slogan: Seznam všech slúchatek čínskych výrobců na jednom místě
