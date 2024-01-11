@@ -33,7 +33,10 @@
 </template>
 
 <script setup lang="ts">
-    
+    useSeoMeta({
+        title: 'Search - Rechifi - Chi-fi audio',
+    })
+
     const route = useRoute()
     
     const posts = await queryContent('blog').where({ 'title': { $icontains: route.params.query } }).find()

@@ -9,8 +9,9 @@ model: X HBB Z300
 brand: blon
 
 drivers: 
+    - DD
 
-priceRange: 
+priceRange: low
 
 releaseDate: 
 

@@ -22,6 +22,14 @@
 
 <script setup lang="ts">
   
+  useSeoMeta({
+    title: 'Blog - Rechifi',
+    description: `Stay in tune with the latest news and reviews on Chinese audio. 
+    Explore our articles list, product comparisons, and expert recommendations. Uncover the best in audio innovation as we guide you through the world of 
+    premium sound experiences from top Chinese brands. Elevate your audio journey with our curated knowledge hub. Dive into the articles now!`
+})
+
+
   const blogPosts = await queryContent('/blog')
   
     .sort({ date: 1 }) // show latest articles first

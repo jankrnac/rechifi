@@ -1,7 +1,6 @@
 <template>
 
 <div>
-
     <!-- Filters -->
     <div>
 
@@ -154,6 +153,13 @@
 import { Dialog,DialogPanel,Disclosure,DisclosureButton,DisclosurePanel, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue'
 import { Listbox,ListboxLabel ,Popover,PopoverButton,PopoverGroup,PopoverPanel,TransitionChild, TransitionRoot} from '@headlessui/vue'
 
+useSeoMeta({
+    title: 'IEMs - Rechifi',
+    description: `Explore the pinnacle of personal audio with our curated list of chi-fi in-ear monitors. Navigate through our filterable IEMs list to find the perfect blend of technical specifications, 
+    sound signature, and price. Dive into detailed reviews, comparisons. Your guide to precision awaits explore our in-ear monitors list now!"`
+})
+
+
 const { data:brands } = await useFetch('/api/brands')
 
 brands.value.sort((a, b) => {
@@ -197,7 +203,7 @@ const brandFilter = computed(() => {
 
 const { data:headphones, refresh } = await useAsyncData('home', () => queryContent('/iems')
   
-    .sort({ date: -1 }) // show latest articles first
+    .sort({ title: 1 })
 
     .where({ _partial: false }) // exclude the Partial files
 

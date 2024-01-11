@@ -6,6 +6,8 @@ export default eventHandler(async (event) =>
 
     const data = await $fetch(body.url)
 
-    return data
+    const root = parse(data)
+
+    return root
 
 })
