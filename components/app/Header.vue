@@ -47,7 +47,7 @@
 						</PopoverButton>
 
 						<transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-1" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
-							<PopoverPanel v-slot="{ close }" class="absolute right-0 top-full z-10 mt-3 w-screen max-w-xs overflow-hidden rounded-lg dark:bg-gray-700 shadow-lg ring-1 ring-gray-900/5">
+							<PopoverPanel v-slot="{ close }" class="absolute right-0 top-full z-[880] mt-3 w-screen max-w-xs overflow-hidden rounded-lg dark:bg-gray-700 shadow-lg ring-1 ring-gray-900/5">
 							<div class="p-2">
 
 								<!-- Guest -->
@@ -100,7 +100,7 @@
 		
 		<Dialog as="div" class="xl:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
 		<div class="fixed inset-0 z-10" />
-		<DialogPanel class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white dark:bg-gray-900 px-7 py-10 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:text-gray-200">
+		<DialogPanel class="fixed inset-y-0 right-0 z-[190] w-full overflow-y-auto bg-white dark:bg-gray-900 px-7 py-10 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:text-gray-200">
 			<div class="flex items-center justify-end">
 		
 			<div>

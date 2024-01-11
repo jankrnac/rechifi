@@ -76,6 +76,10 @@
 
 <script setup>
 
+definePageMeta({
+    middleware: ['auth', 'owner'],
+});
+
 const route = useRoute()
 const client = useSupabaseClient()
 
