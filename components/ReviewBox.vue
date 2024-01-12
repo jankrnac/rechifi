@@ -34,13 +34,13 @@
             </h3>
             <div class="flex w-full items-center gap-3">
                 <div class="flex flex-1 justify-between gap-4" :class="[size == 'normal' ? 'text-sm' : 'text-xs']">
-                    <div class="text-gray-500 italic mt-2 flex items-center justify-center">
+                    <div class="text-gray-500 dark:text-gray-200 italic mt-2 flex items-center justify-center">
                         <IconsUser class="w-4 h-4 mr-1" />
                         {{  review.profiles.username }}
                     </div>
-                    <div class="text-gray-500 italic mt-2 flex items-center justify-center">
+                    <div class="text-gray-500 dark:text-gray-200  italic mt-2 flex items-center justify-center">
                         <IconsCalendar class="w-4 h-4 mr-1" />
-                        {{ new Date(review.created_at).toLocaleString('en-us',{month:'short', day:'numeric', year:'numeric'}) }}
+                        {{ new Date(review.created_at).toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'}) }}
                     </div>
                 </div>
             </div>

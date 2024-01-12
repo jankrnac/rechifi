@@ -43,9 +43,9 @@
 
         </div>
 
-        <div class="mb-16 text-xl leading-8 max-w-[1200px]">{{ doc.description }}</div>
+        <div class="mb-16 text-xl leading-8 max-w-app">{{ doc.description }}</div>
 
-        <Reviews class="mb-12 max-w-[1200px]"/>
+        <Reviews class="mb-12 max-w-app"/>
 
         <div class="content w-full">
             <ContentRenderer :value="doc"/>

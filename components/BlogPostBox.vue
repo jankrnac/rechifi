@@ -1,9 +1,11 @@
 <template>
 
 <article class="flex flex-col items-start justify-between">
-    <div class="relative w-full">
+    <div class="relative w-full overflow-hidden">
         <nuxt-img :src="post.cover" alt="" class="aspect-[3/2] w-full rounded-2xl bg-gray-100 object-cover" width="480" height="270"/>
-        <nuxt-link :to="post._path" class="absolute inset-0"></nuxt-link>
+        <nuxt-link v-if="post.label == 'article'" :to="post._path" class="absolute inset-0"></nuxt-link>
+        <nuxt-link v-if="post.label == 'headphones'" :to="post.link" class="absolute inset-0"></nuxt-link>
+
     </div>
     
     <div class="max-w-xl mt-2">

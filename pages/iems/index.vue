@@ -26,7 +26,7 @@
                     <form class="mt-4">
                         <Disclosure as="div" v-for="section in filters" :key="section.name" class="border-t border-gray-200 px-4 py-6" v-slot="{ open }">
                         <h3 class="-mx-2 -my-3 flow-root">
-                            <DisclosureButton class="flex w-full items-center justify-between bg-white px-2 py-3 text-sm text-gray-400">
+                            <DisclosureButton class="flex w-full items-center justify-between bg-white px-2 py-3 text-sm">
                             <span class="font-medium text-gray-900">{{ section.name }}</span>
                             <span class="ml-6 flex items-center">
                                 <IconsCaretDown :class="[open ? '-rotate-180' : 'rotate-0', 'h-5 w-5 transform']" aria-hidden="true" />
@@ -52,8 +52,8 @@
             <!-- Desktop -->
             <div class="mx-auto max-w-3xl text-center lg:max-w-app">
             <div class="pb-10 mt-10 lg:mt-16 lg:pb-24">
-                <h1 class="text-3xl lg:text-6xl font-bold tracking-tight text-gray-900">{{ t('iems') }}</h1>
-                <p class="text-center mx-auto mt-4 max-w-3xl text-lg lg:text-xl text-gray-500">{{t('slogan')}}</p>
+                <h1 class="text-3xl lg:text-6xl font-bold tracking-tigh">{{ t('iems') }}</h1>
+                <p class="text-center mx-auto mt-4 max-w-3xl text-lg lg:text-xl">{{t('slogan')}}</p>
             </div>
             
             <div v-if="activeFilters.signature.length || activeFilters.brand.length || activeFilters.drivers.length" class="text-left h-12">
@@ -72,7 +72,7 @@
                 </ul>
             </div>
 
-            <section aria-labelledby="filter-heading" class="border-t border-gray-200 py-6">
+            <section aria-labelledby="filter-heading" class="border-t border-gray-200 dark:border-gray-600 py-6">
                 <h2 id="filter-heading" class="sr-only">Product filters</h2>
 
                 <div class="flex items-center justify-between">
@@ -83,7 +83,7 @@
                         </ClientOnly>
                         <div class="relative flex-1">
                         <ClientOnly>
-                        <ListboxButton class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none  sm:text-sm sm:leading-6">
+                        <ListboxButton class="relative w-full cursor-default rounded-md bg-white dark:bg-gray-800 dark:ring-gray-600 py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none  sm:text-sm sm:leading-6">
                             <span class="block truncate">{{ activeSort.label }}</span>
                             <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                             <i class="h-5 w-5 text-gray-400" aria-hidden="true" />
@@ -94,7 +94,7 @@
                         <transition leave-active-class="transition ease-in duration-100" leave-from-class="opacity-100" leave-to-class="opacity-0">
                             <ListboxOptions class="text-left absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                             <ListboxOption as="template" v-for="sort in sortOptions" :key="sort.value" :value="sort" v-slot="{ active, selected }">
-                                <li :class="[active ? 'bg-indigo-600 text-white' : 'text-gray-900', 'relative cursor-default select-none py-2 pl-3 pr-9']">
+                                <li :class="[active ? 'bg-indigo-600 text-white' : '', 'relative cursor-default select-none py-2 pl-3 pr-9']">
                                 <span :class="[selected ? 'font-semibold' : 'font-normal', 'block truncate']">{{ sort.label }}</span>
 
                                 <span v-if="selected" :class="[active ? 'text-white' : 'text-indigo-600', 'absolute inset-y-0 right-0 flex items-center pr-4']">
@@ -112,7 +112,7 @@
                 <PopoverGroup class="hidden sm:flex sm:items-baseline sm:space-x-8">
                     <Popover as="div" v-for="(filter, filterIdx) in filters" :key="filter.name" :id="`desktop-menu-${filterIdx}`" class="relative inline-block text-left">
                     <div>
-                        <PopoverButton class="group inline-flex items-center justify-center text-sm font-medium text-gray-700 hover:text-gray-900 outline-none">
+                        <PopoverButton class="group inline-flex items-center justify-center text-sm font-medium outline-none">
                         <span>{{ filter.name }}</span>
                         <IconsCaretDown  class="-mr-1 ml-1 h-4 w-4 flex-shrink-0 text-gray-400 group-hover:text-gray-500" aria-hidden="true" />
                         </PopoverButton>
@@ -295,7 +295,7 @@ watch(sortPayload, async (value) => {
      sort: 'Sort'
      slogan: All IEMs from asian country manufacturers in one place
      name: 'By name'
-     releaseDate: 'By release date'
+     releaseDate: 'Newest first'
     cz:
      headphones: "Sluchátka"
      slogan: Seznam všech slúchatek čínskych výrobců na jednom místě
