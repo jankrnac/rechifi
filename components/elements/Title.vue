@@ -46,11 +46,7 @@
 		</transition>
 	</Menu>
 	</ClientOnly>
-		<div class="flex flex-row justify-end items-center gap-1 mt-2">
-			<div class="text-gray-500 text-sm mr-1">Share on:</div>
-			<IconsFacebook class="w-6 h-6 text-[#4267B2]" @click="share('fb')"/>
-
-		</div>
+		
 </div>
 </template>
 
@@ -85,7 +81,7 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 	const nav = inject('nav')
 	const date = inject('date')
 
-	const share = (provider) => {
-		
-	}
+
+	
+
 </script>
