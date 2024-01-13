@@ -51,7 +51,7 @@
             <ContentRenderer :value="doc"/>
         </div>
 
-        <Stores :doc="doc"/>
+        <Stores v-if="doc.stores && doc.stores.length" :doc="doc"/>
 
     </ContentDoc>
   
