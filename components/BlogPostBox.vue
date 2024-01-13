@@ -17,7 +17,9 @@
     
         <div class="group relative">
             <h3 class="mt-6 text-2xl font-bold leading-6">
-                <nuxt-link :to="post._path" class="text">{{ post.title }}</nuxt-link>
+                <nuxt-link v-if="post.label == 'article'" :to="post._path" class="text">{{ post.title }}</nuxt-link>
+                <nuxt-link v-if="post.label == 'headphones'" :to="post.link" class="text">{{ post.title }}</nuxt-link>
+
             </h3>
             <p class="mt-5 line-clamp-4 text-base leading-6">{{ post.description }}</p>
         </div>

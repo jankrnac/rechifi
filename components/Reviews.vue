@@ -35,7 +35,6 @@ const client = useSupabaseClient()
 
 const { data:reviews } = await client.from('reviews').select('*, profiles(*)').eq('brand', route.params.brand).eq('model', route.params.model)
 
-console.log(route.params.model)
 const { t } = useI18n({
     useScope: 'local'
 })

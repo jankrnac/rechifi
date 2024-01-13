@@ -51,6 +51,7 @@
             <ContentRenderer :value="doc"/>
         </div>
 
+        <Stores :doc="doc"/>
 
     </ContentDoc>
   

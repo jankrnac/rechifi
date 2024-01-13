@@ -20,6 +20,10 @@ released: true
 
 cover: /7hz/zero2/featured.png
 
+stores:
+    - linsoul: https://www.linsoul.com/products/7hz-x-crinacle-zero-2
+    - aliexpress: https://www.aliexpress.com/item/1005006223567646.html
+
 ---
 
 ::image-text
