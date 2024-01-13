@@ -4,18 +4,11 @@
 
 	<div class="flex justify-between items-center mb-4">
 		<h2 class="text-xl font-bold">Reviews ({{ reviews.length }})</h2>
-		<ul class="flex gap-x-1 items-center">
-			<li :class="{'bg-gray-800 text-white rounded-lg': activeTypeFilter == 'text'}" class="cursor-pointer px-3 py-0.5" @click="activeTypeFilter = 'text'">Websites</li>
-			<li :class="{'bg-gray-800 text-white rounded-lg': activeTypeFilter == 'youtube'}" class="cursor-pointer px-3 py-0.5" @click="activeTypeFilter = 'youtube'">Youtube</li>
-			<li :class="{'bg-gray-800 text-white rounded-lg': activeTypeFilter == 'people'}" class="cursor-pointer px-3 py-0.5" @click="activeTypeFilter = 'people'">People</li>
-			<li :class="{'bg-gray-800 text-white rounded-lg': activeTypeFilter == 'all'}" class="cursor-pointer px-3 py-0.5" @click="activeTypeFilter = 'all'">All</li>
-
-		</ul>
 	</div>
 
 	<template v-if="reviews.length">
 
-	<ul class="grid grid-cols-5 gap-5">
+	<ul class="grid grid-cols-2 lg:grid-cols-5 gap-5">
 		<li v-for="review in reviews">
 			<ReviewBox :review="review" size="small" />
 		</li>
@@ -39,12 +32,6 @@
 const route = useRoute()
 const client = useSupabaseClient()
 
-const activeTypeFilter = ref('all')
-
-const activeTypeFilterApi = computed(() => {
-	if(activeTypeFilter.value == 'all') return [null]
-	return activeTypeFilter.value
-})
 
 const { data:reviews } = await client.from('reviews').select('*, profiles(*)').eq('brand', route.params.brand).eq('model', route.params.model)
 
