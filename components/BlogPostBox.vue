@@ -10,9 +10,9 @@
     </div>
     
     <div class="max-w-xl mt-2">
-		<div class="flex justify-between">
+		<div class="flex justify-between items-center">
 			<Label>{{ post.label }}</Label>
-			<time class="text-gray-500 text-sm">{{ post.date.split('T')[0] }}</time>
+            <time class="text-gray-500 text-sm">{{ new Date(post.date).toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'}) }}</time>
 		</div>
 
     

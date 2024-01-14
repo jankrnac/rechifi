@@ -31,7 +31,11 @@
 
         
     </div>
-    <Label>{{ type }}</Label>
+
+    <div class="flex justify-between items-center">
+        <Label>{{ type }}</Label>
+    </div>
+
     <section class="lg:w-full">
         <h1 class="text-xl lg:text-5xl mt-8 mb-8 font-bold">
             <nuxt-link class="text leading-normal" :to="link">{{ text }}</nuxt-link>

@@ -39,7 +39,7 @@
 
     const route = useRoute()
     
-    const posts = await queryContent('blog').where({ 'title': { $icontains: route.params.query } }).find()
+    const posts = await queryContent('blog').where({ 'title': { $icontains: route.params.query } }).where({ visible: { $ne: false } }).find()
     const headphones = await queryContent('iems').where({ 'title': { $icontains: route.params.query } }).find()
 
 </script>

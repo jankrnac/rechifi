@@ -6,7 +6,7 @@ description: 7HZ and their audio engineers are collaborating yet again, with the
 
 link: /iems/7hz/saltnotes-zero2
 
-date: 15.12.2023
+date: 2023-12-15
 
 cover: /article3/cover.webp
 
