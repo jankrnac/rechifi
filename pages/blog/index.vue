@@ -34,8 +34,10 @@
   
     .sort({ date: 1 }) // show latest articles first
   
-    .where({ _partial: false }) // exclude the Partial files
-  
+    .where({ _partial: false}) // exclude the Partial files
+    
+    .where({ draft: false })
+
     .find()
   
 </script>
