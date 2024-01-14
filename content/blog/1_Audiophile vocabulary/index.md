@@ -10,6 +10,7 @@ cover: /audiophile-vocabulary/cover.jpg
 
 label: article
 
+draft: true
 ---
 
 ::post-title

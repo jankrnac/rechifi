@@ -10,6 +10,7 @@ cover: /article2/cover.webp
 
 label: article
 
+draft: true
 ---
 
 ::post-title
