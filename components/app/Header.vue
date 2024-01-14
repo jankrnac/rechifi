@@ -37,6 +37,8 @@
 					<IconsMoon v-else class="w-6 h-6 cursor-pointer mr-5"  @click="setColorMode('dark')"/>
 					<template #fallback>
 						<IconsMoon class="w-6 h-6 cursor-pointer mr-5" />
+						<IconsUser class="w-6 h-6" />
+
 					</template>
 				
 

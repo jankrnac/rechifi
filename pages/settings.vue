@@ -8,7 +8,7 @@
                     <h2 class="text-base font-semibold leading-7 text-gray-900">Profile</h2>
                     <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
                 </div>
-    
+                
                 <form @submit.prevent="submitProfileForm" class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
                     <div class="px-4 py-6 sm:p-8">
     
@@ -16,7 +16,7 @@
 
                             <div class="sm:col-span-full">
                                 <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">Username</label>
-                                <input type="text" name="username" id="name" class="border rounded px-4 py-2 w-full" v-model="profile.username"/>
+                                <input type="text" name="username" id="name" class="border rounded px-4 py-2 w-full" :class="[usernameValid ? '':'bg-red-200']" v-model="profile.username"/>
                             </div>
 
                             <div class="sm:col-span-full">
@@ -26,7 +26,7 @@
     
                             <div class="sm:col-span-full">
                                 <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">Email</label>
-                                <input type="text" name="email" id="email" class="border rounded px-4 py-2 w-full" :value="profile.email" :disabled="true" />
+                                <input type="text" name="email" id="email" class="border rounded px-4 py-2 w-full" :value="user.email" :disabled="true" />
                             </div>
     
                             <div class="col-span-full">
@@ -44,7 +44,7 @@
                     </div>
     
                     <div class="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
-                          <button class="rounded-lg bg-green-500 px-4 py-2 font-semibold text-sm text-white">Save</button>
+                          <Button :disabled="!usernameValid" color="green" :loading="pending">Save</Button>
                     </div>
     
                   </form>
@@ -63,7 +63,7 @@
     const user = useSupabaseUser()
     const client = useSupabaseClient()
 
-    const { data:profile } = useFetch('/api/users/' + user.value.id)
+    const { data:profile } = await useFetch('/api/users/' + user.value.id)
 
     const preview = ref()
 
@@ -82,9 +82,10 @@
         auth.value.user.upload = data.formData
     }
     
+    const pending = ref(false)
     
     const submitProfileForm = async () => {
-    
+        pending.value = true
         if (preview.value)
         {
             const { data:response } = await useFetch(`upload`, {
@@ -102,7 +103,13 @@
                 name: profile.value.name
             })
             .eq('id', user.value.id)
+
+        pending.value = false
     }
     
-    
-    </script>
+    const usernameValid = ref(true)
+
+    watch(() => profile.value.username, (value) => {
+        console.log(value)
+    })
+</script>
