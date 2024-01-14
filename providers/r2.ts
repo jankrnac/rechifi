@@ -14,9 +14,10 @@ export const getImage: ProviderGetImage = (
     baseURL = useRuntimeConfig().public.siteUrl
   }
 
-  const operations = operationsGenerator(modifiers)
+  let operations = operationsGenerator(modifiers)
 
-  const finalUrl = src.includes('blob') ? src : joinURL(baseURL, src)
+  operations = operations.replaceAll('/',',')
+  const finalUrl = src.includes('blob') ? src : joinURL(baseURL, (operations ? '' + operations : '') + src)
   
   return {
     url: finalUrl,

@@ -8,7 +8,7 @@
         <div class="flex gap-12 items-center">
             <div v-for="store in doc.stores">
                 <a :href="Object.values(store)[0]" target="_blank">
-                    <nuxt-img :src="Object.keys(store)[0] + '.webp'" width="200"/>
+                    <nuxt-img :src="Object.keys(store)[0] + '.webp'" width="200" densities="1x"/>
                 </a>
             </div>
         </div>

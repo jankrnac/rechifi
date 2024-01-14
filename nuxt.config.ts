@@ -52,7 +52,7 @@ export default defineNuxtConfig({
 			  	name: 'r2',
 			  	provider: '~/providers/r2.ts',
 			  	options: {
-					baseURL: "https://media.rechifi.com"
+					baseURL: "https://media.rechifi.com/cdn-cgi/image/"
 			  	}
 			}
 		},
