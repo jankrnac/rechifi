@@ -27,9 +27,9 @@
 </template>
   
 <script setup>  
-    const cookie = useCookie('cookieConsent')
+    const cookie = useCookie('cookieConsent', {maxAge: 31536000 })
 
-	const visible = ref(cookie.value == null)
+	const visible = ref(!cookie.value)
 
 	const confirm = () => {
 		cookie.value = true
