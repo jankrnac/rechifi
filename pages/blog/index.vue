@@ -36,7 +36,7 @@
   
     .where({ _partial: false}) // exclude the Partial files
     
-    .where({ draft: false })
+    .where({ _draft: false })
 
     .find()
   
