@@ -6,11 +6,11 @@
         
         <!-- Bg -->
         <div class="w-full select-none relative">
-            <nuxt-img :src="bg" class="w-full" sizes="100vw lg:1500px" :modifiers="{ format : 'webp' }" densities="x1" />
+            <nuxt-img :src="bg" class="w-full" sizes="100vw lg:1500px" format="webp" densities="x1" />
 
             <!-- Floating image -->
             <div v-if="image" class="absolute w-1/2 lg:right-0 right-10 top-0 z-10 flex items-center h-full">
-                <nuxt-img :src="image" class="floating object-contain aspect-square" width="600" height="600"/>
+                <nuxt-img :src="image" class="floating object-contain aspect-square" width="600" height="600" format="webp"/>
             </div>
         </div>
 
