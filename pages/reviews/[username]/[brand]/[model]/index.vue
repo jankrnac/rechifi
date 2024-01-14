@@ -51,11 +51,10 @@
     useSeoMeta
     ({
         title: review.value.title + ' - Rechifi',
-        ogTitle: 'My Amazing Site',
-        description: 'This is my amazing site, let me tell you all about it.',
-        ogDescription: 'This is my amazing site, let me tell you all about it.',
-        ogImage: 'https://example.com/image.png',
-        twitterCard: 'summary_large_image',
+        ogTitle: review.value.title + ' - Rechifi',
+        description: review.value.description,
+        ogDescription: review.value.description,
+        ogImage: review.value.cover,
     })
 
     // Extract sections elements for navigation (in Header element)

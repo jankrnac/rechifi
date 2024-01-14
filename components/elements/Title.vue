@@ -46,7 +46,7 @@
 		</transition>
 	</Menu>
 	</ClientOnly>
-		
+
 </div>
 </template>
 
@@ -81,6 +81,13 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 	const nav = inject('nav')
 	const date = inject('date')
 
+
+	const share = (provider) => {
+		if(provider == 'fb')
+		{
+
+		}
+	}
 
 	
 

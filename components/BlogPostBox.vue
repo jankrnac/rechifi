@@ -10,7 +10,7 @@
     
     <div class="max-w-xl mt-2">
 		<div class="flex justify-between">
-			<Label class="capitalize" type="">{{ post.label }}</Label>
+			<Label>{{ post.label }}</Label>
 			<time class="text-gray-500 text-sm">{{ post.date.split('T')[0] }}</time>
 		</div>
 
