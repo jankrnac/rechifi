@@ -6,7 +6,7 @@
         
         <!-- Bg -->
         <div class="w-full select-none relative">
-            <nuxt-img :src="bg" class="w-full" sizes="100vw lg:1500px" format="webp" densities="x1" />
+            <nuxt-img :src="bg" class="w-full" sizes="100vw lg:1500px" format="webp" densities="x1" width="1500" height="660"/>
 
             <!-- Floating image -->
             <div v-if="image" class="absolute w-1/2 lg:right-0 right-10 top-0 z-10 flex items-center h-full">
