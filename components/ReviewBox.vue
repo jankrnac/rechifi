@@ -30,7 +30,7 @@
                 
         <div class="group relative">
             <h3 v-if="size == 'normal'" class="mt-6 mb-1 text-2xl font-bold leading-6">
-                <nuxt-link :to="'/reviews/' + review.profiles.username + '/' + review.brand + '/' + review.model" class="text">{{ review.brand + ' ' + makeTitle(review.model) }}</nuxt-link>
+                <nuxt-link :to="'/reviews/' + review.profiles.username + '/' + review.brand + '/' + review.model" class="text">{{ review.title }}</nuxt-link>
             </h3>
             <div class="flex w-full items-center gap-3">
                 <div class="flex flex-1 justify-between gap-4" :class="[size == 'normal' ? 'text-sm' : 'text-xs']">

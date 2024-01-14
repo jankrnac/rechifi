@@ -37,7 +37,8 @@
 
     	</bubble-menu>
 
-		<editor-content :editor="editor" />
+		<editor-content v-if="editable" :editor="editor" />
+		<div v-else v-html="element.data.text"></div>
 	</div>
 </template>
 
