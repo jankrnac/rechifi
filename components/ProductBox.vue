@@ -3,7 +3,7 @@
 
 <li :key="product.source" class="relative">
     <div class="relative aspect-square block w-full overflow-hidden rounded-lg hover:-translate-y-1 transition">
-        <nuxt-img :src="product.cover ? product.cover : 'iem.webp'" alt="" class="pointer-events-none object-cover" densities="x1"/>
+        <nuxt-img :src="product.cover ? product.cover : 'iem.webp'" alt="" class="pointer-events-none object-cover" densities="x1" format="webp"/>
         <nuxt-link class="absolute inset-0" :to="product._path"></nuxt-link>
     </div>
 
