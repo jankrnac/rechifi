@@ -1,14 +1,17 @@
 <template>
 
     <div class="mx-auto lg:mt-32 grid grid-cols-1 gap-x-8 gap-y-20 md:grid-cols-2 lg:grid-cols-3 lg:mx-0 lg:max-w-none xl:grid-cols-4">
-        <template v-for="post in blogPosts" :key="post._path">
-            <BlogPostBox :post="post" />
+        <template v-for="post in blogPosts.concat(reviews).sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at))" :key="post._path">
+            <BlogPostBox v-if="post._type == 'markdown'" :post="post" />
+            <ReviewBox v-else :review="post"/>
         </template>
     </div>
     
 </template>
 
 <script setup>
+
+    const client = useSupabaseClient()
   
     const { data:blogPosts } = await useAsyncData('posts', () => queryContent('/blog')
         .sort({ date: 1 }) // show latest articles first
@@ -16,5 +19,11 @@
         .where({ visible: { $ne: false } })
         .find() 
     )
+
+    const { data:reviews } = await useAsyncData('reviews', async () => {
+        const { data } = await client.from('reviews').select(`id, title, description, model, brand, slug, cover, created_at, published, profiles (username)`).eq('published', true).order('created_at')
+
+        return data
+    })
 
 </script>

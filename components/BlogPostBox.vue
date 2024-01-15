@@ -1,7 +1,7 @@
 <template>
 
-<article class="flex flex-col items-start justify-between">
-
+<article class="flex items-start flex-col">
+    <Label class="mb-2">{{ post.label }}</Label>
     <div class="relative w-full overflow-hidden">
         <nuxt-img :src="post.cover" alt="" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" width="480" height="480" densities="x1"/>
         <nuxt-link v-if="post.label == 'article'" :to="post._path" class="absolute inset-0"></nuxt-link>
@@ -9,11 +9,14 @@
 
     </div>
     
-    <div class="max-w-xl mt-2">
+    <div class="mt-2">
 		<div class="flex justify-between items-center">
-			<Label>{{ post.label }}</Label>
-            <time class="text-gray-500 text-sm">{{ new Date(post.date).toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'}) }}</time>
-		</div>
+            <div></div>
+            <div class="text-gray-500 dark:text-gray-200 text-sm italic flex items-center justify-center">
+                <IconsCalendar class="w-4 h-4 mr-1" />
+                {{ new Date(post.created_at).toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'}) }}
+            </div>		
+        </div>
 
     
         <div class="group relative">
@@ -22,7 +25,7 @@
                 <nuxt-link v-if="post.label == 'headphones'" :to="post.link" class="text">{{ post.title }}</nuxt-link>
 
             </h3>
-            <p class="mt-5 line-clamp-4 text-base leading-6">{{ post.description }}</p>
+            <p class="mt-5 line-clamp-5 text-sm leading-6">{{ post.description }}</p>
         </div>
          
     </div>
