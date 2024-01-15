@@ -4,7 +4,7 @@
 
         <!-- Left -->
         <div class="basis-1/3 flex-1 rounded-xl overflow-hidden mb-6 md:mb-0 flex justify-center">
-            <nuxt-img :src="image" class="max-w-full max-h-full rounded-xl" :modifiers="{ format: 'webp'}" densities="x1" />
+            <nuxt-img :src="image" class="max-w-full max-h-full rounded-xl" format='webp' densities="x1" />
         </div>
 
         <!-- Right -->

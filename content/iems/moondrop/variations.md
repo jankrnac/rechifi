@@ -31,7 +31,7 @@ cover: /moondrop/variations/image1.webp
 
 ---
 
-::ImageText
+::image-text
 ---
 image: moondrop/variations/image1.webp
 ---
@@ -56,7 +56,7 @@ force of the electrostatic field to produce sound.
 
 ::
 
-::ImageText
+::image-text
 ---
 image: moondrop/variations/image2.jpg
 ---

@@ -2,7 +2,7 @@
 
 <li class="relative flex justify-between items-center gap-x-6 py-5">
     <div class="flex items-center min-w-0 gap-x-4">
-        <nuxt-img class="h-24 w-24 flex-none rounded-full bg-gray-50 mr-6" :src="upcoming.cover" alt="" densities="x1"/>
+        <nuxt-img class="h-24 w-24 flex-none rounded-full bg-gray-50 mr-6" :src="upcoming.cover" alt="" densities="x1" format="webp"/>
         <div class="min-w-0 flex-auto">
 
             <p class="text-xl leading-6mb-2">
