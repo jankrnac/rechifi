@@ -2,11 +2,11 @@
 
 <header>
     <nav class="flex items-center p-6" aria-label="Global">
-        <div class="flex mr-0 lg:mr-6">
-          	<nuxt-link to="/" class="flex items-center">
+        <div class="flex mr-0 lg:mr-6 flex-1 md:grow-0">
+          	<nuxt-link to="/" class="flex items-center ">
             	<span class="sr-only">Your Company</span>
             	<Logo class="w-12 h-12 mr-6" />
-				<h1 class="hidden 2xl:flex text-2xl">
+				<h1 class="2xl:flex text-2xl">
 					<span class="font-bold">Rechifi.</span> 
 					<span class="font-playfair -mt-0.5">com</span>
 				</h1>
@@ -19,7 +19,7 @@
         </div>
 
         <!-- Search -->
-        <div class="flex-1 mr-2 lg:mr-6 2xl:mr-24 relative">
+        <div class="hidden md:block flex-1 mr-2 lg:mr-6 2xl:mr-24 relative">
 			<IconsSearch class="w-5 h-5 absolute top-3.5 left-4 text-gray-400 hidden lg:block" />
             <input 	class="bg-gray-50 p-3 pl-4 lg:pl-12 rounded-lg border w-full text-sm lg:text-base dark:bg-gray-800 dark:border-gray-700" 
 					type="text" 
@@ -117,7 +117,17 @@
 			
 			<div class="mt-6 flow-root">
 			<div class="-my-6 divide-y divide-gray-500/10">
-				
+			
+					<!-- Search -->
+					<div class="block flex-1 relative mt-10">
+					<IconsSearch class="w-5 h-5 absolute top-3.5 left-4 text-gray-400 hidden lg:block" />
+					<input 	class="bg-gray-50 p-3 pl-4 lg:pl-12 rounded-lg border w-full text-sm lg:text-base dark:bg-gray-800 dark:border-gray-700" 
+							type="text" 
+							:placeholder="t('search-placeholder')"
+							v-model="query"
+							@keypress.enter="search()"
+						/>
+				</div>
 				<!-- Navigation section -->
 				<div class="space-y-2 py-6">
 					<a v-for="item in navigation" :key="item.name" :href="item.href" class="block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50">{{ t(item.name) }}</a>

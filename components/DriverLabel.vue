@@ -1,5 +1,5 @@
 <template>
-<div class="capitalize rounded-xl flex items-center justify-center font-semibold"
+<div class="capitalize rounded-xl flex items-center justify-center font-semibold text-xs lg:text-sm"
     :class="{
         'border-orange-500': slots.default()[0].children.includes('DD'),
         'border-green-500' :slots.default()[0].children.includes('planar'),
