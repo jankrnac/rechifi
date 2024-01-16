@@ -15,7 +15,73 @@
 		
         <!-- Navigation links -->
         <div class="hidden xl:flex gap-x-6 mr-8 xl:gap-x-12 2xl:mx-20">
-          <nuxt-link v-for="item in navigation" :key="item.name" :to="item.href" class="text text-base leading-6">{{ t(item.name) }}</nuxt-link>
+			
+			<PopoverGroup class="hidden lg:flex lg:gap-x-12">
+
+				<nuxt-link to="/blog" class="text text-sm font-semibold leading-6">{{ t('articles') }}</nuxt-link>
+				<nuxt-link to="/reviews" class="text text-sm font-semibold leading-6">{{ t('reviews') }}</nuxt-link>
+
+				<Popover class="relative" v-slot="{ open,close }">
+					<div class="relative flex">
+						<PopoverButton 
+                                @mouseover="(e) => hoverPopover(e, open)"
+                                @mouseleave="closePopover(close)"
+                                class="border-transparent relative text-sm font-semibold leading-6 z-10 bg-transparent flex items-center outline-none duration-200 ease-out">
+                               <div class="h-full flex items-center">Products</div>
+                            </PopoverButton>
+				</div>
+
+				<transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-1" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
+					<PopoverPanel 
+						@mouseover.prevent="popoverHover = true"
+                        @mouseleave.prevent="closePopover(close)"
+						class="absolute left-1/2 z-[102] mt-5 flex w-screen max-w-sm -translate-x-1/2 px-4">
+						<div class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
+						<div class="p-2">
+							<div class="group relative flex items-center gap-x-6 rounded-lg p-2 hover:bg-gray-50">
+								<div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+									<IconsIem class="h-10 w-10 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
+								</div>
+								<div>
+									<nuxt-link to="/iems" class="font-semibold text-gray-900">
+										In-ear monitors
+										<span class="absolute inset-0" />
+									</nuxt-link>
+								</div>
+							</div>
+							<div class="group relative flex items-center gap-x-6 rounded-lg p-2 hover:bg-gray-50">
+								<div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+									<IconsDap class="h-10 w-10 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
+								</div>
+								<div>
+									<nuxt-link to="/iems" class="font-semibold text-gray-900">
+										Digital audio players
+										<span class="absolute inset-0" />
+									</nuxt-link>
+								</div>
+							</div>
+							<div class="group relative flex items-center gap-x-6 rounded-lg p-2 hover:bg-gray-50">
+								<div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+									<IconsDac class="h-10 w-10 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
+								</div>
+								<div>
+									<nuxt-link to="/iems" class="font-semibold text-gray-900">
+										DAC & AMP dongles
+										<span class="absolute inset-0" />
+									</nuxt-link>
+								</div>
+							</div>
+						</div>
+					
+						</div>
+					</PopoverPanel>
+				</transition>
+				</Popover>
+
+				<nuxt-link to="/reviews" class="text text-sm font-semibold leading-6">{{ t('upcoming') }}</nuxt-link>
+				<nuxt-link to="/sales" class="text text-sm font-semibold leading-6">{{ t('sales') }}</nuxt-link>
+
+			</PopoverGroup>
         </div>
 
         <!-- Search -->
@@ -128,6 +194,7 @@
 							@keypress.enter="search()"
 						/>
 				</div>
+				
 				<!-- Navigation section -->
 				<div class="space-y-2 py-6">
 					<a v-for="item in navigation" :key="item.name" :href="item.href" class="block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50">{{ t(item.name) }}</a>
@@ -208,6 +275,22 @@
 		await supabase.auth.signOut()
 
 		window.location.href="/"
+	}
+	
+	const popoverHover = ref(false)
+	const popoverTimeout = ref(null)
+
+	const hoverPopover = (e, open) => {
+	popoverHover.value = true
+	if (!open) e.target.parentNode.click()
+	}
+
+	const closePopover = (close) => {
+	popoverHover.value = false
+	if (popoverTimeout.value) clearTimeout(popoverHover.value)
+	popoverTimeout.value = setTimeout(() => {
+		if (!popoverHover.value) close()
+	}, 100)
 	}
 
 </script>
