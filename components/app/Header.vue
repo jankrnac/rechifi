@@ -54,7 +54,7 @@
 									<IconsDap class="h-10 w-10 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
 								</div>
 								<div>
-									<nuxt-link to="/iems" class="font-semibold text-gray-900">
+									<nuxt-link to="/daps" class="font-semibold text-gray-900">
 										Digital audio players
 										<span class="absolute inset-0" />
 									</nuxt-link>
@@ -65,7 +65,7 @@
 									<IconsDac class="h-10 w-10 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
 								</div>
 								<div>
-									<nuxt-link to="/iems" class="font-semibold text-gray-900">
+									<nuxt-link to="/dacs" class="font-semibold text-gray-900">
 										DAC & AMP dongles
 										<span class="absolute inset-0" />
 									</nuxt-link>
