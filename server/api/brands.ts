@@ -223,5 +223,11 @@ export default defineEventHandler((event) => {
             logo: 'ibasso/logo.png',
             link: ''
         },
+        {
+            value: 'hiby',
+            label: 'Hiby',
+            logo: 'hiby/logo.png',
+            link: ''
+        },
     ]
   })
