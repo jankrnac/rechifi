@@ -6,9 +6,8 @@
           	<nuxt-link to="/" class="flex items-center ">
             	<span class="sr-only">Your Company</span>
             	<Logo class="w-12 h-12 mr-6" />
-				<h1 class="2xl:flex text-2xl">
-					<span class="font-bold">Rechifi.</span> 
-					<span class="font-playfair -mt-0.5">com</span>
+				<h1 class="2xl:flex text-xl">
+					<span class="text-xl font-bold">Rechifi</span> 
 				</h1>
           	</nuxt-link>
         </div>

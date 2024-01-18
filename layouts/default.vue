@@ -61,4 +61,12 @@
 		@apply list-disc ml-6
 	}
 
+	@font-face {
+    font-family: "Audiowide";
+    src: local("Audiowide"),
+    url(assets/Audiowide-Regular.ttf) format("truetype");
+    font-display:swap
+}
+
+
 </style>

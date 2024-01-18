@@ -10,7 +10,8 @@ export default {
 		},
     	fontFamily: {
       		'playfair': ['"Playfair Display"'],
-      		'sans': ['Montserrat']
+      		'sans': ['Montserrat'],
+			'audiowide': ['Audiowide']
     	},
   	},
   	plugins: [],
