@@ -11,7 +11,6 @@ export default {
     	fontFamily: {
       		'playfair': ['"Playfair Display"'],
       		'sans': ['Montserrat'],
-			'audiowide': ['Audiowide']
     	},
   	},
   	plugins: [],

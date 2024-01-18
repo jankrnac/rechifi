@@ -27,5 +27,8 @@
     "node-html-parser": "^6.1.12",
     "vue-ellipse-progress": "^2.1.2",
     "vuedraggable": "^4.1.0"
+  },
+  "resolutions": {
+    "vue": "3.3.13"
   }
 }
