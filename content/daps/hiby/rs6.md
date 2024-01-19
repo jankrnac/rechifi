@@ -8,7 +8,7 @@ model: rs6
 
 brand: hiby
 
-priceRange: low
+priceRange: high
 
 releaseDate: 
 

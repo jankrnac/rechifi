@@ -1,20 +1,20 @@
 ---
 
-title: Hiby RS2
+title: Hiby FC3
 
 description: 
 
-model: rs2
+model: fc3
 
 brand: hiby
 
-priceRange: medium
+priceRange: low
 
 releaseDate: 
 
 released: true
 
-cover: /hiby/rs2/cover.webp
+cover: /hiby/fc3/cover.webp
 
 
 ---

@@ -1,6 +1,6 @@
 ---
 
-title: Hiby R6 II
+title: Hiby R6 III
 
 description: 
 
@@ -8,13 +8,13 @@ model: R6 ii
 
 brand: hiby
 
-priceRange: high
+priceRange: medium
 
 releaseDate: 
 
 released: true
 
-cover: /hiby/r6ii/cover.webp
+cover: /hiby/r6iii/cover.webp
 
 
 ---

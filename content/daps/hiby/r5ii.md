@@ -8,7 +8,7 @@ model: R5 ii
 
 brand: hiby
 
-priceRange: low
+priceRange: medium
 
 releaseDate: 
 

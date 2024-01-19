@@ -1,20 +1,20 @@
 ---
 
-title: Hiby RS2
+title: Hiby Zeta
 
 description: 
 
-model: rs2
+model: zeta
 
 brand: hiby
 
-priceRange: medium
+priceRange: high
 
 releaseDate: 
 
 released: true
 
-cover: /hiby/rs2/cover.webp
+cover: /hiby/zeta/cover.webp
 
 
 ---

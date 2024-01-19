@@ -1,10 +1,10 @@
 ---
 
-title: Hiby RS2
+title: Hiby Crystal 6 II
 
 description: 
 
-model: rs2
+model: crystal 6 ii
 
 brand: hiby
 
@@ -14,7 +14,7 @@ releaseDate:
 
 released: true
 
-cover: /hiby/rs2/cover.webp
+cover: /hiby/crystal6ii/cover.webp
 
 
 ---

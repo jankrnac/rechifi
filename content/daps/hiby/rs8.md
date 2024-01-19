@@ -8,7 +8,7 @@ model: rs8
 
 brand: hiby
 
-priceRange: low
+priceRange: high
 
 releaseDate: 
 
