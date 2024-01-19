@@ -5,9 +5,9 @@
         <div class="flex mr-0 lg:mr-6 flex-1 md:grow-0">
           	<nuxt-link to="/" class="flex items-center ">
             	<span class="sr-only">Your Company</span>
-            	<Logo class="w-12 h-12 mr-6" />
+            	<Logo class="w-10 h-10 mr-6 lg:w-12 lg:h-12" />
 				<h1 class="2xl:flex text-xl">
-					<span class="text-xl font-bold">Rechifi</span> 
+					<span class="text-xl font-bold tracking-wide"><span class="text-[#4dafda] font-semibold pr-0">Re</span><span>chifi</span></span> 
 				</h1>
           	</nuxt-link>
         </div>
@@ -77,7 +77,7 @@
 				</transition>
 				</Popover>
 
-				<nuxt-link to="/reviews" class="text text-sm font-semibold leading-6">{{ t('upcoming') }}</nuxt-link>
+				<nuxt-link to="/upcoming" class="text text-sm font-semibold leading-6">{{ t('upcoming') }}</nuxt-link>
 				<nuxt-link to="/sales" class="text text-sm font-semibold leading-6">{{ t('sales') }}</nuxt-link>
 
 			</PopoverGroup>
@@ -180,7 +180,7 @@
 			</button>
 			</div>
 			
-			<div class="mt-6 flow-root">
+			<div class="mt-2 flow-root">
 			<div class="-my-6 divide-y divide-gray-500/10">
 			
 					<!-- Search -->
@@ -196,7 +196,21 @@
 				
 				<!-- Navigation section -->
 				<div class="space-y-2 py-6">
-					<a v-for="item in navigation" :key="item.name" :href="item.href" class="block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50">{{ t(item.name) }}</a>
+					<div v-for="item in navigation" :key="item.name" :href="item.href" class="">
+						<a v-if="!item.children" :href="item.href" :class="[item.current ? 'bg-gray-50' : 'hover:bg-gray-50', 'block rounded-md py-2 p-2 text-sm leading-6 font-semibold text-gray-700']">{{ t(item.name) }}</a>
+						<Disclosure as="div" v-else v-slot="{ open }">
+							<DisclosureButton :class="[item.current ? 'bg-gray-50' : 'hover:bg-gray-50', 'flex items-center justify-between w-full text-left rounded-md p-2 text-sm leading-6 font-semibold text-gray-700']">
+							{{ t(item.name) }}
+							<IconsCaretDown :class="[open ? 'rotate-90 text-gray-500' : 'text-gray-400', 'h-5 w-5 shrink-0']" aria-hidden="true" />
+
+							</DisclosureButton>
+							<DisclosurePanel as="ul" class="mt-1 px-2">
+								<li v-for="subItem in item.children" :key="subItem.name">
+									<DisclosureButton as="a" :href="subItem.href" :class="[subItem.current ? 'bg-gray-50' : 'hover:bg-gray-50', 'block rounded-md py-2 pr-2 pl-5 text-sm leading-6 text-gray-700']">{{ t(subItem.name) }}</DisclosureButton>
+								</li>
+							</DisclosurePanel>
+						</Disclosure>
+					</div>
 				</div>
 
 				<!-- User section -->
@@ -239,7 +253,7 @@
   
 <script setup>
 
-	import { Dialog, DialogPanel, Popover, PopoverButton, PopoverGroup, PopoverPanel } from '@headlessui/vue'
+	import { Dialog, DialogPanel, Popover, PopoverButton, PopoverGroup, PopoverPanel, Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
 	
 	const supabase = useSupabaseClient()
 	const user = useSupabaseUser()
@@ -251,7 +265,17 @@
 	const navigation = [
 		{ name: 'articles', href: '/blog' },
 		{ name: 'reviews', href: '/reviews' },
-		{ name: 'iems', href: '/iems' },
+		{ name: 'products', children: [
+			{
+				name: 'iems', href: '/iems',
+			},
+			{
+				name: 'daps', href: '/daps',
+			},
+			{
+				name: 'dacs', href: '/dacs',
+			}
+		]},
 		{ name: 'upcoming', href: '/upcoming' },
 		{ name: 'sales', href:"/sales" }
 	]
@@ -300,6 +324,9 @@
   articles: 'Articles'
   reviews: 'Reviews'
   iems: 'In-Ear Monitors'
+  daps: 'Digital audio players'
+  dacs: 'Digital audio converters'
+  products: 'Products'
   upcoming: 'Upcoming'
   search-placeholder: 'Search for articles and products'
   sales: 'Sales'
