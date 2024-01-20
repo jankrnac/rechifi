@@ -2,7 +2,12 @@
     
 <div class="max-w-app mx-auto flex-1 flex flex-col items-center justify-center">
 
-    <h1 class="text-3xl font-bold mb-6">Choose IEM model</h1>
+    <ul class="flex gap-6 lg:gap-12 mb-16">
+        <li><IconsIem class="w-20 h-20 lg:w-32 lg:h-32 cursor-pointer" :class="[type == 'iem' ? 'opacity-100' : 'opacity-40']" @click="type = 'iem'"/></li>
+        <li><IconsDap class="w-20 h-20 lg:w-32 lg:h-32 cursor-pointer" :class="[type == 'dap' ? 'opacity-100' : 'opacity-40']" @click="type = 'dap'" /></li>
+        <li><IconsDac class="w-20 h-20 lg:w-32 lg:h-32 cursor-pointer" :class="[type == 'dac' ? 'opacity-100' : 'opacity-40']" @click="type = 'dac'" /></li>
+    </ul>
+    <h1 class="text-3xl font-bold mb-6">Choose {{ type }} model</h1>
 
     <ModelCombobox v-if="!manualMode" v-model="headphone"/>
     <input v-else v-model="headphone" type="text" class="border rounded-lg px-5 py-4 w-[400px] text-sm dark:bg-gray-800 dark:border-gray-600 focus:outline-none" placeholder="Type the brand and model name"/>
@@ -27,6 +32,8 @@ definePageMeta({
 
 const page = ref({})
 const headphone = ref()
+
+const type = ref('iem')
 
 const updatePage = (data) => {
     page.value = data

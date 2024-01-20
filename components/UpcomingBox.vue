@@ -2,27 +2,27 @@
 
 <li class="relative flex justify-between items-center gap-x-6 py-5">
     <div class="flex items-center min-w-0 gap-x-4">
-        <nuxt-img class="h-24 w-24 flex-none rounded-full bg-gray-50 mr-6" :src="upcoming.cover" alt="" densities="x1" format="webp"/>
+        <nuxt-img class="h-24 w-24 flex-none rounded-full mr-6" :src="upcoming.cover" alt="" densities="x1" format="webp"/>
         <div class="min-w-0 flex-auto">
 
             <p class="text-xl leading-6mb-2">
                 <nuxt-link :to="upcoming._path" class="text">
                     <span class="absolute inset-x-0 -top-px bottom-0" />
-                    {{ upcoming.model }}
+                    {{ upcoming.title }}
                 </nuxt-link>
             </p>
             
-            <div class="capitalize">{{ upcoming.brand }}</div>
+            <Label class="uppercase mt-1" color="green">{{ upcoming._path.split('/')[1].slice(0,-1) }}</Label>
         </div>
     </div>
 
     
     <div class="flex shrink-0 items-center gap-x-4">
         <div class="hidden sm:flex sm:flex-col sm:items-end">
-            <Label v-if="Date(upcoming.releaseDate) < Date.now()">Released</Label>
+            <Label v-if="upcoming.releaseDate">Released</Label>
             <Label v-else>Planned</Label>
             <p v-if="upcoming.releaseDate" class="mt-3 text-xl leading-5 font-bold">
-                <time :datetime="upcoming.releaseDate">{{upcoming.releaseDate}}</time>
+                {{ new Date(upcoming.releaseDate).toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'}) }}
             </p>
           </div>
     </div>

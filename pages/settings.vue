@@ -17,6 +17,7 @@
                             <div class="sm:col-span-full">
                                 <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">Username</label>
                                 <input type="text" name="username" id="name" class="border rounded px-4 py-2 w-full" :class="[usernameValid ? '':'bg-red-200']" v-model="profile.username"/>
+                                <div v-if="!usernameValid" class="text-xs mt-1">Username already taken</div>
                             </div>
 
                             <div class="sm:col-span-full">
@@ -44,7 +45,7 @@
                     </div>
     
                     <div class="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
-                          <Button :disabled="!usernameValid" color="green" :loading="pending">Save</Button>
+                          <Button :disabled="!usernameValid" color="green" :loading="pending" class="disabled:opacity-50">Save</Button>
                     </div>
     
                   </form>
@@ -109,7 +110,9 @@
     
     const usernameValid = ref(true)
 
-    watch(() => profile.value.username, (value) => {
-        console.log(value)
+    watch(() => profile.value.username, async (value) => {
+        const { data } = await client.from('profiles').select().neq('id', profile.value.id).eq('username',value)
+
+        usernameValid.value = !data.length
     })
 </script>

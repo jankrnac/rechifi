@@ -10,7 +10,9 @@ created_at: 2023-12-15
 
 cover: /article3/cover.webp
 
-label: headphones
+label: IEM
+
+type: product
 
 ---
 

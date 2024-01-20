@@ -229,5 +229,59 @@ export default defineEventHandler((event) => {
             logo: 'hiby/logo.png',
             link: ''
         },
+        {
+            value: 'aune',
+            label: 'Aune',
+            logo: '',
+            link: ''
+        },
+        {
+            value: 'shanling',
+            label: 'Shanling',
+            logo: '',
+            link: ''
+        },
+        {
+            value: 'acmee',
+            label: 'Acmee',
+            logo: '',
+            link: ''
+        },
+        {
+            value: 'xduoo',
+            label: 'xDuoo',
+            logo: '',
+            link: ''
+        },
+        {
+            value: 'e1da',
+            label: 'E1da',
+            logo: '',
+            link: ''
+        },
+        {
+            value: 'yinlvmei',
+            label: 'YinLvMei',
+            logo: '',
+            link: ''
+        },
+        {
+            value: 'xiaomi',
+            label: 'Xiaomi',
+            logo: '',
+            link: ''
+        },
+        {
+            value: 'lz-hifi-audio',
+            label: 'LZ HiFi Audio',
+            logo: '',
+            link: ''
+        },
+        {
+            value: 'trn',
+            label: 'TRN',
+            logo: '',
+            link: ''
+        },
     ]
   })

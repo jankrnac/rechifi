@@ -1,8 +1,11 @@
 <template>
 
 <article class="flex flex-col items-start justify-between">
-    <Label class="mb-2" color="orange">Review</Label>
 
+    <div class="flex gap-2">
+        <Label class="mb-2" color="orange">Review</Label>
+        <Label class="mb-2 uppercase" color="blue">{{review.type}}</Label>
+    </div>
     <div class="relative w-full  transition h-full flex items-center">
         
 

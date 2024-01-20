@@ -4,6 +4,32 @@
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
         <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">Sign in to your account</h2>
     </div>
+
+	<div v-if="loginError" class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+		<div class="rounded-md bg-red-50 p-4">
+			<div class="flex">
+				<div class="ml-3">
+					<p class="text-sm font-medium text-green-800">{{ loginError }}</p>
+				</div>
+				<div class="ml-auto pl-3">
+					<div class="-mx-1.5 -my-1.5">
+					<button v-if="loginError != 'Email not confirmed'" type="button" class="inline-flex rounded-md p-1.5 text-red-500 hover:bg-red-100">
+						<span class="sr-only">Dismiss</span>
+						<icons-cross class="h-5 w-5" aria-hidden="true" />
+					</button>
+					<button v-else type="button" 
+						class="inline-flex text-sm rounded-md p-1.5" @click="resendConfirmatioNEmail"
+						:class="[confirmationEmailSent ? 'text-red-500 bg-red-100 hover:bg-red-200' : 'bg-green-100 text-green-500']"
+					>
+						<span class="sr-only">Resend</span>
+						<span v-if="confirmationEmailSent">Sent</span>
+						<span v-else>Resend</span>
+					</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
   
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
     	<form class="space-y-6" action="#" method="POST" @submit.prevent="login">
@@ -60,11 +86,11 @@
   
 <script setup lang="ts">
 
-import crypto from 'crypto'
-
 const supabase = useSupabaseClient()
 const email = ref('')
 const password = ref('')
+
+const loginError = ref()
 
 const login = async () => {
     const { error } = await supabase.auth.signInWithPassword({
@@ -73,7 +99,7 @@ const login = async () => {
     })
 
     if (error) {
-		
+		loginError.value = error.message
 	}
 	else
 	{
@@ -81,7 +107,16 @@ const login = async () => {
 	}
 }
 
+const confirmationEmailSent = ref(false)
 
+const resendConfirmatioNEmail = async () => {
+	await supabase.auth.resend({
+		type: 'signup',
+		email: email.value
+	})
+
+	confirmationEmailSent.value = true
+}
 
 const handleSignInWithGoogle = () => {
 	supabase.auth.signInWithOAuth({

@@ -7,7 +7,7 @@
             	<span class="sr-only">Your Company</span>
             	<Logo class="w-10 h-10 mr-6 lg:w-12 lg:h-12" />
 				<h1 class="2xl:flex text-xl">
-					<span class="text-xl font-bold tracking-wide"><span class="text-[#4dafda] font-semibold pr-0">Re</span><span>chifi</span></span> 
+					<span class="text-xl font-bold tracking-wide"><span class="">Re</span><span>chifi</span></span> 
 				</h1>
           	</nuxt-link>
         </div>

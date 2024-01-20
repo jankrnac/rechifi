@@ -1,4 +1,4 @@
-import { serverSupabaseClient } from '#supabase/server'
+import { serverSupabaseClient, serverSupabaseUser } from '#supabase/server'
 
 export default eventHandler(async (event) => 
 {
@@ -10,6 +10,16 @@ export default eventHandler(async (event) =>
     .select()
     .eq('id', id)
     .single()
+
+    const user = await serverSupabaseUser(event)
+
+    if( !data ) {
+        const { data, error } = await client.from('profiles').insert({
+            id: user.id
+        })
+
+        return data
+    }
     
     return data
     

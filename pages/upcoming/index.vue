@@ -30,13 +30,13 @@ useSeoMeta({
 })
 
 
-      const upcomings = await queryContent('/iems')
+      const upcomings = await queryContent('/')
       
         .sort({ releaseDate: 1 }) // show latest articles first
       
         .where({ _partial: false }) // exclude the Partial files
 
-        .where({ released: false })
+        .where({ upcoming: true })
       
         .find()
         

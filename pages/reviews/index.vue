@@ -32,7 +32,7 @@ useSeoMeta({
     const client = useSupabaseClient()
 
     const { data:reviews } = await useAsyncData('reviews', async () => {
-        const { data } = await client.from('reviews').select(`id, title, description, model, brand, slug, cover, created_at, published, profiles (username)`).eq('published', true).order('created_at')
+        const { data } = await client.from('reviews').select(`id, title, description, model, brand, slug, cover, created_at, published, type, profiles (username)`).eq('published', true).order('created_at')
 
         return data
     })
