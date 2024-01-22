@@ -35,36 +35,36 @@
 						@mouseover.prevent="popoverHover = true"
                         @mouseleave.prevent="closePopover(close)"
 						class="absolute left-1/2 z-[102] mt-5 flex w-screen max-w-sm -translate-x-1/2 px-4">
-						<div class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
+						<div class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white dark:bg-gray-700 text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
 						<div class="p-2">
-							<div class="group relative flex items-center gap-x-6 rounded-lg p-2 hover:bg-gray-50">
-								<div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+							<div class="group relative flex items-center gap-x-6 rounded-lg p-2 hover:bg-gray-50 dark:hover:bg-gray-800">
+								<div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg">
 									<IconsIem class="h-10 w-10 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
 								</div>
 								<div>
-									<nuxt-link to="/iems" class="font-semibold text-gray-900">
+									<nuxt-link to="/iems" class="font-semibold">
 										In-ear monitors
 										<span class="absolute inset-0" />
 									</nuxt-link>
 								</div>
 							</div>
-							<div class="group relative flex items-center gap-x-6 rounded-lg p-2 hover:bg-gray-50">
-								<div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+							<div class="group relative flex items-center gap-x-6 rounded-lg p-2 hover:bg-gray-50 dark:hover:bg-gray-800">
+								<div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg">
 									<IconsDap class="h-10 w-10 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
 								</div>
 								<div>
-									<nuxt-link to="/daps" class="font-semibold text-gray-900">
+									<nuxt-link to="/daps" class="font-semibold">
 										Digital audio players
 										<span class="absolute inset-0" />
 									</nuxt-link>
 								</div>
 							</div>
-							<div class="group relative flex items-center gap-x-6 rounded-lg p-2 hover:bg-gray-50">
-								<div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+							<div class="group relative flex items-center gap-x-6 rounded-lg p-2 hover:bg-gray-50 dark:hover:bg-gray-800">
+								<div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg">
 									<IconsDac class="h-10 w-10 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
 								</div>
 								<div>
-									<nuxt-link to="/dacs" class="font-semibold text-gray-900">
+									<nuxt-link to="/dacs" class="font-semibold">
 										DAC & AMP dongles
 										<span class="absolute inset-0" />
 									</nuxt-link>
@@ -186,7 +186,7 @@
 					<!-- Search -->
 					<div class="block flex-1 relative mt-10">
 					<IconsSearch class="w-5 h-5 absolute top-3.5 left-4 text-gray-400 hidden lg:block" />
-					<input 	class="bg-gray-50 p-3 pl-4 lg:pl-12 rounded-lg border w-full text-sm lg:text-base dark:bg-gray-800 dark:border-gray-700" 
+					<input 	class="bg-gray-50 p-3 pl-4 lg:pl-12 rounded-lg border w-full text-sm focus:outline-none lg:text-base dark:bg-gray-800 dark:border-gray-700" 
 							type="text" 
 							:placeholder="t('search-placeholder')"
 							v-model="query"
@@ -197,16 +197,16 @@
 				<!-- Navigation section -->
 				<div class="space-y-2 py-6">
 					<div v-for="item in navigation" :key="item.name" :href="item.href" class="">
-						<a v-if="!item.children" :href="item.href" :class="[item.current ? 'bg-gray-50' : 'hover:bg-gray-50', 'block rounded-md py-2 p-2 text-sm leading-6 font-semibold text-gray-700']">{{ t(item.name) }}</a>
+						<a v-if="!item.children" :href="item.href" :class="[item.current ? 'bg-gray-50' : 'hover:bg-gray-50', 'block rounded-md py-2 p-2 text-sm leading-6 font-semibold']">{{ t(item.name) }}</a>
 						<Disclosure as="div" v-else v-slot="{ open }">
-							<DisclosureButton :class="[item.current ? 'bg-gray-50' : 'hover:bg-gray-50', 'flex items-center justify-between w-full text-left rounded-md p-2 text-sm leading-6 font-semibold text-gray-700']">
+							<DisclosureButton :class="[item.current ? 'bg-gray-50' : 'hover:bg-gray-50', 'flex items-center justify-between w-full text-left rounded-md p-2 text-sm leading-6 font-semibold']">
 							{{ t(item.name) }}
 							<IconsCaretDown :class="[open ? 'rotate-90 text-gray-500' : 'text-gray-400', 'h-5 w-5 shrink-0']" aria-hidden="true" />
 
 							</DisclosureButton>
 							<DisclosurePanel as="ul" class="mt-1 px-2">
 								<li v-for="subItem in item.children" :key="subItem.name">
-									<DisclosureButton as="a" :href="subItem.href" :class="[subItem.current ? 'bg-gray-50' : 'hover:bg-gray-50', 'block rounded-md py-2 pr-2 pl-5 text-sm leading-6 text-gray-700']">{{ t(subItem.name) }}</DisclosureButton>
+									<nuxt-link :to="subItem.href" :class="[subItem.current ? 'bg-gray-50' : 'hover:bg-gray-50', 'block rounded-md py-2 pr-2 pl-5 text-sm leading-6']" @click="mobileMenuOpen = false">{{ t(subItem.name) }}</nuxt-link>
 								</li>
 							</DisclosurePanel>
 						</Disclosure>

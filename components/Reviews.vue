@@ -2,7 +2,7 @@
 
 <div class="w-full">
 
-	<div class="flex justify-between items-center mb-4">
+	<div class="flex justify-between items-center mb-8">
 		<h2 class="text-xl font-bold">Reviews ({{ reviews.length }})</h2>
 	</div>
 

@@ -13,6 +13,9 @@ drivers:
 
 priceRange: low
 
+signature:
+    - v-shaped
+    - bass boost
 
 releaseDate: 27.11.2023
 
