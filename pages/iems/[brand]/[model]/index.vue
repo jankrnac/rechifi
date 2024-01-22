@@ -6,7 +6,7 @@
 
     <ContentDoc v-slot="{ doc }">
 
-        <nuxt-img :src="doc.brand +'/logo.webp'" width="150" class="mt-6" format="webp"/>
+        <nuxt-img :src="doc.brand +'/logo.webp'" sizes="120px md:150px" class="mt-6" format="webp"/>
 
         <h1 class="text-2xl lg:text-6xl font-bold mt-6 mb-16 flex items-center">
             {{ doc.title }}
@@ -15,7 +15,7 @@
         <div class="flex flex-col items-center justify-between mb-16 gap-y-16">
 
             <div>
-                <div class="text-center text-gray-500 text-sm mb-1">Driver configuration</div>
+                <div class="text-center text-gray-500 text-sm mb-2">Driver configuration</div>
                 <div v-if="doc.drivers && doc.drivers.length">
                     <div class="flex gap-3">
                         <DriverLabel v-for="driver in new Set(doc.drivers)" :driver="driver"></DriverLabel>
@@ -24,11 +24,11 @@
             </div>
 
             <div v-if="doc.signature">
-                <div class="text-center text-gray-500 text-sm mb-1">Sound signature</div>
+                <div class="text-center text-gray-500 text-sm mb-2">Sound signature</div>
 
                 <ul class="flex gap-3">
                     <li v-for="signature in doc.signature" 
-                        class="rounded-xl py-3.5 px-6 capitalize text-lg font-semibold text-gray-600"
+                        class="rounded-xl py-2.5 px-5 lg:py-3.5 lg:px-6 capitalize text-sm lg:text-lg font-semibold text-gray-600"
                         :class="{
                             'bg-yellow-200': signature == 'bright',
                             'bg-gray-200' : signature == 'neutral',
@@ -47,7 +47,7 @@
 
         </div>
 
-        <div class="mb-16 text-xl leading-8 max-w-app">{{ doc.description }}</div>
+        <div class="mb-16 lg:text-xl leading-8 max-w-app">{{ doc.description }}</div>
 
         <Reviews class="mb-12 max-w-app"/>
 

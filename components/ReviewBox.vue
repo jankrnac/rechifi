@@ -41,7 +41,7 @@
                     </div>
                     <div class="text-gray-500 dark:text-gray-200  italic flex items-center justify-center">
                         <IconsCalendar class="w-4 h-4 mr-1" />
-                        {{ new Date(review.created_at).toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'}) }}
+                        {{ new Date(review.created_at).toLocaleString('en-us',{month:'short', day:'numeric', year:'numeric'}) }}
                     </div>
                 </div>
             </div>
