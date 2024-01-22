@@ -18,7 +18,7 @@
 
 	<template v-else>
 
-		<div class="bg-gray-50 p-10 flex justify-center rounded-xl text-xl font-thin">No reviews yet</div>
+		<div class="bg-gray-50 dark:bg-gray-800 p-10 flex justify-center rounded-xl text-xl font-thin">No reviews yet</div>
 
 	</template>
 
