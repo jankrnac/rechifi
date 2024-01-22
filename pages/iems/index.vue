@@ -78,7 +78,7 @@ brands.value.sort((a, b) => {
 /***** Sorting *****/
 
 const sortOptions = [
-    { label: t('name'), value:'name' },
+    { label: t('name'), value:'title' },
     { label: t('releaseDate'), value: 'releaseDate' },
 ]
 

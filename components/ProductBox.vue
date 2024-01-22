@@ -3,7 +3,7 @@
 
 <li :key="product.source" class="relative">
     <div class="relative aspect-square block w-full overflow-hidden rounded-lg hover:-translate-y-1 transition">
-        <nuxt-img :src="product.cover ? product.cover : 'iem.webp'" alt="" class="pointer-events-none object-cover" densities="x1" format="webp"/>
+        <nuxt-img :src="product.cover ? product.cover : 'iem.webp'" alt="" class="pointer-events-none object-cover" densities="x1" format="webp" sizes="100px lg:351px"/>
         <nuxt-link class="absolute inset-0" :to="product._path"></nuxt-link>
     </div>
 
@@ -15,7 +15,7 @@
     
 
     <div v-if="product.released == true" class="flex gap-x-2 mb-1">
-        <DriverLabel size="small" class="my-1" v-for="driver in new Set(product.drivers)">{{ product.drivers.filter(e => e == driver).length > 1 ? product.drivers.filter(e => e == driver).length + ' ' + driver : driver }}</DriverLabel>
+        <DriverLabel size="small" class="my-1" v-for="driver in new Set(product.drivers)" :driver="driver"></DriverLabel>
     </div>
     
     <div v-if="product.released == false">Release date: <b class="font-bold">{{product.releaseDate}}</b></div>

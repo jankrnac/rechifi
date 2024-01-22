@@ -20,7 +20,14 @@
         </template>
     </div>
 
-
+    <div v-if="driver == 'BA'">
+        <template v-if="size == 'normal'">
+            Balanced armature
+        </template>
+        <template v-else>
+            BA
+        </template>
+    </div>
 
 </div>
 

@@ -20,7 +20,7 @@ released: true
 signature:
     - neutral
 
-cover: /aful/magicone/image1.webp
+cover: /aful/magicone/cover.webp
 
 stores:
     - aful: https://afulaudio.com/products/aful-magicone

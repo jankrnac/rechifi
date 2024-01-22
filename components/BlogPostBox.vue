@@ -6,8 +6,8 @@
 
     <div class="relative w-full overflow-hidden">
         <nuxt-img :src="post.cover" alt="" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" width="480" height="480" densities="x1"/>
-        <nuxt-link v-if="post.label == 'article'" :to="post._path" class="absolute inset-0"></nuxt-link>
-        <nuxt-link v-if="post.label == 'iem'" :to="post.link" class="absolute inset-0"></nuxt-link>
+        <nuxt-link v-if="post.type == 'article'" :to="post._path" class="absolute inset-0"></nuxt-link>
+        <nuxt-link v-if="post.type == 'product'" :to="post.link" class="absolute inset-0"></nuxt-link>
 
     </div>
     
