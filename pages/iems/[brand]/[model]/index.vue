@@ -37,7 +37,7 @@
 
             <div v-if="doc.drivers && doc.drivers.length">
                 <div class="flex gap-3">
-                    <DriverLabel v-for="driver in new Set(doc.drivers)">{{ doc.drivers.filter(e => e == driver).length > 1 ? doc.drivers.filter(e => e == driver).length + ' ' + driver : driver }}</DriverLabel>
+                    <DriverLabel v-for="driver in new Set(doc.drivers)" :driver="driver"></DriverLabel>
                 </div>
             </div>
 
