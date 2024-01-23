@@ -6,7 +6,7 @@
 
     <ContentDoc v-slot="{ doc }">
 
-        <nuxt-img :src="doc.brand +'/logo.webp'" sizes="120px md:150px" class="mt-6" format="webp"/>
+        <nuxt-img :src="doc.brand +'/logo.webp'" sizes="120px md:150px" class="mt-6" format="webp" />
 
         <h1 class="text-2xl lg:text-6xl font-bold mt-6 mb-16 flex items-center">
             {{ doc.title }}
