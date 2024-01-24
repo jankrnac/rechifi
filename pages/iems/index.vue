@@ -1,14 +1,10 @@
 <template>
 
 <div class="w-full">
-    <!-- Filters -->
     <div>
-
-        <!-- Mobile filter dialog -->
-        <GridsMobileFilters />
-
-        <!-- Desktop -->
         <div class="mx-auto max-w-3xl text-center lg:max-w-app">
+
+            <!-- Filters -->
             <div class="pb-10 mt-10 lg:mt-16 lg:pb-24">
                 <h1 class="text-3xl lg:text-6xl font-bold tracking-tigh">{{ t('iems') }}</h1>
                 <p class="text-center mx-auto mt-4 max-w-3xl text-lg lg:text-xl">{{t('slogan')}}</p>

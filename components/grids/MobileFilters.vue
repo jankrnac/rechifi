@@ -1,7 +1,7 @@
 <template>
 
 <TransitionRoot as="template" :show="open">
-<Dialog as="div" class="relative z-40 sm:hidden" @close="open = false">
+<Dialog as="div" class="relative z-40 sm:hidden" @close="setClose">
     <TransitionChild as="template" enter="transition-opacity ease-linear duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="transition-opacity ease-linear duration-300" leave-from="opacity-100" leave-to="opacity-0">
         <div class="fixed inset-0 bg-black bg-opacity-25" />
     </TransitionChild>
@@ -11,9 +11,9 @@
             <DialogPanel class="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-6 shadow-xl">
                 <div class="flex items-center justify-between px-4">
                     <h2 class="text-lg font-medium text-gray-900">Filters</h2>
-                    <button type="button" class="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500" @click="open = false">
+                    <button type="button" class="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500" @click="setClose">
                         <span class="sr-only">Close menu</span>
-                        <IconsCross class="h-6 w-6" aria-hidden="true" />
+                        <IconsCross class="h-6 w-6" aria-hidden="true" @click="setClose"/>
                     </button>
                 </div>
 
@@ -50,6 +50,30 @@
 import { Dialog,DialogPanel,Disclosure,DisclosureButton,DisclosurePanel, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue'
 import { Listbox,ListboxLabel ,Popover,PopoverButton,PopoverGroup,PopoverPanel,TransitionChild, TransitionRoot} from '@headlessui/vue'
 
+const props = defineProps({
+    modelValue: {
+        type: Boolean,
+        default: false
+    },
+    filters: {
+        type: Array
+    }
+})
+
 const open = ref(false)
+
+
+const setOpen = () => {
+    open.value = true
+}
+
+const setClose = () => {
+    open.value = false
+}
+
+defineExpose({
+    setOpen,
+    setClose
+})
 
 </script>

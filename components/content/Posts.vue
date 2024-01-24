@@ -13,7 +13,7 @@
 
     const client = useSupabaseClient()
   
-    const { data:blogPosts } = await useAsyncData('posts', () => queryContent('/blog')
+    const { data:blogPosts } = await useAsyncData(() => queryContent('/blog')
         .sort({ date: 1 }) // show latest articles first
         .where({ _partial: false }) // exclude the Partial files
         .where({ visible: { $ne: false } })

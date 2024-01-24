@@ -4,6 +4,9 @@
     <h2 id="filter-heading" class="sr-only">Product filters</h2>
 
     <div class="flex items-center justify-between">
+        
+        <!-- Mobile filter dialog -->
+        <GridsMobileFilters ref="mobileDialog" :filters="filters"/>
 
         <Listbox as="div" class="w-[200px] flex items-center" v-model="activeSortLocal">
             <ListboxLabel class="block text-sm font-medium leading-6 mr-2">Sort by:</ListboxLabel>
@@ -31,7 +34,7 @@
             </transition>
             </div>
         </Listbox>
-    <button type="button" class="inline-block text-sm font-medium sm:hidden" @click="open = true">Filters</button>
+    <button type="button" class="inline-block text-sm font-medium sm:hidden" @click="openMobileDialog">Filters</button>
 
     <PopoverGroup class="hidden sm:flex sm:items-baseline sm:space-x-8">
         <Popover as="div" v-for="(filter, filterIdx) in filters" :key="filter.name" :id="`desktop-menu-${filterIdx}`" class="relative inline-block text-left">
@@ -84,7 +87,10 @@ activeFilters.value.signature = useRoute().query.signature ?  useRoute().query.s
 activeFilters.value.drivers = useRoute().query.drivers ?  useRoute().query.drivers : []
 activeFilters.value.brand = useRoute().query.brand ?  useRoute().query.brand : []
 
-const open = ref(false)
+const mobileDialog = ref(null)
 
+const openMobileDialog = () => {
+    mobileDialog.value.setOpen()
+}
 
 </script>
