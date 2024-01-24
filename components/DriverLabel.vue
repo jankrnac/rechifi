@@ -1,31 +1,38 @@
 <template>
 <div class="capitalize rounded-xl flex items-center justify-center font-semibold"
     :class="{
-        'border-orange-500': driver == 'DD',
-        'border-green-500 dark:border-green-800': driver == 'BA',
-        'border-blue-500' : driver == 'Planar',
-        'border-teal-500' :driver == 'EST',
-        'px-4 py-2 text-sm border-4 lg:text-lg' : size == 'normal',
+        'border-orange-500': driver.type == 'DD',
+        'border-green-500 dark:border-green-800': driver.type == 'BA',
+        'border-blue-500' : driver .type== 'Planar',
+        'border-teal-500' :driver.type == 'EST',
+        'text-sm border-4 lg:text-lg' : size == 'normal',
         'px-2 py-1 text-sm border-[3px]' : size == 'small',
     }"
 >
 
-
-    <div v-if="driver == 'DD'">
+    <div class="flex">
         <template v-if="size == 'normal'">
-            Dynamic driver
+            <div v-if="driver.count > 1" class="bg-green-500 flex items-center" :class="{
+                'px-3' : size == 'normal'
+            }">
+                {{  driver.count }}
+            </div>
+            <div :class="{
+                'px-4 py-2' : size == 'normal'
+            }">
+                <template v-if="driver.type == 'DD'">Dynamic driver</template>
+                <template v-if="driver.type == 'BA'">Balanced armature</template>
+            </div>
         </template>
         <template v-else>
-            DD
-        </template>
-    </div>
-
-    <div v-if="driver == 'BA'">
-        <template v-if="size == 'normal'">
-            Balanced armature
-        </template>
-        <template v-else>
-            BA
+            <div v-if="driver.count > 1" class="flex items-center" :class="{
+                'px-3' : size == 'normal',
+                'mr-0.5' : size == 'small'
+            }">
+                {{ driver.count }}
+            </div>
+            <template v-if="driver.type == 'DD'">DD</template>
+           <template v-if="driver.type == 'BA'">BA</template>
         </template>
     </div>
 
@@ -42,8 +49,8 @@ const props = defineProps({
         default: 'normal'
     },
     driver: {
-        type: String
-    }
+        type: Object
+    },
 })
 
 </script>

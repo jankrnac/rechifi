@@ -15,7 +15,7 @@
     
 
     <div v-if="product.released == true" class="flex gap-x-2 mb-1">
-        <DriverLabel size="small" class="my-1" v-for="driver in new Set(product.drivers)" :driver="driver"></DriverLabel>
+        <DriverLabel size="small" class="my-1" v-for="driver in new Set(product.drivers)" :driver="{type: driver, count: product.drivers.filter(e=>e == driver).length}"></DriverLabel>
     </div>
     
     <div v-if="product.released == false">Release date: <b class="font-bold">{{product.releaseDate}}</b></div>

@@ -18,7 +18,7 @@
                 <div class="text-center text-gray-500 dark:text-gray-300 text-sm mb-2">Driver configuration</div>
                 <div v-if="doc.drivers && doc.drivers.length">
                     <div class="flex gap-3">
-                        <DriverLabel v-for="driver in new Set(doc.drivers)" :driver="driver"></DriverLabel>
+                        <DriverLabel v-for="driver in new Set(doc.drivers)" :driver="{type: driver, count: doc.drivers.filter(e=>e == driver).length}"></DriverLabel>
                     </div>
                 </div>
             </div>
