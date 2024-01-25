@@ -1,6 +1,6 @@
 <template>  
 
-<div class="flex flex-1 flex-col items-center mx-auto leading-loose w-full">
+<div class="flex flex-1 flex-col items-center mx-auto leading-relaxed lg:leading-loose w-full">
     
 
 
@@ -10,7 +10,7 @@
             {{ doc.title }}
         </h1>
 
-        <div class="mb-8 md:mb-16 lg:text-lg leading-8 max-w-app">{{ doc.description }}</div>
+        <div class="mb-8 md:mb-16 lg:text-lg max-w-app">{{ doc.description }}</div>
 
         <div class="max-w-app rounded-xl overflow-hidden relative mb-8">
            <nuxt-img v-if="doc.hero" :src="doc.hero" format="webp" sizes="1500px" height="700px" densities="x1" fit="cover" />
@@ -36,7 +36,7 @@
             </div>
 
             <div v-if="doc.signature">
-                <ul class="flex flex-col md:flex-row items-start gap-3">
+                <ul class="flex flex-col md:flex-row items-end gap-3">
                     <li v-for="signature in doc.signature" 
                         class="rounded-xl py-2.5 px-5 lg:py-3 lg:px-6 capitalize text-sm lg:text-lg font-semibold text-gray-800"
                         :class="{
