@@ -2,14 +2,14 @@
 
 title: Aful MagicOne
 
-description: 
+description: After extensive research for over 3 years, AFUL has brought us the all-new MagicOne. They have developed a specially customized full-frequency balanced armature driver with premium materials and a meticulous construction process. AFUL has also implemented its newly developed technologies including SE-Math Electro-Acoustic Intermodulation, and Nautilius Acoustic Maze. These help the pair to achieve true high-resolution sound performance. Get the correct tone, and experience an exquisite sound with the AFUL MagicOne!
 
 model: MagicOne
 
 brand: aful
 
 drivers: 
-    - BA
+    - ba: 1
 
 priceRange: low
 
@@ -21,6 +21,8 @@ signature:
     - neutral
 
 cover: /aful/magicone/cover.webp
+
+hero: /aful/magicone/hero.webp
 
 stores:
     - aful: https://afulaudio.com/products/aful-magicone

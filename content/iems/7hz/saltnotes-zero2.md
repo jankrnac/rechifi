@@ -9,7 +9,7 @@ model: Saltnotes Zero:2
 brand: 7hz
 
 drivers: 
-    - DD
+    - dd: 1
 
 priceRange: low
 
@@ -22,6 +22,8 @@ releaseDate: 27.11.2023
 released: true
 
 cover: /7hz/zero2/featured.png
+
+hero: /7hz/zero2/hero.webp
 
 stores:
     - linsoul: https://www.linsoul.com/products/7hz-x-crinacle-zero-2

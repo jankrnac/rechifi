@@ -6,34 +6,44 @@
 
     <ContentDoc v-slot="{ doc }">
 
-        <nuxt-img :src="doc.brand +'/logo.webp'" sizes="120px md:150px" class="mt-6" format="webp" />
-
-        <h1 class="text-2xl lg:text-6xl font-bold mt-6 mb-16 flex items-center">
+        <h1 class="text-2xl lg:text-4xl font-bold mt-12 mb-6 md:mb-12">
             {{ doc.title }}
         </h1>
 
-        <div class="flex flex-col items-center justify-between mb-16 gap-y-16">
+        <div class="mb-8 md:mb-16 lg:text-lg leading-8 max-w-app">{{ doc.description }}</div>
 
-            <div>
-                <div class="text-center text-gray-500 dark:text-gray-300 text-sm mb-2">Driver configuration</div>
-                <div v-if="doc.drivers && doc.drivers.length">
-                    <div class="flex gap-3">
-                        <DriverLabel v-for="driver in new Set(doc.drivers)" :driver="{type: driver, count: doc.drivers.filter(e=>e == driver).length}"></DriverLabel>
+        <div class="max-w-app rounded-xl overflow-hidden relative mb-8">
+           <nuxt-img v-if="doc.hero" :src="doc.hero" format="webp" sizes="1500px" height="700px" densities="x1" fit="cover" />
+
+           <!--
+           <div class="absolute left-5 bottom-5">
+                <nuxt-img :src="doc.brand +'/logo.webp'" sizes="120px md:150px" class="mt-6" format="webp" />
+           </div>
+           -->
+        </div>
+
+   
+        <div class="flex w-full max-w-app items-start justify-between mb-16 md:mb-32">
+
+            <div v-if="doc.drivers && doc.drivers.length">
+                <div class="flex">
+                    <div class="flex flex-grow justify-center items-center">
+                    </div>
+                    <div class="flex flex-col md:flex-row items-start gap-3">
+                        <DriverLabel v-for="driver in doc.drivers" :driver="driver"></DriverLabel>
                     </div>
                 </div>
             </div>
 
             <div v-if="doc.signature">
-                <div class="text-center text-gray-500 dark:text-gray-300 text-sm mb-2">Sound signature</div>
-
-                <ul class="flex gap-3">
+                <ul class="flex flex-col md:flex-row items-start gap-3">
                     <li v-for="signature in doc.signature" 
-                        class="rounded-xl py-2.5 px-5 lg:py-3.5 lg:px-6 capitalize text-sm lg:text-lg font-semibold text-gray-600"
+                        class="rounded-xl py-2.5 px-5 lg:py-3 lg:px-6 capitalize text-sm lg:text-lg font-semibold text-gray-800"
                         :class="{
                             'bg-yellow-200': signature == 'bright',
                             'bg-gray-200 dark:bg-gray-800 dark:text-white' : signature == 'neutral',
                             'bg-gray-800 text-white' : signature == 'dark',
-                            'bg-orange-200' : signature == 'bass boost',
+                            'bg-orange-200' : signature == 'bass boost' || signature.includes('warm'),
                             'bg-green-400' : signature == 'v-shaped',
                             'bg-blue-200' : signature == 'u-shaped'
 
@@ -47,7 +57,6 @@
 
         </div>
 
-        <div class="mb-16 lg:text-xl leading-8 max-w-app">{{ doc.description }}</div>
 
         <Reviews class="mb-12 max-w-app"/>
 

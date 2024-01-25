@@ -9,7 +9,7 @@ model: X HBB Z300
 brand: blon
 
 drivers: 
-    - DD
+    - dd: 1
 
 priceRange: low
 
@@ -22,6 +22,8 @@ signature:
     - bass boost
 
 cover: /blon/x-hbb-z300/cover.webp
+
+hero: /blon/x-hbb-z300/hero.webp
 
 stores:
     - linsoul: https://www.linsoul.com/products/blon-x-hbb-z300

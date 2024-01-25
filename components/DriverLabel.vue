@@ -1,38 +1,43 @@
 <template>
-<div class="capitalize rounded-xl flex items-center justify-center font-semibold"
+<div class="capitalize rounded-xl flex shrink-0 items-center justify-center font-semibold overflow-hidden"
     :class="{
-        'border-orange-500': driver.type == 'DD',
-        'border-green-500 dark:border-green-800': driver.type == 'BA',
-        'border-blue-500' : driver .type== 'Planar',
-        'border-teal-500' :driver.type == 'EST',
-        'text-sm border-4 lg:text-lg' : size == 'normal',
+        'border-orange-500': Object.keys(driver)[0] == 'dd',
+        'border-green-500 dark:border-green-800': Object.keys(driver)[0] == 'ba',
+        'border-blue-500' : Object.keys(driver)[0]== 'planar',
+        'border-teal-500' :Object.keys(driver)[0] == 'est',
+        'text-sm border-2 lg:border-[3px] lg:text-lg' : size == 'normal',
         'px-2 py-1 text-sm border-[3px]' : size == 'small',
     }"
 >
 
     <div class="flex">
         <template v-if="size == 'normal'">
-            <div v-if="driver.count > 1" class="bg-green-500 flex items-center" :class="{
-                'px-3' : size == 'normal'
-            }">
-                {{  driver.count }}
-            </div>
             <div :class="{
                 'px-4 py-2' : size == 'normal'
             }">
-                <template v-if="driver.type == 'DD'">Dynamic driver</template>
-                <template v-if="driver.type == 'BA'">Balanced armature</template>
+                <span v-if="Object.values(driver)[0] > 1" class="mr-2">
+                {{ Object.values(driver)[0] }}
+                </span>
+                <template v-if="Object.keys(driver)[0] == 'dd'">Dynamic driver</template>
+                <template v-if="Object.keys(driver)[0] == 'ba'">Balanced armature</template>
+                <template v-if="Object.keys(driver)[0] == 'est'">Electrostatic driver</template>
+                <template v-if="Object.keys(driver)[0] == 'planar'">Planar</template>
+
             </div>
         </template>
         <template v-else>
-            <div v-if="driver.count > 1" class="flex items-center" :class="{
+            <div v-if="Object.values(driver)[0] > 1" class="flex items-center" :class="{
                 'px-3' : size == 'normal',
                 'mr-0.5' : size == 'small'
             }">
-                {{ driver.count }}
+                {{ Object.values(driver)[0] }}
             </div>
-            <template v-if="driver.type == 'DD'">DD</template>
-           <template v-if="driver.type == 'BA'">BA</template>
+            <template v-if="Object.keys(driver)[0] == 'dd'">DD</template>
+           <template v-if="Object.keys(driver)[0] == 'ba'">BA</template>
+           <template v-if="Object.keys(driver)[0] == 'est'">EST</template>
+           <template v-if="Object.keys(driver)[0] == 'planar'">Planar</template>
+
+
         </template>
     </div>
 

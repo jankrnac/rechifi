@@ -9,16 +9,14 @@ model: crystal 6 ii
 brand: hiby
 
 drivers: 
-    - BA
-    - BA
-    - BA
-    - BA
-    - BA
-    - BA
+    - ba: 6
 
 priceRange: medium
 
-releaseDate: 
+releaseDate:
+
+signature:
+    - neutral
 
 released: true
 
@@ -26,8 +24,7 @@ cover: /hiby/crystal6ii/cover.webp
 
 stores:
     - hiby: https://store.hiby.com/products/hiby-crystal-6-ii
-    - aliexpress: https://www.aliexpress.com/item/1005006223567646.html
-    - hangout: https://hangout.audio/products/zero2
+    - aliexpress: https://www.amazon.com/HiBy-Headphones-Customized-Detachable-Smartphones/dp/B0BVKKY3WF
 
 ---
 
