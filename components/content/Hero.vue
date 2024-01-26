@@ -2,6 +2,11 @@
 
    <!-- Featured post -->
    <article class="mb-12 lg:mb-24">
+    
+        <div class="flex justify-between items-center mb-2">
+            <Label>{{ type }}</Label>
+        </div>
+
         <div class="relative rounded-xl overflow-hidden shadow-xl mb-4">
         
         <!-- Bg -->
@@ -32,9 +37,6 @@
         
     </div>
 
-    <div class="flex justify-between items-center">
-        <Label>{{ type }}</Label>
-    </div>
 
     <section class="lg:w-full">
         <h1 class="text-xl lg:text-5xl mt-8 mb-8 font-bold">

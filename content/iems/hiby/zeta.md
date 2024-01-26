@@ -2,7 +2,7 @@
 
 title: Hiby Zeta
 
-description: The Most Revolutionary IEM Flagship. Tribrid IEM with 9 drivers per side. True 5-way crossover. 5-way independent acoustic chambers and tubing. Spatial harmonic enhancement structure
+description: The Most Revolutionary IEM Flagship. Tribrid IEM with 9 drivers per side. True 5-way crossover. 5-way independent acoustic chambers and tubing. Spatial harmonic enhancement structure. With the Zeta, HiBy has gone all-out in designing their best pair of in-ear monitors yet. In order to deliver top-quality performance, Zeta features a nine-driver tribrid configuration housing a combination of a dynamic, balanced armature, and electrostatic drivers on each side. Each driver has been configured precisely to produce every single detail in our music easily!! This configuration includes a 10mm liquid silicone surround dynamic driver, four high-performance Knowles and Sonion Balanced Armature drivers, and four high-performance 3rd-generation EST drivers from Sonion.
 
 model: zeta
 
@@ -27,30 +27,33 @@ cover: /hiby/zeta/cover.webp
 
 hero: /hiby/zeta/hero.webp
 
+stores:
+    - hiby: https://store.hiby.com/products/hiby-zeta
+    - hifigo: https://hifigo.com/products/hiby-zeta
+
 ---
 
 
 ::technical
 ---
 technicals:
-    - Frequency response range: 20HZ - 20KHz
-    - Impedance: 58.5 ohms
-    - Total Harmonic Distortion (THD): <3%
-    - Sensitivity: 102dB
-    - Driver: Balanced armature
-    - Driver Info: Co-designed with Sonion; 39AY dual bass BA1006 dual mid-high BA; E50DT dual tweeter BA
-    - Max input power: 50mW
+    - Frequency response range: 20HZ - 40KHz
+    - Impedance: 9 ohms
+    - Total Harmonic Distortion (THD): <13%
+    - Sensitivity: 112dB
+    - Max input power: 100mW
     - Earpiece material: High-strength epoxy resin
-    - Cable material: OCC copper
-    - Cable length: 120cm
-    - Cable Interface: Universal 0.78mm 2-pin gold plated cable sockets
+    - Cable material: Continuous crystal OFC copper (PCOCC)
+    - Cable length: 1.25m
+    - Cable Interface:  0.78mm Dual-pin / Detachable
 
 package: 
-    - HiBy Crystal 6 gen 2 IEMs (2 earpieces) 
-    - Stock earphone cable x 1
+    - HiBy Zeta
+    - Eartips
     - User Manual
-    - 3 sets x S/M/L sizes of eartips
-    - 3.5mm cable plug, 4.4mm cable plug
+    - 4.4mm earphone cable
+    - 2x Protection bag
+    - Nozzle cleaner
     - Custom IEM carry case by HiBy
 ---
 ::

@@ -2,7 +2,7 @@
 
 <article class="flex flex-col items-start justify-between">
 
-    <div class="flex gap-2">
+    <div v-if="useRoute().name != 'iems-brand-model'" class="flex gap-2">
         <Label class="mb-2" color="orange">Review</Label>
         <Label class="mb-2 uppercase" color="blue">{{review.type}}</Label>
     </div>
