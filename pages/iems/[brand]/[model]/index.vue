@@ -1,7 +1,6 @@
 <template>  
 
 <div class="flex flex-1 flex-col items-center mx-auto leading-relaxed lg:leading-loose w-full">
-    
 
 
     <ContentDoc v-slot="{ doc }">
