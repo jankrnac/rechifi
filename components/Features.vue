@@ -7,8 +7,8 @@
 	</div>
 
     <ul class="">
-        <li v-for="feature in features" class="flex items-center">
-            <IconsWave class="w-4 h-4 mr-2 text-gray-400" />
+        <li v-for="feature in features" class="flex items-start mb-2">
+            <div class="mr-2 shrink-0">-</div>
             {{ feature }}
         </li>
     </ul>
