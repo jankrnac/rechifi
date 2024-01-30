@@ -56,6 +56,7 @@
 
         </div>
 
+        <Features v-if="doc.features" :features="doc.features" />
 
         <Reviews class="mb-12 max-w-app"/>
 

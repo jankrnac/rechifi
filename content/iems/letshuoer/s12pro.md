@@ -9,7 +9,7 @@ model: S12 Pro
 brand: letshuoer
 
 drivers: 
-    - planar 
+    - planar: 1
 
 priceRange: low
 
@@ -18,54 +18,17 @@ signature:
     - v-shaped
     - bass boost
 
-releaseDate: 2022-06-10
+releaseDate: 2022-08-31
 
 released: true
 
-cover: /letshuoer/s12pro/image1.webp
+cover: /letshuoer/s12pro/cover.webp
 
-type: website
+hero: /letshuoer/s12pro/hero.webp
 
 ---
 
-
-::image-text
 ---
-image: /letshuoer/s12pro/jacks.webp
----
-## Swappable jacks on stockcable
-
-The stock cable of LETSHUOER S12 PRO is constructed with silver-plated monocrystalline copper, and 4 x
-98-strands cores are then weaved together. It is terminated in standard 0.78mm dual pin connectors, and the other end is a swappable jack with 2.5mm / 3.5mm /4.4mm jacks. 
-
-## Custom 14.8mm planar magnetic driver
-Custom 14.8mm large diaphragm driver with great details retrieval, punchy bass and clear trebles. 102db high sensitivity means
-that it can be easily driven to volume, be it a cell phone or dongle DACs.
-::
-
-::image-text
----
-image: /letshuoer/s12/image2.jpg
----
-
-## Five-axis machining process
-LETSHUOER S12 PRO’s aluminum chassis is shaped to have a snug fit in the concha. The finishing is smooth to the touch thanks to the five-axis CNC machining process. It’s strong, touch and without sharp edges. The chassis comes in a minimalistic profile, with not a lot of wiggle room within the acoustic chamber to minimize reverberation. Dual-pin receptacle is a separate piece protruded from the faceplate so that the irregular shape would not cause distortion.
-
-::
-
-
-::image-text
----
-image: /letshuoer/s12/image3.jpg
----
-
-## Balanced chassis design
-LETSHUOER S12 PRO’s chassis design is a continuation of the predecessor. Multiple vent holes on both sides are effective in alleviating negative pressure build up within the ear canal, and thus protecting the hearing. The independent rear acoustic chamber design makes channel matching to be more consistent. In terms of sound performance, the structural design of the front and rear acoustic chamber effectively discharges the pressure inside the chassis, thereby attaining a more natural sound.
-
-## Ergonomic design details
-The earphone connector protrudes slightly from the side of the IEM so the earhook on the cable can sit comfortably on the ear without twisting inwards. The receptor is slightly indented into the chassis to ensure product longevity as well.
-
-::
 
 ::Technical
 ---

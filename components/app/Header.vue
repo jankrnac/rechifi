@@ -313,7 +313,7 @@
 	if (popoverTimeout.value) clearTimeout(popoverHover.value)
 	popoverTimeout.value = setTimeout(() => {
 		if (!popoverHover.value) close()
-	}, 100)
+	}, 600)
 	}
 
 </script>

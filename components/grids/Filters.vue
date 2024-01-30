@@ -8,12 +8,12 @@
         <!-- Mobile filter dialog -->
         <GridsMobileFilters ref="mobileDialog" :filters="filters"/>
 
-        <Listbox as="div" class="w-[200px] flex items-center" v-model="activeSortLocal">
+        <Listbox as="div" class="w-[200px] flex items-center" v-model="activeSort">
             <ListboxLabel class="block text-sm font-medium leading-6 mr-2">Sort by:</ListboxLabel>
             <div class="relative flex-1">
     
             <ListboxButton class="relative w-full cursor-default rounded-md bg-white dark:bg-gray-800 dark:ring-gray-600 py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none  sm:text-sm sm:leading-6">
-                <span class="block truncate">{{ activeSortLocal.label }}</span>
+                <span class="block truncate">{{ activeSort.label }}</span>
                 <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                 <i class="h-5 w-5 text-gray-400" aria-hidden="true" />
                 </span>
@@ -66,9 +66,7 @@
 import { Listbox, ListboxLabel,ListboxButton, ListboxOptions, ListboxOption ,Popover,PopoverButton,PopoverGroup,PopoverPanel} from '@headlessui/vue'
 
 const props = defineProps({
-    activeSort: {
-        type: Object
-    },
+
     sortOptions:{
         type: Array
     },
@@ -77,9 +75,11 @@ const props = defineProps({
     }
 })
 
-const activeSortLocal = ref(props.activeSort)
-
 const activeFilters = useState('activeFilters', () => {
+    return {}
+})
+
+const activeSort = useState('activeSort', () => {
     return {}
 })
 

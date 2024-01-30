@@ -18,7 +18,6 @@
                 :sort-options="sortOptions" 
                 :active-sort="activeSort" 
                 :filters="filters"
-                @change="filterChange"
             />
             
         </div>
@@ -78,7 +77,8 @@ const sortOptions = [
     { label: t('releaseDate'), value: 'releaseDate' },
 ]
 
-const activeSort = ref(sortOptions[0])
+
+const activeSort = useState('activeSort', () => sortOptions[0])
 
 const sortPayload = computed(() => {
     return {
