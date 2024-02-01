@@ -22,7 +22,10 @@ signature:
 
 cover: /moondrop/aria2/cover.webp
 
-hero: /moondrop/aria2/hero.webp
+images:
+    - moondrop/aria2/image1.webp
+    - moondrop/aria2/image2.webp
+    - moondrop/aria2/image3.webp
 
 shops:
 
@@ -30,20 +33,20 @@ shops:
 ::technical
 ---
 technicals:
-    - Frequency response: 20-40kHz
-    - Impedance: 30Ω
-    - Driver: 14.8mm planar driver + 6mm passive filtering module
-    - Sensitivity: 106dB/mW
-    - Cable length: 1.2m 216 strands silver-plated monocrystalline
-    - Material od faceplate: Anodized aluminium
+    - Frequency response: 16-22kHz
+    - Impedance: 33Ω
+    - THD+N: THD ≤0.05% (@1kHz)
+    - Sensitivity: 122dB/Vrms
+    - Cavity Material: Zinc Alloy Cavity + Brass Nozzle
+    - Plug: 3.5mm single ended
 
 package: 
-    - IEM S15
-    - Instrucation sheet
-    - 3x Detachable connector
-    - Cable
-    - Waranty card
-    - Storage box
-    - Ear tips in two types, 3 size each
+    - Aria 2 
+    - Earphone Cables 
+    - 3.5mm Plug
+    - 4.4mm Plug
+    - Eartips
+    - Storage Case
+    - User Manual
 ---
 ::

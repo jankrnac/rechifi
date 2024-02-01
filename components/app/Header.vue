@@ -97,15 +97,10 @@
         <!-- Right header -->
         <div class="flex justify-end">
 			<div class="hidden lg:flex">
-				<ClientOnly>
+				
 					<IconsSun v-if="colorMode.preference == 'dark'" class="w-6 h-6 mr-5 cursor-pointer"  @click="setColorMode('light')"/>
 					<IconsMoon v-else class="w-6 h-6 cursor-pointer mr-5"  @click="setColorMode('dark')"/>
-					<template #fallback>
-						<IconsMoon class="w-6 h-6 cursor-pointer mr-5" />
-						<IconsUser class="w-6 h-6" />
-
-					</template>
-				
+			
 
 					<PopoverGroup class="flex gap-x-12">
 						<Popover class="relative">
@@ -147,7 +142,7 @@
 						</transition>
 						</Popover>
 					</PopoverGroup>
-				</ClientOnly>
+				
 			</div>
 
 			<!-- Mobile only, hamburger -->
@@ -163,7 +158,7 @@
 
       </nav>
 	  
-	  <ClientOnly>
+
 		
 		<Dialog as="div" class="xl:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
 		<div class="fixed inset-0 z-10" />
@@ -245,7 +240,6 @@
 			</div>
 		</DialogPanel>
 		</Dialog>
-	</ClientOnly>
 
 </header>
 

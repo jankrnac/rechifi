@@ -27,7 +27,7 @@ const user = useSupabaseUser()
 const client = useSupabaseClient()
 
 const { data:reviews } = await useAsyncData('reviews', async () => {
-    const { data } = await client.from('reviews').select(`id, model, brand, slug, cover, created_at, profiles (username)`).eq('profile_id', user.value.id).order('created_at')
+    const { data } = await client.from('reviews').select(`id, model, brand, slug, cover, published, created_at, type, profiles (username)`).eq('profile_id', user.value.id).order('created_at')
 
     return data
 })

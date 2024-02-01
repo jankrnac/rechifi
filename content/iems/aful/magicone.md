@@ -22,7 +22,10 @@ signature:
 
 cover: /aful/magicone/cover.webp
 
-hero: /aful/magicone/hero.webp
+images:
+    - /aful/magicone/image1.webp
+    - /aful/magicone/image2.webp
+    - /aful/magicone/image3.webp
 
 stores:
     - aful: https://afulaudio.com/products/aful-magicone

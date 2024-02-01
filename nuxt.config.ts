@@ -25,6 +25,8 @@ export default defineNuxtConfig({
 		'@nuxt/image',
 		'@nuxtjs/i18n',
 		'@nuxtjs/supabase',
+		'vue3-carousel-nuxt',
+		'@nuxtjs/device',
 	],
 
 

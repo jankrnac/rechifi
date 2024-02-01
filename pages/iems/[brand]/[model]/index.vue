@@ -11,14 +11,31 @@
 
         <div class="mb-8 md:mb-16 max-w-app">{{ doc.description }}</div>
 
-        <div class="max-w-app rounded-xl overflow-hidden relative mb-8">
-           <nuxt-img v-if="doc.hero" :src="doc.hero" format="webp" sizes="1500px" height="700px" densities="x1" fit="cover" />
+        <!-- Hero -->
+        <div v-if="doc.hero" class="max-w-app rounded-xl overflow-hidden relative mb-8">
+           <nuxt-img :src="doc.hero" format="webp" sizes="1500px" height="700px" densities="x1" fit="cover" />
 
            <!--
            <div class="absolute left-5 bottom-5">
                 <nuxt-img :src="doc.brand +'/logo.webp'" sizes="120px md:150px" class="mt-6" format="webp" />
            </div>
            -->
+        </div>
+
+        <!-- Images -->
+        <div v-else class="flex gap-6 max-w-app overflow-hidden relative mb-8">
+
+            <template v-if="$device.isMobile">
+                <Carousel :items-to-show="1">
+                    <Slide v-for="slide in doc.images" :key="slide">
+                        <nuxt-img :src="slide" format="webp" sizes="480px" height="480px" densities="x1" fit="cover" class="rounded-lg"/>
+                    </Slide>
+                </Carousel>
+            </template>
+
+            <template v-else>
+                <nuxt-img v-for="image in doc.images" :src="image" format="webp" sizes="480px" height="480px" densities="x1" fit="cover" class="rounded-lg"/>
+            </template>
         </div>
 
    

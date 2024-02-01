@@ -13,14 +13,30 @@ drivers:
 
 priceRange: medium
 
-releaseDate:
+releaseDate: 2023-02-12
 
 signature:
     - neutral
 
 released: true
 
+features:
+    - Fully customize driver complement
+    - 3-way crossover design 
+    - Custom gold-traced crossover board
+    - Balanced tuning 
+    - Sandpainted custom faceplate
+    - 3D-printed high-strength
+    - Comfortable universal shell design 
+    - Universal cable interface
+    - Cable with quick-swap interchangeable plugs
+
 cover: /hiby/crystal6ii/cover.webp
+
+images:
+    - hiby/crystal6ii/image3.webp
+    - hiby/crystal6ii/image1.webp
+    - hiby/crystal6ii/image2.webp
 
 stores:
     - hiby: https://store.hiby.com/products/hiby-crystal-6-ii
