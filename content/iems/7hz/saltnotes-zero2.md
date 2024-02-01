@@ -11,6 +11,9 @@ brand: 7hz
 drivers: 
     - dd: 1
 
+driverTypes:
+    - dd 
+    
 priceRange: low
 
 signature:

@@ -1,6 +1,6 @@
 <template>
-<div v-if="activeFilters && (activeFilters.signature.length || activeFilters.brand.length || activeFilters.drivers.length)" class="text-left h-12">
-    <ul class="text-sm mb-4 flex gap-x-3">
+<div class="text-left h-12">
+    <ul  v-if="activeFilters && (activeFilters.signature.length || activeFilters.brand.length || activeFilters.drivers.length)" class="text-sm mb-4 flex gap-x-3">
         <template v-for="[key, values] of Object.entries(activeFilters)">
         <li v-if="values.length" class="flex items-center gap-1">
             <template v-if="values.length">
@@ -20,5 +20,6 @@
 <script setup>
 
 const activeFilters = useState('activeFilters')
+
 
 </script>

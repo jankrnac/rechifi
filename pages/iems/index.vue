@@ -12,6 +12,7 @@
             
             <!-- Active filters -->
             <GridsActiveFilters />
+            
 
             <!-- Filters -->
             <GridsFilters 
@@ -34,6 +35,7 @@
             </template>
         </ul>
     </div>
+
 </div>
 </template>
 
@@ -120,16 +122,22 @@ const filters = [
         id: 'drivers',
         name: 'Drivers',
         options: [
-            { value: 'DD', label: 'DD' },
+            { value: 'dd', label: 'DD' },
             { value: 'planar', label: 'Planar' },
-            { value: 'BA', label: 'BA' },
-            { value: 'EST', label: 'EST' },
+            { value: 'ba', label: 'BA' },
+            { value: 'est', label: 'EST' },
 
         ],
     },
 ]
 
-const activeFilters = useState('activeFilters')
+const activeFilters = useState('activeFilters', () => {
+    return {}
+})
+
+activeFilters.value.signature = useRoute().query.signature ?  [useRoute().query.signature].flat() : []
+activeFilters.value.drivers = useRoute().query.drivers ?  [useRoute().query.drivers].flat() : []
+activeFilters.value.brand = useRoute().query.brand ?  [useRoute().query.brand].flat() : []
 
 const signatureFilter = computed(() => {
     if (activeFilters.value && activeFilters.value.signature.length) return { $in: activeFilters.value.signature }
@@ -147,14 +155,15 @@ const brandFilter = computed(() => {
     return  {}
 })
 
-const filterChange = async () => {
+watch(activeFilters, async () => {
     
     await refresh()
 
     await navigateTo({ 
         path: useRoute().path,
         query: activeFilters.value
-})}
+    })
+},{ deep: true })
 
 
 /***** Products fetching data  *****/
@@ -165,7 +174,7 @@ const { data:headphones, refresh } = await useAsyncData('iems', () =>
     .where({ _partial: false }) // exclude the Partial files
 
     .where({ 'signature': signatureFilter.value })
-    .where({ 'drivers': driverFilter.value })
+    .where({ 'driverTypes': driverFilter.value })
     .where({ 'brand': brandFilter.value })
 
     .sort(sortPayload.value)

@@ -59,6 +59,7 @@
     </PopoverGroup>
     </div>
 </div>
+
 </template>
 
 <script setup>
@@ -75,17 +76,13 @@ const props = defineProps({
     }
 })
 
-const activeFilters = useState('activeFilters', () => {
-    return {}
-})
+const activeFilters = useState('activeFilters')
 
 const activeSort = useState('activeSort', () => {
     return {}
 })
 
-activeFilters.value.signature = useRoute().query.signature ?  useRoute().query.signature : []
-activeFilters.value.drivers = useRoute().query.drivers ?  useRoute().query.drivers : []
-activeFilters.value.brand = useRoute().query.brand ?  useRoute().query.brand : []
+
 
 const mobileDialog = ref(null)
 
