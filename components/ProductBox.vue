@@ -11,8 +11,10 @@
         {{ product.title }}
         <div v-if="product.new" class="text-xs bg-red-500 rounded px-1.5 py-1 ml-2 font-normal text-white">New</div>
     </div>
-    <p v-else class="pointer-events-none mt-2 block truncate text font-bold capitalize" :class="{'text-orange-500': product.released == false}">{{ product._dir + ' ' + product.title }}</p>
     
+    <p v-else class="pointer-events-none mt-2 block truncate text font-bold capitalize" :class="{'text-orange-500': product.released == false}">{{ product._dir + ' ' + product._path.split('/')[3] }}</p>
+    
+
 
     <div v-if="product.released == true" class="flex gap-x-2 mb-1">
         <DriverLabel size="small" class="my-1" v-for="driver in product.drivers" :driver="driver"></DriverLabel>

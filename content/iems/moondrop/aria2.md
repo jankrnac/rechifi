@@ -1,6 +1,6 @@
 ---
 
-title: Moondrop Aria 
+title: Moondrop Aria 2
 
 description: The Mid-range Superstar Returns! Trickle-down Flagship Product Technology advances in product technology power the latest in the Aria series! The Aria2 adopts the dynamic driver design of internal and external composite magnetic circuit + composite independent brass cavity that is used in mid-range competitors and provides a solid hardware acoustic foundation.
 
