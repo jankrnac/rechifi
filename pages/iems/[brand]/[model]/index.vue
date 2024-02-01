@@ -9,7 +9,7 @@
             {{ doc.title }}
         </h1>
 
-        <div class="mb-8 md:mb-16 lg:text-lg max-w-app">{{ doc.description }}</div>
+        <div class="mb-8 md:mb-16 max-w-app">{{ doc.description }}</div>
 
         <div class="max-w-app rounded-xl overflow-hidden relative mb-8">
            <nuxt-img v-if="doc.hero" :src="doc.hero" format="webp" sizes="1500px" height="700px" densities="x1" fit="cover" />
