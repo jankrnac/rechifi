@@ -28,6 +28,9 @@ hero: /blon/x-hbb-z300/hero.webp
 stores:
     - linsoul: https://www.linsoul.com/products/blon-x-hbb-z300
     - aliexpress: https://www.aliexpress.com/item/1005005476544092.html
+
+showInIndex: true
+
 ---
 ::technical
 ---

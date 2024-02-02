@@ -29,6 +29,8 @@ images:
 
 shops:
 
+showInIndex: true
+
 ---
 ::technical
 ---

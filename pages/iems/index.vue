@@ -176,6 +176,8 @@ const { data:headphones, refresh } = await useAsyncData('iems', () =>
     .where({ 'signature': signatureFilter.value })
     .where({ 'driverTypes': driverFilter.value })
     .where({ 'brand': brandFilter.value })
+    
+    .where({ 'showInIndex': true })
 
     .sort(sortPayload.value)
 

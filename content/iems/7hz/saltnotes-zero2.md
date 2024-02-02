@@ -33,6 +33,8 @@ stores:
     - aliexpress: https://www.aliexpress.com/item/1005006223567646.html
     - hangout: https://hangout.audio/products/zero2
 
+showInIndex: true
+
 ---
 
 

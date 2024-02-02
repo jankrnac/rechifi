@@ -27,6 +27,7 @@ hero: /kz/x-hbb-pr2/hero.webp
 stores:
     - aliexpress: https://www.aliexpress.com/item/1005005500764660.html
     
+showInIndex: true
 
 ---
 

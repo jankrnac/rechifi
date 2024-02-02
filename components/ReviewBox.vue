@@ -6,7 +6,8 @@
         <Label class="mb-2" color="orange">Review</Label>
         <Label class="mb-2 uppercase" color="blue">{{review.type}}</Label>
     </div>
-    <div class="relative w-full  transition h-full flex items-center">
+
+    <div class="relative w-full transition h-full flex items-center">
         
 
         <iframe v-if="review.type == 'youtube'" width="500" class="aspect-video rounded-xl" src="https://www.youtube.com/embed/YRZnahriSUE?si=1f3eV14oVdwKLvQR" 
@@ -17,17 +18,20 @@
         </iframe>
 
         <template v-else>
-            <nuxt-img v-if="review.cover" :src="review.cover" alt="" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" densities="x1" format="webp" width="480" height="480" />
+            <nuxt-img v-if="review.cover" :src="review.cover" alt="" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" densities="x1" format="webp" width="480" height="480" fit="contain" />
+            <nuxt-img v-else src="placeholder.webp" alt="" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" densities="x1" format="webp" width="480" height="480" />
+
             <nuxt-link :to="review._path" class="absolute inset-0"></nuxt-link>
     
             <nuxt-link :to="'/reviews/' + review.profiles.username + '/' + review.brand + '/' + review.model" class="absolute inset-0 flex"></nuxt-link>
-
+            
         </template>
 
     </div>
 
-    <div v-if="!review.published" class="mt-2">
-            <div class="rounded text-xs px-2 py-1 bg-gray-500 text-white">Unpublished</div>
+    <div class="mt-2" v-if="useRoute().name == 'reviews-my'">
+        <div v-if="!review.published" class="rounded text-xs px-2 py-1 bg-red-400 text-white">Unpublished</div>
+        <div v-else class="rounded text-xs px-2 py-1 bg-green-600 text-white">Published</div>
     </div>
 
     <div class="w-full mt-2">

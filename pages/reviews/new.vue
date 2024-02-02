@@ -7,9 +7,17 @@
         <li><IconsDap class="w-20 h-20 lg:w-32 lg:h-32 cursor-pointer" :class="[type == 'dap' ? 'opacity-100' : 'opacity-40']" @click="type = 'dap'" /></li>
         <li><IconsDac class="w-20 h-20 lg:w-32 lg:h-32 cursor-pointer" :class="[type == 'dac' ? 'opacity-100' : 'opacity-40']" @click="type = 'dac'" /></li>
     </ul>
+
+    <ul class="mb-12">
+        <li v-for="error in errors" class="bg-red-100 rounded-lg px-5 py-4">
+            {{ error }}
+        </li>
+    </ul>
+
     <h1 class="text-3xl font-bold mb-6">Choose {{ type }} model</h1>
 
-    <ModelCombobox v-if="!manualMode" v-model="headphone"/>
+    <ModelCombobox v-if="!manualMode" v-model="headphone" :model="type" />
+
     <input v-else v-model="headphone" type="text" class="border rounded-lg px-5 py-4 w-[400px] text-sm dark:bg-gray-800 dark:border-gray-600 focus:outline-none" placeholder="Type the brand and model name"/>
 
     <div v-if="!manualMode" class="text-sm mt-5 cursor-pointer flex items-center" @click="manualMode = true">Item not in list?
@@ -54,22 +62,46 @@ const slugify = (string) => {
 const client = useSupabaseClient()
 const user = useSupabaseUser()
 
+const errors = ref([])
+
 const save = async () => {
     
     const slug = Math.random().toString(36).substring(2,9)
 
-    if (headphone.value)
+    if (!manualMode.value)
     {
-        await client.from('reviews').insert({
-            slug: slug,
-            brand: slugify(headphone.value.brand),
-            model: slugify(headphone.value.model),
-            profile_id: user.value.id
-        })
+        const { data:temp } = await client.from('reviews').select()
+            .eq('brand', slugify(headphone.value.brand))
+            .eq('model', slugify(headphone.value.model))
+            .eq('profile_id', user.value.id)
 
-        const { data:profile } = await client.from('profiles').select().eq('id', user.value.id).single()
+            if (temp && temp.length)  
+            {
+                errors.value.push('You already wrote a review for this IEM')
+            }
+    }
 
-        await navigateTo(`/reviews/${profile.username}/${slugify(headphone.value.brand)}/${slugify(headphone.value.model)}`)
+    if (!errors.value.length)
+    {
+
+        if (headphone.value)
+        {
+
+            const brandPayload = manualMode.value ? slugify(headphone.value.split(' ')[0]) : slugify(headphone.value.brand)
+            const modelPayload = manualMode.value ? slugify(headphone.value.split(' ')[1]) : slugify(headphone.value.model)
+
+            await client.from('reviews').insert({
+                slug: slug,
+                brand: brandPayload,
+                model: modelPayload,
+                type: type,
+                profile_id: user.value.id
+            })
+
+            const { data:profile } = await client.from('profiles').select().eq('id', user.value.id).single()
+
+            await navigateTo(`/reviews/${profile.username}/${brandPayload}/${modelPayload}/edit`)
+        }
     }
 }
 

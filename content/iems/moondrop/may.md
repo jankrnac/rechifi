@@ -24,6 +24,7 @@ cover: /moondrop/may/cover.webp
 shops:
     - 
 
-wip: true
+showInIndex: true
+
 ---
 :Wip

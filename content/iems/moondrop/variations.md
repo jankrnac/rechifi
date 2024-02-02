@@ -27,6 +27,8 @@ signature:
 
 cover: /moondrop/variations/image1.webp
 
+showInIndex: true
+
 ---
 
 ::Technical

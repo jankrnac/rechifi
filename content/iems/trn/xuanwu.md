@@ -22,6 +22,7 @@ cover: /trn/xuanwu/cover.webp
 
 shops:
     - 
+showInIndex: true
 
 ---
 :wip

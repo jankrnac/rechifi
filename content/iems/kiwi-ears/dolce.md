@@ -27,6 +27,8 @@ hero: /kiwi-ears/dolce/hero.webp
 stores:
     - linsoul: https://www.linsoul.com/products/kiwi-ears-dolce
 
+showInIndex: true
+
 ---
 ::technical
 ---

@@ -42,6 +42,8 @@ stores:
     - hiby: https://store.hiby.com/products/hiby-crystal-6-ii
     - aliexpress: https://www.amazon.com/HiBy-Headphones-Customized-Detachable-Smartphones/dp/B0BVKKY3WF
 
+showInIndex: true
+
 ---
 
 

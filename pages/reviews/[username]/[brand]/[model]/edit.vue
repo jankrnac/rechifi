@@ -50,7 +50,7 @@
             <div>
                 <div class="mb-2 font-semibold text-sm">Cover</div>
                 <div class="relative w-[300px] group">
-                    <nuxt-img :src="review.cover ? review.cover : 'placeholder.webp'" width="300px" class="rounded-lg group"/>
+                    <nuxt-img :src="review.cover ? review.cover : 'placeholder.webp'" width="300px" height="300px" class="rounded-lg group"/>
 
                     <UploadSingle @uploaded="coverChanged" class="group-hover:flex hidden absolute inset-0 flex-col flex-1 justify-center items-center">
                         <div class="bg-gray-100/80 px-4 py-2 rounded-lg">Click to change image</div>

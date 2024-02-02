@@ -26,6 +26,8 @@ cover: /letshuoer/s12pro/cover.webp
 
 hero: /letshuoer/s12pro/hero.webp
 
+showInIndex: true
+
 ---
 
 ---

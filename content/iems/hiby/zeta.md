@@ -31,6 +31,8 @@ stores:
     - hiby: https://store.hiby.com/products/hiby-zeta
     - hifigo: https://hifigo.com/products/hiby-zeta
 
+showInIndex: true
+
 ---
 
 
