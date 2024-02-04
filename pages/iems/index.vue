@@ -84,7 +84,7 @@ const activeSort = useState('activeSort', () => sortOptions[0])
 
 const sortPayload = computed(() => {
     return {
-        [activeSort.value.value]:1
+        [activeSort.value.value]:activeSort.valuevalue == 'title' ? -1 : 1
     }
 })
 

@@ -1,6 +1,6 @@
 <template>
 
-    <div class="w-full max-w-app mb-24">
+<div>
 
         <div class="flex justify-center md:justify-start mb-8">
             <h2 class="text-xl font-bold">Features</h2>

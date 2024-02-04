@@ -13,7 +13,7 @@ drivers:
 
 priceRange: low
 
-releaseDate: 
+releaseDate: 2023-04-19
 
 released: true
 

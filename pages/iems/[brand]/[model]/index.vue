@@ -73,7 +73,13 @@
 
         </div>
 
-        <Features v-if="doc.features" :features="doc.features" />
+        <div class="flex flex-grow w-full max-w-app mb-24">
+            <Features v-if="doc.features" :features="doc.features" class="flex-grow"/>
+
+            <div class="flex flex-grow items-center justify-center">
+                <OverallRating />
+            </div>
+        </div>
 
         <Reviews class="mb-12 max-w-app"/>
 
