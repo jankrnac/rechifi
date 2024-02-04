@@ -1,6 +1,6 @@
 <template>
 
-<div class="bg-gray-800 text-white py-12 lg:py-24 lg:mt-36 flex justify-center -mx-4 md:mx-0 overflow-hidden">
+<div class="w-full bg-gray-800 text-white py-12 lg:py-24 lg:mt-36 flex justify-center -mx-4 md:mx-0 overflow-hidden">
     <div class="block md:flex flex-1 max-w-app gap-6 items-start justify-evenly flex-wrap">
         <div class="flex flex-col flex-1">
             <h2 class="text-2xl text-bold mb-6 w-full ml-4 md:ml-0">Technical details</h2>

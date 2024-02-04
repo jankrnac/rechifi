@@ -2,7 +2,7 @@
 
 title: 7HZ Saltnotes Zero:2
 
-description: 7HZ and their audio engineers are collaborating yet again, with the founder of In-Ear Fidelity and YouTuber, Crinacle. The 7HZ x Crinacle Zero:2 is an improved 10mm dynamic driver IEM with enhanced bass and midrange. It also comes with a better stock cable, thus offering a great audio experience at an affordable price.
+description: Once more, 7HZ and their team of audio engineers join forces, this time partnering with the founder of In-Ear Fidelity and YouTuber, Crinacle. Presenting the 7HZ x Crinacle Zero:2—an upgraded 10mm dynamic driver in-ear monitor (IEM) featuring enhanced bass and midrange. Notably, it includes an improved stock cable, providing an outstanding audio experience at a budget-friendly price.
 
 link: /iems/7hz/saltnotes-zero2
 
@@ -12,7 +12,9 @@ cover: /article3/cover.webp
 
 type: product
 
-label: article
+labels: 
+    - news
+    - IEM
 
 ---
 

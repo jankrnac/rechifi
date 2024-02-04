@@ -10,7 +10,9 @@ created_at: 2024-01-01
 
 cover: /article4/cover.webp
 
-label: IEM
+labels:
+    - news
+    - IEM
 
 type: product
 

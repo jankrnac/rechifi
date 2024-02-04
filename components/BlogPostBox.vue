@@ -2,7 +2,9 @@
 
 
 <article class="flex items-start flex-col">
-    <Label class="mb-2 capitalize">{{ post.label }}</Label>
+    <div class="flex gap-2">
+        <Label v-for="label in post.labels" class="mb-2 capitalize">{{ label }}</Label>
+    </div>
 
     <div class="relative w-full overflow-hidden">
         <nuxt-img :src="post.cover" alt="" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" width="480" height="480" densities="x1"/>

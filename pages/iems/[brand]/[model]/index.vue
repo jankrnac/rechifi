@@ -2,9 +2,6 @@
 
 <div class="flex flex-1 flex-col items-center mx-auto leading-relaxed lg:leading-loose w-full">
 
-
-    <ContentDoc v-slot="{ doc }">
-
         <h1 class="text-2xl lg:text-4xl font-bold mt-12 mb-6 md:mb-12">
             {{ doc.title }}
         </h1>
@@ -34,7 +31,15 @@
             </template>
 
             <template v-else>
-                <nuxt-img v-for="image in doc.images" :src="image" format="webp" sizes="480px" height="480px" densities="x1" fit="cover" class="rounded-lg"/>
+                <Carousel :items-to-show="3">
+                    <Slide v-for="slide in doc.images" :key="slide">
+                        <nuxt-img :src="slide" format="webp" sizes="480px" height="480px" densities="x1" fit="cover" class="rounded-lg"/>
+                    </Slide>
+                    <template #addons>
+                        <Navigation />
+                        <Pagination />
+                    </template>
+                </Carousel>
             </template>
         </div>
 
@@ -83,14 +88,16 @@
 
         <Reviews class="mb-12 max-w-app"/>
 
-        <div class="content w-full">
-            <ContentRenderer :value="doc"/>
-        </div>
+        <Technical v-if="doc.technicals && doc.technicals.length" :technicals="doc.technicals" :package="doc.package"/>
 
         <Stores v-if="doc.stores && doc.stores.length" :stores="doc.stores"/>
 
-    </ContentDoc>
-  
 </div>
 
 </template>
+
+<script setup>
+
+const { data:doc } = await useAsyncData('product', () => queryContent(useRoute().path).findOne())
+
+</script>

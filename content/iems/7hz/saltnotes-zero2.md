@@ -2,7 +2,7 @@
 
 title: 7hz Saltnotes Zero:2
 
-description: The rework of the legendary Salnotes Zero brings an upgraded 10mm dynamic driver IEM with enhanced bass and midrange, maintaining the original's tonal balance while adding 3dB more in low frequencies for a bass experience that is detailed as it is fun. Equipped with a brand new Dynamic Driver with a PU+Metal composite diaphragm, brand-new crossover circuitry, and materials for the case and cable; This is beyond just a simple retune- it’s a complete upgrade.
+description: The enhanced Salnotes Zero undergoes a transformation, featuring an improved 10mm dynamic driver in-ear monitor (IEM) that delivers heightened bass and midrange. The original's tonal balance is preserved, while an additional 3dB in low frequencies enhances the overall bass experience, ensuring both detail and enjoyment. With a new dynamic driver boasting a PU+Metal composite diaphragm, updated crossover circuitry, and upgraded materials for the case and cable, this goes beyond a mere retune—it represents a comprehensive upgrade.
 
 model: Saltnotes Zero:2
 
@@ -26,7 +26,17 @@ released: true
 
 cover: /7hz/zero2/featured.png
 
-hero: /7hz/zero2/hero.webp
+images: 
+    - /7hz/zero2/image4.webp
+    - /7hz/zero2/image2.webp
+    - /7hz/zero2/image3.webp
+    - /7hz/zero2/image1.webp
+
+features: 
+    - 7HZ x Crinacle collaboration
+    - More Bass, Keeping Tonal Excellence
+    - New 10mm Dynamic Driver
+    - Improved Custom Cable
 
 stores:
     - linsoul: https://www.linsoul.com/products/7hz-x-crinacle-zero-2
@@ -35,11 +45,6 @@ stores:
 
 showInIndex: true
 
----
-
-
-::technical
----
 technicals:
     - Frequency response range: 10HZ - 20KHz
     - Impedance: 32 ohms
@@ -52,4 +57,3 @@ package:
     - 1 x 7HZ x Crinacle Zero:2
     - User Manual
 ---
-::
