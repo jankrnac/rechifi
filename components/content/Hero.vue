@@ -11,12 +11,7 @@
         
         <!-- Bg -->
         <div class="w-full select-none relative">
-            <nuxt-img :src="bg" class="w-full" sizes="100vw lg:1500px" format="webp" densities="x1" width="1500" height="660"/>
-
-            <!-- Floating image -->
-            <div v-if="image" class="absolute w-1/2 lg:right-0 right-10 top-0 z-10 flex items-center h-full">
-                <nuxt-img :src="image" class="floating object-contain aspect-square" width="600" height="600" format="webp"/>
-            </div>
+            <nuxt-img :src="bg" sizes="100vw lg:1500px" format="webp" densities="x1" width="1500" height="660"/>
         </div>
 
         <!-- Overlay -->
@@ -53,22 +48,3 @@
 defineProps(['image','bg', 'type', 'link', 'subtitle','title', 'text', 'desc'])
 
 </script>
-
-<style scoped>
-
-@keyframes float {
-	0% {
-		transform: translatey(0px);
-	}
-	50% {
-		transform: translatey(-10px);
-	}
-	100% {
-		transform: translatey(0px);
-	}
-}
-
-.floating{
-    animation: float 4s ease-in-out infinite;
-}
-</style>
