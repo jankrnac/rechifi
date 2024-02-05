@@ -1,9 +1,9 @@
 <template>
 
-<div class="w-full bg-gray-800 text-white py-12 lg:py-24 lg:mt-36 flex justify-center -mx-4 md:mx-0 overflow-hidden">
+<div class="w-screen bg-gray-800 text-white py-12 lg:py-24 lg:mt-36 lg:flex justify-center overflow-hidden">
     <div class="block md:flex flex-1 max-w-app gap-6 items-start justify-evenly flex-wrap">
         <div class="flex flex-col flex-1">
-            <h2 class="text-2xl text-bold mb-6 w-full ml-4 md:ml-0">Technical details</h2>
+            <h2 class="text-2xl text-bold text-center lg:text-left mb-6 w-full md:ml-0">Technical details</h2>
 
             <table class="divide-gray-300 ">
 
@@ -19,7 +19,7 @@
         </div>
 
         <div class="flex flex-col flex-1 mt-12 lg:mt-0">
-            <h2 class="text-2xl text-bold mb-6 ml-4 lg:ml-0">Package content</h2>
+            <h2 class="text-2xl text-bold text-center lg:text-left mb-6 w-full md:ml-0">Package content</h2>
 
             <table class="divide-gray-300">
                 <tbody class="divide-y divide-gray-600">

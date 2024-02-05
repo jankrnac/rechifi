@@ -18,8 +18,8 @@
         <ProductsLabels :doc="doc" />
 
         <!-- Features and Rating -->
-        <div class="flex flex-grow w-full max-w-app mb-24">
-            <ProductsFeatures v-if="doc.features" :features="doc.features" class="flex-grow"/>
+        <div class="lg:flex flex-grow w-full max-w-app mb-24">
+            <ProductsFeatures v-if="doc.features" :features="doc.features" class="flex-grow mb-24 md:mb-0"/>
 
             <div class="flex flex-grow items-center justify-center">
                 <ProductsOverallRating :rating="rating"/>
