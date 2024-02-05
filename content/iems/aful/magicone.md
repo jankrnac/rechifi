@@ -32,6 +32,14 @@ stores:
     - aliexpress: https://www.aliexpress.com/item/1005006184207746.html
     - hifigo: https://hifigo.com/products/aful-magicone
 
+features:
+    - Self-Developed Wide-Frequency Response Balanced Armature Driver Unit.
+    - Innovative SE-Math Electro-Acoustic Intermodulation Technology.
+    - Nautilus Acoustic Maze Technology.
+    - Powerful & Massive Sound Signature.
+    - High-Purity Hybrid Stock Cable
+    - Easy to Drive.
+
 showInIndex: true
 
 ---
