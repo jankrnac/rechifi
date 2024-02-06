@@ -29,7 +29,7 @@
 
     </div>
 
-    <div class="mt-2" v-if="useRoute().name == 'reviews-my'">
+    <div class="mt-2 flex justify-between w-full" v-if="useRoute().name == 'reviews-my'">
         <div v-if="!review.published" class="rounded text-xs px-2 py-1 bg-red-400 text-white">Unpublished</div>
         <div v-else class="rounded text-xs px-2 py-1 bg-green-600 text-white">Published</div>
     </div>

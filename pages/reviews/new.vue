@@ -43,22 +43,6 @@ const headphone = ref()
 
 const type = ref('iem')
 
-const updatePage = (data) => {
-    page.value = data
-}
-
-const slugify = (string) => {
-  return string
-    .toString()
-    .trim()
-    .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^\w\-]+/g, "")
-    .replace(/\-\-+/g, "-")
-    .replace(/^-+/, "")
-    .replace(/-+$/, "");
-}
-
 const client = useSupabaseClient()
 const user = useSupabaseUser()
 
@@ -71,8 +55,8 @@ const save = async () => {
     if (!manualMode.value)
     {
         const { data:temp } = await client.from('reviews').select()
-            .eq('brand', slugify(headphone.value.brand))
-            .eq('model', slugify(headphone.value.model))
+            .eq('brand', useSlug(headphone.value.brand))
+            .eq('model', useSlug(headphone.value.model))
             .eq('profile_id', user.value.id)
 
             if (temp && temp.length)  
@@ -87,8 +71,8 @@ const save = async () => {
         if (headphone.value)
         {
 
-            const brandPayload = manualMode.value ? slugify(headphone.value.split(' ')[0]) : slugify(headphone.value.brand)
-            const modelPayload = manualMode.value ? slugify(headphone.value.split(' ')[1]) : slugify(headphone.value.model)
+            const brandPayload = manualMode.value ? useSlug(headphone.value.split(' ')[0]) : useSlug(headphone.value.brand)
+            const modelPayload = manualMode.value ? useSlug(headphone.value.split(' ')[1]) : useSlug(headphone.value.model)
 
             await client.from('reviews').insert({
                 slug: slug,

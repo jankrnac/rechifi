@@ -109,7 +109,7 @@
 						</PopoverButton>
 
 						<transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-1" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
-							<PopoverPanel v-slot="{ close }" class="absolute right-0 top-full z-[880] mt-3 w-screen max-w-xs overflow-hidden rounded-lg dark:bg-gray-700 shadow-lg ring-1 ring-gray-900/5">
+							<PopoverPanel v-slot="{ close }" class="absolute bg-white right-0 top-full z-[880] mt-3 w-screen max-w-xs overflow-hidden rounded-lg dark:bg-gray-700 shadow-lg ring-1 ring-gray-900/5">
 							<div class="p-2">
 
 								<!-- Guest -->

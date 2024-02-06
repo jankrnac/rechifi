@@ -1,11 +1,14 @@
 <template>
 
 <button 
-    class="rounded-lg relative overflow-hidden bg-green-500 px-4 py-2 font-semibold text-sm text-white" 
-    :disabled="!usernameValid"
-    :class="[
-
-    ]"
+    class="rounded-lg relative overflow-hidden font-semibold text-sm text-white curs" 
+    :class="{
+        'bg-gray-200' : color == 'gray',
+        'bg-red-500' : color == 'red',
+        'bg-green-500' : color == 'green',
+        'text-sm px-4 py-2' : size == 'normal',
+        'text-xs px-2 py-1' : size == 'tiny'
+    }"
 >
     <slot></slot>
 
@@ -23,6 +26,10 @@
 <script setup>
 
 const props = defineProps({
+    size: {
+        type: String,
+        default: "normal"
+    },
     color: {
         type: String,
         default: 'gray'

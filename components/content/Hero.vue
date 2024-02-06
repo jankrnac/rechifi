@@ -10,12 +10,12 @@
         <div class="relative rounded-xl overflow-hidden shadow-xl mb-4">
         
         <!-- Bg -->
-        <div class="w-full select-none relative">
+        <div class="w-full select-none relative z-[1]">
             <nuxt-img :src="bg" sizes="100vw lg:1500px" format="webp" densities="x1" width="1500" height="660"/>
         </div>
 
         <!-- Overlay -->
-        <div class="absolute inset-0 bg-gray-900 opacity-30 z-9"></div>
+        <div class="absolute inset-0 bg-gray-900 opacity-0 z-9"></div>
 
         <!-- Link -->
         <nuxt-link :to="link" class="block absolute inset-0 z-20"></nuxt-link>
