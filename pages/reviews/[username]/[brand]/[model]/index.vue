@@ -23,9 +23,11 @@
     </div>
 
     
-    <div class="w-full max-w-app mx-auto">
+    <div class="w-full max-w-app mx-auto mb-24">
 
         <Layout :elements="review.elements" />
+
+        <Comments />
 
     </div>
 
