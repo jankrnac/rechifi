@@ -6,6 +6,7 @@
         'bg-gray-200' : color == 'gray',
         'bg-red-500' : color == 'red',
         'bg-green-500' : color == 'green',
+        'bg-blue-500' : color == 'blue',
         'text-sm px-4 py-2' : size == 'normal',
         'text-xs px-2 py-1' : size == 'tiny'
     }"

@@ -27,7 +27,7 @@
 
         <Layout :elements="review.elements" />
 
-        <Comments />
+        <LazyComments />
 
     </div>
 
