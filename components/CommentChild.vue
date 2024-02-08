@@ -3,7 +3,7 @@
 <div>
 
 <div class="flex w-full mt-2 items-start">
-    <div class="mr-2 bg-white relative z-[55]">
+    <div class="mr-2 bg-white relative z-[55] text-gray-500">
         <IconsUser class="w-6 h-6" />
     </div>
     <div class="flex-grow">
