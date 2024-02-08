@@ -41,7 +41,7 @@
                 <div class="flex flex-1 justify-between gap-4 mt-1" :class="[size == 'normal' ? 'text-sm' : 'text-xs']">
                     <div class="text-gray-500 dark:text-gray-200 flex items-center justify-center">
                         <IconsUser class="w-4 h-4 mr-1" />
-                        <div class="font-semibold">{{ review.profiles.username }}</div>
+                        <nuxt-link :to="'/users/'+review.profiles.username" class="text font-semibold">{{ review.profiles.username }}</nuxt-link>
                     </div>
                     <div class="text-gray-500 dark:text-gray-200  italic flex items-center justify-center">
                         <IconsCalendar class="w-4 h-4 mr-1" />
