@@ -7,7 +7,7 @@
 		<div class="flex justify-center gap-4 text-sm">
 			<div class="text-gray-500 dark:text-gray-200 italic mt-2 flex items-center justify-center">
 				<IconsUser class="w-4 h-4 mr-1" />
-				{{  useRoute().params.username }}
+				<nuxt-link :to="'/users/' + useRoute().params.username" class="text">{{  useRoute().params.username }}</nuxt-link>
 			</div>
 			<div class="text-gray-500 dark:text-gray-200 italic mt-2 flex items-center justify-center">
 				<IconsCalendar class="w-4 h-4 mr-1" />
