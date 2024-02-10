@@ -1,5 +1,7 @@
 <template>
     <div class="mt-24">
+
+        <h2 class="font-bold text-3xl mb-6">Comments</h2>
         <ul class="mb-12 flex flex-col gap-3 relative">
             <li v-for="comment in useCreateTree(comments)" class="relative">
                 <CommentChild 
@@ -24,8 +26,8 @@ const client = useSupabaseClient()
 
 const { data:profile } = await useFetch('/api/users/' + user.value.id)
 
-const { data:comments } = await useAsyncData('comments', async () => {
-    const { data } = await client.from('comments').select('*, profiles(*)')
+const { data:comments } = await useLazyAsyncData('comments', async () => {
+    const { data } = await client.from('comments').select('*, profiles(*), likes(*)')
 
     return data
 })
