@@ -6,6 +6,10 @@
             <li v-for="comment in useCreateTree(comments)" class="relative">
                 <CommentChild 
                     :comment="comment" 
+                    @comment="addReply"
+                    @like="addLike"
+                    @dislike="removeLike"
+                    @delete="deleteComment"
                 />
             </li>
         </ul>
@@ -26,7 +30,7 @@ const client = useSupabaseClient()
 
 const { data:profile } = await useFetch('/api/users/' + user.value.id)
 
-const { data:comments } = await useLazyAsyncData('comments', async () => {
+const { data:comments } = await useAsyncData('comments', async () => {
     const { data } = await client.from('comments').select('*, profiles(*), likes(*)')
 
     return data
@@ -36,21 +40,46 @@ const text = ref()
 
 const addComment = async () => {
 
-    var comment =   {
+    var commentPayload =   {
         text: text.value,
         profile_id: user.value.id,
     }
 
-    await client.from('comments').insert(comment)
+    const {data:comment}  = await client.from('comments').insert(commentPayload).select().single()
 
     comment.profiles = {
-        username: profile.username
+        username: profile.value.username
     }
+
+    comment.likes = []
 
     comments.value.push(comment)
     
 }
 
+
+const addReply = async (reply) => {
+
+    reply.profiles = {
+        username: profile.value.username
+    }
+    reply.likes = []
+    comments.value.push(reply)
+
+}
+
+const addLike = async (data) => {
+    comments.value.find(e => e.id == data.comment.id).likes.push(data.like)
+}
+
+const removeLike = async (data) => {
+    const comment = comments.value.find(e => e.id == data.comment.id)
+    comment.likes.splice(comment.likes.findIndex(l => l.id == data.like.id),1)
+}
+
+const deleteComment = (comment) => {
+    comments.value.splice(comments.value.findIndex(e => e.id == comment.id), 1)
+}
 
 
 </script>

@@ -23,6 +23,7 @@
 				<Popover class="relative" v-slot="{ open,close }">
 					<div class="relative flex">
 						<PopoverButton 
+								:id="popoverId"
                                 @mouseover="(e) => hoverPopover(e, open)"
                                 @mouseleave="closePopover(close)"
                                 class="border-transparent relative text-sm font-semibold leading-6 z-10 bg-transparent flex items-center outline-none duration-200 ease-out">
@@ -104,7 +105,9 @@
 
 					<PopoverGroup class="flex gap-x-12">
 						<Popover class="relative">
-						<PopoverButton class="flex items-center gap-x-1 text-sm font-semibold leading-6 focus:outline-0">
+						<PopoverButton 
+							:id="popoverId"
+							class="flex items-center gap-x-1 text-sm font-semibold leading-6 focus:outline-0">
 							<IconsUser class="w-6 h-6" />
 						</PopoverButton>
 
@@ -255,6 +258,8 @@
 	const { t } = useI18n({
 		useScope: 'local'
 	})
+
+	const popoverId = useId()
 
 	const navigation = [
 		{ name: 'articles', href: '/blog' },
