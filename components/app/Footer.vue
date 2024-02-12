@@ -32,8 +32,7 @@ watch(locale, (value) => {
 
 const navigation = {
   main: [
-    { name: 'About Us', href: '/about' },
-    { name: 'Cookies', href: '/cookies' },
+ 
     { name: 'Privacy policy', href: '/privacy' },
   ],
   social: [

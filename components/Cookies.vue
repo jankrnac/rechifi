@@ -12,10 +12,9 @@
                 </div>
                 <div class="ml-3 w-0 flex-1 pt-0.5">
                   <p class="text-sm font-semibold text-gray-900">Cookies</p>
-                  <p class="mt-1 text-sm text-gray-500">This website collects cookies to deliver better user experience. We collect cookies to analyze our website traffic and performance; we never collect any personal data.</p>
+                  <p class="mt-1 text-sm text-gray-500">This website uses cookies that help the website function and to help us understand how to interact with it. We use these cookies to provide you with improved and customized user experience. If you continue to the use of the website, we assume that you are okay with it.</p>
                   <div class="mt-3 flex space-x-2">
-                    <button type="button" class="rounded-md border px-2 py-1 text-sm font-medium" @click="confirm">Accept</button>
-                    <nuxt-link to="/cookies" class="rounded-md border px-2 py-1 text-sm font-medium">Read more</nuxt-link>
+                    <button type="button" class="rounded-md px-2 py-1 text-sm font-medium bg-green-400 text-white" @click="confirm">Accept</button>
                   </div>
                 </div>
               </div>

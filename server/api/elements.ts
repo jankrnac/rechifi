@@ -54,6 +54,13 @@ export default defineEventHandler((event) => {
             },
         },
 
+        {
+            id: 8, type: 'gallery', caption: 'Gallery', data: {
+                images: []
+            },
+        },
+
+
 
 
     ]

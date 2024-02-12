@@ -71,6 +71,8 @@
         score: resolveComponent('ElementsScore'),
         section: resolveComponent('ElementsSection'),
         'image-text': resolveComponent('elements-image-text'),
+        gallery: resolveComponent('elements-gallery'),
+
     }
 
 </script>

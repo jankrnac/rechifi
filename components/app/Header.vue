@@ -327,7 +327,7 @@
   dacs: 'Digital audio converters'
   products: 'Products'
   upcoming: 'Upcoming'
-  search-placeholder: 'Search for articles and products'
+  search-placeholder: 'Search for articles, reviews, products and users'
   sales: 'Sales'
  cz:
   home: 'Domů'
