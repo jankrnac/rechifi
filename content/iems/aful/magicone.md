@@ -11,6 +11,9 @@ brand: aful
 drivers: 
     - ba: 1
 
+driverTypes: 
+    - ba
+
 priceRange: low
 
 releaseDate: 2023-10-31
@@ -42,11 +45,6 @@ features:
 
 showInIndex: true
 
----
-
-
-::technical
----
 technicals:
     - Frequency response range: 5HZ - 25KHz
     - Impedance: 38 ohms
@@ -61,4 +59,3 @@ package:
     - Black Metal Case
     - Various eartips
 ---
-::

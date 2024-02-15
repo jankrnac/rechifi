@@ -11,6 +11,9 @@ brand: blon
 drivers: 
     - dd: 1
 
+driverTypes:
+    - dd
+
 priceRange: low
 
 releaseDate: 2023-04-19
@@ -29,11 +32,13 @@ stores:
     - linsoul: https://www.linsoul.com/products/blon-x-hbb-z300
     - aliexpress: https://www.aliexpress.com/item/1005005476544092.html
 
+features:
+    - 10mm Silicone Diaphragm
+    - Durable Zinc Alloy Shell
+    - Detachable 4-core High Purity Copper Cable
+
 showInIndex: true
 
----
-::technical
----
 technicals:
     - Frequency response range: 5HZ - 25KHz
     - Impedance: 28 ohms
@@ -45,5 +50,5 @@ technicals:
 package: 
     - 1 x Blon X HBB Z300
     - User manual
+
 ---
-::

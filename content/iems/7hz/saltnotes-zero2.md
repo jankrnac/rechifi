@@ -20,7 +20,7 @@ signature:
     - v-shaped
     - bass boost
 
-releaseDate: 27.11.2023
+releaseDate: 2023-11-23
 
 released: true
 

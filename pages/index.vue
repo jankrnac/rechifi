@@ -10,9 +10,9 @@
 
 useSeoMeta({
     title: 'Rechifi - Chi-fi news and user reviews',
-    description: `Discover the epitome of audio excellence with our curated collection of Chinese audio. Immerse yourself in a world of superior sound quality,
-    sleek designs, and innovative technology. Explore reviews, comparisons, and expert insights to find the perfect audio companion for your unique preferences. Elevate your listening experience with the 
-    best in Chinese audio craftsmanship, only at Rechifi.com`
+    description: `Discover the epitome of audio excellence with our curated collection of Chi-fi audio news and user reviews. 
+    Explore reviews, comparisons, and user insights to find the perfect audio companion for your unique preferences. In the ever-changing world of Chi-Fi, one can easily become lost. 
+    But fear not, Rechifi is all you need to stay informed and make the best decisions to fully satisfy your audiophile needs.`
 })
 
 </script>

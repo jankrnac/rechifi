@@ -3,7 +3,7 @@
 <div class="flex flex-1 flex-col items-center mx-auto leading-relaxed lg:leading-loose w-full">
 
         <!-- Title -->
-        <ProductsTitle>{{ doc.title }}</ProductsTitle>
+        <ProductsTitle :doc="doc">{{ doc.title }}</ProductsTitle>
 
         <!-- Description -->
         <ProductsDescription>{{ doc.description }}</ProductsDescription>

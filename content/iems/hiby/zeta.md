@@ -10,12 +10,17 @@ brand: hiby
 
 priceRange: high
 
-releaseDate: 
+releaseDate: 2023-06-01
 
 drivers: 
     - est: 4
     - ba: 4
     - dd: 1
+
+driverTypes:
+    - est
+    - ba
+    - dd
 
 released: true
 
@@ -33,11 +38,15 @@ stores:
 
 showInIndex: true
 
----
+features:
+    - Hybrid concept - 1x dynamic driver, 4x electrostatic, and 4x Balanced Armature
+    - 5-way crossover - Precise sound tuning for maximum fidelity
+    - 5 sound channels - Prevents interference between sound bands
+    - Pressure management system - Optimizes pressure around the drivers for proper function
+    - Titanium body - Exceptionally lightweight, comfortable, yet durable
+    - Detachable cable - Easy replacement and maintenance
+    - HiRes compatibility - Range 20 - 40,000 Hz
 
-
-::technical
----
 technicals:
     - Frequency response range: 20HZ - 40KHz
     - Impedance: 9 ohms
@@ -58,4 +67,3 @@ package:
     - Nozzle cleaner
     - Custom IEM carry case by HiBy
 ---
-::

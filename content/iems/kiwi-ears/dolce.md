@@ -11,7 +11,10 @@ brand: kiwi-ears
 drivers: 
     - dd: 1
 
-priceRange: 
+driverTypes:
+    - dd
+
+priceRange: low
 
 releaseDate: 2023-04-21
 
@@ -27,11 +30,13 @@ hero: /kiwi-ears/dolce/hero.webp
 stores:
     - linsoul: https://www.linsoul.com/products/kiwi-ears-dolce
 
+features:
+    - 10MM LDP (LDPE+LCP) Diaphragm
+    - Ultra Durable Medical Grade Resin Material
+    - 2-Pin 0.78 MM Cable and High-Purity OCC Copper
+
 showInIndex: true
 
----
-::technical
----
 technicals:
     - Impedance: 16ohms
     - Sensitivity: 102dB
@@ -44,4 +49,3 @@ package:
     - 1x Kiwi Ears Dolce
     - User Manual
 ---
-::

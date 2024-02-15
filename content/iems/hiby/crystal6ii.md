@@ -11,6 +11,9 @@ brand: hiby
 drivers: 
     - ba: 6
 
+driverTypes:
+    - ba
+
 priceRange: medium
 
 releaseDate: 2023-02-12
@@ -26,7 +29,7 @@ features:
     - Custom gold-traced crossover board
     - Balanced tuning 
     - Sandpainted custom faceplate
-    - 3D-printed high-strength
+    - 3D-printed high-strength resin
     - Comfortable universal shell design 
     - Universal cable interface
     - Cable with quick-swap interchangeable plugs
