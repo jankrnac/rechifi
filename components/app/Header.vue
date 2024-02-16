@@ -17,7 +17,7 @@
 			
 			<PopoverGroup class="hidden lg:flex lg:gap-x-12">
 
-				<nuxt-link to="/blog" class="text text-sm font-semibold leading-6">{{ t('articles') }}</nuxt-link>
+				<nuxt-link to="/blog" class="text text-sm font-semibold leading-6">{{ t('news') }}</nuxt-link>
 				<nuxt-link to="/reviews" class="text text-sm font-semibold leading-6">{{ t('reviews') }}</nuxt-link>
 
 				<Popover class="relative" v-slot="{ open,close }">
@@ -262,7 +262,7 @@
 	const popoverId = useId()
 
 	const navigation = [
-		{ name: 'articles', href: '/blog' },
+		{ name: 'news', href: '/blog' },
 		{ name: 'reviews', href: '/reviews' },
 		{ name: 'products', children: [
 			{
@@ -320,7 +320,7 @@
 <i18n lang="yaml">
  en:
   home: 'Home'
-  articles: 'Articles'
+  news: 'News'
   reviews: 'Reviews'
   iems: 'In-Ear Monitors'
   daps: 'Digital audio players'

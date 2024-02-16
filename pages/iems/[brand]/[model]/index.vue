@@ -27,13 +27,13 @@
         </div>
 
         <!-- Reviews -->
-        <Reviews class="mb-12 max-w-app"/>
+        <ProductsReviews class="mb-12 max-w-app"/>
 
         <!-- Technicals -->
-        <Technical v-if="doc.technicals && doc.technicals.length" :technicals="doc.technicals" :package="doc.package"/>
+        <ProductsTechnical v-if="doc.technicals && doc.technicals.length" :technicals="doc.technicals" :package="doc.package"/>
 
         <!-- Stores -->
-        <Stores v-if="doc.stores && doc.stores.length" :stores="doc.stores"/>
+        <ProductsStores v-if="doc.stores && doc.stores.length" :stores="doc.stores"/>
 
 </div>
 

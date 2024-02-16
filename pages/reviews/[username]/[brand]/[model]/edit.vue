@@ -6,7 +6,7 @@
         <ElementsAvailable />
     </div>
 
-
+    
     <div class="flex justify-end lg:justify-between py-2 items-center text-sm">
         <div class="flex gap-2">
             <div class="bg-orange-300 px-4 py-1.5 rounded-lg text-sm flex items-center cursor-pointer" @click="editable = !editable">
@@ -141,17 +141,20 @@ const save = async () => {
             }
         }
 
-        // Upload
+        // Upload Single
         if(element.data.uploadNeeded)
         {
+            // Uploade the file and get the name from CDN
             const { data:cdnFilename } = await useFetch(`/api/files/${profile.value.username}`, {
                 method: 'POST',
                 body: element.data.upload
             })
 
+            // Change the name
             element.data.image = cdnFilename
             element.data.uploadNeeded = false
 
+            // Update our DB with
             await client.from('elements').update({
                 data: element.data,
             }).eq('id', element.id)

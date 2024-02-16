@@ -25,7 +25,10 @@ signature:
 
 cover: /kiwi-ears/dolce/cover.webp
 
-hero: /kiwi-ears/dolce/hero.webp
+images: 
+    - /kiwi-ears/dolce/image1.webp
+    - /kiwi-ears/dolce/image2.webp
+    - /kiwi-ears/dolce/image3.webp
 
 stores:
     - linsoul: https://www.linsoul.com/products/kiwi-ears-dolce

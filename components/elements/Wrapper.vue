@@ -1,28 +1,35 @@
 <template>
 
 <div class="flex">
+    
 	<div class="w-full text-center relative border" :class="[optionsVisible ? 'border-blue-400 border-dashed':'border-white dark:border-gray-950']" 
         @mouseover="showHover" 
         @mouseout="hideHover" 
-        >
+    >
 
-        <div class="absolute text-white -top-8 left-2 z-[9] flex gap-1" v-show="optionsVisible">
+        <div class="absolute text-white -top-8 left-2 z-[9] flex gap-1 w-full" v-show="optionsVisible">
             <div class="cursor-move mb-1 bg-teal-500 p-1 rounded"><IconsUpdown class="w-6 h-6"/></div>
-            <ElementsOptions @delete="deleted" @change="changed" :data="elements.find(e => e.type == element.type).data"/>
+            
+            <!-- Options popup wrapper-->
+            <ElementsOptions 
+                @delete="deleted" 
+                @change="changed"
+                :element="element"
+                :options="elements.find(e => e.type == element.type).data"
+            />
         </div>
-        
+
+        <!-- Dynamic layout component, see componentsMap variable -->
     	<component 
             :is="componentsMap[element.type]" 
             :element="element" 
             :editable="editable"
             @change="changed"
-        >
-        </component>
+        />
 
 	</div>
 
 </div>
-
 
 </template>
 
@@ -71,7 +78,7 @@
         score: resolveComponent('ElementsScore'),
         section: resolveComponent('ElementsSection'),
         'image-text': resolveComponent('elements-image-text'),
-        gallery: resolveComponent('elements-gallery'),
+        gallery: resolveComponent('elementsGallery'),
 
     }
 

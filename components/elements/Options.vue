@@ -15,17 +15,23 @@
           	leave-from-class="translate-y-0 opacity-100"
           	leave-to-class="translate-y-1 opacity-0"
         >
-        	<PopoverPanel class="absolute left-1/2 z-10 w-screen max-w-[350px] -translate-x-1/2 transform px-4 sm:px-0">
+        	<PopoverPanel open class="absolute left-1/2 z-10 w-screen max-w-[550px] -translate-x-1/2 transform px-4 sm:px-0">
             	<div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black/5">
-                	<div class="relative bg-white p-2 text-gray-800 text-left flex flex-col gap-2">
-						<div v-for="[key, value] of Object.entries(data)">
-							<component :is="componentsMap[key]" model="reversed" @change="changed"></component>
+                	<div class="relative bg-white p-2 text-gray-800 text-left flex flex-col items-start gap-2">
+						<div v-for="[key, value] of Object.entries(options)">
+							<component 
+								:is="componentsMap[key]" 
+								:model="key"
+								:element="element"
+								:options="options"
+								@change="changed"
+							/>
 						</div>
 						
-                    	<div class="flex items-center gap-2 hover:bg-red-100 px-4 py-3 rounded-lg cursor-pointer " @click="$emit('delete')">
-                        	<IconsCross class="w-4 h-4"/>
+                    	<Button color="red" @click="$emit('delete')">
+                        	<IconsCross class="w-4 h-4 mr-2"/>
                         	Delete
-						</div>
+						</Button>
 					</div>
 				</div>
 			</PopoverPanel>
@@ -40,7 +46,10 @@
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 
 const props = defineProps({
-	data: {
+	element: {
+		type: Object
+	},
+	options: {
 		type: Object 
 	}
 })
@@ -53,7 +62,8 @@ const changed = (data) => {
 const componentsMap = {
 	textAlign: resolveComponent('ElementsOptionsTextalign'),
 	image: resolveComponent('ElementsOptionsImage'),
-	reversed: resolveComponent('ElementsOptionsToggle')
+	reversed: resolveComponent('ElementsOptionsToggle'),
+	images: resolveComponent('ElementsOptionsImages')
 }
 
   

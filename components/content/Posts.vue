@@ -17,6 +17,7 @@
         .sort({ date: 1 }) // show latest articles first
         .where({ _partial: false }) // exclude the Partial files
         .where({ visible: { $ne: false } })
+        .where({ isHero: { $ne: true }  })
         .find() 
     )
 

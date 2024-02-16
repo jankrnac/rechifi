@@ -4,7 +4,7 @@
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
         <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">Sign in to your account</h2>
     </div>
-
+	
 	<div v-if="loginError" class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
 		<div class="rounded-md bg-red-50 p-4">
 			<div class="flex">
@@ -45,7 +45,7 @@
             	<div class="flex items-center justify-between"> 
               		<label for="password" class="block text-sm font-medium leading-6">Password</label>
               		<div class="text-sm">
-                		<a href="#" class="font-semibold text-gray-500">Forgot password?</a>
+                		<a href="#" class="text-gray-500">Forgot password?</a>
               		</div>
             	</div>
             	
@@ -56,7 +56,7 @@
           	</div>
 			
           	<div>
-            	<button type="submit" class="flex w-full justify-center rounded-md bg-blue-400 px-4 py-2.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500">Sign in</button>
+            	<Button type="submit" size="big" color="blue" class="w-full" :loading="loginPending">Sign in</Button>
           	</div>
 
 			<div class="text-center">
@@ -92,7 +92,10 @@ const password = ref('')
 
 const loginError = ref()
 
+const loginPending = ref(false)
+
 const login = async () => {
+	loginPending.value = true
     const { error } = await supabase.auth.signInWithPassword({
         email: email.value,
         password: password.value

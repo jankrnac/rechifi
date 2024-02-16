@@ -7,7 +7,9 @@
             $slots.default()[0].children  == 'IEM' ? 'bg-blue-200' : '',
             $slots.default()[0].children  == 'review' ? 'bg-orange-200' : '',
             $slots.default()[0].children  == 'news' ? 'bg-green-200' : '',
-            $slots.default()[0].children  == 'DAP'  ? 'bg-teal-200' : ''
+            $slots.default()[0].children  == 'DAP'  ? 'bg-teal-200' : '',
+            $slots.default()[0].children  == 'DAC'  ? 'bg-red-200' : ''
+
         ]"
     >
         <slot />
