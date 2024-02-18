@@ -6,9 +6,14 @@
         <h1 class="font-bold text-5xl ">{{ profile.username }}</h1>
     </div>
     <h2 class="font-bold text-2xl">Current setup</h2>
+        <ul class="grid grid-cols-5 gap-2">
+            <ProductBox :product="iem" />
+            <ProductBox :product="dap" />
+            <ProductBox :product="dac" />
 
+        </ul>
     <h2 class="font-bold text-2xl">Reviews</h2>
-    <div class="mx-auto lg:mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-app lg:grid-cols-4">
+    <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-app lg:grid-cols-4">
         
         <div v-for="review in reviews" class="relative">
 
@@ -32,4 +37,26 @@ const { data:reviews } = await useAsyncData(async () => {
     return data
 })
 
+    const { data:iem } = await useAsyncData(() =>  
+    {   
+        if(profile.iem)
+        {
+            return queryContent(profile.iem).findOne()
+        }
+    })
+    const { data:dap } = await useAsyncData(() =>  
+    {   
+        if(profile.dap)
+        {
+            return queryContent(profile.dap).findOne()
+        }
+    })
+
+    const { data:dac } = await useAsyncData(() =>  
+    {   
+        if(profile.dac)
+        {
+            return queryContent(profile.dac).findOne()
+        }
+    })
 </script>

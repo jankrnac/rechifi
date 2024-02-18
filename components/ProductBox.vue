@@ -2,17 +2,17 @@
 
 
 <li :key="product.source" class="relative">
-    <div class="relative aspect-square block w-full overflow-hidden rounded-lg hover:-translate-y-1 transition">
+    <div class="bg-[#f6f7f8] relative aspect-square block w-full overflow-hidden rounded-lg hover:-translate-y-1 transition p-5">
         <nuxt-img :src="product.cover ? product.cover : 'iem.webp'" alt="" class="pointer-events-none object-cover" densities="x1" format="webp" sizes="200px md:300px lg:351px"/>
         <nuxt-link class="absolute inset-0" :to="product._path"></nuxt-link>
     </div>
 
-    <div v-if="product.body.children.length" class=" flex items-center pointer-events-none mt-2 truncate text font-bold" :class="{'text-orange-500': product.released == false}">
+    <div v-if="product.body.children.length" class="flex items-center pointer-events-none mt-2 truncate font-semibold" :class="{'text-orange-500': product.released == false}">
         {{ product.title }}
         <div v-if="product.new" class="text-xs bg-red-500 rounded px-1.5 py-1 ml-2 font-normal text-white">New</div>
     </div>
     
-    <p v-else class="pointer-events-none mt-2 block truncate text font-bold capitalize" :class="{'text-orange-500': product.released == false}">{{ product._dir + ' ' + product._path.split('/')[3] }}</p>
+    <p v-else class="pointer-events-none mt-2 block truncate font-semibold capitalize" :class="{'text-orange-500': product.released == false}">{{ product._dir + ' ' + product._path.split('/')[3] }}</p>
     
 
 

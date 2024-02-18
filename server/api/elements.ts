@@ -56,11 +56,7 @@ export default defineEventHandler((event) => {
 
         {
             id: 8, type: 'gallery', caption: 'Gallery', data: {
-                images: [
-                    'placeholder.webp',
-                    'placeholder.webp',
-                    'placeholder.webp'
-                ]
+                images: []
             },
         },
 

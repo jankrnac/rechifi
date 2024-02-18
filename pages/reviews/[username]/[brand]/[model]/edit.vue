@@ -132,7 +132,7 @@ const save = async () => {
         if (Number.isInteger(element.id))
         {
             // is not image
-            if (element.type != 'image')
+            if (!(element.type in ['image','images']))
             {
                 await client.from('elements').update({
                     data: element.data,
@@ -151,13 +151,36 @@ const save = async () => {
             })
 
             // Change the name
-            element.data.image = cdnFilename
+            element.data.image = cdnFilename.value
             element.data.uploadNeeded = false
 
             // Update our DB with
             await client.from('elements').update({
                 data: element.data,
             }).eq('id', element.id)
+        }
+
+        
+        // Upload Multi
+        if(element.data.uploads && element.data.uploads.length)
+        {
+            for (const upload of element.data.uploads) 
+            {
+                // Uploade the file and get the name from CDN
+                const { data:cdnFilename } = await useFetch(`/api/files/${profile.value.username}`, {
+                    method: 'POST',
+                    body: Object.values(upload)[0]
+                })
+
+                // Change the name
+                element.data.images[Object.keys(upload)[0]] = cdnFilename.value
+            }
+
+            // Update our DB with
+            await client.from('elements').update({
+                data: element.data
+            }).eq('id', element.id)
+   
         }
 
     }

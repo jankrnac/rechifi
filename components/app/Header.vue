@@ -122,6 +122,10 @@
 								</nuxt-link>
 
 								<!-- Authenticated -->
+								<nuxt-link v-if="user" :to="'/users/' + profile.username" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
+									<IconsUser class="w-5 h-5"/>
+									<div>My profile</div>
+								</nuxt-link>
 								<nuxt-link v-if="user" to="/reviews/new" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
 									<IconsPlus class="w-5 h-5"/>
 									<div>Add review</div>
@@ -161,7 +165,7 @@
 
       </nav>
 	  
-
+	  
 		
 		<Dialog as="div" class="xl:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
 		<div class="fixed inset-0 z-10" />
@@ -254,6 +258,13 @@
 	
 	const supabase = useSupabaseClient()
 	const user = useSupabaseUser()
+
+	const { data:profile } = await useAsyncData(async () => {
+		const { data } = await supabase.from('profiles').select('*').eq('id',user.value.id).single()
+
+		return data
+	})
+
 
 	const { t } = useI18n({
 		useScope: 'local'

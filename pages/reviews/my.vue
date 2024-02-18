@@ -15,7 +15,7 @@
 
             <!-- Review Options -->
             <div class="absolute top-12 right-3 z-[1]">
-                <Button size="tiny" color="red" class="absolute" @click="deleteReview(review.id)">Delete</Button>
+                <Button size="small" color="red" class="absolute" @click="deleteReview(review.id)">Delete</Button>
             </div>
         </div>
     </div>

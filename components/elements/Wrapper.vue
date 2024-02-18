@@ -7,7 +7,7 @@
         @mouseout="hideHover" 
     >
 
-        <div class="absolute text-white -top-8 left-2 z-[9] flex gap-1 w-full" v-show="optionsVisible">
+        <div class="absolute text-white -top-8 left-2 z-[9] flex gap-1 w-1/2" v-show="optionsVisible">
             <div class="cursor-move mb-1 bg-teal-500 p-1 rounded"><IconsUpdown class="w-6 h-6"/></div>
             
             <!-- Options popup wrapper-->

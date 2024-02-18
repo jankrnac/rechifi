@@ -8,24 +8,13 @@
     </div>
 
     <div class="relative w-full transition h-full flex items-center">
-        
-
-        <iframe v-if="review.type == 'youtube'" width="500" class="aspect-video rounded-xl" src="https://www.youtube.com/embed/YRZnahriSUE?si=1f3eV14oVdwKLvQR" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-        </iframe>
-
-        <template v-else>
-            <nuxt-img v-if="review.cover" :src="review.cover" alt="" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" densities="x1" format="webp" width="480" height="480" fit="contain" />
-            <nuxt-img v-else src="placeholder.webp" alt="" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" densities="x1" format="webp" width="480" height="480" />
-
-            <nuxt-link :to="review._path" class="absolute inset-0"></nuxt-link>
     
-            <nuxt-link :to="'/reviews/' + review.profiles.username + '/' + review.brand + '/' + review.model" class="absolute inset-0 flex"></nuxt-link>
-            
-        </template>
+        <nuxt-img v-if="review.cover" :src="review.cover" alt="" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" densities="x1" format="webp" width="480" height="480" fit="contain" />
+        <nuxt-img v-else src="placeholder.webp" alt="" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" densities="x1" format="webp" width="480" height="480" />
+
+        <nuxt-link :to="review._path" class="absolute inset-0"></nuxt-link>
+
+        <nuxt-link :to="'/reviews/' + review.profiles.username + '/' + review.brand + '/' + review.model" class="absolute inset-0 flex"></nuxt-link>
 
     </div>
 

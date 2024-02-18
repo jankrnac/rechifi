@@ -40,14 +40,25 @@ const currentIndex = ref()
 
 const imageChanged = (data) => {
 		props.element.data.images[currentIndex.value] = data.blob
+        props.element.data.uploads = []
 		props.element.data.uploads.push({
             [currentIndex.value]: data.form
         })
-		props.element.data.uploadNeeded = true
 	}
 
 const imagesAdded = (data) => {
-    props.element.data.images.unshift(...data.blobs)
+    props.element.data.uploads = []
+
+    let i = 1
+    data.form.forEach(upload => {
+        
+        props.element.data.uploads.push({
+            [props.element.data.images.length-1 + i]: upload
+        })
+        i++
+    });
+
+    props.element.data.images.push(...data.blobs)
 
 }
 </script>

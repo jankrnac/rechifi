@@ -37,6 +37,8 @@
 
             data.blobs.push(URL.createObjectURL(element))
 
+            console.log(element)
+
         })
 
         data.form = formData

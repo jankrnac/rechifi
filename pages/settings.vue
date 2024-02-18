@@ -1,6 +1,6 @@
 <template>
-
-    <div class="flex flex-col flex-grow dark:bg-gray-800">
+    
+    <div class="flex flex-col flex-grow dark:bg-gray-800 mb-24">
             
         <div class="space-y-10 max-w-7xl mx-auto lg:px-8 mt-16 px-4">
 
@@ -53,32 +53,31 @@
                   </form>
             </div>
 
-              <!-- Profile -->
+              <!-- Gear -->
               <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
                 <div class="px-4 sm:px-0">
-                    <h2 class="text-base font-semibold leading-7 text-gray-900">Current setup</h2>
-                    <p class="mt-1 text-sm leading-6 text-gray-600">Share with us, what setup are you currently using</p>
+                    <h2 class="text-base font-semibold leading-7 text-gray-900">Owned audio gear</h2>
+                    <p class="mt-1 text-sm leading-6 text-gray-600">Share with us, what audio devices you have or currently using</p>
                 </div>
                 
-                <form @submit.prevent="submitProfileForm" class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
+                <form @submit.prevent="submitSetupForm" class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
                     <div class="px-4 py-6 sm:p-8">
     
                         <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
 
                             <div class="sm:col-span-full">
                                 <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">IEM</label>
-                                <input type="text" name="username" id="name" class="border rounded px-4 py-2 w-full" :class="[usernameValid ? '':'bg-red-200']" v-model="profile.username"/>
-                                <div v-if="!usernameValid" class="text-xs mt-1">Username already taken</div>
+                                <ModelCombobox v-model="iem" model="iem" />
                             </div>
 
                             <div class="sm:col-span-full">
                                 <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">DAP</label>
-                                <input type="text" name="name" id="username" class="border rounded px-4 py-2 w-full" v-model="profile.name"/>
+                                <ModelCombobox v-model="dap" model="dap" />
                             </div>
     
                             <div class="sm:col-span-full">
                                 <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">DAC</label>
-                                <input type="text" name="email" id="email" class="border rounded px-4 py-2 w-full" :value="user.email" :disabled="true" />
+                                <ModelCombobox  v-model="dac" model="dac" />
                             </div>
     
                             <div class="col-span-full">
@@ -92,7 +91,7 @@
                     </div>
     
                     <div class="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
-                          <Button :disabled="!usernameValid" color="green" :loading="pending" class="disabled:opacity-50">Save</Button>
+                          <Button color="green" :loading="pending" class="disabled:opacity-50">Save</Button>
                     </div>
     
                   </form>
@@ -164,4 +163,43 @@
 
         usernameValid.value = !data.length
     })
+
+    const { data:iem } = await useAsyncData(() =>  
+    {   
+        if(profile.value.iem)
+        {
+            return queryContent(profile.value.iem).findOne()
+        }
+    })
+    const { data:dap } = await useAsyncData(() =>  
+    {   
+        if(profile.value.dap)
+        {
+            return queryContent(profile.value.dap).findOne()
+        }
+    })
+
+    const { data:dac } = await useAsyncData(() =>  
+    {   
+        if(profile.value.dac)
+        {
+            return queryContent(profile.value.dac).findOne()
+        }
+    })
+
+    const submitSetupForm = async () => {
+        pending.value = true
+    
+        await client.from('profiles')
+            .update({
+                iem: iem.value._path,
+                dap: dap.value._path,
+                dac: dac.value._path,
+                name: profile.value.name
+            })
+            .eq('id', user.value.id)
+
+        pending.value = false
+    }
+
 </script>

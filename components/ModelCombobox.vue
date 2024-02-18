@@ -1,9 +1,13 @@
 <template>
+  
     <Combobox as="div" v-model="selected" >
       <div class="relative w-[400px]">
-        <ComboboxInput class="w-full rounded-md border-0 bg-white py-3.5 pl-4 pr-12 dark:bg-gray-800 shadow-sm focus:outline-none ring-1 ring-inset ring-gray-300 dark:ring-gray-600 text-lg sm:leading-6" @change="query = $event.target.value" :display-value="(headphone) => headphone?.model ? headphone?.model : headphone._dir + ' '+ headphone._path.split('/')[3]" />
+        <ComboboxInput 
+			class="w-full rounded-md border-0 bg-white py-3.5 pl-4 pr-12 dark:bg-gray-800 shadow-sm focus:outline-none ring-1 ring-inset ring-gray-300 dark:ring-gray-600 text-lg sm:leading-6" 
+			@change="query = $event.target.value" :display-value="(headphone) => headphone?.model ? headphone?.model : headphone._dir + ' '+ headphone._path.split('/')[3]" 
+		/>
         <ComboboxButton class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
-          <IconsCaretDown class="h-5 w-5 text-gray-400 mr-1" aria-hidden="true" />
+          	<IconsCaretDown class="h-5 w-5 text-gray-400 mr-1" aria-hidden="true" />
         </ComboboxButton>
   
         <ComboboxOptions v-if="filtered.length > 0" class="absolute z-10 mt-1 max-h-[510px] w-full overflow-auto rounded-md bg-white dark:bg-gray-700  py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
@@ -41,7 +45,7 @@
   
 <script setup>
 
-import { Combobox, ComboboxButton, ComboboxInput, ComboboxLabel, ComboboxOption, ComboboxOptions } from '@headlessui/vue'
+import { Combobox, ComboboxButton, ComboboxInput, ComboboxOption, ComboboxOptions } from '@headlessui/vue'
 
     const props = defineProps({
       model: {
@@ -50,7 +54,7 @@ import { Combobox, ComboboxButton, ComboboxInput, ComboboxLabel, ComboboxOption,
       }
     })
 
-    const { data:headphones } = await useAsyncData('combobox', () => queryContent(props.model).find(), { 
+    const { data:headphones } = await useAsyncData(props.model, () => queryContent(props.model).find(), { 
       watch: [() => props.model]
     })
   

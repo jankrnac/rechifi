@@ -1,7 +1,6 @@
 <template>
     
 <div class="max-w-app mx-auto flex-1 flex flex-col items-center justify-center">
-
     <ul class="flex gap-6 lg:gap-12 mb-16">
         <li><IconsIem class="w-20 h-20 lg:w-32 lg:h-32 cursor-pointer" :class="[type == 'iem' ? 'opacity-100' : 'opacity-40']" @click="type = 'iem'"/></li>
         <li><IconsDap class="w-20 h-20 lg:w-32 lg:h-32 cursor-pointer" :class="[type == 'dap' ? 'opacity-100' : 'opacity-40']" @click="type = 'dap'" /></li>

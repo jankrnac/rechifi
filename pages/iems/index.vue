@@ -28,7 +28,7 @@
     <!-- Grid -->
     <div class="lg:max-w-app mx-auto mt-12 mb-24">
         
-        <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+        <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-4">
             
             <template v-for="item in headphones">
                 <ProductBox :product="item" />
