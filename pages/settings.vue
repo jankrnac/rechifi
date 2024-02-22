@@ -66,18 +66,45 @@
                         <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
 
                             <div class="sm:col-span-full">
-                                <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">IEM</label>
-                                <ModelCombobox v-model="iem" model="iem" />
+                                <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">IEMs</label>
+                                <ul class="mb-3">
+                                    <li v-for="ownedIem in iems" class="flex items-center gap-2">  
+                                        <div>{{ ownedIem?.model ? ownedIem?.model : ownedIem._dir + ' '+ ownedIem._path.split('/')[3] }}</div>
+                                        <IconsCross class="w-4 h-4 text-red-600 cursor-pointer" @click="removeIEM(ownedIem)" />
+                                    </li>
+                                </ul>
+                                <div class="flex items-center gap-2">
+                                    <ModelCombobox v-model="iem" model="iem" /> 
+                                    <Button color="blue" @click="addIEM" :disabled="!iem">Add</Button>
+                                </div>
                             </div>
 
                             <div class="sm:col-span-full">
-                                <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">DAP</label>
-                                <ModelCombobox v-model="dap" model="dap" />
+                                <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">DAP(s)</label>
+                                <ul class="mb-3">
+                                    <li v-for="ownedDap in daps" class="flex items-center gap-2">  
+                                        <div>{{ ownedDap?.model ? ownedDap?.model : ownedDap._dir + ' '+ ownedDap._path.split('/')[3] }}</div>
+                                        <IconsCross class="w-4 h-4 text-red-600 cursor-pointer" @click="removeDAP(ownedDap)" />
+                                    </li>
+                                </ul>
+                                <div class="flex items-center gap-2">
+                                    <ModelCombobox v-model="dap" model="dap" />
+                                    <Button color="blue" @click="addDAP" :disabled="!dap">Add</Button>
+                                </div>
                             </div>
     
                             <div class="sm:col-span-full">
-                                <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">DAC</label>
-                                <ModelCombobox  v-model="dac" model="dac" />
+                                <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">DAC(s)</label>
+                                <ul class="mb-3">
+                                    <li v-for="ownedDac in dacs" class="flex items-center gap-2">  
+                                        <div>{{ ownedDac?.model ? ownedDac?.model : ownedDac._dir + ' '+ ownedDac._path.split('/')[3] }}</div>
+                                        <IconsCross class="w-4 h-4 text-red-600 cursor-pointer" @click="removeDAC(ownedDac)" />
+                                    </li>
+                                </ul>
+                                <div class="flex items-center gap-2">
+                                    <ModelCombobox v-model="dac" model="dac" />
+                                    <Button color="blue" @click="addDAC" :disabled="!dac">Add</Button>
+                                </div>                            
                             </div>
     
                             <div class="col-span-full">
@@ -91,7 +118,7 @@
                     </div>
     
                     <div class="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
-                          <Button color="green" :loading="pending" class="disabled:opacity-50">Save</Button>
+                          <Button color="green" type="submit" :loading="pending" class="disabled:opacity-50">Save</Button>
                     </div>
     
                   </form>
@@ -164,37 +191,76 @@
         usernameValid.value = !data.length
     })
 
-    const { data:iem } = await useAsyncData(() =>  
-    {   
-        if(profile.value.iem)
-        {
-            return queryContent(profile.value.iem).findOne()
-        }
-    })
-    const { data:dap } = await useAsyncData(() =>  
-    {   
-        if(profile.value.dap)
-        {
-            return queryContent(profile.value.dap).findOne()
-        }
-    })
+    const iems = ref([])
+    if(profile.value.iems && profile.value.iems.length)
+    {
+        for(const temp of profile.value.iems) {
+            const result = await queryContent(temp).findOne()
+            iems.value.push(result)
+        };
+    }
 
-    const { data:dac } = await useAsyncData(() =>  
-    {   
-        if(profile.value.dac)
-        {
-            return queryContent(profile.value.dac).findOne()
-        }
-    })
+
+    const daps = ref([])
+    if(profile.value.daps && profile.value.daps.length)
+    {
+        for(const temp of profile.value.daps) {
+            const result = await queryContent(temp).findOne()
+            daps.value.push(result)
+        };
+    }
+
+    const dacs = ref([])
+    if(profile.value.dacs && profile.value.dacs.length)
+    {
+        for(const temp of profile.value.dacs) {
+            const result = await queryContent(temp).findOne()
+            dacs.value.push(result)
+        };
+    }
+
+
+    const iem = ref()
+    const addIEM = async () => 
+    {
+        iems.value.push(await queryContent(iem.value._path).findOne())
+    }
+
+    const removeIEM = (data) => 
+    {
+        iems.value.splice(iems.value.findIndex(e => e._path == data._path), 1)
+    }
+
+    const dap = ref()
+    const addDAP = async () => 
+    {
+        daps.value.push(await queryContent(dap.value._path).findOne())
+    }
+
+    const removeDAP = (data) => 
+    {
+        daps.value.splice(daps.value.findIndex(e => e._path == data._path), 1)
+    }
+
+    const dac = ref()
+    const addDAC = async () => 
+    {
+        dacs.value.push(await queryContent(dac.value._path).findOne())
+    }
+    
+    const removeDAC = (data) => 
+    {
+        dacs.value.splice(dacs.value.findIndex(e => e._path == data._path), 1)
+    }
 
     const submitSetupForm = async () => {
         pending.value = true
     
         await client.from('profiles')
             .update({
-                iem: iem.value._path,
-                dap: dap.value._path,
-                dac: dac.value._path,
+                iems: iems.value.map(e=>e._path),
+                daps: daps.value.map(e=>e._path),
+                dacs: dacs.value.map(e=>e._path),
                 name: profile.value.name
             })
             .eq('id', user.value.id)

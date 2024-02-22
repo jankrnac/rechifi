@@ -36,7 +36,7 @@
 						@mouseover.prevent="popoverHover = true"
                         @mouseleave.prevent="closePopover(close)"
 						class="absolute left-1/2 z-[102] mt-5 flex w-screen max-w-sm -translate-x-1/2 px-4">
-						<div class="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white dark:bg-gray-700 text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
+						<div class="w-screen max-w-md flex-auto overflow-hidden rounded-lg bg-white dark:bg-gray-700 text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
 						<div class="p-2">
 							<div class="group relative flex items-center gap-x-6 rounded-lg p-2 hover:bg-gray-50 dark:hover:bg-gray-800">
 								<div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg">

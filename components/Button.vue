@@ -1,7 +1,8 @@
 <template>
 
 <button 
-    class="rounded-lg relative overflow-hidden font-semibold text-sm text-white inline-flex items-center justify-center" 
+    class="rounded-lg relative overflow-hidden font-semibold text-sm text-white inline-flex items-center justify-center disabled:opacity-40" 
+    :type="type"
     :class="{
         'bg-gray-200' : color == 'gray',
         'bg-red-400 hover:bg-red-500' : color == 'red',
@@ -37,6 +38,10 @@ const props = defineProps({
     loading: {
         type: Boolean,
         default: false
+    },
+    type:{
+        type: String,
+        default: 'button'
     }
 })
 
