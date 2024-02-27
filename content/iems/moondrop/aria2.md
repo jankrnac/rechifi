@@ -2,7 +2,7 @@
 
 title: Moondrop Aria 2
 
-description: The Mid-range Superstar Returns! Trickle-down Flagship Product Technology advances in product technology power the latest in the Aria series! The Aria2 adopts the dynamic driver design of internal and external composite magnetic circuit + composite independent brass cavity that is used in mid-range competitors and provides a solid hardware acoustic foundation.
+description: The second generation of Aria HiFi headphones. Dynamic driver with a ceramic surface membrane, copper sound chamber, and metal body. Tuned acoustic chamber made of copper, cleanable filters against headphone dirt, highly sensitive CCAW coil winding. Frequency range 16 - 22,000 Hz, impedance 33 ohms. Case included in the package. Cable with interchangeable connectors 3.5 and 4.4 mm.
 
 model: Aria 2
 
@@ -10,6 +10,9 @@ brand: moondrop
 
 drivers: 
     - dd: 1
+
+driverTypes: 
+    - dd
 
 priceRange: low
 
@@ -22,6 +25,16 @@ signature:
 
 cover: /moondrop/aria2/cover.webp
 
+features:
+    - Well-established Patented Dynamic Driver Structure
+    - Cutting-Edge Ceramic-Coated Dome
+    - Precision-Crafted Alloy Shell
+    - Premium Brass Acoustic Nozzle
+    - Next-Gen Replaceable Acoustic Filter
+    - Meticulous Tuning with Scientific Precision
+    - Versatile Interchangeable Cable Design
+    - High-Quality Single-Ended Cable
+
 images:
     - moondrop/aria2/image1.webp
     - moondrop/aria2/image2.webp
@@ -31,9 +44,11 @@ shops:
 
 showInIndex: true
 
----
-::technical
----
+stores:
+    - amazon: https://www.amazon.com/Moondrop-ARIA-Ear-Headphone-Cable/dp/B0CM3Q7YNG
+    - linsoul: https://www.linsoul.com/products/moondrop-aria2
+    - shenzhenaudio: https://shenzhenaudio.com/products/moondrop-aria-2-in-ear-headphone
+
 technicals:
     - Frequency response: 16-22kHz
     - Impedance: 33Ω
@@ -51,4 +66,3 @@ package:
     - Storage Case
     - User Manual
 ---
-::

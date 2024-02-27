@@ -11,6 +11,9 @@ brand: moondrop
 drivers:
     - dd: 1
 
+driverTypes: 
+    - dd
+
 priceRange: low
 
 releaseDate:
@@ -40,9 +43,7 @@ stores:
     - amazon: https://www.amazon.com/Moondrop-Performance-Dynamic-Earphone-Without/dp/B09XHV3TC6
     - shenzhenaudio: https://shenzhenaudio.com/products/moondrop-chu-headphone-titanium-iems-wired-dynamic-driver-hifi-in-ear-earphones
     - aliexpress: https://www.aliexpress.com/item/1005004133044009.html
----
-::technical
----
+
 technicals:
     - Material: Zinc alloy
     - Driver: 10mm high-performance dynamic driver
@@ -65,4 +66,3 @@ package:
     - Manual
     - QC Certificated card
 ---
-::

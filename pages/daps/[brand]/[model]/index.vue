@@ -3,7 +3,7 @@
     <div class="flex flex-1 flex-col items-center mx-auto leading-relaxed lg:leading-loose w-full">
     
             <!-- Title -->
-            <ProductsTitle>{{ doc.title }}</ProductsTitle>
+            <ProductsTitle :doc="doc">{{ doc.title }}</ProductsTitle>
     
             <!-- Description -->
             <ProductsDescription>{{ doc.description }}</ProductsDescription>
@@ -12,34 +12,34 @@
             <ProductsHero v-if="doc.hero" :hero="doc.hero" />
     
             <!-- Images -->
-            <ProductsImages v-if="doc.images" :images="doc.images" />
+            <ProductsImages v-else :images="doc.images" />
     
             <!-- Labels -->
             <ProductsLabels :doc="doc" />
     
             <!-- Features and Rating -->
-            <div class="flex flex-grow w-full max-w-app mb-24">
+            <div class="lg:flex flex-grow w-full max-w-app mb-24">
                 <ProductsFeatures v-if="doc.features" :features="doc.features" class="flex-grow mb-24 md:mb-0"/>
     
-                <div class="flex flex-grow items-center justify-center shrink-0">
+                <div class="flex flex-grow items-center justify-center">
                     <ProductsOverallRating :rating="rating"/>
                 </div>
             </div>
     
             <!-- Reviews -->
-            <Reviews class="mb-12 max-w-app"/>
+            <ProductsReviews class="mb-12 max-w-app"/>
     
             <!-- Technicals -->
-            <Technical v-if="doc.technicals && doc.technicals.length" :technicals="doc.technicals" :package="doc.package"/>
+            <ProductsTechnical v-if="doc.technicals && doc.technicals.length" :technicals="doc.technicals" :package="doc.package"/>
     
             <!-- Stores -->
-            <Stores v-if="doc.stores && doc.stores.length" :stores="doc.stores"/>
+            <ProductsStores v-if="doc.stores && doc.stores.length" :stores="doc.stores"/>
     
     </div>
     
-</template>
+    </template>
     
-<script setup>
+    <script setup>
     
     const client = useSupabaseClient()
     
@@ -59,4 +59,4 @@
         return temp.reduce((accumulator, currentValue) => accumulator + currentValue, 0) / temp.length
     })
           
-</script>
+    </script>

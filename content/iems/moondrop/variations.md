@@ -13,10 +13,15 @@ drivers:
     - ba: 2
     - dd: 1
 
+
+driverTypes: 
+    - dd
+    - est
+    - ba
+
 priceRange: high
 
-
-releaseDate: 2013-01-04
+releaseDate: 2021-06-20
 
 released: true
 
@@ -25,14 +30,18 @@ signature:
     - bright
     - bass boost
 
-cover: /moondrop/variations/image1.webp
+cover: /moondrop/variations/cover.webp
+
+images:
+    - moondrop/variations/image1.webp
+    - moondrop/variations/image2.webp
+    - moondrop/variations/image3.webp
 
 showInIndex: true
 
----
+stores:
+    - aliexpress: https://www.aliexpress.com/item/1005002836887803.html
 
-::Technical
----
 technicals:
     - Frequency response range: 9 - 40KHz (IEC61094, Free Field)
     - Effective frequency response: 20-20kHz (IEC60318-4, -3dB)
@@ -61,4 +70,3 @@ package:
     - Anime post card
     - 2 x After-service list
 ---
-::

@@ -7,7 +7,7 @@
         <nuxt-link class="absolute inset-0" :to="product._path"></nuxt-link>
     </div>
 
-    <div v-if="product.body.children.length" class="flex items-center pointer-events-none mt-2 truncate font-semibold" :class="{'text-orange-500': product.released == false}">
+    <div v-if="product.title" class="flex items-center pointer-events-none mt-2 truncate font-semibold" :class="{'text-orange-500': product.released == false}">
         {{ product.title }}
         <div v-if="product.new" class="text-xs bg-red-500 rounded px-1.5 py-1 ml-2 font-normal text-white">New</div>
     </div>

@@ -47,11 +47,6 @@ stores:
 
 showInIndex: true
 
----
-
-
-::technical
----
 technicals:
     - Frequency response range: 20HZ - 20KHz
     - Impedance: 58.5 ohms
@@ -73,4 +68,3 @@ package:
     - 3.5mm cable plug, 4.4mm cable plug
     - Custom IEM carry case by HiBy
 ---
-::
