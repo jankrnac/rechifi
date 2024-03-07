@@ -1,6 +1,6 @@
 <template>
 
-<div class="bg-gray-50 p-12 rounded-xl ring ring-offset-2 ring-gray-100">
+<div class="bg-gray-50 dark:bg-gray-800 p-12 rounded-xl ring ring-offset-2 ring-gray-100 dark:ring-gray-700 dark:ring-offset-0">
 
         <div class="flex justify-center md:justify-start mb-8">
             <h2 class="text-xl font-bold">Features</h2>

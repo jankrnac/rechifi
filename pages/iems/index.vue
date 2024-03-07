@@ -37,6 +37,8 @@
     </div>
 
 </div>
+{{ useRoute().query.showall }}
+{{ activeFilters.showall }}
 </template>
 
 
@@ -99,8 +101,14 @@ watch(sortPayload, async (value) => {
 
 const filters = [
     {
+        id: 'showall',
+        name: 'Show all',
+        type: 'checkbox'
+    },
+    {
         id: 'signature',
         name: 'Signature',
+        type: 'list',
         options: [
             { value: 'bright', label: 'Bright' },
             { value: 'warm', label: 'Warm' },
@@ -111,16 +119,17 @@ const filters = [
 
         ],
     },
-
     {
         id: 'brand',
         name: 'Brand',
+        type: 'list',
         options:brands.value
     },
 
     {
         id: 'drivers',
         name: 'Drivers',
+        type: 'list',
         options: [
             { value: 'dd', label: 'DD' },
             { value: 'planar', label: 'Planar' },
@@ -138,6 +147,7 @@ const activeFilters = useState('activeFilters', () => {
 activeFilters.value.signature = useRoute().query.signature ?  [useRoute().query.signature].flat() : []
 activeFilters.value.drivers = useRoute().query.drivers ?  [useRoute().query.drivers].flat() : []
 activeFilters.value.brand = useRoute().query.brand ?  [useRoute().query.brand].flat() : []
+activeFilters.value.showall = useRoute().query.showall == 'true' ? true:false
 
 const signatureFilter = computed(() => {
     if (activeFilters.value && activeFilters.value.signature.length) return { $in: activeFilters.value.signature }
@@ -153,6 +163,11 @@ const driverFilter = computed(() => {
 const brandFilter = computed(() => {
     if (activeFilters.value && activeFilters.value.brand.length) return { $in: activeFilters.value.brand }
     return  {}
+})
+
+const indexFilter = computed(() => {
+    if (activeFilters.value && activeFilters.value.showall == true) return { $in: [true, false, null] }
+    return  { $in: [true] }
 })
 
 watch(activeFilters, async () => {
@@ -177,7 +192,7 @@ const { data:headphones, refresh } = await useAsyncData('iems', () =>
     .where({ 'driverTypes': driverFilter.value })
     .where({ 'brand': brandFilter.value })
     
-    .where({ 'showInIndex': true })
+    .where({ 'showInIndex': indexFilter.value })
 
     .sort(sortPayload.value)
 

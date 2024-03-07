@@ -11,10 +11,8 @@ brand: letshuoer
 drivers: 
     - planar: 1
 
-
-driversTypes:
+driverTypes:
     - planar
-
 
 priceRange: low
 

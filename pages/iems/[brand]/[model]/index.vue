@@ -3,7 +3,7 @@
 <div class="flex flex-1 flex-col items-center mx-auto leading-relaxed lg:leading-loose w-full">
 
         <!-- Title -->
-        <ProductsTitle :doc="doc">{{ doc.title }}</ProductsTitle>
+        <ProductsTitle :doc="doc" />
 
         <!-- Description -->
         <ProductsDescription>{{ doc.description }}</ProductsDescription>
@@ -12,7 +12,7 @@
         <ProductsHero v-if="doc.hero" :hero="doc.hero" />
 
         <!-- Images -->
-        <ProductsImages v-else :images="doc.images" />
+        <ProductsImages v-if="doc.images" :images="doc.images" />
 
         <!-- Labels -->
         <ProductsLabels :doc="doc" />

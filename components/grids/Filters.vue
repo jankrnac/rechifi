@@ -8,6 +8,7 @@
         <!-- Mobile filter dialog -->
         <GridsMobileFilters ref="mobileDialog" :filters="filters"/>
 
+        <div class="flex items-center">
         <Listbox as="div" class="w-[200px] flex items-center" v-model="activeSort">
             <ListboxLabel class="block text-sm font-medium leading-6 mr-2">Sort by:</ListboxLabel>
             <div class="relative flex-1">
@@ -34,29 +35,49 @@
             </transition>
             </div>
         </Listbox>
+
+      
+    </div>
+
+        
     <button type="button" class="inline-block text-sm font-medium sm:hidden" @click="openMobileDialog">Filters</button>
 
-    <PopoverGroup class="hidden sm:flex sm:items-baseline sm:space-x-8">
-        <Popover as="div" v-for="(filter, filterIdx) in filters" :key="filter.name" :id="`desktop-menu-${filterIdx}`" class="relative inline-block text-left">
-        <div>
-            <PopoverButton class="group inline-flex items-center justify-center text-sm font-medium outline-none">
-            <span>{{ filter.name }}</span>
-            <IconsCaretDown  class="-mr-1 ml-1 h-4 w-4 flex-shrink-0 text-gray-400 group-hover:text-gray-500" aria-hidden="true" />
-            </PopoverButton>
+    <div class="flex items-center gap-x-8">
+        <div class="flex text-sm items-center gap-x-2" v-for="(filter, filterIdx) in filters.filter(e=>e.type=='checkbox')" >
+        <Switch  
+            :key="filter.name" 
+            v-model="activeFilters[filter.id]"
+            :class="activeFilters[filter.id] ? 'bg-blue-600' : 'bg-gray-200'"
+            class="relative inline-flex h-6 w-11 items-center rounded-full"
+        >
+            <span class="sr-only">Enable notifications</span>
+            <span :class="activeFilters[filter.id] ? 'translate-x-6' : 'translate-x-1'" class="inline-block h-4 w-4 transform rounded-full bg-white transition"/>
+        </Switch>
+        <div>{{ filter.name }}</div>
         </div>
+        <PopoverGroup class="hidden sm:flex sm:items-baseline sm:space-x-8">
+            <Popover as="div" v-for="(filter, filterIdx) in filters.filter(e=>e.type=='list')" :key="filter.name" :id="`desktop-menu-${filterIdx}`" class="relative inline-block text-left">
+            <div>
+                <PopoverButton class="group inline-flex items-center justify-center text-sm font-medium outline-none">
+                <span>{{ filter.name }}</span>
+                <IconsCaretDown  class="-mr-1 ml-1 h-4 w-4 flex-shrink-0 text-gray-400 group-hover:text-gray-500" aria-hidden="true" />
+                </PopoverButton>
+            </div>
 
-        <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-            <PopoverPanel class="max-h-[510px]  overflow-y-auto absolute right-0 z-10 mt-2 origin-top-right rounded-md bg-white p-4 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
-            <form class="space-y-4">
-                <div v-for="(option, optionIdx) in filter.options" :key="option.value" class="flex items-center">
-                <input :id="`filter-${filter.id}-${optionIdx}`" :name="`${filter.id}[]`" :value="option.value" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600" v-model="activeFilters[filter.id]"/>
-                <label :for="`filter-${filter.id}-${optionIdx}`" class="ml-3 whitespace-nowrap pr-6 text-sm font-medium cursor-pointer">{{ option.label }}</label>
-                </div>
-            </form>
-            </PopoverPanel>
-        </transition>
-        </Popover>
-    </PopoverGroup>
+            <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                <PopoverPanel class="max-h-[510px]  overflow-y-auto absolute right-0 z-10 mt-2 origin-top-right rounded-md bg-white p-4 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
+                <form class="space-y-4">
+                    <div v-for="(option, optionIdx) in filter.options" :key="option.value" class="flex items-center">
+                    <input :id="`filter-${filter.id}-${optionIdx}`" :name="`${filter.id}[]`" :value="option.value" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600" v-model="activeFilters[filter.id]"/>
+                    <label :for="`filter-${filter.id}-${optionIdx}`" class="ml-3 whitespace-nowrap pr-6 text-sm font-medium cursor-pointer">{{ option.label }}</label>
+                    </div>
+                </form>
+                </PopoverPanel>
+            </transition>
+            </Popover>
+        </PopoverGroup>
+    
+    </div>
     </div>
 </div>
 
@@ -64,7 +85,7 @@
 
 <script setup>
 
-import { Listbox, ListboxLabel,ListboxButton, ListboxOptions, ListboxOption ,Popover,PopoverButton,PopoverGroup,PopoverPanel} from '@headlessui/vue'
+import { Switch, Listbox, ListboxLabel,ListboxButton, ListboxOptions, ListboxOption ,Popover,PopoverButton,PopoverGroup,PopoverPanel} from '@headlessui/vue'
 
 const props = defineProps({
 
