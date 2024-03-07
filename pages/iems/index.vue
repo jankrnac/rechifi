@@ -37,8 +37,7 @@
     </div>
 
 </div>
-{{ useRoute().query.showall }}
-{{ activeFilters.showall }}
+
 </template>
 
 
