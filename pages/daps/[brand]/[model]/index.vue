@@ -12,10 +12,10 @@
             <ProductsHero v-if="doc.hero" :hero="doc.hero" />
     
             <!-- Images -->
-            <ProductsImages v-else :images="doc.images" />
+            <ProductsImages v-if="doc.images" :images="doc.images" />
     
             <!-- Labels -->
-            <ProductsLabels :doc="doc" />
+            <ProductsLabels v-if="doc.labels" :doc="doc" />
     
             <!-- Features and Rating -->
             <div class="lg:flex flex-grow w-full max-w-app mb-24">
@@ -30,7 +30,7 @@
             <ProductsReviews class="mb-12 max-w-app"/>
     
             <!-- Technicals -->
-            <ProductsTechnical v-if="doc.technicals && doc.technicals.length" :technicals="doc.technicals" :package="doc.package"/>
+            <ProductsSpecs v-if="doc.specs && doc.specs.length" :doc="doc"/>
     
             <!-- Stores -->
             <ProductsStores v-if="doc.stores && doc.stores.length" :stores="doc.stores"/>

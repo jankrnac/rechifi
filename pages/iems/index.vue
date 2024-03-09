@@ -30,7 +30,7 @@
         
         <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-4">
             
-            <template v-for="item in headphones">
+            <template v-for="item in products">
                 <ProductBox :product="item" />
             </template>
         </ul>
@@ -182,7 +182,7 @@ watch(activeFilters, async () => {
 
 /***** Products fetching data  *****/
 
-const { data:headphones, refresh } = await useAsyncData('iems', () => 
+const { data:products, refresh } = await useAsyncData('iems', () => 
 
     queryContent('/iems')
     .where({ _partial: false }) // exclude the Partial files
