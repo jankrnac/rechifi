@@ -25,7 +25,7 @@
 
     <section class="lg:w-full">
         <h1 class="text-xl lg:text-5xl mt-8 mb-8 font-bold">
-            <nuxt-link class="text leading-normal" :to="link">{{ hero.title }}</nuxt-link>
+            <nuxt-link class="text leading-normal" :to="hero.link">{{ hero.title }}</nuxt-link>
         </h1>
         <p class="text-base leading-relaxed lg:leading-loose lg:text-xl">{{ hero.description }}</p>
     </section>

@@ -30,7 +30,7 @@
         
         <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-4">
             
-            <template v-for="item in products">
+            <template v-for="item in iems">
                 <ProductBox :product="item" />
             </template>
         </ul>
@@ -89,11 +89,14 @@ const sortPayload = computed(() => {
     }
 })
 
-watch(sortPayload, async (value) => {
-    
+watch(sortPayload, async (value) => 
+{
     await refresh()
 
-}, { deep: true })
+}, 
+{ 
+    deep: true 
+})
 
 
 /***** Filtering  *****/
@@ -173,16 +176,12 @@ watch(activeFilters, async () => {
     
     await refresh()
 
-    await navigateTo({ 
-        path: useRoute().path,
-        query: activeFilters.value
-    })
 },{ deep: true })
 
 
 /***** Products fetching data  *****/
 
-const { data:products, refresh } = await useAsyncData('iems', () => 
+const { data:iems, refresh } = await useAsyncData('iems', () => 
 
     queryContent('/iems')
     .where({ _partial: false }) // exclude the Partial files

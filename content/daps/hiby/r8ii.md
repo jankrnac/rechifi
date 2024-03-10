@@ -14,13 +14,13 @@ releaseDate: 2024-01-19
 
 released: true
 
-upcoming: true
-
 new: true
 
 cover: /hiby/r8ii/cover.webp
 
 hero: /hiby/r8ii/hero.webp
+
+showInIndex: true
 
 features:
     - Processor Snapdragon 665 ensures smooth operation and quick response (8 GB RAM).
@@ -32,6 +32,27 @@ features:
     - Internal memory 256 GB. Ample space for your music library.
     - Long battery life. Up to 21 hours of playback on a single charge.
     - Metal body + Alcantara. Stylish, durable, and pleasant to the touch.
----
 
-sa
+specs:
+    - Display: 5.9 inches, IPS, 1080x2160
+    - Operating system: Android 12
+    - Possibility to install applications: Yes
+    - Internal memory: 256 GB (8 GB RAM)
+    - Inputs: Bluetooth, USB Type C, WiFi
+    - Outputs: 3.5mm Jack, 4.4mm Jack, 3.5mm Line Out Jack, 4.4mm Line Out Jack
+    - Output level: 2.6 Vrms / 4.7 Vrms (symmetrical), 225 / 710 mW (symmetrical)
+    - D/A converter: Darwin-MPA (Multiphase)
+    - Sampling: 1536 kHz / 32 bit, DSD1024
+    - MQA support: Yes
+    - WiFi: Yes
+    - Bluetooth version: 5.0
+    - Two-way Bluetooth: Yes
+    - Bluetooth codecs: AAC, SBC, aptX™, aptX™ HD, LDAC, UAT
+    - Battery capacity: 12,000 mAh
+    - Battery life: Up to 21 hours (Class AB), 18 hours (Class A, symmetrical)
+    - Color: Blue
+    - Body material: Stainless steel, alcantara
+    - Dimensions: 149 x 78 x 23 mm
+    - Weight: 515 g
+    - Accessories included in the package: Case (TPU+alcantara), screen protector, USB-C charging cable, output protectors
+---

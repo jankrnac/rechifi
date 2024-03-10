@@ -30,7 +30,7 @@
             
             <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-4">
                 
-                <template v-for="item in products">
+                <template v-for="item in daps">
                     <ProductBox :product="item" />
                 </template>
             </ul>
@@ -84,7 +84,7 @@ const activeSort = useState('activeSort', () => sortOptions[0])
 
 const sortPayload = computed(() => {
     return {
-        [activeSort.value.value]:activeSort.valuevalue == 'title' ? -1 : 1
+        [activeSort.value.value]:activeSort.valuevalue == 'title' ? -1 : -1
     }
 })
     
@@ -144,6 +144,7 @@ const activeFilters = useState('activeFilters', () => {
     return {}
 })
 
+
 activeFilters.value.signature = useRoute().query.signature ?  [useRoute().query.signature].flat() : []
 activeFilters.value.drivers = useRoute().query.drivers ?  [useRoute().query.drivers].flat() : []
 activeFilters.value.brand = useRoute().query.brand ?  [useRoute().query.brand].flat() : []
@@ -174,17 +175,13 @@ watch(activeFilters, async () => {
     
     await refresh()
 
-    await navigateTo({ 
-        path: useRoute().path,
-        query: activeFilters.value
-    })
 },{ deep: true })
 
     
     
 /***** Products fetching data  *****/
     
-const { data:products, refresh } = await useAsyncData('daps', () => 
+const { data:daps, refresh } = await useAsyncData('daps', () => 
 
     queryContent('/daps')
 
