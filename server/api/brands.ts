@@ -283,5 +283,17 @@ export default defineEventHandler((event) => {
             logo: '',
             link: ''
         },
+        {
+            value: 'aaw',
+            label: 'AAW',
+            logo: '',
+            link: ''
+        },
+        {
+            value: 'aoshida',
+            label: 'Aoshida',
+            logo: '',
+            link: ''
+        },
     ]
   })
