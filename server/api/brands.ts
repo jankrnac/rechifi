@@ -295,5 +295,11 @@ export default defineEventHandler((event) => {
             logo: '',
             link: ''
         },
+        {
+            value: 'astrotec',
+            label: 'Astrotec',
+            logo: '',
+            link: ''
+        },
     ]
   })
