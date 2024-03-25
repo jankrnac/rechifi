@@ -56,7 +56,7 @@
         <div>{{ filter.name }}</div>
         </div>
         <PopoverGroup class="hidden sm:flex sm:items-baseline sm:space-x-8">
-            <Popover as="div" v-for="(filter, filterIdx) in filters.filter(e=>e.type=='list')" :key="filter.name" :id="`desktop-menu-${filterIdx}`" class="relative inline-block text-left">
+            <Popover as="div" v-for="(filter, filterIdx) in filters.filter(e=>e.type =='list')" :key="filter.name" :id="`desktop-menu-${filterIdx}`" class="relative inline-block text-left">
             <div>
                 <PopoverButton class="group inline-flex items-center justify-center text-sm font-medium outline-none">
                 <span>{{ filter.name }}</span>
@@ -68,7 +68,7 @@
                 <PopoverPanel class="max-h-[510px]  overflow-y-auto absolute right-0 z-10 mt-2 origin-top-right rounded-md bg-white p-4 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <form class="space-y-4">
                     <div v-for="(option, optionIdx) in filter.options" :key="option.value" class="flex items-center">
-                    <input :id="`filter-${filter.id}-${optionIdx}`" :name="`${filter.id}[]`" :value="option.value" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600" v-model="activeFilters[filter.id]"/>
+                    <input :id="`filter-${filter.id}-${optionIdx}`" :name="`${filter.id}[]`" :value="option" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600" v-model="activeFilters[filter.id]"/>
                     <label :for="`filter-${filter.id}-${optionIdx}`" class="ml-3 whitespace-nowrap pr-6 text-sm font-medium cursor-pointer">{{ option.label }}</label>
                     </div>
                 </form>

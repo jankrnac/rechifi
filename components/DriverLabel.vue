@@ -5,6 +5,7 @@
         'border-green-500 dark:border-green-800': Object.keys(driver)[0] == 'ba',
         'border-blue-500' : Object.keys(driver)[0]== 'planar',
         'border-teal-500' :Object.keys(driver)[0] == 'est',
+        'border-teal-500' :Object.keys(driver)[0] == 'pr',
         'text-sm border-2 lg:border-[3px] lg:text-lg' : size == 'normal',
         'px-2 py-1 text-sm border-[2px]' : size == 'small',
     }"
@@ -22,6 +23,7 @@
                 <template v-if="Object.keys(driver)[0] == 'ba'">Balanced armature</template>
                 <template v-if="Object.keys(driver)[0] == 'est'">Electrostatic driver</template>
                 <template v-if="Object.keys(driver)[0] == 'planar'">Planar</template>
+                <template v-if="Object.keys(driver)[0] == 'pr'">+ Passive radiator</template>
 
             </div>
         </template>
@@ -36,6 +38,7 @@
            <template v-if="Object.keys(driver)[0] == 'ba'">BA</template>
            <template v-if="Object.keys(driver)[0] == 'est'">EST</template>
            <template v-if="Object.keys(driver)[0] == 'planar'">Planar</template>
+           <template v-if="Object.keys(driver)[0] == 'pr'">+ PR</template>
 
 
         </template>

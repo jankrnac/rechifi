@@ -1,6 +1,6 @@
 <template>
 
-    <div class="dark:bg-gray-950 dark:text-gray-200 font-sans flex flex-col flex-1">
+    <div class="dark:bg-gray-950 dark:text-gray-200 font-sans flex flex-col flex-1 overflow-hidden">
   
         <AppHeader />
   

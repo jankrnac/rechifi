@@ -34,6 +34,11 @@
                 <ProductBox :product="item" />
             </template>
         </ul>
+
+        <div class="mt-24 flex justify-center">
+            <Button color="blue" @click="loadMore">Load more</Button>
+        </div>
+
     </div>
 
 </div>
@@ -152,18 +157,18 @@ activeFilters.value.brand = useRoute().query.brand ?  [useRoute().query.brand].f
 activeFilters.value.showall = useRoute().query.showall == 'true' ? true:false
 
 const signatureFilter = computed(() => {
-    if (activeFilters.value && activeFilters.value.signature.length) return { $in: activeFilters.value.signature }
+    if (activeFilters.value && activeFilters.value.signature.length) return { $in: activeFilters.value.signature.map(e=>e.value) }
     return  {}
 })
 
 const driverFilter = computed(() => {
-    if (activeFilters.value && activeFilters.value.drivers.length) return { $in: activeFilters.value.drivers }
+    if (activeFilters.value && activeFilters.value.drivers.length) return { $in: activeFilters.value.drivers.map(e=>e.value) }
     return  {}
 })
 
 
 const brandFilter = computed(() => {
-    if (activeFilters.value && activeFilters.value.brand.length) return { $in: activeFilters.value.brand }
+    if (activeFilters.value && activeFilters.value.brand.length) return { $in: activeFilters.value.brand.map(e=>e.value) }
     return  {}
 })
 
@@ -181,7 +186,9 @@ watch(activeFilters, async () => {
 
 /***** Products fetching data  *****/
 
+const pageNo = ref(1)
 const { data:iems, refresh } = await useAsyncData('iems', () => 
+
 
     queryContent('/iems')
     .where({ _partial: false }) // exclude the Partial files
@@ -192,11 +199,18 @@ const { data:iems, refresh } = await useAsyncData('iems', () =>
     
     .where({ 'showInIndex': indexFilter.value })
 
+    .skip(8 * (pageNo.value - 1))
+    .limit(8)
+
     .sort(sortPayload.value)
 
     .find()
 )
 
+const loadMore = () => {
+    pageNo.value++
+    refresh()
+}
 
 </script>
 
