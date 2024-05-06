@@ -27,9 +27,9 @@ export default defineNuxtConfig({
 		'@nuxtjs/supabase',
 		'vue3-carousel-nuxt',
 		'@nuxtjs/device',
+		'nuxt-icon'
 	],
-
-
+	
 	googleFonts: {
 		families: {
 			'Playfair Display': {

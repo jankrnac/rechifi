@@ -27,7 +27,7 @@
                                 @mouseover="(e) => hoverPopover(e, open)"
                                 @mouseleave="closePopover(close)"
                                 class="border-transparent relative text-sm font-semibold leading-6 z-10 bg-transparent flex items-center outline-none duration-200 ease-out">
-                               <div class="h-full flex items-center">Products</div>
+                               <div class="h-full flex items-center">{{ t('products') }}</div>
                             </PopoverButton>
 				</div>
 
@@ -86,7 +86,7 @@
 
         <!-- Search -->
         <div class="hidden md:block flex-1 mr-2 lg:mr-6 2xl:mr-24 relative">
-			<IconsSearch class="w-5 h-5 absolute top-3.5 left-4 text-gray-400 hidden lg:block" />
+			<Icon name="uil:search" class="w-5 h-5 absolute top-3.5 left-4 text-gray-400 hidden lg:block" />
             <input 	class="bg-gray-50 p-3 pl-4 lg:pl-12 rounded-lg border w-full text-sm lg:text-base dark:bg-gray-800 dark:border-gray-700" 
 					type="text" 
 					:placeholder="t('search-placeholder')"
@@ -99,8 +99,8 @@
         <div class="flex justify-end">
 			<div class="hidden lg:flex">
 				
-					<IconsSun v-if="colorMode.preference == 'dark'" class="w-6 h-6 mr-5 cursor-pointer"  @click="setColorMode('light')"/>
-					<IconsMoon v-else class="w-6 h-6 cursor-pointer mr-5"  @click="setColorMode('dark')"/>
+					<Icon name="ph:sun-light" v-if="colorMode.preference == 'dark'" class="mr-5 cursor-pointer"  @click="setColorMode('light')"/>
+					<Icon name="ph:moon-light" v-else class="cursor-pointer mr-5"  @click="setColorMode('dark')"/>
 			
 
 					<PopoverGroup class="flex gap-x-12">
@@ -108,7 +108,7 @@
 						<PopoverButton 
 							:id="popoverId"
 							class="flex items-center gap-x-1 text-sm font-semibold leading-6 focus:outline-0">
-							<IconsUser class="w-6 h-6" />
+							<Icon name="ph:user-light" />
 						</PopoverButton>
 
 						<transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-1" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
@@ -117,7 +117,7 @@
 
 								<!-- Guest -->
 								<nuxt-link v-if="!user" to="/login" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
-									<IconsLogin class="w-5 h-5"/>
+									<Icon name="ph:sign-in-light" size="20px" />
 									<div>Login</div>
 								</nuxt-link>
 
@@ -220,25 +220,25 @@
 
 					<!-- Guest -->
 					<nuxt-link v-if="!user" to="/login" class="flex gap-2 items-center p-2 hover:bg-gray-50 rounded cursor-pointer" @click="mobileMenuOpen = false">
-						<IconsLogin class="w-5 h-5"/>
+						<Icon name="ph:sign-in-light" size="20px" />
 						<div>Login</div>
 					</nuxt-link>
 
 					<!-- Authenticated -->
 					<nuxt-link v-if="user" to="/reviews/new" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="mobileMenuOpen = false">
-						<IconsPlus class="w-5 h-5"/>
+						<Icon name="ph:plus-circle-light" size="20px" />
 						<div>Add review</div>
 					</nuxt-link>
 					<nuxt-link v-if="user" to="/reviews/my" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="mobileMenuOpen = false">
-						<IconsArticle class="w-5 h-5"/>
+						<Icon name="ph:read-cv-logo-light" size="20px" />
 						<div>My reviews</div>
 					</nuxt-link>
 					<nuxt-link v-if="user" to="/settings" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="mobileMenuOpen = false">
-						<IconsGear class="w-5 h-5"/>
+						<Icon name="ph:gear-light" size="20px" />
 						<div>Settings</div>
 					</nuxt-link>
 					<nuxt-link v-if="user" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="logout">
-						<IconsLogout class="w-5 h-5"/>
+						<Icon name="ph:sign-out-light" size="20px"/>
 						<div>Logout</div>
 					</nuxt-link>
 
@@ -336,15 +336,15 @@
   iems: 'In-Ear Monitors'
   daps: 'Digital audio players'
   dacs: 'Digital audio converters'
-  products: 'Products'
+  products: 'Gear'
   upcoming: 'Upcoming'
-  search-placeholder: 'Search for articles, reviews, products and users'
+  search-placeholder: 'Search for articles, reviews, audio gear and users'
   sales: 'Sales'
  cz:
   home: 'Domů'
   articles: 'Články'
   reviews: 'Recenze'
-  iems: 'Sluchátka' 
+  iems: 'Sluchátka'
   upcoming: 'Novinky'
   search-placeholder: 'Hledej v článcích a slúchatkách'
   sales: 'Slevy'

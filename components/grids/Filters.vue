@@ -10,10 +10,10 @@
 
         <div class="flex items-center">
         <Listbox as="div" class="w-[200px] flex items-center" v-model="activeSort">
-            <ListboxLabel class="block text-sm font-medium leading-6 mr-2">Sort by:</ListboxLabel>
+            <ListboxLabel :id="sortByLabelId" class="block text-sm font-medium leading-6 mr-2">Sort by:</ListboxLabel>
             <div class="relative flex-1">
     
-            <ListboxButton class="relative w-full cursor-default rounded-md bg-white dark:bg-gray-800 dark:ring-gray-600 py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none  sm:text-sm sm:leading-6">
+            <ListboxButton :id="sortByButtonId" class="relative w-full cursor-default rounded-md bg-white dark:bg-gray-800 dark:ring-gray-600 py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none  sm:text-sm sm:leading-6">
                 <span class="block truncate">{{ activeSort.label }}</span>
                 <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                 <i class="h-5 w-5 text-gray-400" aria-hidden="true" />
@@ -44,13 +44,14 @@
 
     <div class="flex items-center gap-x-8">
         <div class="flex text-sm items-center gap-x-2" v-for="(filter, filterIdx) in filters.filter(e=>e.type=='checkbox')" >
-        <Switch  
+        <Switch
+            :id="switchId"
             :key="filter.name" 
             v-model="activeFilters[filter.id]"
             :class="activeFilters[filter.id] ? 'bg-blue-600' : 'bg-gray-200'"
             class="relative inline-flex h-6 w-11 items-center rounded-full"
         >
-            <span class="sr-only">Enable notifications</span>
+            <span class="sr-only">{{filter.name}}</span>
             <span :class="activeFilters[filter.id] ? 'translate-x-6' : 'translate-x-1'" class="inline-block h-4 w-4 transform rounded-full bg-white transition"/>
         </Switch>
         <div>{{ filter.name }}</div>
@@ -96,6 +97,10 @@ const props = defineProps({
         type: Array
     }
 })
+
+const sortByLabelId = useId()
+const sortByButtonId = useId()
+const switchId = useId()
 
 const activeFilters = useState('activeFilters')
 

@@ -30,13 +30,13 @@
         
         <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-4">
             
-            <template v-for="item in iems">
+            <template v-for="item in data">
                 <ProductBox :product="item" />
             </template>
         </ul>
 
         <div class="mt-24 flex justify-center">
-            <Button color="blue" @click="loadMore">Load more</Button>
+            <Icon name="ph:arrow-circle-down-thin" size="48px" class="cursor-pointer" @click="loadMore" />
         </div>
 
     </div>
@@ -179,14 +179,17 @@ const indexFilter = computed(() => {
 
 watch(activeFilters, async () => {
     
+    page.value = 1
     await refresh()
-
+    data.value = iems.value
+    
 },{ deep: true })
 
 
 /***** Products fetching data  *****/
 
-const pageNo = ref(1)
+
+const page = ref(1)
 const { data:iems, refresh } = await useAsyncData('iems', () => 
 
 
@@ -199,7 +202,7 @@ const { data:iems, refresh } = await useAsyncData('iems', () =>
     
     .where({ 'showInIndex': indexFilter.value })
 
-    .skip(8 * (pageNo.value - 1))
+    .skip(8 * (page.value - 1))
     .limit(8)
 
     .sort(sortPayload.value)
@@ -207,9 +210,16 @@ const { data:iems, refresh } = await useAsyncData('iems', () =>
     .find()
 )
 
-const loadMore = () => {
-    pageNo.value++
-    refresh()
+// help variable for infinite scroll
+const data = ref()
+data.value = iems.value
+
+const loadMore = async () => {
+    page.value++
+
+    await refresh()
+
+    data.value = [...data.value, ...iems.value]
 }
 
 </script>

@@ -1,7 +1,7 @@
 <template>
 
    <!-- Featured post -->
-   <article class="mb-12 lg:mb-24">
+   <article class="mb-12 lg:mb-32" v-if="hero">
     
         <div class="flex items-center mb-2 gap-2">
             <Label v-for="label in hero.labels" class="capitalize">{{ label }}</Label>
