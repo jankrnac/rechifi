@@ -123,23 +123,23 @@
 
 								<!-- Authenticated -->
 								<nuxt-link v-if="user" :to="'/users/' + profile.username" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
-									<IconsUser class="w-5 h-5"/>
+									<Icon name="ph:user-light" />
 									<div>My profile</div>
 								</nuxt-link>
 								<nuxt-link v-if="user" to="/reviews/new" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
-									<IconsPlus class="w-5 h-5"/>
+									<Icon name="ph:plus-circle-light" />
 									<div>Add review</div>
 								</nuxt-link>
 								<nuxt-link v-if="user" to="/reviews/my" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
-									<IconsArticle class="w-5 h-5"/>
+									<Icon name="ph:read-cv-logo-light" />
 									<div>My reviews</div>
 								</nuxt-link>
 								<nuxt-link v-if="user" to="/settings" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
-									<IconsGear class="w-5 h-5"/>
+									<Icon name="ph:gear-light" />
 									<div>Settings</div>
 								</nuxt-link>
 								<nuxt-link v-if="user" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="logout">
-									<IconsLogout class="w-5 h-5"/>
+									<Icon name="ph:sign-out-light" />
 									<div>Logout</div>
 								</nuxt-link>
 
@@ -156,7 +156,7 @@
 			<div class="flex ml-4 justify-end xl:hidden">
 				<button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5" @click="mobileMenuOpen = true">
 					<span class="sr-only">Open main menu</span>
-					<IconsHamburger class="w-6 h-6"/>
+					<Icon name="ph:hamburger-light" class="w-6 h-6"/>
 				</button>
 			</div>
 
@@ -173,12 +173,12 @@
 			<div class="flex items-center justify-end">
 		
 			<div>
-				<IconsSun v-if="colorMode.preference == 'dark'" class="w-6 h-6 mr-5 cursor-pointer"  @click="setColorMode('light')"/>
-				<IconsMoon v-else class="w-6 h-6 cursor-pointer mr-5"  @click="setColorMode('dark')"/>
+				<Icon name="ph:sun-light" v-if="colorMode.preference == 'dark'" class="w-6 h-6 mr-5 cursor-pointer"  @click="setColorMode('light')"/>
+				<Icon name="ph-moon-light" v-else class="w-6 h-6 cursor-pointer mr-5"  @click="setColorMode('dark')"/>
 			</div>
 			<button type="button" class="-m-2.5 rounded-md p-2.5" @click="mobileMenuOpen = false">
 				<span class="sr-only">Close menu</span>
-				<IconsCross class="w-6 h-6" aria-hidden="true" />
+				<Icon name="ph:cross" aria-hidden="true" />
 			</button>
 			</div>
 			
@@ -187,7 +187,7 @@
 			
 					<!-- Search -->
 					<div class="block flex-1 relative mt-10">
-					<IconsSearch class="w-5 h-5 absolute top-3.5 left-4 text-gray-400 hidden lg:block" />
+					<Icon name="ph:search" class="w-5 h-5 absolute top-3.5 left-4 text-gray-400 hidden lg:block" />
 					<input 	class="bg-gray-50 p-3 pl-4 lg:pl-12 rounded-lg border w-full text-sm focus:outline-none lg:text-base dark:bg-gray-800 dark:border-gray-700" 
 							type="text" 
 							:placeholder="t('search-placeholder')"
@@ -203,7 +203,7 @@
 						<Disclosure as="div" v-else v-slot="{ open }">
 							<DisclosureButton :class="[item.current ? 'bg-gray-50' : 'hover:bg-gray-50', 'flex items-center justify-between w-full text-left rounded-md p-2 text-sm leading-6 font-semibold']">
 							{{ t(item.name) }}
-							<IconsCaretDown :class="[open ? 'rotate-90 text-gray-500' : 'text-gray-400', 'h-5 w-5 shrink-0']" aria-hidden="true" />
+							<Icon name="ph:caret-down":class="[open ? 'rotate-90 text-gray-500' : 'text-gray-400', 'h-5 w-5 shrink-0']" aria-hidden="true" />
 
 							</DisclosureButton>
 							<DisclosurePanel as="ul" class="mt-1 px-2">
