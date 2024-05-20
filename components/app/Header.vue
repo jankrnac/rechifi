@@ -98,7 +98,7 @@
         <!-- Right header -->
         <div class="flex justify-end">
 			<div class="hidden lg:flex">
-				
+					
 					<Icon name="ph:sun-light" v-if="colorMode.preference == 'dark'" class="mr-5 cursor-pointer"  @click="setColorMode('light')"/>
 					<Icon name="ph:moon-light" v-else class="cursor-pointer mr-5"  @click="setColorMode('dark')"/>
 			
