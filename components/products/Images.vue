@@ -1,5 +1,5 @@
 <template>
-<div class="max-w-app overflow-hidden relative mb-24">
+<div class="max-w-app overflow-hidden relative mb-5">
 
 <template v-if="$device.isMobile">
     <Carousel :items-to-show="1">

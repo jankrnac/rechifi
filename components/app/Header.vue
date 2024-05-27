@@ -7,7 +7,7 @@
             	<span class="sr-only">Your Company</span>
             	<Logo class="w-10 h-10 mr-6 lg:w-12 lg:h-12" />
 				<h1 class="2xl:flex text-xl">
-					<span class="text-xl font-bold tracking-wide"><span class="">Re</span><span>chifi</span></span> 
+					<span class="text-xl font-extrabold tracking-wide"><span class="">Re</span><span>chifi</span></span> 
 				</h1>
           	</nuxt-link>
         </div>
@@ -86,7 +86,7 @@
 
         <!-- Search -->
         <div class="hidden md:block flex-1 mr-2 lg:mr-6 2xl:mr-24 relative">
-			<Icon name="uil:search" class="w-5 h-5 absolute top-3.5 left-4 text-gray-400 hidden lg:block" />
+			<Icon name="ph:magnifying-glass-light" class="w-5 h-5 absolute top-3.5 left-4 text-gray-400 hidden lg:block" />
             <input 	class="bg-gray-50 p-3 pl-4 lg:pl-12 rounded-lg border w-full text-sm lg:text-base dark:bg-gray-800 dark:border-gray-700" 
 					type="text" 
 					:placeholder="t('search-placeholder')"
@@ -156,7 +156,7 @@
 			<div class="flex ml-4 justify-end xl:hidden">
 				<button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5" @click="mobileMenuOpen = true">
 					<span class="sr-only">Open main menu</span>
-					<Icon name="ph:hamburger-light" class="w-6 h-6"/>
+					<Icon name="ph:list-light" class="w-6 h-6"/>
 				</button>
 			</div>
 
@@ -174,11 +174,11 @@
 		
 			<div>
 				<Icon name="ph:sun-light" v-if="colorMode.preference == 'dark'" class="w-6 h-6 mr-5 cursor-pointer"  @click="setColorMode('light')"/>
-				<Icon name="ph-moon-light" v-else class="w-6 h-6 cursor-pointer mr-5"  @click="setColorMode('dark')"/>
+				<Icon name="ph:moon-light" v-else class="w-6 h-6 cursor-pointer mr-5"  @click="setColorMode('dark')"/>
 			</div>
 			<button type="button" class="-m-2.5 rounded-md p-2.5" @click="mobileMenuOpen = false">
 				<span class="sr-only">Close menu</span>
-				<Icon name="ph:cross" aria-hidden="true" />
+				<Icon name="ph:x-light" aria-hidden="true" />
 			</button>
 			</div>
 			
@@ -187,7 +187,7 @@
 			
 					<!-- Search -->
 					<div class="block flex-1 relative mt-10">
-					<Icon name="ph:search" class="w-5 h-5 absolute top-3.5 left-4 text-gray-400 hidden lg:block" />
+					<Icon name="ph:magnifying-glass-light" class="w-5 h-5 absolute top-3.5 left-4 text-gray-400 hidden lg:block" />
 					<input 	class="bg-gray-50 p-3 pl-4 lg:pl-12 rounded-lg border w-full text-sm focus:outline-none lg:text-base dark:bg-gray-800 dark:border-gray-700" 
 							type="text" 
 							:placeholder="t('search-placeholder')"

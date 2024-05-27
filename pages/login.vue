@@ -106,7 +106,7 @@ const login = async () => {
 	}
 	else
 	{
-		await navigateTo('/')
+		await navigateTo('/', {external: true})
 	}
 }
 

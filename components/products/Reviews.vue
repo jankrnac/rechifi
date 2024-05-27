@@ -1,6 +1,6 @@
 <template>
 
-<div class="w-full">
+<div class="w-full mb-36">
 
 	<div class="flex justify-center items-center md:justify-start mb-8 gap-4">
 		<h2 class="text-xl font-bold">Reviews</h2>
