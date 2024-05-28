@@ -2,6 +2,7 @@
 
 <div class="flex flex-1 min-h-screen content border relative z-[99]" :class="[editable ? 'rounded-xl border-gray-300' : 'border-transparent']">
     <!--Classic, non editable mode -->
+
     <template v-if="useRoute().name == 'reviews-username-brand-model'">
         <div class="flex flex-col gap-y-6 min-h-screen w-full">
             <ElementsWrapper
@@ -22,12 +23,16 @@
             group="elements"
             item-key="id"
             @change="$emit('change', local)"
-            :disabled="!editable" 
+            :disabled="!editable"
+            @start="dragging=true"
+            @end="dragging=false"
+
         >
 
             <template #item="{ element, index }">
                 <ElementsWrapper
                     :editable="editable" 
+                    :dragging="dragging"
                     :element="element"
                     @deleted="onRemove(element.id, index)"
                     @change="onChange(element.id, $event)"
@@ -45,6 +50,8 @@
 
 <script setup>
 import draggable from "vuedraggable";
+
+const dragging = ref(false)
 
 const props = defineProps({
     elements: {

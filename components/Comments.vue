@@ -15,7 +15,7 @@
         </ul>
         <div>
             <div class="text-sm mb-1 text-gray-500">Commenting as <span class="font-semibold">{{ profile.username }}</span></div>
-            <textarea class="w-full border border-gray-300 rounded-lg focus:outline-none p-4" rows="4" v-model="text"></textarea>
+            <textarea class="w-full border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none p-4 dark:bg-gray-800" rows="4" v-model="text"></textarea>
         </div>
         <div class="flex justify-end">
             <Button color="blue" @click="addComment">Add comment</Button>

@@ -6,16 +6,16 @@
 
         <div class="max-w-app mx-auto flex gap-2">
             <nuxt-link :to="'/reviews/' + review.profiles.username + '/' + review.brand + '/' + review.model + '/edit'" class="bg-blue-200 rounded px-4 py-2.5 text-sm flex items-center">
-                <IconsEdit class="w-4 h-4 mr-2"/>
+                <Icon name="ph:pencil-simple-thin" class="w-4 h-4 mr-2"/>
                 Edit
             </nuxt-link>
 
             <button v-if="review.published" class="bg-red-200 rounded px-4 py-2.5 text-sm flex items-center" @click="publish(false)">
-                <IconsCross class="w-4 h-4 mr-2"/>
+                <Icon name="ph:x-thin" class="w-4 h-4 mr-2"/>
                 Unpublish
             </button>
             <button v-else class="bg-green-200 rounded px-4 py-2.5 text-sm flex items-center" @click="publish(true)">
-                <IconsUpload class="w-4 h-4 mr-2"/>
+                <Icon name="ph:upload-thin" class="w-4 h-4 mr-2"/>
                 Publish
             </button>
 

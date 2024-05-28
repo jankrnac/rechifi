@@ -7,7 +7,7 @@
                 <div class="mr-2 capitalize">{{ key }}:</div>
                 <div v-for="value in values" class="flex items-center gap-x-2 bg-gray-200 rounded px-2 py-1">
                     <div class="capitalize">{{ value.label }}</div>
-                    <IconsCross class="w-4 h-4 cursor-pointer" @click="activeFilters[key] = activeFilters[key].filter(e => e != value)"/>
+                    <Icon name="ph:x-thin" size="20px" class="cursor-pointer" @click="activeFilters[key] = activeFilters[key].filter(e => e != value)"/>
                 </div>
             </template>
         </li>

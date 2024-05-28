@@ -1,5 +1,6 @@
 <template>
 	<div class="text-left">
+
 		<bubble-menu
      		:editor="editor"
       		:tippy-options="{ duration: 100 }"
@@ -37,7 +38,7 @@
 
     	</bubble-menu>
 
-		<editor-content v-if="editable" :editor="editor" />
+		<editor-content v-if="editable" :editor="editor" dis/>
 		<div v-else v-html="element.data.text"></div>
 	</div>
 </template>
@@ -55,8 +56,14 @@ import TextAlign from '@tiptap/extension-text-align'
 		editable: {
 			type: Boolean,
 			default: false
+		},
+		dragging: {
+			type: Boolean,
+			default: false
 		}
 	})
+
+
 
 	const editor = useEditor({
 		content: props.element.data.text,
@@ -85,6 +92,12 @@ import TextAlign from '@tiptap/extension-text-align'
 			},
 		},
 		editable: props.editable,
+	})
+
+	// watch the dragging props, if true, disable the editable conntent
+	// this is the workaround for buf of duplicating content when dragging ends
+	watch(() => props.dragging, (value) => {
+		editor.value.setEditable(!value)
 	})
 
 	const emits = defineEmits(['change'])

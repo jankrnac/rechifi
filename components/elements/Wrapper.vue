@@ -1,14 +1,14 @@
 <template>
 
 <div class="flex">
-    
+
 	<div class="w-full text-center relative border" :class="[optionsVisible ? 'border-blue-400 border-dashed':'border-white dark:border-gray-950']" 
         @mouseover="showHover" 
         @mouseout="hideHover" 
     >
 
         <div class="absolute text-white -top-8 left-2 z-[9] flex gap-1 w-1/2" v-show="optionsVisible">
-            <div class="cursor-move mb-1 bg-teal-500 p-1 rounded"><IconsUpdown class="w-6 h-6"/></div>
+            <div class="cursor-move mb-1 bg-teal-500 p-1 rounded"><Icon name="ph:caret-up-down" class="w-6 h-5"/></div>
             
             <!-- Options popup wrapper-->
             <ElementsOptions 
@@ -24,6 +24,7 @@
             :is="componentsMap[element.type]" 
             :element="element" 
             :editable="editable"
+            :dragging="dragging"
             @change="changed"
         />
 
@@ -41,6 +42,10 @@
             required: true
         },
         editable: {
+            type: Boolean,
+            default: false
+        },
+        dragging: {
             type: Boolean,
             default: false
         },

@@ -10,15 +10,15 @@
     <div class="flex justify-end lg:justify-between py-2 items-center text-sm">
         <div class="flex gap-2">
             <div class="bg-orange-300 px-4 py-1.5 rounded-lg text-sm flex items-center cursor-pointer" @click="editable = !editable">
-                <IconsEye v-if="editable" class="w-4 h-4 mr-2"/>
-                <IconsEdit v-else class="w-4 h-4 mr-2"/>
+                <Icon name="ph:eye-thin" v-if="editable" class="w-4 h-4 mr-2"/>
+                <Icon name="ph;pencil-simple-thin" v-else class="w-4 h-4 mr-2"/>
 
                 <span v-if="editable">Preview</span>
                 <span v-else>Edit</span>
             </div>
 
             <div class="mr-2 bg-blue-300 px-4 py-1.5 rounded-lg text-sm flex items-center cursor-pointer" @click="settingsVisible = !settingsVisible">
-                <IconsGear class="w-4 h-4 lg:mr-2"/>
+                <Icon name="ph:gear-thin" class="w-4 h-4 lg:mr-2"/>
                 <span class="hidden lg:inline">Settings</span>
             </div>
         </div>
@@ -33,12 +33,12 @@
                         </svg>
                     </div>
                 </template>
-                    <IconsSave class="w-4 h-4 lg:mr-2"/>
+                    <Icon name="ph:download-simple" class="w-4 h-4 lg:mr-2"/>
                     <span class="hidden lg:inline">Save</span>
             </button>
             
             <div v-show="editable" class="bg-gray-100 px-4 py-1.5 rounded-lg flex items-center cursor-pointer">
-                <IconsUpload class="w-4 h-4 lg:mr-2"/>
+                <Icon name="ph:upload-simple" class="w-4 h-4 lg:mr-2"/>
                 <span class="hidden lg:inline">Publish</span>
             </div>
         </div>

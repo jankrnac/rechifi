@@ -29,7 +29,7 @@
 						</div>
 						
                     	<Button color="red" @click="$emit('delete')">
-                        	<IconsCross class="w-4 h-4 mr-2"/>
+                        	<Icon name="ph:x" class="w-4 h-4 mr-2"/>
                         	Delete
 						</Button>
 					</div>

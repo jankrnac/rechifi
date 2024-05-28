@@ -1,10 +1,10 @@
 <template>
 
-<div class="w-full mb-36">
+<div class="w-full mb-36">	
 
 	<div class="flex justify-center items-center md:justify-start mb-8 gap-4">
 		<h2 class="text-xl font-bold">Reviews</h2>
-		<div v-if="user" class="bg-blue-200 rounded text-sm px-2 py-1 cursor-pointer" @click="addReview">Add review</div>
+		<div v-if="user && reviews.findIndex(e=>e.profile_id == profile.id) < 0" class="bg-blue-200 rounded text-sm px-2 py-1 cursor-pointer" @click="addReview">Add review</div>
 	</div>
 
 	<template v-if="reviews.length">
@@ -35,6 +35,8 @@ const client = useSupabaseClient()
 const user = useSupabaseUser()
 
 const { data:reviews } = await client.from('reviews').select('*, profiles(*)').eq('brand', route.params.brand).eq('model', route.params.model)
+const { data:profile } = await client.from('profiles').select().eq('id', user.value.id).single()
+
 
 const { t } = useI18n({
     useScope: 'local'
@@ -55,7 +57,6 @@ const addReview = async () => {
 		profile_id: user.value.id
 	})
 	
-	const { data:profile } = await client.from('profiles').select().eq('id', user.value.id).single()
 
 
 	await navigateTo(`/reviews/${profile.username}/${brandPayload}/${modelPayload}/edit`)
