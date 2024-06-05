@@ -1,13 +1,17 @@
 <template>
 
 <header>
-    <nav class="flex items-center p-6 border-b md:border-none" aria-label="Global">
+    <nav class="flex items-center p-6" aria-label="Global">
         <div class="flex mr-0 lg:mr-6 flex-1 md:grow-0">
           	<nuxt-link to="/" class="flex items-center ">
             	<span class="sr-only">Your Company</span>
             	<Logo class="w-10 h-10 mr-6 lg:w-12 lg:h-12" />
 				<h1 class="2xl:flex text-xl">
-					<span class="text-xl font-extrabold tracking-wide"><span class="">Re</span><span>chifi</span></span> 
+					<span class="relative">
+						<span class="text-xl font-bold tracking-wide">Re</span>
+						<span class="font-medium">chifi</span>
+						<div class="absolute text-xs bg-red-500 text-white px-1 py-0.5 rounded top-0 -right-10">beta</div>
+					</span> 
 				</h1>
           	</nuxt-link>
         </div>
@@ -167,7 +171,7 @@
 	  
 	  
 		
-		<Dialog as="div" class="xl:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
+	<Dialog as="div" class="xl:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
 		<div class="fixed inset-0 z-10" />
 		<DialogPanel class="fixed inset-y-0 right-0 z-[190] w-full overflow-y-auto bg-white dark:bg-gray-900 px-7 py-10 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:text-gray-200">
 			<div class="flex items-center justify-end">
@@ -187,8 +191,8 @@
 			
 					<!-- Search -->
 					<div class="block flex-1 relative mt-10">
-					<Icon name="ph:magnifying-glass-light" class="w-5 h-5 absolute top-3.5 left-4 text-gray-400 hidden lg:block" />
-					<input 	class="bg-gray-50 p-3 pl-4 lg:pl-12 rounded-lg border w-full text-sm focus:outline-none lg:text-base dark:bg-gray-800 dark:border-gray-700" 
+					<Icon name="ph:magnifying-glass-light" size="20" class="absolute top-3.5 left-4 text-gray-400 hidden lg:block" />
+					<input class="bg-gray-50 p-3 pl-12 rounded-lg border w-full text-sm focus:outline-none lg:text-base dark:bg-gray-800 dark:border-gray-700" 
 							type="text" 
 							:placeholder="t('search-placeholder')"
 							v-model="query"
@@ -199,11 +203,11 @@
 				<!-- Navigation section -->
 				<div class="space-y-2 py-6">
 					<div v-for="item in navigation" :key="item.name" :href="item.href" class="">
-						<a v-if="!item.children" :href="item.href" :class="[item.current ? 'bg-gray-50' : 'hover:bg-gray-50', 'block rounded-md py-2 p-2 text-sm leading-6 font-semibold']">{{ t(item.name) }}</a>
+						<a v-if="!item.children" :href="item.href" :class="[item.current ? 'bg-gray-50' : 'dark:hover:bg-gray-700  hover:bg-gray-50', 'block rounded-md py-2 p-2 text-sm leading-6 font-semibold']">{{ t(item.name) }}</a>
 						<Disclosure as="div" v-else v-slot="{ open }">
-							<DisclosureButton :class="[item.current ? 'bg-gray-50' : 'hover:bg-gray-50', 'flex items-center justify-between w-full text-left rounded-md p-2 text-sm leading-6 font-semibold']">
+							<DisclosureButton :class="[item.current ? 'bg-gray-50 dark:bg-gray-700' : 'dark:hover:bg-gray-700 hover:bg-gray-50', 'flex items-center justify-between w-full text-left rounded-md p-2 text-sm leading-6 font-semibold']">
 							{{ t(item.name) }}
-							<Icon name="ph:caret-down":class="[open ? 'rotate-90 text-gray-500' : 'text-gray-400', 'h-5 w-5 shrink-0']" aria-hidden="true" />
+							<Icon name="ph:caret-down" :class="[open ? 'rotate-90 text-gray-500' : 'text-gray-400', 'h-5 w-5 shrink-0']" aria-hidden="true" />
 
 							</DisclosureButton>
 							<DisclosurePanel as="ul" class="mt-1 px-2">

@@ -1,6 +1,6 @@
 <template>
 
-<div class="flex w-full flex-1 flex-col justify-center px-6 lg:px-8">
+<div class="flex w-full flex-1 flex-col justify-center">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
         <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">Sign in to your account</h2>
     </div>
@@ -15,7 +15,7 @@
 					<div class="-mx-1.5 -my-1.5">
 					<button v-if="loginError != 'Email not confirmed'" type="button" class="inline-flex rounded-md p-1.5 text-red-500 hover:bg-red-100">
 						<span class="sr-only">Dismiss</span>
-						<icons-cross class="h-5 w-5" aria-hidden="true" />
+						<Icon name="ph:x-thin" class="h-5 w-5" aria-hidden="true" />
 					</button>
 					<button v-else type="button" 
 						class="inline-flex text-sm rounded-md p-1.5" @click="resendConfirmatioNEmail"

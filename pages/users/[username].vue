@@ -2,7 +2,7 @@
 
 <div class="flex flex-col gap-12 mt-12 w-full max-w-app mb-24">
     <div class="flex flex-col items-center">
-        <div><IconsUser class="w-24 h-24 mb-8" /></div>
+        <div><Icon name="ph:user-thin" class="w-24 h-24 mb-8" /></div>
         <h1 class="font-bold text-5xl ">{{ profile.username }}</h1>
     </div>
     <h2 class="font-bold text-2xl">Audio gear</h2>

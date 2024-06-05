@@ -1,6 +1,6 @@
 <template>
 
-    <div class="flex w-full flex-1 flex-col justify-center px-6 lg:px-8">
+    <div class="flex w-full flex-1 flex-col justify-center">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
             <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight">Create your account</h2>
         </div>

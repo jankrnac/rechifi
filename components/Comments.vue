@@ -28,7 +28,10 @@
 const user = useSupabaseUser()
 const client = useSupabaseClient()
 
-const { data:profile } = await useFetch('/api/users/' + user.value.id)
+
+const { data:profile, execute:getUserProfile } = await useFetch('/api/users/' + user.value.id, {immediate: false})
+
+if(user.value) getUserProfile()
 
 const { data:comments } = await useAsyncData('comments', async () => {
     const { data } = await client.from('comments').select('*, profiles(*), likes(*)')

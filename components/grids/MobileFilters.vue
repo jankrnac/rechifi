@@ -13,7 +13,7 @@
                     <h2 class="text-lg font-medium text-gray-900">Filters</h2>
                     <button type="button" class="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500" @click="setClose">
                         <span class="sr-only">Close menu</span>
-                        <IconsCross class="h-6 w-6" aria-hidden="true" @click="setClose"/>
+                        <Icon name="ph:x-thin" class="h-6 w-6" aria-hidden="true" @click="setClose"/>
                     </button>
                 </div>
 

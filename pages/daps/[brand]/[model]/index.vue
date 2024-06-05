@@ -5,9 +5,10 @@
             <!-- Title -->
             <ProductsTitle :doc="doc">{{ doc.title }}</ProductsTitle>
     
-            <!-- Description -->
+            <!-- Description
             <ProductsDescription>{{ doc.description }}</ProductsDescription>
-    
+            -->
+
             <!-- Hero -->
             <ProductsHero v-if="doc.hero" :hero="doc.hero" />
     
@@ -19,7 +20,6 @@
     
             <!-- Features and Rating -->
             <div class="lg:flex flex-grow w-full max-w-app mb-24">
-                <ProductsFeatures v-if="doc.features" :features="doc.features" class="flex-grow mb-24 md:mb-0"/>
     
                 <div class="flex flex-grow items-center justify-center">
                     <ProductsOverallRating :rating="rating"/>
@@ -29,11 +29,8 @@
             <!-- Reviews -->
             <ProductsReviews class="mb-12 max-w-app"/>
     
-            <!-- Technicals -->
-            <ProductsSpecs v-if="doc.specs && doc.specs.length" :doc="doc"/>
-    
-            <!-- Stores -->
-            <ProductsStores v-if="doc.stores && doc.stores.length" :stores="doc.stores"/>
+
+        
     
     </div>
     
