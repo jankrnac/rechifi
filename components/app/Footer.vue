@@ -41,7 +41,7 @@ watch(locale, (value) => {
 
 const navigation = {
   main: [
-
+  	{ name: 'About us', href: '/about' },	
     { name: 'Privacy policy', href: '/privacy' },
   ]
 }

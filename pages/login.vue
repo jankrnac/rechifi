@@ -94,6 +94,7 @@ const loginError = ref()
 
 const loginPending = ref(false)
 
+console.log(useRoute().query)
 const login = async () => {
 	loginPending.value = true
     const { error } = await supabase.auth.signInWithPassword({
@@ -106,7 +107,18 @@ const login = async () => {
 	}
 	else
 	{
-		await navigateTo('/', {external: true})
+		let redirectUrl
+		
+		if(useRoute().query.redirect)
+		{
+			redirectUrl = useRoute().query.redirect
+		}
+		else
+		{
+			redirectUrl = '/'
+		}
+
+		await navigateTo(redirectUrl, {external: true})
 	}
 }
 

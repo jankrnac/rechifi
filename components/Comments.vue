@@ -14,11 +14,14 @@
             </li>
         </ul>
         <div>
-            <div class="text-sm mb-1 text-gray-500">Commenting as <span class="font-semibold">{{ profile.username }}</span></div>
+            <div v-if="user" class="text-sm mb-1 text-gray-500">Commenting as 
+                <span  class="font-semibold">{{ profile.username }}</span>
+            </div>
             <textarea class="w-full border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none p-4 dark:bg-gray-800" rows="4" v-model="text"></textarea>
         </div>
         <div class="flex justify-end">
-            <Button color="blue" @click="addComment">Add comment</Button>
+            <Button v-if="user" color="blue" @click="addComment">Add comment</Button>
+            <nuxt-link v-else :to='"/login?redirect="+useRoute().fullPath+"#comments"'><Button color="gray">Login to comment</Button></nuxt-link>
         </div>
     </div>
 </template>
@@ -28,10 +31,14 @@
 const user = useSupabaseUser()
 const client = useSupabaseClient()
 
+const profile = ref()
 
-const { data:profile, execute:getUserProfile } = await useFetch('/api/users/' + user.value.id, {immediate: false})
+if(user.value) 
+{
+    profile.value = await $fetch('/api/users/' + user.value.id )
+}
 
-if(user.value) getUserProfile()
+
 
 const { data:comments } = await useAsyncData('comments', async () => {
     const { data } = await client.from('comments').select('*, profiles(*), likes(*)')

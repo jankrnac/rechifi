@@ -14,13 +14,13 @@
 <div v-if="doc.signature">
     <ul class="flex flex-col md:flex-row items-end gap-3">
         <li v-for="signature in doc.signature" 
-            class="rounded-xl py-2.5 px-5 lg:py-3 lg:px-6 capitalize text-sm lg:text-lg font-semibold text-gray-800"
+            class="rounded-xl py-2.5 px-5 lg:py-3 lg:px-6 capitalize text-sm lg:text-lg font-semibold"
             :class="{
                 'bg-yellow-200': signature == 'bright',
                 'bg-gray-200 dark:bg-gray-800 dark:text-white' : signature == 'neutral',
                 'bg-gray-800 text-white' : signature == 'dark',
-                'bg-orange-200' : signature == 'bass boost' || signature.includes('warm'),
-                'bg-green-400' : signature == 'v-shaped',
+                'bg-orange-300 dark:bg-orange-800' : signature == 'bass boost' || signature.includes('warm'),
+                'bg-green-400 dark:bg-green-800' : signature == 'v-shaped',
                 'bg-blue-200' : signature == 'u-shaped'
 
             }"

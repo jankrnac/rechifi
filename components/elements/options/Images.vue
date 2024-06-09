@@ -1,7 +1,7 @@
 <template>
 
 <div>
-    <div class="text-sm mb-2">Click on the image to change it. Drag to rearrange.</div>
+    <div v-if="element.data.images.length" class="text-sm mb-2">Click on the image to change it. Drag to rearrange.</div>
 
     <draggable
         class="list-group flex gap-2 mb-2"

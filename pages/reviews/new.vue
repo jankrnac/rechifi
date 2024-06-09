@@ -72,12 +72,14 @@ const save = async () => {
 
             const brandPayload = manualMode.value ? useSlug(headphone.value.split(' ')[0]) : useSlug(headphone.value.brand)
             const modelPayload = manualMode.value ? useSlug(headphone.value.split(' ')[1]) : useSlug(headphone.value.model)
+            const productTitle = manualMode.value ? useSlug(headphone.value) : headphone.value.title
 
             await client.from('reviews').insert({
                 slug: slug,
                 brand: brandPayload,
                 model: modelPayload,
                 type: type,
+                product_title: productTitle,
                 profile_id: user.value.id
             })
 

@@ -1,6 +1,8 @@
 <template>
 
 <div class="mt-8">
+	<h2 class="font-bold text-3xl mb-6">Rating</h2>
+
 	<client-only>
       <ve-progress 
 	  	:progress="element.data.score" 
@@ -12,7 +14,7 @@
 		line-mode="out 5"
 		dash="10 2"
 		color="#88bedf"
-		:legend-formatter="({ currentValue }) => `<span class='font-bold text-gray-700 dark:text-gray-200'>${currentValue}</span>`"
+		:legend-formatter="({ currentValue }) => `<span class='font-bold'>${currentValue}</span>`"
 	/>
     </client-only>
 </div>

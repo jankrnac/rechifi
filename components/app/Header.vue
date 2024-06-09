@@ -10,7 +10,7 @@
 					<span class="relative">
 						<span class="text-xl font-bold tracking-wide">Re</span>
 						<span class="font-medium">chifi</span>
-						<div class="absolute text-xs bg-red-500 text-white px-1 py-0.5 rounded top-0 -right-10">beta</div>
+						<div class="absolute text-xs bg-red-500 text-white px-1 py-0.5 rounded -top-1 -right-6 rotate-[30deg] opacity-50">beta</div>
 					</span> 
 				</h1>
           	</nuxt-link>

@@ -4,7 +4,7 @@
     class="rounded-lg relative overflow-hidden font-semibold text-sm text-white inline-flex items-center justify-center disabled:opacity-40" 
     :type="type"
     :class="{
-        'bg-gray-200' : color == 'gray',
+        'bg-gray-300' : color == 'gray',
         'bg-red-400 hover:bg-red-500' : color == 'red',
         'bg-green-400' : color == 'green',
         'bg-blue-400 hover:bg-blue-500' : color == 'blue',

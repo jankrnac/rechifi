@@ -27,7 +27,7 @@
                 
         <div class="group relative">
             <div class="flex w-full items-center gap-3">
-                <div class="flex flex-1 justify-between gap-4 mt-1" :class="[size == 'normal' ? 'text-sm' : 'text-xs']">
+                <div class="flex flex-1 justify-between gap-4 mt-0" :class="[size == 'normal' ? 'text-sm' : 'text-xs']">
                     <div class="text-gray-500 dark:text-gray-200 flex items-center justify-center">
                         <Icon name="ph:user-light" size="16px" class="mr-1" />
                         <nuxt-link :to="'/users/'+review.profiles.username" class="text font-semibold">{{ review.profiles.username }}</nuxt-link>
@@ -39,7 +39,9 @@
                 </div>
             </div>
             <h3 v-if="size == 'normal'" class="mt-6 mb-1 text-2xl font-bold leading-6">
-                <nuxt-link :to="'/reviews/' + review.profiles.username + '/' + review.brand + '/' + review.model" class="text">{{ review.title }}</nuxt-link>
+                <nuxt-link :to="'/reviews/' + review.profiles.username + '/' + review.brand + '/' + review.model" class="text">
+                    {{ review.product_title }}
+                </nuxt-link>
             </h3>
          
             <p v-if="size == 'normal'" class="mt-5 line-clamp-5 text-sm leading-6 min-h-[96px]">{{ review.description }}</p>
