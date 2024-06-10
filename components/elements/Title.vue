@@ -17,12 +17,12 @@
 	</div>
 		
 	<div class="text-sm text-left text-gray-400 ml-1">Navigation</div>
-	<nav class="hidden lg:flex justify-center items-center gap-4 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 border p-5 rounded-lg">
+	<nav class="hidden lg:flex justify-center items-center gap-2 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 border p-5 rounded-lg">
 		<template v-for="(item, index) in nav">
 		<a class="text" :href="'#'+item.data.name">
 			{{ item.data.name }}
 		</a>
-		<IconsWave v-if="index < nav.length-1" class="w-4 h-4"/>
+		<Icon v-if="index < nav.length-1"  name="ph:dot" />
 		</template>
 	</nav>
 	
