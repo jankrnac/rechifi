@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </div>
-            <h3 v-if="size == 'normal'" class="mt-6 mb-1 text-2xl font-bold leading-6">
+            <h3 v-if="size == 'normal'" class="mt-6 mb-1 text-2xl font-bold leading-6 h-12 align-top">
                 <nuxt-link :to="'/reviews/' + review.profiles.username + '/' + review.brand + '/' + review.model" class="text">
                     {{ review.product_title }}
                 </nuxt-link>

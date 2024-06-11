@@ -23,6 +23,8 @@
 
             <div class="flex flex-grow items-center justify-center">
                 <ProductsOverallRating :rating="rating"/>
+
+                {{ data }}
             </div>
         </div>
 
@@ -47,18 +49,22 @@ const client = useSupabaseClient()
 
 const { data:doc } = await useAsyncData('product', () => queryContent(useRoute().path).findOne())
 
-const { data:rating } = await useAsyncData(async () => {
+const { data } = await useAsyncData(async () => {
 
     const { data } = await client
     .from('reviews')
     .select('brand, model, elements(data)')
     .eq('brand', useRoute().params.brand)
     .eq('model', useRoute().params.model)
-    .eq('elements.type', 'score')
+    .in('elements.type', ['score','signature'])
 
-    const temp = data.filter(e => e.elements.length).map(q=>q.elements).flat().map(r=>r.data).map(y=>y.score)
+    const score = data.filter(e => e.elements.length).map(q=>q.elements).flat().map(r=>r.data)
+    const signature = data.filter(e => e.elements.length).map(q=>q.elements).flat().map(r=>r.data)
 
-    return temp.reduce((accumulator, currentValue) => accumulator + currentValue, 0) / temp.length
+    return {
+        score: score.reduce((accumulator, currentValue) => accumulator + currentValue, 0) / score.length,
+        signature: signature
+    }
 })
       
 </script>
