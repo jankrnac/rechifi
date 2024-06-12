@@ -56,11 +56,11 @@ const { data:reviewData } = await useAsyncData(async () => {
     .eq('model', useRoute().params.model)
     .in('elements.type', ['score','signature'])
 
-    const score = data.filter(e => e.elements.length).map(q=>q.elements).flat().map(r=>r.data).map(y=>y.score)
+    const score = data.filter(e => e.elements.length).map(q=>q.elements).flat().map(r=>r.data).map(y=>y.score).filter(Boolean)
     const signature =  data.filter(e => e.elements.length).map(q=>q.elements).flat().map(r=>r.data).map(y=>y.signature)
 
     return {
-        rating: score.reduce((accumulator, currentValue) => accumulator + currentValue, 0) / score.length,
+        rating: score,
         signature: signature
     }
 })
