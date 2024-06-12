@@ -60,6 +60,11 @@ export default defineEventHandler((event) => {
             },
         },
 
+        {
+            id: 9, type: 'signature', caption: 'Sound signature', data: {
+                signature: []
+            },
+        },
 
 
 

@@ -2,6 +2,7 @@
 
 <div class="flex">
 
+    
 	<div class="w-full text-center relative border" :class="[optionsVisible ? 'border-blue-400 border-dashed':'border-white dark:border-gray-950']" 
         @mouseover="showHover" 
         @mouseout="hideHover" 
@@ -84,6 +85,7 @@
         section: resolveComponent('ElementsSection'),
         'image-text': resolveComponent('elements-image-text'),
         gallery: resolveComponent('elementsGallery'),
+        signature: resolveComponent('elementsSignature'),
 
     }
 

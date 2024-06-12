@@ -16,15 +16,13 @@
         <ProductsImages v-if="doc.images" :images="doc.images" />
 
         <!-- Labels -->
-        <ProductsLabels :doc="doc" />
+        <ProductsLabels :doc="doc" :signature="signature" />
 
         <!-- Features and Rating -->
         <div class="lg:flex flex-grow w-full max-w-app mb-24">
 
             <div class="flex flex-grow items-center justify-center">
-                <ProductsOverallRating :rating="rating"/>
-
-                {{ data }}
+                <ProductsOverallRating :rating="reviewData.rating"/>
             </div>
         </div>
 
@@ -49,7 +47,7 @@ const client = useSupabaseClient()
 
 const { data:doc } = await useAsyncData('product', () => queryContent(useRoute().path).findOne())
 
-const { data } = await useAsyncData(async () => {
+const { data:reviewData } = await useAsyncData(async () => {
 
     const { data } = await client
     .from('reviews')
@@ -58,11 +56,11 @@ const { data } = await useAsyncData(async () => {
     .eq('model', useRoute().params.model)
     .in('elements.type', ['score','signature'])
 
-    const score = data.filter(e => e.elements.length).map(q=>q.elements).flat().map(r=>r.data)
-    const signature = data.filter(e => e.elements.length).map(q=>q.elements).flat().map(r=>r.data)
+    const score = data.filter(e => e.elements.length).map(q=>q.elements).flat().map(r=>r.data).map(y=>y.score)
+    const signature =  data.filter(e => e.elements.length).map(q=>q.elements).flat().map(r=>r.data).map(y=>y.signature)
 
     return {
-        score: score.reduce((accumulator, currentValue) => accumulator + currentValue, 0) / score.length,
+        rating: score.reduce((accumulator, currentValue) => accumulator + currentValue, 0) / score.length,
         signature: signature
     }
 })
