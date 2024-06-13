@@ -47,7 +47,8 @@
             username: route.params.username,
             brand: route.params.brand,
             model: route.params.model,
-        }
+        },
+        deep: true
     })
         
     useSeoMeta

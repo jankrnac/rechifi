@@ -1,6 +1,6 @@
 <template>
 
-<div class="max-w-app w-full mx-auto">
+<div class="max-w-app w-full mx-auto pb-24">
 
     <div v-show="editable" class="flex items-center gap-5 fixed left-0 z-[999]">
         <ElementsAvailable />
@@ -11,7 +11,7 @@
         <div class="flex gap-2">
             <div class="bg-orange-300 px-4 py-1.5 rounded-lg text-sm flex items-center cursor-pointer" @click="editable = !editable">
                 <Icon name="ph:eye-thin" v-if="editable" class="w-4 h-4 mr-2"/>
-                <Icon name="ph;pencil-simple-thin" v-else class="w-4 h-4 mr-2"/>
+                <Icon name="ph:pencil-simple-thin" v-else class="w-4 h-4 mr-2"/>
 
                 <span v-if="editable">Preview</span>
                 <span v-else>Edit</span>

@@ -12,15 +12,15 @@
                 </nuxt-link>
             </p>
             
-            <Label class="uppercase mt-1" color="green">{{ upcoming._path.split('/')[1].slice(0,-1) }}</Label>
+            <Label class="mt-1">{{ upcoming._path.split('/')[1].slice(0,-1).toUpperCase() }}</Label>
         </div>
     </div>
 
     
     <div class="flex shrink-0 items-center gap-x-4">
         <div class="hidden sm:flex sm:flex-col sm:items-end">
-            <Label v-if="upcoming.releaseDate">Released</Label>
-            <Label v-else>Planned</Label>
+            <div v-if="upcoming.released">Released</div>
+            <div v-else>Planned</div>
             <p v-if="upcoming.releaseDate" class="mt-3 text-xl leading-5 font-bold">
                 {{ new Date(upcoming.releaseDate).toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'}) }}
             </p>

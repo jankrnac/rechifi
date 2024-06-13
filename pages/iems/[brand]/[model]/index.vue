@@ -60,7 +60,7 @@ const { data:reviewData } = await useAsyncData(async () => {
     const signature =  data.filter(e => e.elements.length).map(q=>q.elements).flat().map(r=>r.data).map(y=>y.signature)
 
     return {
-        rating: score,
+        rating: score.reduce((accumulator, currentValue) => accumulator + currentValue, 0) / score.length,
         signature: signature
     }
 })

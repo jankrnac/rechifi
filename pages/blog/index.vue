@@ -8,6 +8,14 @@
 
     <Wave />
 
+    <ul class="flex gap-4 my-6 lg:my-12">
+        <div class="rounded-xl bg-yellow-200 px-5 py-2 font-semibold cursor-pointer hover:bg-yellow-300 transition" @click="activeFilters = ['IEM', 'DAP','DAC']">All</div>
+        <div class="border-r m-1"></div>
+        <div class="rounded-xl bg-blue-200 px-5 py-2 font-semibold cursor-pointer hover:bg-blue-300 transition" :class="[ activeFilters.includes('IEM') ? 'opacity-100' : 'opacity-30']" @click="activeFilters = ['IEM']">IEM</div>
+        <div class="rounded-xl bg-green-200 px-5 py-2 font-semibold cursor-pointer hover:bg-green-300 transition" :class="[ activeFilters.includes('DAP') ? 'opacity-100' : 'opacity-30']" @click="activeFilters = ['DAP']">DAP</div>
+        <div class="rounded-xl bg-red-200 px-5 py-2 font-semibold cursor-pointer hover:bg-red-300 transition" :class="[ activeFilters.includes('DAC') ? 'opacity-100' : 'opacity-30']" @click="activeFilters = ['DAC']">DAC</div>
+    </ul>
+
     <div class="mx-auto mb-24 mt-6 lg:mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-app lg:grid-cols-4">
 
         <template v-for="post in blogPosts" :key="post._path">
@@ -29,15 +37,20 @@
     premium sound experiences from top Chinese brands. Elevate your audio journey with our curated knowledge hub. Dive into the articles now!`
 })
 
+const activeFilters = ref(['IEM','DAP','DAC'])
 
-  const blogPosts = await queryContent('/blog')
-  
-    .sort({ created_at: -1 }) // show latest articles first
-  
-    .where({ _partial: false}) // exclude the Partial files
-    
-    .where({ visible: { $ne: false } })
+const { data:blogPosts } =  await useAsyncData('articles', () => queryContent('/blog')
 
-    .find()
+.sort({ created_at: -1 }) // show latest articles first
+
+.where({ _partial: false}) // exclude the Partial files
+
+.where({ labels : { $in: activeFilters.value}}) // exclude the Partial files
+
+.where({ visible: { $ne: false } })
+
+.find(), { 
+    watch:[activeFilters]
+})
   
 </script>

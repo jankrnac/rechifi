@@ -2,7 +2,7 @@
       <div class="flex w-full max-w-app items-start justify-between mb-16 md:mb-32">
 
 <div v-if="doc.drivers && doc.drivers.length">
-    <div class="text-sm mb-2">Drivers composition</div>
+    <div class="text-sm mb-2">Driver composition</div>
     <div class="flex">
         <div class="flex flex-grow justify-center items-center">
         </div>

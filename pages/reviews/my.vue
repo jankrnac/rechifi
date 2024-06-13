@@ -62,7 +62,7 @@
                 </p>
               </div>
 
-              <div class="mt-4">
+              <div class="mt-4 text-right">
                   <Button color="red" @click="confirmDelete">Delete</Button>
               </div>
             </DialogPanel>

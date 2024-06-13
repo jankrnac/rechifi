@@ -1,31 +1,32 @@
 ---
 
-title: TRN Xuanwu
+title: Softears Enigma
 
-model: Xuanwu
+model: Enigma
 
 brand: TRN
 
 drivers:
-     - planar: 1
-     - ba: 1
+     - dd: 2
+     - ba: 6
+     - est: 4
     
 driverTypes: 
-    - planar
+    - dd
     - ba
+    - est
 
 priceRange: low
 
-releaseDate: 2022-11-24 
+releaseDate: 
 
-released: true
+upcoming: true
+
+released: false
     
-cover: trn/xuanwu/cover.webp
+cover: softears/enigma/cover.webp
 
-images:
-    - trn/xuanwu/image1.webp
-    - trn/xuanwu/image2.webp
-    - trn/xuanwu/image3.webp
+hero: softears/enigma/hero.webp
 
 stores:
     - shenzhenaudio: https://shenzhenaudio.com/products/trn-xuanwu-hybird-planar-in-ear-monitor-earphone-10mm-square-planar-driver-headphone

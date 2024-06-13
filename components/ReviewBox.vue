@@ -1,16 +1,16 @@
 <template>
 
-<article class="flex flex-col items-start justify-between">
+<article class="flex flex-col items-start justify-start">
 
     <div v-if="useRoute().name != 'iems-brand-model'" class="flex gap-2">
         <Label class="mb-2 capitalize" color="orange">review</Label>
         <Label class="mb-2" color="blue">{{review.type.toUpperCase()}}</Label>
     </div>
 
-    <div class="relative w-full transition h-full flex items-center">
+    <div class="relative w-full transition flex items-center">
     
         <nuxt-img v-if="review.cover" :src="review.cover" alt="" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" densities="x1" format="webp" width="480" height="480" fit="contain" />
-        <nuxt-img v-else src="placeholder.webp" alt="" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" densities="x1" format="webp" width="480" height="480" />
+        <nuxt-img v-else src="placeholder.webp" alt=""           class="aspect-square w-full rounded-2xl bg-gray-100 object-cover"  densities="x1" format="webp" width="480" height="480" fit="contain" />
 
         <nuxt-link :to="review._path" class="absolute inset-0"></nuxt-link>
 

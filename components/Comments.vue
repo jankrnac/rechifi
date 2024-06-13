@@ -1,7 +1,7 @@
 <template>
     <div class="mt-24">
 
-        <h2 class="font-bold text-3xl mb-6">Comments</h2>
+        <h2 class="font-black text-4xl mb-6">Comments</h2>
         <ul class="mb-12 flex flex-col gap-3 relative">
             <li v-for="comment in useCreateTree(comments)" class="relative">
                 <CommentChild 

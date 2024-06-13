@@ -15,7 +15,7 @@ labels:
 
 type: product
 
-isHero: true
+isHero: false
 
 hero: /article6/hero.webp
 
