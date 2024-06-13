@@ -11,7 +11,8 @@
         
         <!-- Bg -->
         <div class="w-full select-none relative z-[1]">
-            <nuxt-img :src="hero.hero" sizes="100vw lg:1500px" format="webp" densities="x1" width="1500" height="660"/>
+            <nuxt-picture v-if="$device.isDesktop":src="hero.hero" sizes="100vw lg:1500px" format="webp" densities="x1" width="1500" height="660"/>
+            <nuxt-picture v-if="$device.isMobile" :src="hero.cover" sizes="100vw lg:1500px" format="webp" densities="x1" width="660" height="660"/>
         </div>
 
         <!-- Overlay -->
@@ -24,7 +25,7 @@
 
 
     <section class="lg:w-full">
-        <h1 class="text-xl lg:text-5xl mt-8 mb-8 font-bold">
+        <h1 class="text-xl lg:text-5xl my-2 lg:my-8 font-bold">
             <nuxt-link class="text leading-normal" :to="hero.link">{{ hero.title }}</nuxt-link>
         </h1>
         <p class="text-base leading-relaxed lg:leading-loose lg:text-xl">{{ hero.description }}</p>

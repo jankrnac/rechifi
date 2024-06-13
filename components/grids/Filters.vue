@@ -61,7 +61,7 @@
             <div>
                 <PopoverButton class="group inline-flex items-center justify-center text-sm font-medium outline-none">
                 <span>{{ filter.name }}</span>
-                <IconsCaretDown  class="-mr-1 ml-1 h-4 w-4 flex-shrink-0 text-gray-400 group-hover:text-gray-500" aria-hidden="true" />
+                <Icon name="ph:caret-down"  class="-mr-1 ml-1 h-4 w-4 flex-shrink-0 text-gray-400 group-hover:text-gray-500" aria-hidden="true" />
                 </PopoverButton>
             </div>
 

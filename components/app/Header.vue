@@ -1,7 +1,7 @@
 <template>
 
 <header>
-    <nav class="flex items-center p-6" aria-label="Global">
+    <nav class="flex items-center p-6 border-b lg:border-none" aria-label="Global">
         <div class="flex mr-0 lg:mr-6 flex-1 md:grow-0">
           	<nuxt-link to="/" class="flex items-center ">
             	<span class="sr-only">Your Company</span>

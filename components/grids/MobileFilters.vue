@@ -24,7 +24,7 @@
                 <DisclosureButton class="flex w-full items-center justify-between bg-white px-2 py-3 text-sm">
                 <span class="font-medium text-gray-900">{{ section.name }}</span>
                 <span class="ml-6 flex items-center">
-                    <IconsCaretDown :class="[open ? '-rotate-180' : 'rotate-0', 'h-5 w-5 transform']" aria-hidden="true" />
+                    <Icon name="ph:caret-down" :class="[open ? '-rotate-180' : 'rotate-0', 'h-5 w-5 transform']" aria-hidden="true" />
                 </span>
                 </DisclosureButton>
             </h3>
