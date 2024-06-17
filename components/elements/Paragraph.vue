@@ -7,7 +7,7 @@
       		v-if="editor"
 			class="flex gap-0.5"
     	>
-			<button class="border border-gray-500 bg-white rounded px-3 py-2 text-sm shadow-xl" @click="editor.chain().focus().toggleHeading({ level: 1 }).run()" :class="{ 'is-active': editor.isActive('heading') }">
+			<button class="border border-gray-500 bg-white rounded px-3 py-2 text-sm shadow-xl" @click="editor.chain().focus().toggleHeading({ level: 2 }).run()" :class="{ 'is-active': editor.isActive('heading') }">
 				<IconsHeading />
 			</button>
 			<button class="border border-gray-500 bg-white rounded px-3 py-2 text-sm shadow-xl" @click="editor.chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
@@ -38,7 +38,7 @@
 
     	</bubble-menu>
 
-		<editor-content v-if="editable" :editor="editor" dis/>
+		<editor-content v-if="editable" :editor="editor" spellcheck="false" />
 		<div v-else v-html="element.data.text"></div>
 	</div>
 </template>

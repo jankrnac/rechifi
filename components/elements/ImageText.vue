@@ -1,5 +1,5 @@
 <template>
-    <div class="block lg:flex my-12 justify-between gap-24 items-center lg:px-24" :class="{'flex-row-reverse':element.data.reversed}">
+    <div class="flex flex-col lg:flex-row my-12 justify-between gap-6 lg:gap-24 items-center lg:px-24" :class="{'flex-row-reverse':element.data.reversed}">
 
 		<div class="basis-1/2 flex justify-center">
         	<ElementsImage :element="element" :editable="editable"/>

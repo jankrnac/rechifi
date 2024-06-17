@@ -173,7 +173,7 @@
 		
 	<Dialog as="div" class="xl:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
 		<div class="fixed inset-0 z-10" />
-		<DialogPanel class="fixed inset-y-0 right-0 z-[190] w-full overflow-y-auto bg-white dark:bg-gray-900 px-7 py-10 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:text-gray-200">
+		<DialogPanel class="fixed inset-y-0 right-0 z-[190] w-full overflow-y-auto bg-white dark:bg-gray-900 px-4 py-8 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:text-gray-200">
 			<div class="flex items-center justify-end">
 		
 			<div>

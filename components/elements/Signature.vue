@@ -1,7 +1,7 @@
 <template>
 <div class="text-left">
 
-<div class="font-black text-4xl mb-6">Sound signature</div>
+<h2 class="font-black mb-6"><strong>Sound signature</strong></h2>
 
 <div v-if="editable">
     <div>

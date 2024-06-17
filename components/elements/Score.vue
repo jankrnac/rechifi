@@ -1,6 +1,6 @@
 <template>
 
-<div class="mt-8">
+<div class="lg:mt-8">
 	<h2 class="font-bold text-3xl mb-6">Rating</h2>
 
 	<client-only>
