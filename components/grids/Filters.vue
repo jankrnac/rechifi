@@ -10,7 +10,7 @@
 
         <div class="flex items-center">
         <Listbox as="div" class="w-[200px] flex items-center" v-model="activeSort">
-            <ListboxLabel :id="sortByLabelId" class="block text-sm font-medium leading-6 mr-2">Sort by:</ListboxLabel>
+            <ListboxLabel :id="sortByLabelId" class="block text-sm font-medium leading-6 mr-2 flex-shrink-0">Sort by:</ListboxLabel>
             <div class="relative flex-1">
     
             <ListboxButton :id="sortByButtonId" class="relative w-full cursor-default rounded-md bg-white dark:bg-gray-800 dark:ring-gray-600 py-1.5 pl-3 pr-10 text-left shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none  sm:text-sm sm:leading-6">
@@ -59,7 +59,7 @@
         <PopoverGroup class="hidden sm:flex sm:items-baseline sm:space-x-8">
             <Popover as="div" v-for="(filter, filterIdx) in filters.filter(e=>e.type =='list')" :key="filter.name" :id="`desktop-menu-${filterIdx}`" class="relative inline-block text-left">
             <div>
-                <PopoverButton class="group inline-flex items-center justify-center text-sm font-medium outline-none">
+                <PopoverButton :id="popoverButtonId" class="group inline-flex items-center justify-center text-sm font-medium outline-none">
                 <span>{{ filter.name }}</span>
                 <Icon name="ph:caret-down"  class="-mr-1 ml-1 h-4 w-4 flex-shrink-0 text-gray-400 group-hover:text-gray-500" aria-hidden="true" />
                 </PopoverButton>
@@ -101,6 +101,7 @@ const props = defineProps({
 const sortByLabelId = useId()
 const sortByButtonId = useId()
 const switchId = useId()
+const popoverButtonId = useId()
 
 const activeFilters = useState('activeFilters')
 

@@ -6,8 +6,8 @@
 
             <!-- Filters -->
             <div class="pb-10 mt-10 lg:mt-16 lg:pb-24">
-                <h1 class="text-3xl lg:text-6xl font-bold tracking-tigh">{{ t('iems') }}</h1>
-                <p class="text-center mx-auto mt-4 max-w-3xl text-lg lg:text-xl">{{t('slogan')}}</p>
+                <h1 class="text-3xl lg:text-6xl font-bold tracking-tigh">In-Ear Monitors</h1>
+                <p class="text-center mx-auto mt-4 max-w-3xl text-lg lg:text-xl">All IEMs from asian country manufacturers in one place</p>
             </div>
             
             <!-- Active filters -->
@@ -54,10 +54,6 @@ useSeoMeta({
     sound signature, and price. Dive into detailed reviews, comparisons. Your guide to precision awaits explore our in-ear monitors list now!"`
 })
 
-const { t } = useI18n({
-	useScope: 'local'
-})
-
 /***** Data Init  *****/
 
 const { data:brands } = await useFetch('/api/brands')
@@ -81,8 +77,8 @@ brands.value.sort((a, b) => {
 /***** Sorting *****/
 
 const sortOptions = [
-    { label: t('name'), value:'title' },
-    { label: t('releaseDate'), value: 'releaseDate' },
+    { label: 'Name', value:'title' },
+    { label: 'Release Date', value: 'releaseDate' },
 ]
 
 
@@ -90,17 +86,8 @@ const activeSort = useState('activeSort', () => sortOptions[0])
 
 const sortPayload = computed(() => {
     return {
-        [activeSort.value.value]:activeSort.valuevalue == 'title' ? -1 : 1
+        [activeSort.value.value]:activeSort.value.value == 'name' ? -1 : 1
     }
-})
-
-watch(sortPayload, async (value) => 
-{
-    await refresh()
-
-}, 
-{ 
-    deep: true 
 })
 
 
@@ -177,10 +164,15 @@ const indexFilter = computed(() => {
     return  { $in: [true] }
 })
 
-watch(activeFilters, async () => {
+watch([activeFilters, sortPayload], async () => {
     
-    page.value = 1
+    // reste the page when filters or sorting changes
+    page.value = 1  
+
+    //erfresh the data
     await refresh()
+
+
     data.value = iems.value
     
 },{ deep: true })
@@ -223,17 +215,3 @@ const loadMore = async () => {
 }
 
 </script>
-
-
-<i18n lang="yaml">
-    en:
-     iems: 'In-Ear Monitors'
-     sort: 'Sort'
-     slogan: All IEMs from asian country manufacturers in one place
-     name: 'By name'
-     releaseDate: 'Newest first'
-    cz:
-     headphones: "Sluchátka"
-     slogan: Seznam všech slúchatek čínskych výrobců na jednom místě
-     sort: 'Seřadit'
-</i18n>
