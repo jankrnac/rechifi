@@ -1,0 +1,1 @@
+import{ah as p,ai as i,u as o,a6 as a}from"./YKJGr53e.js";const f=p({nuxtIcon:{size:"24px"}}),t={nuxt:{}},s=i(f,t);function u(){const n=o();return n._appConfig||(n._appConfig=a(s)),n._appConfig}export{u};

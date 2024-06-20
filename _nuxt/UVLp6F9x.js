@@ -1,0 +1,1 @@
+import{u as a}from"./s3-Ad5Vt.js";import{d as t,E as r,c as n,e as o,G as s}from"./YKJGr53e.js";const f=t({__name:"confirm",setup(i){const e=a();return r(e,()=>{if(e.value)return s("/")},{immediate:!0}),(c,u)=>(n(),o("div",null,"Waiting for login..."))}});export{f as default};

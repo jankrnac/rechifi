@@ -1,0 +1,1 @@
+import{l as t,c as s,e as o,a9 as c}from"./YKJGr53e.js";const r={},a={class:"text-6xl font-playfair my-8 lg:my-16 text-center"};function n(e,l){return s(),o("h1",a,[c(e.$slots,"default")])}const _=t(r,[["render",n]]);export{_ as default};
