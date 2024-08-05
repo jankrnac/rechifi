@@ -22,16 +22,13 @@ export default defineNuxtConfig({
 	},
 	
   	modules: [
-		'@nuxt/content',
-		'@nuxtjs/tailwindcss',
+		'@nuxthq/studio',
 		'@nuxtjs/color-mode',
 		'@nuxtjs/google-fonts',
 		'@nuxt/image',
 		'@nuxtjs/i18n',
-		'@nuxtjs/supabase',
 		'vue3-carousel-nuxt',
 		'@nuxtjs/device',
-		'nuxt-icon'
 	],
 	
 	googleFonts: {
@@ -91,6 +88,12 @@ export default defineNuxtConfig({
             }
         ],
     },
+
+	hub: {
+		database: true,
+		kv: true,
+		blob: true
+	},
 
 
 })

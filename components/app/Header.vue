@@ -24,23 +24,13 @@
 				<nuxt-link to="/blog" class="text text-sm font-semibold leading-6">{{ t('news') }}</nuxt-link>
 				<nuxt-link to="/reviews" class="text text-sm font-semibold leading-6">{{ t('reviews') }}</nuxt-link>
 
-				<Popover class="relative" v-slot="{ open,close }">
+				<UPopover>
 					<div class="relative flex">
-						<PopoverButton 
-								:id="popoverId"
-                                @mouseover="(e) => hoverPopover(e, open)"
-                                @mouseleave="closePopover(close)"
-                                class="border-transparent relative text-sm font-semibold leading-6 z-10 bg-transparent flex items-center outline-none duration-200 ease-out">
-                               <div class="h-full flex items-center">{{ t('products') }}</div>
-                            </PopoverButton>
-				</div>
+						<UButton>Products</UButton>
+					</div>
 
-				<transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-1" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
-					<PopoverPanel 
-						@mouseover.prevent="popoverHover = true"
-                        @mouseleave.prevent="closePopover(close)"
-						class="absolute left-1/2 z-[102] mt-5 flex w-screen max-w-sm -translate-x-1/2 px-4">
-						<div class="w-screen max-w-md flex-auto overflow-hidden rounded-lg bg-white dark:bg-gray-700 text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
+				    <template #panel>
+
 						<div class="p-2">
 							<div class="group relative flex items-center gap-x-6 rounded-lg p-2 hover:bg-gray-50 dark:hover:bg-gray-800">
 								<div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg">
@@ -76,11 +66,9 @@
 								</div>
 							</div>
 						</div>
+						</template>
 					
-						</div>
-					</PopoverPanel>
-				</transition>
-				</Popover>
+				</UPopover>
 
 				<nuxt-link to="/upcoming" class="text text-sm font-semibold leading-6">{{ t('upcoming') }}</nuxt-link>
 				<nuxt-link to="/sales" class="text text-sm font-semibold leading-6">{{ t('sales') }}</nuxt-link>
@@ -107,17 +95,12 @@
 					<Icon name="ph:moon-light" v-else class="cursor-pointer mr-5"  @click="setColorMode('dark')"/>
 			
 
-					<PopoverGroup class="flex gap-x-12">
-						<Popover class="relative">
-						<PopoverButton 
-							:id="popoverId"
-							class="flex items-center gap-x-1 text-sm font-semibold leading-6 focus:outline-0">
-							<Icon name="ph:user-light" />
-						</PopoverButton>
+						<UPopover>
+							<UButton icon="ph:user-light" />
 
-						<transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-1" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
-							<PopoverPanel v-slot="{ close }" class="absolute bg-white right-0 top-full z-[880] mt-3 w-screen max-w-xs overflow-hidden rounded-lg dark:bg-gray-700 shadow-lg ring-1 ring-gray-900/5">
-							<div class="p-2">
+							<template #panel>
+
+							<div class="p-2"> 
 
 								<!-- Guest -->
 								<nuxt-link v-if="!user" to="/login" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
@@ -148,11 +131,10 @@
 								</nuxt-link>
 
 							</div>
+
+						</template>
 					
-							</PopoverPanel>
-						</transition>
-						</Popover>
-					</PopoverGroup>
+						</UPopover>
 				
 			</div>
 
@@ -171,7 +153,7 @@
 	  
 	  
 		
-	<Dialog as="div" class="xl:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
+	<Umodal v-model="mobileMenuOpen">
 		<div class="fixed inset-0 z-10" />
 		<DialogPanel class="fixed inset-y-0 right-0 z-[190] w-full overflow-y-auto bg-white dark:bg-gray-900 px-4 py-8 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:text-gray-200">
 			<div class="flex items-center justify-end">
@@ -250,26 +232,14 @@
 			</div>
 			</div>
 		</DialogPanel>
-		</Dialog>
+		</Umodal>
 
 </header>
 
 </template>
   
 <script setup>
-
-	import { Dialog, DialogPanel, Popover, PopoverButton, PopoverGroup, PopoverPanel, Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
 	
-	const supabase = useSupabaseClient()
-	const user = useSupabaseUser()
-
-	const { data:profile } = await useAsyncData(async () => {
-		const { data } = await supabase.from('profiles').select('*').eq('id',user.value.id).single()
-
-		return data
-	})
-
-
 	const { t } = useI18n({
 		useScope: 'local'
 	})
