@@ -19,7 +19,7 @@
         <!-- Navigation links -->
         <div class="hidden xl:flex gap-x-6 mr-8 xl:gap-x-12 2xl:mx-20">
 			
-			<PopoverGroup class="hidden lg:flex lg:gap-x-12">
+			<div class="hidden lg:flex lg:gap-x-12">
 
 				<nuxt-link to="/blog" class="text text-sm font-semibold leading-6">{{ t('news') }}</nuxt-link>
 				<nuxt-link to="/reviews" class="text text-sm font-semibold leading-6">{{ t('reviews') }}</nuxt-link>
@@ -73,7 +73,7 @@
 				<nuxt-link to="/upcoming" class="text text-sm font-semibold leading-6">{{ t('upcoming') }}</nuxt-link>
 				<nuxt-link to="/sales" class="text text-sm font-semibold leading-6">{{ t('sales') }}</nuxt-link>
 
-			</PopoverGroup>
+			</div>
         </div>
 
         <!-- Search -->
@@ -153,9 +153,8 @@
 	  
 	  
 		
-	<Umodal v-model="mobileMenuOpen">
+	<UModal v-model="mobileMenuOpen">
 		<div class="fixed inset-0 z-10" />
-		<DialogPanel class="fixed inset-y-0 right-0 z-[190] w-full overflow-y-auto bg-white dark:bg-gray-900 px-4 py-8 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:text-gray-200">
 			<div class="flex items-center justify-end">
 		
 			<div>
@@ -186,18 +185,8 @@
 				<div class="space-y-2 py-6">
 					<div v-for="item in navigation" :key="item.name" :href="item.href" class="">
 						<a v-if="!item.children" :href="item.href" :class="[item.current ? 'bg-gray-50' : 'dark:hover:bg-gray-700  hover:bg-gray-50', 'block rounded-md py-2 p-2 text-sm leading-6 font-semibold']">{{ t(item.name) }}</a>
-						<Disclosure as="div" v-else v-slot="{ open }">
-							<DisclosureButton :class="[item.current ? 'bg-gray-50 dark:bg-gray-700' : 'dark:hover:bg-gray-700 hover:bg-gray-50', 'flex items-center justify-between w-full text-left rounded-md p-2 text-sm leading-6 font-semibold']">
-							{{ t(item.name) }}
-							<Icon name="ph:caret-down" :class="[open ? 'rotate-90 text-gray-500' : 'text-gray-400', 'h-5 w-5 shrink-0']" aria-hidden="true" />
-
-							</DisclosureButton>
-							<DisclosurePanel as="ul" class="mt-1 px-2">
-								<li v-for="subItem in item.children" :key="subItem.name">
-									<nuxt-link :to="subItem.href" :class="[subItem.current ? 'bg-gray-50' : 'hover:bg-gray-50', 'block rounded-md py-2 pr-2 pl-5 text-sm leading-6']" @click="mobileMenuOpen = false">{{ t(subItem.name) }}</nuxt-link>
-								</li>
-							</DisclosurePanel>
-						</Disclosure>
+						<UAccordion v-else :items="navigation.children"/>
+							
 					</div>
 				</div>
 
@@ -231,13 +220,12 @@
 				</div>
 			</div>
 			</div>
-		</DialogPanel>
-		</Umodal>
+		</UModal>
 
 </header>
 
 </template>
-  
+
 <script setup>
 	
 	const { t } = useI18n({

@@ -22,14 +22,16 @@ export default defineNuxtConfig({
 	},
 	
   	modules: [
-		'@nuxthq/studio',
-		'@nuxtjs/color-mode',
-		'@nuxtjs/google-fonts',
-		'@nuxt/image',
-		'@nuxtjs/i18n',
-		'vue3-carousel-nuxt',
-		'@nuxtjs/device',
-	],
+        '@nuxt/ui',
+        '@nuxthub/core',
+        '@nuxt/content',
+        '@nuxtjs/color-mode',
+        '@nuxtjs/google-fonts',
+        '@nuxt/image',
+        '@nuxtjs/i18n',
+        'vue3-carousel-nuxt',
+        '@nuxtjs/device',
+    ],
 	
 	googleFonts: {
 		families: {
