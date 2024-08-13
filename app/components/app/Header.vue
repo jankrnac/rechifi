@@ -17,21 +17,20 @@
         </div>
 		
         <!-- Navigation links -->
-        <div class="hidden xl:flex gap-x-6 mr-8 xl:gap-x-12 2xl:mx-20">
+        <div class="hidden xl:flex gap-x-2 mr-8 xl:gap-x-6 2xl:mx-20">
 			
 			<div class="hidden lg:flex lg:gap-x-12">
 
-				<nuxt-link to="/blog" class="text text-sm font-semibold leading-6">{{ t('news') }}</nuxt-link>
-				<nuxt-link to="/reviews" class="text text-sm font-semibold leading-6">{{ t('reviews') }}</nuxt-link>
+				<UButton variant="ghost" to="/blog"><span class="font-semibold">{{ t('news') }}</span></UButton>
+				<UButton variant="ghost" to="/reviews"><span class="font-semibold">{{ t('reviews') }}</span></UButton>
 
-				<UPopover>
-					<div class="relative flex">
-						<UButton>Products</UButton>
-					</div>
+				<UPopover mode="hover">
+
+					<UButton variant="ghost" trailing-icon="i-ph-caret-down"><span class="font-semibold">Products</span></UButton>
 
 				    <template #panel>
 
-						<div class="p-2">
+						<div class="p-3 text-sm">
 							<div class="group relative flex items-center gap-x-6 rounded-lg p-2 hover:bg-gray-50 dark:hover:bg-gray-800">
 								<div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg">
 									<IconsIem class="h-10 w-10 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
@@ -70,8 +69,8 @@
 					
 				</UPopover>
 
-				<nuxt-link to="/upcoming" class="text text-sm font-semibold leading-6">{{ t('upcoming') }}</nuxt-link>
-				<nuxt-link to="/sales" class="text text-sm font-semibold leading-6">{{ t('sales') }}</nuxt-link>
+				<UButton variant="ghost" to="/upcoming"><span class="font-semibold">{{ t('upcoming') }}</span></UButton>
+				<UButton variant="ghost" to="/sales"><span class="font-semibold">{{ t('sales') }}</span></UButton>
 
 			</div>
         </div>
@@ -272,21 +271,7 @@
 		window.location.href="/"
 	}
 	
-	const popoverHover = ref(false)
-	const popoverTimeout = ref(null)
 
-	const hoverPopover = (e, open) => {
-	popoverHover.value = true
-	if (!open) e.target.parentNode.click()
-	}
-
-	const closePopover = (close) => {
-	popoverHover.value = false
-	if (popoverTimeout.value) clearTimeout(popoverHover.value)
-	popoverTimeout.value = setTimeout(() => {
-		if (!popoverHover.value) close()
-	}, 600)
-	}
 
 </script>
 

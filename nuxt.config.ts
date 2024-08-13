@@ -17,9 +17,19 @@ export default defineNuxtConfig({
 			meta: [{
 				name: "robots",
 				content: "noindex, nofollow"
-			}]
+			}],
+			bodyAttrs: {
+				class: 'h-full'
+			},
+			htmlAttrs: {
+				class: 'h-full'
+			},
+		},
+		rootAttrs: {
+			class: 'h-full'
 		}
 	},
+
 	
   	modules: [
         '@nuxt/ui',
