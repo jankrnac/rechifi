@@ -17,9 +17,9 @@
         </div>
 		
         <!-- Navigation links -->
-        <div class="hidden xl:flex gap-x-2 mr-8 xl:gap-x-6 2xl:mx-20">
+        <div class="hidden xl:flex gap-x-2 mr-8 xl:gap-x-4 2xl:mx-12">
 			
-			<div class="hidden lg:flex lg:gap-x-12">
+			<div class="hidden lg:flex lg:gap-x-6">
 
 				<UButton variant="ghost" to="/blog"><span class="font-semibold">{{ t('news') }}</span></UButton>
 				<UButton variant="ghost" to="/reviews"><span class="font-semibold">{{ t('reviews') }}</span></UButton>
@@ -76,7 +76,7 @@
         </div>
 
         <!-- Search -->
-        <div class="hidden md:block flex-1 mr-2 lg:mr-6 2xl:mr-24 relative">
+        <div class="hidden md:block flex-1 mr-2 lg:mr-6 2xl:mr-12 relative">
 			<Icon name="ph:magnifying-glass-light" class="w-5 h-5 absolute top-3.5 left-4 text-gray-400 hidden lg:block" />
             <input 	class="bg-gray-50 p-3 pl-4 lg:pl-12 rounded-lg border w-full text-sm lg:text-base dark:bg-gray-800 dark:border-gray-700" 
 					type="text" 
@@ -89,18 +89,15 @@
         <!-- Right header -->
         <div class="flex justify-end">
 			<div class="hidden lg:flex">
-					
-					<Icon name="ph:sun-light" v-if="colorMode.preference == 'dark'" class="mr-5 cursor-pointer"  @click="setColorMode('light')"/>
-					<Icon name="ph:moon-light" v-else class="cursor-pointer mr-5"  @click="setColorMode('dark')"/>
+
 			
 
-						<UPopover>
-							<UButton icon="ph:user-light" />
+						<UPopover mode="hover" :popper="{ placement: 'bottom-end' }">
+							<UButton icon="i-ph-user" color="gray" variant="ghost" class="mr-5"/>
 
 							<template #panel>
 
 							<div class="p-2"> 
-
 								<!-- Guest -->
 								<nuxt-link v-if="!user" to="/login" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
 									<Icon name="ph:sign-in-light" size="20px" />
@@ -135,6 +132,9 @@
 					
 						</UPopover>
 				
+											
+					<UButton variant="ghost" icon="i-ph-sun-light" color="gray" v-if="colorMode.preference == 'dark'" class="cursor-pointer"  @click="setColorMode('light')"/>
+					<UButton variant="ghost" icon="i-ph-moon-light" color="gray" v-else class="cursor-pointer"  @click="setColorMode('dark')"/>
 			</div>
 
 			<!-- Mobile only, hamburger -->

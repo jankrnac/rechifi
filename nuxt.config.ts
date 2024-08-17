@@ -106,6 +106,9 @@ export default defineNuxtConfig({
 		kv: true,
 		blob: true
 	},
-
+	
+	ui: {
+		icons: ['ph']
+	},
 
 })
