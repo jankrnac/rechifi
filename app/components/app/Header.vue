@@ -99,29 +99,29 @@
 
 							<div class="p-2"> 
 								<!-- Guest -->
-								<nuxt-link v-if="!user" to="/login" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
+								<nuxt-link v-if="!auth.user" to="/login" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
 									<Icon name="ph:sign-in-light" size="20px" />
 									<div>Login</div>
 								</nuxt-link>
 
 								<!-- Authenticated -->
-								<nuxt-link v-if="user" :to="'/users/' + profile.username" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
+								<nuxt-link :to="'/users/' + auth.user.username" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
 									<Icon name="ph:user-light" />
 									<div>My profile</div>
 								</nuxt-link>
-								<nuxt-link v-if="user" to="/reviews/new" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
+								<nuxt-link to="/reviews/new" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
 									<Icon name="ph:plus-circle-light" />
 									<div>Add review</div>
 								</nuxt-link>
-								<nuxt-link v-if="user" to="/reviews/my" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
+								<nuxt-link to="/reviews/my" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
 									<Icon name="ph:read-cv-logo-light" />
 									<div>My reviews</div>
 								</nuxt-link>
-								<nuxt-link v-if="user" to="/settings" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
+								<nuxt-link to="/settings" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
 									<Icon name="ph:gear-light" />
 									<div>Settings</div>
 								</nuxt-link>
-								<nuxt-link v-if="user" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="logout">
+								<nuxt-link class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="logout">
 									<Icon name="ph:sign-out-light" />
 									<div>Logout</div>
 								</nuxt-link>
@@ -231,7 +231,7 @@
 		useScope: 'local'
 	})
 
-	const popoverId = useId()
+	const auth = useAuth()
 
 	const navigation = [
 		{ name: 'news', href: '/blog' },

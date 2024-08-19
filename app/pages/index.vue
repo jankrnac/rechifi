@@ -15,7 +15,7 @@
 
         <template v-else>
             <div>
-                <UButton color="blue">adas</UButton>
+                
             </div>
         </template>
 </div>

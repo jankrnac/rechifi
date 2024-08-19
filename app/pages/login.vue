@@ -31,7 +31,7 @@
 		</div>
 	</div>
   
-    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <div class="my-10 sm:mx-auto sm:w-full sm:max-w-sm">
 		<UForm :schema="schema" :state="state" class="space-y-6" @submit="login">
 			<UFormGroup label="Email" name="email">
 				<UInput v-model="state.email" size="xl"/>
@@ -75,12 +75,13 @@ import { z } from 'zod'
 
 
 const schema = z.object({
+	email: z.string().email('Invalid email'),
+  	password: z.string().min(8, 'Must be at least 5 characters')
 })
 
-
 const state = reactive({
-  email: undefined,
-  password: undefined
+  	email: undefined,
+  	password: undefined
 })
 
 
@@ -89,11 +90,10 @@ const loginError = ref()
 const loginPending = ref(false)
 
 const login = async () => {
+
 	loginPending.value = true
-    const { error } = await supabase.auth.signInWithPassword({
-        email: email.value,
-        password: password.value
-    })
+    
+	
 
     if (error) {
 		loginError.value = error.message
