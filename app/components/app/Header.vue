@@ -21,12 +21,12 @@
 			
 			<div class="hidden lg:flex lg:gap-x-6">
 
-				<UButton variant="ghost" to="/blog"><span class="font-semibold">{{ t('news') }}</span></UButton>
-				<UButton variant="ghost" to="/reviews"><span class="font-semibold">{{ t('reviews') }}</span></UButton>
+				<UButton variant="ghost" color="gray" to="/blog"><span class="font-semibold">{{ t('news') }}</span></UButton>
+				<UButton variant="ghost" color="gray" to="/reviews"><span class="font-semibold">{{ t('reviews') }}</span></UButton>
 
 				<UPopover mode="hover">
 
-					<UButton variant="ghost" trailing-icon="i-ph-caret-down"><span class="font-semibold">Products</span></UButton>
+					<UButton variant="ghost" color="gray" trailing-icon="i-ph-caret-down"><span class="font-semibold">Products</span></UButton>
 
 				    <template #panel>
 
@@ -69,8 +69,8 @@
 					
 				</UPopover>
 
-				<UButton variant="ghost" to="/upcoming"><span class="font-semibold">{{ t('upcoming') }}</span></UButton>
-				<UButton variant="ghost" to="/sales"><span class="font-semibold">{{ t('sales') }}</span></UButton>
+				<UButton variant="ghost" color="gray" to="/upcoming"><span class="font-semibold">{{ t('upcoming') }}</span></UButton>
+				<UButton variant="ghost" color="gray" to="/sales"><span class="font-semibold">{{ t('sales') }}</span></UButton>
 
 			</div>
         </div>

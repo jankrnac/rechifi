@@ -59,7 +59,6 @@
       
 <script setup lang="ts">
     
-    const supabase = useSupabaseClient()
     const email = ref('')
     const password = ref('')
     

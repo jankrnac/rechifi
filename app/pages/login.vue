@@ -15,7 +15,7 @@
 					<div class="-mx-1.5 -my-1.5">
 					<button v-if="loginError != 'Email not confirmed'" type="button" class="inline-flex rounded-md p-1.5 text-red-500 hover:bg-red-100">
 						<span class="sr-only">Dismiss</span>
-						<Icon name="ph:x-thin" class="h-5 w-5" aria-hidden="true" />
+						<UIcon name="i-ph-x-thin" class="h-5 w-5" aria-hidden="true" />
 					</button>
 					<button v-else type="button" 
 						class="inline-flex text-sm rounded-md p-1.5" @click="resendConfirmatioNEmail"
@@ -32,31 +32,17 @@
 	</div>
   
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-    	<form class="space-y-6" action="#" method="POST" @submit.prevent="login">
-        	<div>
-            	<label for="email" class="block text-sm font-medium leading-6">Email address</label>
-            	<div class="mt-2">
-              		<input v-model="email" id="email" name="email" type="email" autocomplete="email" :required="true" class="block w-full rounded-md border-0 px-3 py-2.5 shadow-sm ring-1 ring-inset
-               		ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6 dark:bg-gray-800 dark:ring-gray-600" />
-            	</div>
-          	</div>
+		<UForm :schema="schema" :state="state" class="space-y-6" @submit="login">
+			<UFormGroup label="Email" name="email">
+				<UInput v-model="state.email" size="xl"/>
+			</UFormGroup>
   
-          	<div>
-            	<div class="flex items-center justify-between"> 
-              		<label for="password" class="block text-sm font-medium leading-6">Password</label>
-              		<div class="text-sm">
-                		<a href="#" class="text-gray-500">Forgot password?</a>
-              		</div>
-            	</div>
-            	
-				<div class="mt-2">
-              		<input v-model="password" id="password" name="password" type="password" autocomplete="current-password" :required="true" class="block w-full rounded-md border-0 px-3 py-2.5 shadow-sm ring-1 ring-inset 
-              		ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6 dark:bg-gray-800 dark:ring-gray-600" />
-            	</div>
-          	</div>
+			<UFormGroup label="Password" name="password">
+				<UInput v-model="state.password" size="xl" type="password" />
+			</UFormGroup>
 			
           	<div>
-            	<Button type="submit" size="big" color="blue" class="w-full" :loading="loginPending">Sign in</Button>
+            	<UButton block type="submit" size="xl" color="blue" :loading="loginPending">Sign in</UButton>
           	</div>
 
 			<div class="text-center">
@@ -77,7 +63,7 @@
 				<div>Sign in with Google</div><div></div>
 			</button>
 
-        </form>
+        </UForm>
 </div>
 		
 </div>
@@ -85,16 +71,23 @@
 </template>
   
 <script setup lang="ts">
+import { z } from 'zod'
 
-const supabase = useSupabaseClient()
-const email = ref('')
-const password = ref('')
+
+const schema = z.object({
+})
+
+
+const state = reactive({
+  email: undefined,
+  password: undefined
+})
+
 
 const loginError = ref()
 
 const loginPending = ref(false)
 
-console.log(useRoute().query)
 const login = async () => {
 	loginPending.value = true
     const { error } = await supabase.auth.signInWithPassword({
