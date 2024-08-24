@@ -70,7 +70,6 @@
 				</UPopover>
 
 				<UButton variant="ghost" color="gray" to="/upcoming"><span class="font-semibold">{{ t('upcoming') }}</span></UButton>
-				<UButton variant="ghost" color="gray" to="/sales"><span class="font-semibold">{{ t('sales') }}</span></UButton>
 
 			</div>
         </div>
@@ -88,43 +87,42 @@
 
         <!-- Right header -->
         <div class="flex justify-end">
-			<div class="hidden lg:flex">
+			<div class="hidden lg:flex gap-x-2">
 
-			
+				<UButton variant="soft" icon="i-ph-plus-circle" color="red" class="cursor-pointer" label="Add" to="/add"/>
+
 
 						<UPopover mode="hover" :popper="{ placement: 'bottom-end' }">
-							<UButton icon="i-ph-user" color="gray" variant="ghost" class="mr-5"/>
+							<UButton icon="i-ph-user-light" color="gray" variant="ghost" size="xl"/>
 
 							<template #panel>
 
 							<div class="p-2"> 
 								<!-- Guest -->
-								<nuxt-link v-if="!auth.user" to="/login" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
+								<nuxt-link v-if="!loggedIn" to="/login" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer">
 									<Icon name="ph:sign-in-light" size="20px" />
 									<div>Login</div>
 								</nuxt-link>
-
+								
 								<!-- Authenticated -->
-								<nuxt-link :to="'/users/' + auth.user.username" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
-									<Icon name="ph:user-light" />
-									<div>My profile</div>
-								</nuxt-link>
-								<nuxt-link to="/reviews/new" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
-									<Icon name="ph:plus-circle-light" />
-									<div>Add review</div>
-								</nuxt-link>
-								<nuxt-link to="/reviews/my" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
-									<Icon name="ph:read-cv-logo-light" />
-									<div>My reviews</div>
-								</nuxt-link>
-								<nuxt-link to="/settings" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="close">
-									<Icon name="ph:gear-light" />
-									<div>Settings</div>
-								</nuxt-link>
-								<nuxt-link class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="logout">
-									<Icon name="ph:sign-out-light" />
-									<div>Logout</div>
-								</nuxt-link>
+								 <template v-if="loggedIn">
+									<nuxt-link :to="'/users/' + user.username" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer">
+										<Icon name="ph:user-light" />
+										<div>My profile</div>
+									</nuxt-link>
+									<nuxt-link to="/posts/my" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer">
+										<Icon name="ph:read-cv-logo-light" />
+										<div>My posts</div>
+									</nuxt-link>
+									<nuxt-link to="/settings" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer">
+										<Icon name="ph:gear-light" />
+										<div>Settings</div>
+									</nuxt-link>
+									<nuxt-link class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="logout">
+										<Icon name="ph:sign-out-light" />
+										<div>Logout</div>
+									</nuxt-link>
+								</template>
 
 							</div>
 
@@ -132,9 +130,8 @@
 					
 						</UPopover>
 				
-											
-					<UButton variant="ghost" icon="i-ph-sun-light" color="gray" v-if="colorMode.preference == 'dark'" class="cursor-pointer"  @click="setColorMode('light')"/>
-					<UButton variant="ghost" icon="i-ph-moon-light" color="gray" v-else class="cursor-pointer"  @click="setColorMode('dark')"/>
+					<UButton variant="ghost" size="xl"icon="i-ph-sun-light" color="gray" v-if="colorMode.preference == 'dark'" class="cursor-pointer"  @click="setColorMode('light')"/>
+					<UButton variant="ghost" size="xl" icon="i-ph-moon-light" color="gray" v-else class="cursor-pointer"  @click="setColorMode('dark')"/>
 			</div>
 
 			<!-- Mobile only, hamburger -->
@@ -199,13 +196,9 @@
 					</nuxt-link>
 
 					<!-- Authenticated -->
-					<nuxt-link v-if="user" to="/reviews/new" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="mobileMenuOpen = false">
-						<Icon name="ph:plus-circle-light" size="20px" />
-						<div>Add review</div>
-					</nuxt-link>
-					<nuxt-link v-if="user" to="/reviews/my" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="mobileMenuOpen = false">
+					<nuxt-link v-if="user" to="/posts/my" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="mobileMenuOpen = false">
 						<Icon name="ph:read-cv-logo-light" size="20px" />
-						<div>My reviews</div>
+						<div>My posts</div>
 					</nuxt-link>
 					<nuxt-link v-if="user" to="/settings" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="mobileMenuOpen = false">
 						<Icon name="ph:gear-light" size="20px" />
@@ -231,7 +224,7 @@
 		useScope: 'local'
 	})
 
-	const auth = useAuth()
+	const { loggedIn, user, clear, fetch } = useUserSession()
 
 	const navigation = [
 		{ name: 'news', href: '/blog' },
@@ -266,7 +259,7 @@
 	}
 
 	const logout = async () => {
-		await supabase.auth.signOut()
+		clear()
 
 		window.location.href="/"
 	}

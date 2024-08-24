@@ -52,10 +52,8 @@ const model = ref()
 
 const type = ref('iem')
 
-const client = useSupabaseClient()
-const user = useSupabaseUser()
-
 const errors = ref([])
+
 
 const save = async () => {
 
@@ -85,18 +83,19 @@ const save = async () => {
             const modelPayload = manualMode.value ? useSlug(model.value) : useSlug(headphone.value.model)
             const productTitle = manualMode.value ? useSlug(brand.value + ' ' + model.value) : headphone.value.title
 
-            await client.from('reviews').insert({
-                slug: slug,
-                brand: brandPayload,
-                model: modelPayload,
-                type: type.value,
-                product_title: productTitle,
-                profile_id: user.value.id
+            await $fetch('/api/reviews', {
+                method: "POST",
+                body: {
+                    slug: slug,
+                    brand: brandPayload,
+                    model: modelPayload,
+                    type: type.value,
+                    product_title: productTitle,
+                    profile_id: user.value.id
+                }
             })
 
-            const { data:profile } = await client.from('profiles').select().eq('id', user.value.id).single()
-
-            await navigateTo(`/reviews/${profile.username}/${brandPayload}/${modelPayload}/edit`)
+            await navigateTo(`/reviews/${auth.user.username}/${brandPayload}/${modelPayload}/edit`)
         }
     }
 }

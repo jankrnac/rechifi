@@ -1,11 +1,8 @@
 export default defineNuxtRouteMiddleware((to, from) => {
 
-    const user = {
-        id: 1,
-        username: 'JanKrnac'
-    }
+	const { loggedIn, user, clear, fetch } = useUserSession()
 	
-    if (!user.value) {
+    if (!loggedIn) {
 		  return navigateTo('/login')
     }
 

@@ -2,14 +2,14 @@
 
 
 <article class="flex items-start flex-col">
+    
     <div class="flex gap-2">
         <Label v-for="label in post.labels" class="mb-2 capitalize">{{ label }}</Label>
     </div>
 
     <div class="relative w-full overflow-hidden">
         <nuxt-img :src="post.cover" alt="" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" width="480" height="480" densities="x1"/>
-        <nuxt-link v-if="post.type == 'article'" :to="post._path" class="absolute inset-0"></nuxt-link>
-        <nuxt-link v-if="post.type == 'product'" :to="post.link" class="absolute inset-0"></nuxt-link>
+        <nuxt-link :to="post.slug" class="absolute inset-0"></nuxt-link>
 
     </div>
     
@@ -18,7 +18,7 @@
             <div></div>
             <div class="text-gray-500 dark:text-gray-200 text-sm italic flex items-center justify-center">
                 <IconsCalendar class="w-4 h-4 mr-1" />
-                {{ new Date(post.created_at).toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'}) }}
+                {{ new Date(post.createdAt).toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'}) }}
             </div>		
         </div>
 

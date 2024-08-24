@@ -1,7 +1,7 @@
 <template>
 
 <footer class="border-t dark:border-gray-800">
-    <div class="mx-auto overflow-hidden px-6 py-12 lg:py-24 lg:px-8">
+    <div class="mx-auto overflow-hidden px-6 py-12 lg:px-8">
       	<nav class="columns-1 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
         	<div v-for="item in navigation.main" :key="item.name" class="pb-6 text-center">
           		<nuxt-link :to="item.href" class="text-sm leading-6 hover:text-gray-900">{{ item.name }}</nuxt-link>

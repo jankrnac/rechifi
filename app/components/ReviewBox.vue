@@ -14,7 +14,7 @@
 
         <nuxt-link :to="review._path" class="absolute inset-0"></nuxt-link>
 
-        <nuxt-link :to="'/reviews/' + review.profiles.username + '/' + review.brand + '/' + review.model" class="absolute inset-0 flex"></nuxt-link>
+        <nuxt-link :to="'/reviews/' + review.user.username + '/' + review.brand + '/' + review.model" class="absolute inset-0 flex"></nuxt-link>
 
     </div>
 
@@ -30,7 +30,7 @@
                 <div class="flex flex-1 justify-between gap-4 mt-0" :class="[size == 'normal' ? 'text-sm' : 'text-xs']">
                     <div class="text-gray-500 dark:text-gray-200 flex items-center justify-center">
                         <Icon name="ph:user-light" size="16px" class="mr-1" />
-                        <nuxt-link :to="'/users/'+review.profiles.username" class="text font-semibold">{{ review.profiles.username }}</nuxt-link>
+                        <nuxt-link :to="'/users/'+review.user.username" class="text font-semibold">{{ review.user.username }}</nuxt-link>
                     </div>
                     <div class="text-gray-500 dark:text-gray-200  italic flex items-center justify-center">
                         <IconsCalendar class="w-4 h-4 mr-1" />
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <h3 v-if="size == 'normal'" class="mt-6 mb-1 text-2xl font-bold leading-6 h-12 align-top">
-                <nuxt-link :to="'/reviews/' + review.profiles.username + '/' + review.brand + '/' + review.model" class="text">
+                <nuxt-link :to="'/reviews/' + review.user.username + '/' + review.brand + '/' + review.model" class="text">
                     {{ review.product_title }}
                 </nuxt-link>
             </h3>

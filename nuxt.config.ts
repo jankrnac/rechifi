@@ -41,6 +41,7 @@ export default defineNuxtConfig({
         '@nuxtjs/i18n',
         'vue3-carousel-nuxt',
         '@nuxtjs/device',
+		'nuxt-auth-utils'
     ],
 	
 	googleFonts: {
@@ -54,12 +55,6 @@ export default defineNuxtConfig({
 		}
 	},
 
-	supabase: {
-		cookieOptions: {
-		  	secure: process.env.NODE_ENV === 'production',
-		},
-		redirect: false
-	},
 
 	image: {
 		providers: {
@@ -110,5 +105,11 @@ export default defineNuxtConfig({
 	ui: {
 		icons: ['ph']
 	},
+
+	runtimeConfig: {
+		session: {
+		  	maxAge: 60 * 60 * 24 * 7 // 1 week
+		}
+	}
 
 })

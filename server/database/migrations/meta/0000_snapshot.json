@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "913490d5-34ce-4da6-9dd5-8db8850c552a",
+  "id": "6a88368e-383e-42e2-ab88-196062b0c173",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "elements": {
@@ -60,65 +60,6 @@
           "tableTo": "posts",
           "columnsFrom": [
             "postId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
-    },
-    "fileProduct": {
-      "name": "fileProduct",
-      "columns": {
-        "fileId": {
-          "name": "fileId",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "productId": {
-          "name": "productId",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        }
-      },
-      "indexes": {
-        "fileProduct_fileId_productId_unique": {
-          "name": "fileProduct_fileId_productId_unique",
-          "columns": [
-            "fileId",
-            "productId"
-          ],
-          "isUnique": true
-        }
-      },
-      "foreignKeys": {
-        "fileProduct_fileId_files_id_fk": {
-          "name": "fileProduct_fileId_files_id_fk",
-          "tableFrom": "fileProduct",
-          "tableTo": "files",
-          "columnsFrom": [
-            "fileId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        },
-        "fileProduct_productId_products_id_fk": {
-          "name": "fileProduct_productId_products_id_fk",
-          "tableFrom": "fileProduct",
-          "tableTo": "products",
-          "columnsFrom": [
-            "productId"
           ],
           "columnsTo": [
             "id"
@@ -207,15 +148,15 @@
           "notNull": true,
           "autoincrement": false
         },
-        "coverId": {
-          "name": "coverId",
+        "userId": {
+          "name": "userId",
           "type": "integer",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
         },
-        "productId": {
-          "name": "productId",
+        "coverId": {
+          "name": "coverId",
           "type": "integer",
           "primaryKey": false,
           "notNull": false,
@@ -240,6 +181,19 @@
         }
       },
       "foreignKeys": {
+        "posts_userId_users_id_fk": {
+          "name": "posts_userId_users_id_fk",
+          "tableFrom": "posts",
+          "tableTo": "users",
+          "columnsFrom": [
+            "userId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
         "posts_coverId_files_id_fk": {
           "name": "posts_coverId_files_id_fk",
           "tableFrom": "posts",
@@ -252,26 +206,13 @@
           ],
           "onDelete": "cascade",
           "onUpdate": "no action"
-        },
-        "posts_productId_products_id_fk": {
-          "name": "posts_productId_products_id_fk",
-          "tableFrom": "posts",
-          "tableTo": "products",
-          "columnsFrom": [
-            "productId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "products": {
-      "name": "products",
+    "users": {
+      "name": "users",
       "columns": {
         "id": {
           "name": "id",
@@ -280,44 +221,65 @@
           "notNull": true,
           "autoincrement": true
         },
-        "slug": {
-          "name": "slug",
+        "username": {
+          "name": "username",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "autoincrement": false
         },
-        "tile": {
-          "name": "tile",
+        "email": {
+          "name": "email",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "autoincrement": false
         },
-        "brand": {
-          "name": "brand",
+        "password": {
+          "name": "password",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "autoincrement": false
         },
-        "model": {
-          "name": "model",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "type": {
-          "name": "type",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "coverId": {
-          "name": "coverId",
+        "avatarId": {
+          "name": "avatarId",
           "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "other": {
+          "name": "other",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "iems": {
+          "name": "iems",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "daps": {
+          "name": "daps",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "dacs": {
+          "name": "dacs",
+          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
@@ -332,21 +294,21 @@
         }
       },
       "indexes": {
-        "products_slug_unique": {
-          "name": "products_slug_unique",
+        "users_username_unique": {
+          "name": "users_username_unique",
           "columns": [
-            "slug"
+            "username"
           ],
           "isUnique": true
         }
       },
       "foreignKeys": {
-        "products_coverId_files_id_fk": {
-          "name": "products_coverId_files_id_fk",
-          "tableFrom": "products",
+        "users_avatarId_files_id_fk": {
+          "name": "users_avatarId_files_id_fk",
+          "tableFrom": "users",
           "tableTo": "files",
           "columnsFrom": [
-            "coverId"
+            "avatarId"
           ],
           "columnsTo": [
             "id"

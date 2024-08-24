@@ -76,7 +76,7 @@ import { z } from 'zod'
 
 const schema = z.object({
 	email: z.string().email('Invalid email'),
-  	password: z.string().min(8, 'Must be at least 5 characters')
+  	password: z.string().min(5, 'Must be at least 5 characters')
 })
 
 const state = reactive({
@@ -93,12 +93,15 @@ const login = async () => {
 
 	loginPending.value = true
     
-	
+	const response = await $fetch('/api/auth/login', {
+		method: "POST",
+		body: {
+			email: state.email,
+			password: state.password
+		}
+	})
 
-    if (error) {
-		loginError.value = error.message
-	}
-	else
+	if (response)
 	{
 		let redirectUrl
 		
@@ -111,30 +114,14 @@ const login = async () => {
 			redirectUrl = '/'
 		}
 
-		await navigateTo(redirectUrl, {external: true})
+		
+		await navigateTo(redirectUrl, {
+			external: true
+		})
 	}
 }
 
 const confirmationEmailSent = ref(false)
 
-const resendConfirmatioNEmail = async () => {
-	await supabase.auth.resend({
-		type: 'signup',
-		email: email.value
-	})
-
-	confirmationEmailSent.value = true
-}
-
-const handleSignInWithGoogle = () => {
-	supabase.auth.signInWithOAuth({
-  		provider: 'google',
-		options: {
-			queryParams: {
-				prompt: 'select_account',
-			}
-		}
-	})
-}
 
 </script>
