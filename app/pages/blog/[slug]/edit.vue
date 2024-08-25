@@ -6,6 +6,8 @@
             <ElementsAvailable />
         </div>
 
+        <Settings :editable="editable" />
+
         <Layout @change="updatePage" :elements="article.elements" :editable="editable" />
 
     </div>

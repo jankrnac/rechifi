@@ -1,6 +1,6 @@
 <template>
 
-<div class="flex flex-1 min-h-screen content border relative z-[99]" :class="[editable ? 'rounded-xl border-gray-300' : 'border-transparent']">
+<div class="flex flex-1 min-h-screen content border relative z-[49]" :class="[editable ? 'rounded-xl border-gray-300' : 'border-transparent']">
     <!--Classic, non editable mode -->
 
     <template v-if="useRoute().name == 'reviews-username-brand-model'">

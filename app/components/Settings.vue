@@ -63,3 +63,8 @@
     </div>
 
 </template>
+
+<script setup>
+
+defineProps(['editable'])
+</script>

@@ -1,7 +1,7 @@
 <template>
 <div>
 	<div class="mb-12">
-		<h1 class="font-semibold">
+		<h1 class="font-semibold text-4xl">
 			<span :contenteditable="editable" :spellcheck="false" class="outline-none" @input="update">{{element.data.text}}</span>
 		</h1>
 		<div class="flex justify-center gap-4 text-sm">
