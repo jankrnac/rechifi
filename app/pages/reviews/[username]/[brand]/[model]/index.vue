@@ -38,8 +38,6 @@
 <script setup>
 
     const route = useRoute()
-    const user = useSupabaseUser()
-    const client = useSupabaseClient()
 
     const { data:review } = await useFetch('/api/reviews/layout', {
         method: "POST",

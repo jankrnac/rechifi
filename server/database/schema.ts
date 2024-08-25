@@ -1,4 +1,4 @@
-import { sqliteTable, text, integer, unique } from 'drizzle-orm/sqlite-core'
+import { sqliteTable, text, integer, unique, AnySQLiteColumn } from 'drizzle-orm/sqlite-core'
 import { sql, relations  } from "drizzle-orm";
 
 export const users = sqliteTable('users', {
@@ -43,8 +43,27 @@ export const elements = sqliteTable('elements', {
     createdAt: text("createdAt").default(sql`(CURRENT_TIMESTAMP)`),
 })
 
+export const comments = sqliteTable('comments', {
+    id: integer('id').primaryKey({ autoIncrement: true }),
+    text: text('text'),
+    postId: integer('postId').references(() => posts.id, {onDelete: 'cascade'}),
+    userId: integer('userId').references(() => users.id, {onDelete: 'cascade'}),
+    parentId: integer('parentId').references((): AnySQLiteColumn => comments.id, {onDelete: 'cascade'}),
+    createdAt: text("createdAt").default(sql`(CURRENT_TIMESTAMP)`),
+})
+
+export const likes = sqliteTable('likes', {
+    id: integer('id').primaryKey({ autoIncrement: true }),
+    postId: integer('postId').references(() => posts.id, {onDelete: 'cascade'}),
+    userId: integer('userId').references(() => users.id, {onDelete: 'cascade'}),
+    createdAt: text("createdAt").default(sql`(CURRENT_TIMESTAMP)`),
+})
+
+
 export const postsRelations = relations(posts, ({one,  many }) => ({
     elements: many(elements),
+    comments: many(comments),
+    likes: many(likes),
     user: one(users, {
         fields: [posts.userId],
         references: [users.id],
@@ -63,3 +82,26 @@ export const usersRelations = relations(users, ({one,  many }) => ({
     posts: many(posts),
 
 }));
+
+export const elementsRelations = relations(elements, ({ one }) => ({
+    post: one(posts, {
+      fields: [elements.postId],
+      references: [posts.id],
+    }),
+}));
+
+export const commentsRelations = relations(comments, ({ one }) => ({
+    post: one(posts, {
+      fields: [comments.postId],
+      references: [posts.id],
+    }),
+}));
+
+
+export const likesRelations = relations(likes, ({ one }) => ({
+    post: one(posts, {
+      fields: [likes.postId],
+      references: [posts.id],
+    }),
+}));
+

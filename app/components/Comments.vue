@@ -28,8 +28,13 @@
 
 <script setup>
 
-const user = useSupabaseUser()
-const client = useSupabaseClient()
+const props = defineProps({
+    comments: {
+        type: Array,
+        required: true
+    }
+})
+const { user } = useUserSession()
 
 const profile = ref()
 
@@ -38,13 +43,6 @@ if(user.value)
     profile.value = await $fetch('/api/users/' + user.value.id )
 }
 
-
-
-const { data:comments } = await useAsyncData('comments', async () => {
-    const { data } = await client.from('comments').select('*, profiles(*), likes(*)')
-
-    return data
-})
 
 const text = ref()
 

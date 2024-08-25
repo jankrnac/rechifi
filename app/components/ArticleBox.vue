@@ -8,8 +8,10 @@
     </div>
 
     <div class="relative w-full overflow-hidden">
-        <nuxt-img :src="post.cover" alt="" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" width="480" height="480" densities="x1"/>
-        <nuxt-link :to="post.slug" class="absolute inset-0"></nuxt-link>
+        <nuxt-img v-if="post.coverId" :src="post.cover" alt="" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" width="480" height="480" densities="x1"/>
+        <nuxt-img v-else src="placeholder.webp" alt="" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" width="480" height="480" densities="x1"/>
+
+        <nuxt-link :to="'/blog/'+post.slug" class="absolute inset-0"></nuxt-link>
 
     </div>
     

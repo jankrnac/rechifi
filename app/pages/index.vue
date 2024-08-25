@@ -1,6 +1,6 @@
 <template>
 
-<div class="max-w-app mt-6 lg:mt-12">
+<div class="max-w-app w-full mt-6 lg:mt-12">
 
         <template v-if="posts.length">
 
