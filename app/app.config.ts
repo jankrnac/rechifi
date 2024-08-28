@@ -3,7 +3,7 @@ export default defineAppConfig({
       	size: '24px',
     },
 	ui: {
-		primary: 'blue',
+		primary: 'sky',
 		gray: 'cool',
 	}
 })

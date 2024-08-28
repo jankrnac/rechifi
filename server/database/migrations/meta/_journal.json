@@ -5,15 +5,8 @@
     {
       "idx": 0,
       "version": "6",
-      "when": 1724425733865,
-      "tag": "0000_woozy_vanisher",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "6",
-      "when": 1724585882010,
-      "tag": "0001_foamy_night_thrasher",
+      "when": 1724678157075,
+      "tag": "0000_tidy_darkhawk",
       "breakpoints": true
     }
   ]

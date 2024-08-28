@@ -9,7 +9,9 @@
 
         <UInput padded size="xl" class="w-full max-w-[600px]" v-model="title"></UInput>
 
-        <UButton icon="i-ph-upload" size="xl" @click="createArticle">Create</UButton>
+        <p>{{ $slugify(title) }}</p>
+
+        <UButton icon="i-ph-check" size="xl" @click="createArticle">Create</UButton>
     </div>
 </template>
 
