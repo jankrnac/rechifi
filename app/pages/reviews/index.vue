@@ -10,8 +10,8 @@
     
         <div class="mx-auto mt-6 mb-24 lg:mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-app lg:grid-cols-4">
             
-            <template v-for="review in reviews" :key="review.id">
-                <ReviewBox :review="review" />
+            <template v-for="review in reviews">
+                <ReviewBox :post="review" />
             </template>
     
         </div>
@@ -29,13 +29,8 @@ useSeoMeta({
 })
 
 
-    const client = useSupabaseClient()
 
-    const { data:reviews } = await useAsyncData('reviews', async () => {
-        const { data } = await client.from('reviews').select(`id, title, description, model, brand, slug, cover, created_at, published, type, product_title, profiles (username)`).eq('published', true).order('created_at')
+const { data:reviews } =  await useAsyncData('reviews', () => $fetch('/api/reviews'))
 
-        return data
-    })
-      
       
 </script>

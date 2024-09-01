@@ -9,7 +9,10 @@
 
         <UInput padded size="xl" class="w-full max-w-[600px]" v-model="title"></UInput>
 
-        <p>{{ $slugify(title) }}</p>
+        <div class="flex flex-col items-center">
+            Your slug will be:
+            <div class="font-semibold min-h-6">{{ $slugify(title) }}</div>
+        </div>
 
         <UButton icon="i-ph-check" size="xl" @click="createArticle">Create</UButton>
     </div>
@@ -23,12 +26,13 @@ definePageMeta({
     middleware: 'auth'
 });
 
-const title = ref()
+const title = ref('')
 
 const createArticle = async () => {
-    const result = await $fetch('/api/articles', {
+    const result = await $fetch('/api/posts', {
         method: "POST",
         body: {
+            type: 'article',
             title: title.value
         }
     })

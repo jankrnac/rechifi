@@ -9,6 +9,7 @@ export default eventHandler(async (event) => {
     const user = await useDrizzle().insert(tables.users).values({
         email: body.email,
         password: hashedPassword,
+        username: body.email
     }).returning().get()
 
     const userData = { 

@@ -6,9 +6,18 @@
             <ElementsAvailable />
         </div>
 
-        <Settings :editable="editable" />
+        <Settings 
+            :post="article"
+            :editable="editable"
+            @save="save"
+            @editableChanged="(data) => editable=data"
+        />
 
-        <Layout @change="updatePage" :elements="article.elements" :editable="editable" />
+        <Layout 
+            :elements="article.elements" 
+            :editable="editable" 
+            @change="updateLayout"
+        />
 
     </div>
 
@@ -26,9 +35,60 @@
 
     const editable = ref(true)
 
-    const updatePage = async (data) => {
+    // update elements layout from Layout
+    const updateLayout = async (data) => {
         console.log(data)
-        review.value.elements = data
+        article.value.elements = data
     }
+
+    // master save from Settings
+    const save = async (data) => {
+        
+        // Last save the review
+        if (data.uploadNeeded)
+        {
+            // upload the file
+            const uploadResult = await $fetch('/api/files/blob', {
+                method: 'POST',
+                body: data.upload,
+            })
+
+            // Save the file to DB
+            const file = await $fetch('/api/files/', {
+                method: "POST",
+                body: {
+                    filename: uploadResult[0].pathname,
+                }
+            })
+
+            console.log(file)
+            // Attach the coverId to post
+            await $fetch('/api/posts/' + article.value.id, {
+                method: "PATCH",
+                body: {
+                    coverId: file.id,
+                }
+            })
+
+            article.value.coverId = file.id
+
+        }
+
+        // Save the post itself
+        await $fetch('/api/posts/' + article.value.id, {
+            method: "PUT",
+            body: data
+        })
+    }
+
+    // Extract sections elements for navigation (in Header element)
+    const nav = article.value.elements.filter(e => e.type == 'section')
+
+
+    provide('nav',nav)
+    provide('user', article.value.user)
+    provide('date', article.value.createdAt)
+
+
 
 </script>

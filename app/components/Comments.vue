@@ -20,8 +20,10 @@
             <textarea class="w-full border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none p-4 dark:bg-gray-800" rows="4" v-model="text"></textarea>
         </div>
         <div class="flex justify-end">
-            <Button v-if="user" color="blue" @click="addComment">Add comment</Button>
-            <nuxt-link v-else :to='"/login?redirect="+useRoute().fullPath+"#comments"'><Button color="gray">Login to comment</Button></nuxt-link>
+            <UButton v-if="user" color="sky" @click="addComment">Add comment</UButton>
+            <nuxt-link v-else :to='"/login?redirect="+useRoute().fullPath+"#comments"'>
+                <UButton color="gray">Login to comment</UButton>
+            </nuxt-link>
         </div>
     </div>
 </template>

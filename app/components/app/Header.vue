@@ -224,7 +224,7 @@
 		useScope: 'local'
 	})
 
-	const { loggedIn, user, clear, fetch } = useUserSession()
+	const { loggedIn, user } = useUserSession()
 
 	const navigation = [
 		{ name: 'news', href: '/blog' },
@@ -271,7 +271,7 @@
 <i18n lang="yaml">
  en:
   home: 'Home'
-  news: 'News'
+  news: 'Articles'
   reviews: 'Reviews'
   iems: 'In-Ear Monitors'
   daps: 'Digital audio players'

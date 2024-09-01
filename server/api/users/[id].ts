@@ -7,7 +7,8 @@ export default eventHandler(async (event) =>
     let posts = await useDrizzle().query.posts.findMany({
         where: eq(tables.posts.userId, id),
         with: { 
-            user: true
+            user: true,
+            cover: true
         }
     })
 

@@ -18,13 +18,13 @@
 
                             <div class="sm:col-span-full">
                                 <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">Username</label>
-                                <input type="text" name="username" id="name" class="border rounded px-4 py-2 w-full" :class="[usernameValid ? '':'bg-red-200']" v-model="profile.username"/>
+                                <input type="text" name="username" id="name" class="border rounded px-4 py-2 w-full" :class="[usernameValid ? '':'bg-red-200']" v-model="user.username"/>
                                 <div v-if="!usernameValid" class="text-xs mt-1">Username already taken</div>
                             </div>
 
                             <div class="sm:col-span-full">
                                 <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">Name</label>
-                                <input type="text" name="name" id="username" class="border rounded px-4 py-2 w-full" v-model="profile.name"/>
+                                <input type="text" name="name" id="username" class="border rounded px-4 py-2 w-full" v-model="user.name"/>
                             </div>
     
                             <div class="sm:col-span-full">
@@ -35,8 +35,8 @@
                             <div class="col-span-full">
                                 <label class="block text-sm font-semibold leading-6 text-gray-700 mb-1">Avatar</label>
                                 <div class="mt-2 flex items-center gap-x-3">
-                                    <div v-if="profile.avatar" class="w-14 h-14"><img :src="avatar" class="rounded-full max-h-full max-w-full"/></div>
-                                    <IconsUser v-else class="w-8 h-8" aria-hidden="true" />
+                                    <div v-if="user.avatar" class="w-14 h-14"><img :src="avatar" class="rounded-full max-h-full max-w-full"/></div>
+                                    <UIcon name="i-ph-user" v-else class="w-8 h-8" aria-hidden="true" />
                                     <UploadSingle @cropped="setAvatar" :aspectRatio="1">
                                     <button type="button" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Change</button>
                                     </UploadSingle>
@@ -47,7 +47,7 @@
                     </div>
     
                     <div class="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
-                          <Button :disabled="!usernameValid" color="green" :loading="pending" class="disabled:opacity-50">Save</Button>
+                          <UButton :disabled="!usernameValid" color="green" :loading="pending" class="disabled:opacity-50">Save</UButton>
                     </div>
     
                   </form>
@@ -70,12 +70,12 @@
                                 <ul class="mb-3">
                                     <li v-for="ownedIem in iems" class="flex items-center gap-2">  
                                         <div>{{ ownedIem?.model ? ownedIem?.model : ownedIem._dir + ' '+ ownedIem._path.split('/')[3] }}</div>
-                                        <IconsCross class="w-4 h-4 text-red-600 cursor-pointer" @click="removeIEM(ownedIem)" />
+                                        <UIcon name="i-ph-x" class="w-4 h-4 text-red-600 cursor-pointer" @click="removeIEM(ownedIem)" />
                                     </li>
                                 </ul>
                                 <div class="flex items-center gap-2">
                                     <ModelCombobox v-model="iem" model="iem" /> 
-                                    <Button color="blue" @click="addIEM" :disabled="!iem">Add</Button>
+                                    <UButton color="blue" @click="addIEM" :disabled="!iem">Add</UButton>
                                 </div>
                             </div>
 
@@ -84,12 +84,12 @@
                                 <ul class="mb-3">
                                     <li v-for="ownedDap in daps" class="flex items-center gap-2">  
                                         <div>{{ ownedDap?.model ? ownedDap?.model : ownedDap._dir + ' '+ ownedDap._path.split('/')[3] }}</div>
-                                        <IconsCross class="w-4 h-4 text-red-600 cursor-pointer" @click="removeDAP(ownedDap)" />
+                                        <UIcon name="i-ph-x" class="w-4 h-4 text-red-600 cursor-pointer" @click="removeDAP(ownedDap)" />
                                     </li>
                                 </ul>
                                 <div class="flex items-center gap-2">
                                     <ModelCombobox v-model="dap" model="dap" />
-                                    <Button color="blue" @click="addDAP" :disabled="!dap">Add</Button>
+                                    <UButton color="blue" @click="addDAP" :disabled="!dap">Add</UButton>
                                 </div>
                             </div>
     
@@ -98,12 +98,12 @@
                                 <ul class="mb-3">
                                     <li v-for="ownedDac in dacs" class="flex items-center gap-2">  
                                         <div>{{ ownedDac?.model ? ownedDac?.model : ownedDac._dir + ' '+ ownedDac._path.split('/')[3] }}</div>
-                                        <IconsCross class="w-4 h-4 text-red-600 cursor-pointer" @click="removeDAC(ownedDac)" />
+                                        <UIcon name="i-ph-x" class="w-4 h-4 text-red-600 cursor-pointer" @click="removeDAC(ownedDac)" />
                                     </li>
                                 </ul>
                                 <div class="flex items-center gap-2">
                                     <ModelCombobox v-model="dac" model="dac" />
-                                    <Button color="blue" @click="addDAC" :disabled="!dac">Add</Button>
+                                    <UButton color="blue" @click="addDAC" :disabled="!dac">Add</UButton>
                                 </div>                            
                             </div>
     
@@ -118,7 +118,7 @@
                     </div>
     
                     <div class="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
-                          <Button color="green" type="submit" :loading="pending" class="disabled:opacity-50">Save</Button>
+                          <UButton color="green" type="submit" :loading="pending" class="disabled:opacity-50">Save</UButton>
                     </div>
     
                   </form>
@@ -128,7 +128,7 @@
 
         
     </div>
-    </template>
+</template>
     
 <script setup>
     
@@ -136,10 +136,7 @@
         middleware: "auth"
     });
 
-    const user = useSupabaseUser()
-    const client = useSupabaseClient()
-
-    const { data:profile } = await useFetch('/api/users/' + user.value.id)
+    const { user } = useUserSession()
 
     const preview = ref()
 
@@ -175,8 +172,8 @@
     
         await client.from('profiles')
             .update({
-                username: profile.value.username,
-                name: profile.value.name
+                username: user.username,
+                name: user.name
             })
             .eq('id', user.value.id)
 
@@ -185,16 +182,16 @@
     
     const usernameValid = ref(true)
 
-    watch(() => profile.value.username, async (value) => {
-        const { data } = await client.from('profiles').select().neq('id', profile.value.id).eq('username',value)
+    watch(() => user.username, async (value) => {
+        const { data } = await client.from('profiles').select().neq('id', user.id).eq('username',value)
 
         usernameValid.value = !data.length
     })
 
     const iems = ref([])
-    if(profile.value.iems && profile.value.iems.length)
+    if(user.iems && user.iems.length)
     {
-        for(const temp of profile.value.iems) {
+        for(const temp of user.iems) {
             const result = await queryContent(temp).findOne()
             iems.value.push(result)
         };
@@ -202,18 +199,18 @@
 
 
     const daps = ref([])
-    if(profile.value.daps && profile.value.daps.length)
+    if(user.daps && user.daps.length)
     {
-        for(const temp of profile.value.daps) {
+        for(const temp of user.daps) {
             const result = await queryContent(temp).findOne()
             daps.value.push(result)
         };
     }
 
     const dacs = ref([])
-    if(profile.value.dacs && profile.value.dacs.length)
+    if(user.dacs && user.dacs.length)
     {
-        for(const temp of profile.value.dacs) {
+        for(const temp of user.dacs) {
             const result = await queryContent(temp).findOne()
             dacs.value.push(result)
         };
@@ -261,7 +258,7 @@
                 iems: iems.value.map(e=>e._path),
                 daps: daps.value.map(e=>e._path),
                 dacs: dacs.value.map(e=>e._path),
-                name: profile.value.name
+                name: user.name
             })
             .eq('id', user.value.id)
 

@@ -15,9 +15,21 @@ export const getImage: ProviderGetImage = (
   }
 
   let operations = operationsGenerator(modifiers)
+  console.log(modifiers)
+
+  const dev = import.meta.dev
 
   operations = operations.replaceAll('/',',')
-  const finalUrl = src.includes('blob') ? src : joinURL(baseURL, (operations ? '' + operations : '') + src)
+ 
+  let  finalUrl
+  if (dev && modifiers.alwaysCDN != true)
+  { 
+    finalUrl = src.includes('blob') ? src: '/images' + src
+  }
+  else
+  {
+    finalUrl = src.includes('blob') ? src : joinURL(baseURL, (operations ? '' + operations : '') + src)
+  }
   
   return {
     url: finalUrl,

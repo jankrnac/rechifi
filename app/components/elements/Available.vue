@@ -52,7 +52,6 @@ const cloneElement = ({id, type, caption, data}) => {
         type: type,
         caption: caption,
         data: data
-
     }
 }
   

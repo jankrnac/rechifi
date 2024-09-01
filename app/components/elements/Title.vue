@@ -1,16 +1,16 @@
 <template>
 <div>
 	<div class="mb-12">
-		<h1 class="font-semibold text-4xl">
-			<span :contenteditable="editable" :spellcheck="false" class="outline-none" @input="update">{{element.data.text}}</span>
+		<h1 class="font-bold text-4xl">
+			<span :contenteditable="editable" :spellcheck="false" class="outline-none" @input="update">{{data.text}}</span>
 		</h1>
 		<div class="flex justify-center gap-4 text-sm">
 			<div class="text-gray-500 dark:text-gray-200 italic mt-2 flex items-center justify-center">
-				<Icon name="ph:user" class="w-4 h-4 mr-1" />
-				<nuxt-link :to="'/users/' + useRoute().params.username" class="text">{{  useRoute().params.username }}</nuxt-link>
+				<UIcon name="i-ph-user" class="w-4 h-4 mr-1" />
+				<nuxt-link :to="'/users/' + user.username" class="text">{{ user.username || user.email}}</nuxt-link>
 			</div>
 			<div class="text-gray-500 dark:text-gray-200 italic mt-2 flex items-center justify-center">
-				<Icon name="ph:calendar" class="w-4 h-4 mr-1" />
+				<UIcon name="i-ph-calendar" class="w-4 h-4 mr-1" />
 				{{ new Date(date).toLocaleString('en-us',{month:'long', day:'numeric', year:'numeric'}) }}
 			</div>
 		</div>
@@ -69,6 +69,8 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 		}
 	})
 
+	const data = props.element.data
+
 	const emits = defineEmits(['change'])
 
 	const update = (e) => {
@@ -80,6 +82,7 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 
 	const nav = inject('nav')
 	const date = inject('date')
+	const user = inject('user')
 
 
 	const share = (provider) => {

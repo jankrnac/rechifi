@@ -8,7 +8,7 @@
             <div class="p-4">
               <div class="flex items-start">
                 <div class="flex-shrink-0">
-                  <IconsCookie class="h-6 w-6 text-gray-400" aria-hidden="true" />
+                  <UIcon name="i-ph-cookie" class="h-6 w-6 text-gray-400" aria-hidden="true" />
                 </div>
                 <div class="ml-3 w-0 flex-1 pt-0.5">
                   <p class="text-sm font-semibold text-gray-900">Cookies</p>

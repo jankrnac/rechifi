@@ -5,13 +5,6 @@
         <!-- Title -->
         <ProductsTitle :doc="doc" />
 
-        <!-- Description
-        <ProductsDescription>{{ doc.description }}</ProductsDescription>
-        -->
-
-        <!-- Hero -->
-        <ProductsHero v-if="doc.hero" :hero="doc.hero" />
-
         <!-- Images -->
         <ProductsImages v-if="doc.images" :images="doc.images" />
 
@@ -27,15 +20,9 @@
         </div>
 
         <!-- Reviews -->
-        <ProductsReviews class="mb-12 max-w-app"/>
+        <ProductsReviews :reviews="reviews" class="mb-12 max-w-app"/>
 
-        <!-- Technicals 
-        <ProductsTechnical v-if="doc.technicals && doc.technicals.length" :technicals="doc.technicals" :package="doc.package"/>
-        -->
 
-        <!-- Stores 
-        <ProductsStores v-if="doc.stores && doc.stores.length" :stores="doc.stores"/>
-        -->
         
 </div>
 
@@ -43,26 +30,15 @@
 
 <script setup>
 
-const client = useSupabaseClient()
-
 const { data:doc } = await useAsyncData('product', () => queryContent(useRoute().path).findOne())
 
-const { data:reviewData } = await useAsyncData(async () => {
-
-    const { data } = await client
-    .from('reviews')
-    .select('brand, model, elements(data)')
-    .eq('brand', useRoute().params.brand)
-    .eq('model', useRoute().params.model)
-    .in('elements.type', ['score','signature'])
-
-    const score = data.filter(e => e.elements.length).map(q=>q.elements).flat().map(r=>r.data).map(y=>y.score).filter(Boolean)
-    const signature =  data.filter(e => e.elements.length).map(q=>q.elements).flat().map(r=>r.data).map(y=>y.signature)
-
-    return {
-        rating: score.reduce((accumulator, currentValue) => accumulator + currentValue, 0) / score.length,
-        signature: signature
+const { data:reviews } = await useFetch('/api/reviews/data', {
+    query: {
+        brand: useRoute().params.brand,
+        model: useRoute().params.model
     }
 })
-      
+
+const reviewData = []
+
 </script>

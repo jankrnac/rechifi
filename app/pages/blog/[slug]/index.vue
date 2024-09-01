@@ -21,15 +21,19 @@
 
     // Extract sections elements for navigation (in Header element)
     const nav = article.value.elements.filter(e => e.type == 'section')
-    provide('nav',nav)
 
-    provide('date', article.value.created_at)
+    provide('nav',nav)
+    provide('user', article.value.user)
+    provide('date', article.value.createdAt)
 
     
     const publish = async (value) => {
-        const { error } = await client.from('reviews').update({'published': value}).eq('id', review.value.id)
+        const { error } = await client.from('reviews').update({
+            'published': value
+        }).eq('id', review.value.id)
 
         if(!error) review.value.published = value
         
     }
-    </script>
+
+</script>

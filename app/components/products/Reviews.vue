@@ -31,15 +31,14 @@
 <script setup>
 
 const route = useRoute()
-const client = useSupabaseClient()
-const user = useSupabaseUser()
 
-const { data:reviews } = await client.from('reviews').select('*, profiles(*)').eq('brand', route.params.brand).eq('model', route.params.model)
-
-
-const { t } = useI18n({
-    useScope: 'local'
+const props = defineProps({
+	reviews: {
+		type: Array,
+		required: true
+	}
 })
+
 
 const addReview = async () => {
 
@@ -62,11 +61,3 @@ const addReview = async () => {
 }
 
 </script>
-
-<i18n lang="yaml">
-    en:
-     reviews: 'Reviews'
-    cz:
-     reviews: 'Recenze'
-
-</i18n>

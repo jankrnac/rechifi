@@ -1,11 +1,10 @@
-export default eventHandler(async (event) => 
-{
-    const client = await serverSupabaseClient(event)
+export default eventHandler(async (event) => {
 
-    const { data } = await client
-    .from('reviews')
-    .select()
-    
-    return data
-    
+    let articles = await $fetch('/api/posts', {
+        query: {
+            type: 'review'
+        }
+    })
+
+    return articles
 })

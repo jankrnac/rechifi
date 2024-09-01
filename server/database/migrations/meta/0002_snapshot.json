@@ -1,8 +1,8 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "d7f66f6a-2a3c-424a-b29b-c2232defd929",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "b2f850b4-8b22-4d88-9019-2dab5827ecde",
+  "prevId": "ae00aead-36f2-4abb-ba86-9c1320c4ee6d",
   "tables": {
     "comments": {
       "name": "comments",
@@ -173,8 +173,8 @@
           "notNull": true,
           "autoincrement": true
         },
-        "cloudId": {
-          "name": "cloudId",
+        "filename": {
+          "name": "filename",
           "type": "text",
           "primaryKey": false,
           "notNull": false,
@@ -303,6 +303,13 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true,
+          "autoincrement": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
           "autoincrement": false
         },
         "userId": {
@@ -482,7 +489,9 @@
   "_meta": {
     "schemas": {},
     "tables": {},
-    "columns": {}
+    "columns": {
+      "\"files\".\"cloudId\"": "\"files\".\"filename\""
+    }
   },
   "internal": {
     "indexes": {}

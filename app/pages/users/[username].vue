@@ -28,8 +28,6 @@
 
 const client = useSupabaseClient()
 
-const { data:profile } = await client.from('profiles').select('*').eq('username',useRoute().params.username).single()
-
 const { data:reviews } = await useAsyncData(async () => {
     const { data } = await client.from('reviews').select('*, profiles(username)').eq('profile_id', profile.id).order('created_at')
 

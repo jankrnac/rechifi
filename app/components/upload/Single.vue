@@ -22,13 +22,13 @@ defineProps({
 
 const fileInput = ref(null)
 
-const emit = defineEmits(['cropped'])
+const emit = defineEmits(['uploaded'])
 
 const selected = () => {
 
     const formData = new FormData()
     
-    formData.append('file', fileInput.value.files[0]);
+    formData.append('files', fileInput.value.files[0]);
 
     const data = {}
 

@@ -56,8 +56,8 @@
         <div v-if="replyInputId == comment.id" class="ml-0">
             <textarea class="w-full max-w-[800px] border border-gray-300 rounded-lg focus:outline-none p-4" rows="4" v-model="replyText"></textarea>
             <div class="flex gap-2 justify-end max-w-[800px]">
-                <Button color="red">Cancel</Button>
-                <Button color="blue" @click="addReply(comment.id)">Reply</Button>
+                <UButton color="red">Cancel</UButton>
+                <UButton color="blue" @click="addReply(comment.id)">Reply</UButton>
             </div>
         </div>
     </div>

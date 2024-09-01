@@ -18,8 +18,8 @@
 
     <div class="mx-auto mb-24 mt-6 lg:mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-app lg:grid-cols-4">
 
-        <template v-for="post in blogPosts" :key="post._path">
-            <BlogPostBox :post="post" />
+        <template v-for="post in posts" :key="post._path">
+            <ArticleBox :post="post" />
         </template>
 
     </div>
@@ -39,17 +39,8 @@
 
 const activeFilters = ref(['IEM','DAP','DAC'])
 
-const { data:blogPosts } =  await useAsyncData('articles', () => queryContent('/blog')
-
-.sort({ created_at: -1 }) // show latest articles first
-
-.where({ _partial: false}) // exclude the Partial files
-
-.where({ labels : { $in: activeFilters.value}}) // exclude the Partial files
-
-.where({ visible: { $ne: false } })
-
-.find(), { 
+const { data:posts } =  await useAsyncData('articles', () => $fetch('/api/articles'),
+{ 
     watch:[activeFilters]
 })
   

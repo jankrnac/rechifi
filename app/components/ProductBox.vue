@@ -3,7 +3,7 @@
 
 <li :key="product.source" class="relative">
     <div class="bg-[#f6f7f8] dark:bg-gray-800 relative aspect-square block w-full overflow-hidden rounded-lg hover:-translate-y-1 transition p-5">
-        <nuxt-img :src="product.cover ? product.cover : 'iem.webp'" alt="" class="pointer-events-none object-cover" densities="x1" format="webp" sizes="200px md:300px lg:351px"/>
+        <nuxt-img :src="product.cover ? product.cover : 'iem.webp'" alt="" class="pointer-events-none object-cover" densities="x1" format="webp" sizes="200px md:300px lg:351px" :modifiers="{alwaysCDN: true}"/>
         <nuxt-link class="absolute inset-0" :to="product._path"></nuxt-link>
     </div>
 

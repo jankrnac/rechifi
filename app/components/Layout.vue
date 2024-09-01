@@ -3,7 +3,7 @@
 <div class="flex flex-1 min-h-screen content border relative z-[49]" :class="[editable ? 'rounded-xl border-gray-300' : 'border-transparent']">
     <!--Classic, non editable mode -->
 
-    <template v-if="useRoute().name == 'reviews-username-brand-model'">
+    <template v-if="!editable">
         <div class="flex flex-col gap-y-6 min-h-screen w-full">
             <ElementsWrapper
                 v-for="element in elements"
@@ -75,12 +75,13 @@ const menuElement = ref({})
 const emit = defineEmits(['change'])
 
 const onChange = (elementid, data) => {
-    console.log(data)
-    props.elements.find(obj => obj.id == elementid).data[Object.values(data)[0]] = Object.values(data)[1]
+    local.value.find(obj => obj.id == elementid).data[Object.values(data)[0]] = Object.values(data)[1]
+    console.log(local.value)
+    emit('change', local.value)
 }
 
 const onRemove = async (elementid) => {
-    props.elements.splice(props.elements.findIndex(obj => obj.id == elementid), 1) 
+    local.value.splice(local.value.findIndex(obj => obj.id == elementid), 1) 
 }
 
 const onImageChange = async (path) => {

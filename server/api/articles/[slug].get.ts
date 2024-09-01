@@ -9,7 +9,9 @@ export default eventHandler(async (event) => {
         ),
         with: {
             elements: true,
-            comments: true
+            comments: true,
+            user: true,
+            cover: true
         }
     })
 

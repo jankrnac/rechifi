@@ -44,6 +44,9 @@ definePageMeta({
     middleware: 'auth'
 });
 
+const { loggedIn, user } = useUserSession()
+
+
 const manualMode = ref(false)
 const headphone = ref()
 
@@ -83,19 +86,19 @@ const save = async () => {
             const modelPayload = manualMode.value ? useSlug(model.value) : useSlug(headphone.value.model)
             const productTitle = manualMode.value ? useSlug(brand.value + ' ' + model.value) : headphone.value.title
 
-            await $fetch('/api/reviews', {
+            await $fetch('/api/posts', {
                 method: "POST",
                 body: {
+                    title: brandPayload + ' ' + modelPayload,
                     slug: slug,
                     brand: brandPayload,
                     model: modelPayload,
-                    type: type.value,
-                    product_title: productTitle,
-                    profile_id: user.value.id
+                    type: 'review',
+                    userId: user.value.id
                 }
             })
 
-            await navigateTo(`/reviews/${auth.user.username}/${brandPayload}/${modelPayload}/edit`)
+            await navigateTo(`/reviews/${user.username}/${brandPayload}/${modelPayload}/edit`)
         }
     }
 }

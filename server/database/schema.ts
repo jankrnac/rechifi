@@ -20,6 +20,10 @@ export const posts = sqliteTable('posts', {
     slug: text('slug').notNull().unique(),
     title: text('tile').notNull(),
     type: text('type').notNull(),
+    brand: text('brand'),
+    model: text('model'),
+    gearType: text('gearType'),
+    description: text('description'),
     userId: integer('userId').references(() => users.id, {onDelete: 'cascade'}),
     coverId: integer('coverId').references(() => files.id, {onDelete: 'cascade'}),
     createdAt: text("createdAt").default(sql`(CURRENT_TIMESTAMP)`),
@@ -28,7 +32,7 @@ export const posts = sqliteTable('posts', {
 
 export const files = sqliteTable('files', {
     id: integer('id').primaryKey({ autoIncrement: true }),
-    cloudId: text('cloudId'),
+    filename: text('filename'),
     type: text('type'),
     order: integer('order').default(0),
     createdAt: text("createdAt").default(sql`(CURRENT_TIMESTAMP)`),
@@ -36,7 +40,7 @@ export const files = sqliteTable('files', {
 
 export const elements = sqliteTable('elements', {
     id: integer('id').primaryKey({ autoIncrement: true }),
-    data: text('data'),
+    data: text('data', {mode: 'json'}),
     postId: integer('postId').references(() => posts.id, {onDelete: 'cascade'}),
     type: text('type'),
     order: integer('order').default(0),

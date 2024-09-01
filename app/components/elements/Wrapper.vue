@@ -8,11 +8,15 @@
         @mouseout="hideHover" 
     >
 
-        <div class="absolute text-white -top-8 left-2 z-[9] flex gap-1 w-1/2" v-show="optionsVisible">
-            <div class="cursor-move mb-1 bg-teal-500 p-1 rounded"><Icon name="ph:caret-up-down" class="w-6 h-5"/></div>
+        <div class="absolute text-white top-1 left-2 z-[9] flex gap-1" v-show="optionsVisible">
+
+            <div class="cursor-move rounded">
+                <UButton icon="i-ph-caret-up-down" color="teal"/>
+            </div>
             
             <!-- Options popup wrapper-->
             <ElementsOptions 
+                v-if="editable"
                 @delete="deleted" 
                 @change="changed"
                 :element="element"
