@@ -12,7 +12,8 @@ export default eventHandler(async (event) => {
         username: body.email
     }).returning().get()
 
-    const userData = { 
+    const userData = {
+        id: user?.id,
         username: user.username 
     };
     

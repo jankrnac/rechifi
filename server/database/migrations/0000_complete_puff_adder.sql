@@ -22,7 +22,7 @@ CREATE TABLE `elements` (
 --> statement-breakpoint
 CREATE TABLE `files` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
-	`cloudId` text,
+	`filename` text,
 	`type` text,
 	`order` integer DEFAULT 0,
 	`createdAt` text DEFAULT (CURRENT_TIMESTAMP)
@@ -42,6 +42,10 @@ CREATE TABLE `posts` (
 	`slug` text NOT NULL,
 	`tile` text NOT NULL,
 	`type` text NOT NULL,
+	`brand` text,
+	`model` text,
+	`gearType` text,
+	`description` text,
 	`userId` integer,
 	`coverId` integer,
 	`createdAt` text DEFAULT (CURRENT_TIMESTAMP),
