@@ -15,7 +15,6 @@ export const getImage: ProviderGetImage = (
   }
 
   let operations = operationsGenerator(modifiers)
-  console.log(modifiers)
 
   const dev = import.meta.dev
 

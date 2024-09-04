@@ -18,28 +18,34 @@
 
                             <div class="sm:col-span-full">
                                 <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">Username</label>
-                                <input type="text" name="username" id="name" class="border rounded px-4 py-2 w-full" :class="[usernameValid ? '':'bg-red-200']" v-model="user.username"/>
+                                <input type="text" name="username" id="name" class="border rounded px-4 py-2 w-full" :class="[usernameValid ? '':'bg-red-200']" v-model="profile.username"/>
                                 <div v-if="!usernameValid" class="text-xs mt-1">Username already taken</div>
                             </div>
 
                             <div class="sm:col-span-full">
                                 <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">Name</label>
-                                <input type="text" name="name" id="username" class="border rounded px-4 py-2 w-full" v-model="user.name"/>
+                                <input type="text" name="name" id="username" class="border rounded px-4 py-2 w-full" v-model="profile.name"/>
                             </div>
     
                             <div class="sm:col-span-full">
                                 <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">Email</label>
-                                <input type="text" name="email" id="email" class="border rounded px-4 py-2 w-full" :value="user.email" :disabled="true" />
+                                <input type="text" name="email" id="email" class="border rounded px-4 py-2 w-full" :value="profile.email" :disabled="true" />
                             </div>
     
                             <div class="col-span-full">
                                 <label class="block text-sm font-semibold leading-6 text-gray-700 mb-1">Avatar</label>
                                 <div class="mt-2 flex items-center gap-x-3">
-                                    <div v-if="user.avatar" class="w-14 h-14"><img :src="avatar" class="rounded-full max-h-full max-w-full"/></div>
+
+                                    <div v-if="avatar" class="w-14 h-14">
+                                        <img :src="avatar" class="rounded-full max-h-full max-w-full"/>
+                                    </div>
+
                                     <UIcon name="i-ph-user" v-else class="w-8 h-8" aria-hidden="true" />
-                                    <UploadSingle @cropped="setAvatar" :aspectRatio="1">
-                                    <button type="button" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Change</button>
+
+                                    <UploadSingle @uploaded="setAvatar" :aspectRatio="1">
+                                        <button type="button" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Change</button>
                                     </UploadSingle>
+
                                 </div>
                             </div>
     
@@ -47,7 +53,7 @@
                     </div>
     
                     <div class="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
-                          <UButton :disabled="!usernameValid" color="green" :loading="pending" class="disabled:opacity-50">Save</UButton>
+                          <UButton type="submit" :disabled="!usernameValid" color="green" :loading="pending" class="disabled:opacity-50">Save</UButton>
                     </div>
     
                   </form>
@@ -136,23 +142,25 @@
         middleware: "auth"
     });
 
-    const { user } = useUserSession()
+    const { user, fetch:fetchSession } = useUserSession()
+
+    const { data:profile } = await useFetch('/api/users/' + user.value.id)
 
     const preview = ref()
 
     const avatar = computed(() => {
         if(preview.value) return preview.value
-        if(user.avatar) return user.avatar
+        if(profile.value.avatar) return '/images/'+profile.value.avatar.filename
         return false
     })
     
     const setAvatar = (data) => {
-        preview.value = data.url
+        preview.value = data.blob
     
-        data.formData.append('disk', 'local')
-        data.formData.append('inline', true)
+        data.form.append('disk', 'local')
+        data.form.append('inline', true)
     
-        auth.value.user.upload = data.formData
+        profile.value.upload = data.form
     }
     
     const pending = ref(false)
@@ -161,21 +169,41 @@
         pending.value = true
         if (preview.value)
         {
-            const { data:response } = await useFetch(`upload`, {
+            const uploadResult = await $fetch(`/api/files/blob`, {
                 method: "POST", 
-                body: auth.value.user.upload
+                body: profile.value.upload
             })
     
-            auth.value.user.avatarFileName = response
+             // Save the file to DB
+             const file = await $fetch('/api/files/', {
+                method: "POST",
+                body: {
+                    filename: uploadResult[0].pathname,
+                }
+            })
+
+            profile.value.avatarId = file.id
         }
     
     
-        await client.from('profiles')
-            .update({
-                username: user.username,
-                name: user.name
-            })
-            .eq('id', user.value.id)
+        await $fetch('/api/users/' + user.value.id, {
+            method: "PUT",
+            body: {
+                username: profile.value.username,
+                name: profile.value.name,
+                avatarId: profile.value.avatarId
+            }
+        })
+
+        
+        await $fetch('/api/auth', {
+            method: "PUT",
+            body: {
+                username: profile.value.username
+            }
+        })
+
+        fetchSession()
 
         pending.value = false
     }

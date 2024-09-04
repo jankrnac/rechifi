@@ -77,7 +77,7 @@ const coverChanged = (data) => {
 }
 
 watch(() => local.value.title, (value) =>
-    local.value.slug = useSlugify(value)
+    local.value.slug = useSlug(value)
 , {
     deep: true
 })

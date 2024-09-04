@@ -4,7 +4,7 @@
 
     <div v-if="useRoute().name != 'iems-brand-model'" class="flex gap-2">
         <UBadge class="mb-2 capitalize" color="orange">review</UBadge>
-        <UBadge class="mb-2" color="red">{{post.gearType.toUpperCase()}}</UBadge>
+        <UBadge class="mb-2" color="red">{{post.gearType}}</UBadge>
     </div>
 
     <div class="relative w-full transition flex items-center">
@@ -37,7 +37,7 @@
                 </div>
             </div>
             <h3 v-if="size == 'normal'" class="mt-6 mb-1 text-2xl font-bold leading-6 h-12 align-top">
-                <nuxt-link :to="'/posts/' + post.user.username + '/' + post.brand + '/' + post.model" class="text">
+                <nuxt-link :to="'/reviews/' + post.user.username + '/' + post.brand + '/' + post.model" class="text">
                     {{ post.title }}
                 </nuxt-link>
             </h3>

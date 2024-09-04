@@ -3,12 +3,15 @@ export default eventHandler(async (event) =>
 
     const id = getRouterParam(event, 'id')
 
-
-    let posts = await useDrizzle().query.posts.findMany({
-        where: eq(tables.posts.userId, id),
+    let posts = await useDrizzle().query.users.findFirst({
+        where: eq(tables.users.id, id),
         with: { 
-            user: true,
-            cover: true
+            posts: {
+                with: {
+                    user: true
+                }
+            },
+            avatar: true
         }
     })
 

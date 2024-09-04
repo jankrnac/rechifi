@@ -91,9 +91,11 @@
 
 				<UButton variant="solid" icon="i-ph-plus-circle" size="lg" color="sky" class="cursor-pointer" label="Add" to="/add"/>
 
-
 						<UPopover mode="hover" :popper="{ placement: 'bottom-end' }">
-							<UButton icon="i-ph-user-light" color="gray" variant="ghost" size="xl"/>
+							<UButton v-if="user && user.avatar" variant="ghost">
+								<nuxt-img width="30" :src="user.avatar.filename" />
+							</UButton>
+							<UButton v-else icon="i-ph-user-light" color="gray" variant="ghost" size="xl"/>
 
 							<template #panel>
 
@@ -109,10 +111,6 @@
 									<nuxt-link :to="'/users/' + user.username" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer">
 										<Icon name="ph:user-light" />
 										<div>My profile</div>
-									</nuxt-link>
-									<nuxt-link to="/posts/my" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer">
-										<Icon name="ph:read-cv-logo-light" />
-										<div>My posts</div>
 									</nuxt-link>
 									<nuxt-link to="/settings" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer">
 										<Icon name="ph:gear-light" />
@@ -196,10 +194,6 @@
 					</nuxt-link>
 
 					<!-- Authenticated -->
-					<nuxt-link v-if="user" to="/posts/my" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="mobileMenuOpen = false">
-						<Icon name="ph:read-cv-logo-light" size="20px" />
-						<div>My posts</div>
-					</nuxt-link>
 					<nuxt-link v-if="user" to="/settings" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="mobileMenuOpen = false">
 						<Icon name="ph:gear-light" size="20px" />
 						<div>Settings</div>

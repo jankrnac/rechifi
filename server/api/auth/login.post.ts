@@ -5,7 +5,10 @@ export default eventHandler(async (event) => {
     const body = await readBody(event)
 
     let user = await useDrizzle().query.users.findFirst({
-        where: eq(tables.users.email, body.email)
+        where: eq(tables.users.email, body.email),
+        with: {
+            avatar: true
+        }
     })
 
     const check = await bcrypt.compare(body.password, user!.password) // Check password
@@ -20,7 +23,9 @@ export default eventHandler(async (event) => {
         
     const userData = { 
         id: user?.id,
-        username: user?.username 
+        username: user?.username,
+        email: user?.email,
+        avatar: user?.avatar
     }
 
     await setUserSession(event, {

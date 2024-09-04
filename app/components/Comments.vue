@@ -30,12 +30,7 @@
 
 <script setup>
 
-const props = defineProps({
-    comments: {
-        type: Array,
-        required: true
-    }
-})
+const comments = ref([])
 const { user } = useUserSession()
 
 const profile = ref()

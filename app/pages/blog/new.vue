@@ -39,6 +39,7 @@ const createArticle = async () => {
         method: "POST",
         body: {
             type: 'article',
+            slug: useSlug(title.value),
             title: title.value
         }
     })
@@ -53,7 +54,7 @@ const checkSlug = async () => {
 
     if(title.value)
     {
-        const result = await $fetch('/api/posts/checkslug/'+useSlugify(title.value))
+        const result = await $fetch('/api/posts/checkslug/'+useSlug(title.value))
         if (result.length > 0) return false
 
         return true
