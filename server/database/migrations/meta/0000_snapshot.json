@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "d7f66f6a-2a3c-424a-b29b-c2232defd929",
+  "id": "96768915-081a-4fa6-8de0-60078a56537d",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "comments": {
@@ -173,8 +173,8 @@
           "notNull": true,
           "autoincrement": true
         },
-        "cloudId": {
-          "name": "cloudId",
+        "filename": {
+          "name": "filename",
           "type": "text",
           "primaryKey": false,
           "notNull": false,
@@ -303,6 +303,34 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true,
+          "autoincrement": false
+        },
+        "brand": {
+          "name": "brand",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "model": {
+          "name": "model",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "gearType": {
+          "name": "gearType",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
           "autoincrement": false
         },
         "userId": {

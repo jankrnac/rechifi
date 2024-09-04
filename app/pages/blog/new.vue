@@ -7,11 +7,17 @@
             <span class="font-playfair">caption</span>
         </h1>
 
-        <UInput padded size="xl" class="w-full max-w-[600px]" v-model="title"></UInput>
+        <UInput padded size="xl" class="w-full max-w-[600px]" v-model="title" @keyup="checkSlug"></UInput>
 
         <div class="flex flex-col items-center">
             Your slug will be:
-            <div class="font-semibold min-h-6">{{ $slugify(title) }}</div>
+            <div class="font-semibold min-h-6 flex items-center gap-x-2">
+                {{ $slugify(title) }}
+                <template v-if="title">
+                    <UIcon v-if="checkSlug" name="i-ph-check-circle" color="" />
+                    <UIcon v-else name="i-ph-x-circle" color="red" />
+                </template>
+            </div>
         </div>
 
         <UButton icon="i-ph-check" size="xl" @click="createArticle">Create</UButton>
@@ -41,6 +47,21 @@ const createArticle = async () => {
     {
         await navigateTo('/blog/'+result.slug+'/edit')
     }
+}
+
+const checkSlug = async () => {
+
+    if(title.value)
+    {
+        const result = await $fetch('/api/posts/checkslug/'+useSlugify(title.value))
+        if (result.length > 0) return false
+
+        return true
+
+    }
+
+
+    return false
 }
 
 </script>

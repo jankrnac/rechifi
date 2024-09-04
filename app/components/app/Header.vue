@@ -213,7 +213,6 @@
 			</div>
 			</div>
 		</UModal>
-
 </header>
 
 </template>
@@ -224,7 +223,7 @@
 		useScope: 'local'
 	})
 
-	const { loggedIn, user } = useUserSession()
+	const { loggedIn, user, clear } = useUserSession()
 
 	const navigation = [
 		{ name: 'news', href: '/blog' },
