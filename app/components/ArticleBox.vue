@@ -19,8 +19,8 @@
 
     </div>
     
-    <div class="mt-2">
-		<div class="flex justify-between items-center text-gray-500 dark:text-gray-200">
+    <div class="mt-2 w-full">
+		<div class="flex flex-1 justify-between items-center text-gray-500 dark:text-gray-200">
             <div class="text-sm flex items-center justify-center">
                 <UIcon name="i-ph-user" class="mr-1" />
                 {{ post.user.username }}

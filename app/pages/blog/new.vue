@@ -14,7 +14,7 @@
             <div class="font-semibold min-h-6 flex items-center gap-x-2">
                 {{ $slugify(title) }}
                 <template v-if="title">
-                    <UIcon v-if="checkSlug" name="i-ph-check-circle" color="yellow" />
+                    <UIcon v-if="checkSlug" name="i-ph-check-circle" color="" />
                     <UIcon v-else name="i-ph-x-circle" color="red" />
                 </template>
             </div>
