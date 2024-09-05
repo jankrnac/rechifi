@@ -1,6 +1,6 @@
 export const useLayout = () => {
 
-    const save = async (post, data) => {
+    const save = async (post: Object, data  ) => {
 
         const activeElements = [...post.value.elements]
 
@@ -113,7 +113,7 @@ export const useLayout = () => {
         }
 
         // Save the post itself
-        await $fetch('/api/posts/' + article.value.id, {
+        await $fetch('/api/posts/' + post.value.id, {
             method: "PUT",
             body: data
         })

@@ -1,4 +1,4 @@
-import {  inArray } from 'drizzle-orm';
+import {  inArray, desc } from 'drizzle-orm';
 
 export default eventHandler(async (event) => {
 
@@ -9,7 +9,9 @@ export default eventHandler(async (event) => {
             user: true,
             cover: true
         },
-        where: query && query.type ? inArray(tables.posts.type, [query.type]) : inArray(tables.posts.type, ['article', 'review'])
+        where: query && query.type ? inArray(tables.posts.type, [query.type]) : inArray(tables.posts.type, ['article', 'review']),
+        orderBy: [desc(tables.posts.id)],
+
 
     })
 
