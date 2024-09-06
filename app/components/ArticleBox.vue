@@ -12,8 +12,28 @@
     </div>
 
     <div class="relative w-full overflow-hidden">
-        <nuxt-img v-if="post.coverId" :src="post.cover.filename" alt="" class="aspect-[1] w-full rounded-xl bg-gray-100 object-cover" width="480" height="480" densities="x1"/>
-        <nuxt-img v-else src="placeholder.webp" alt="cover" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" width="480" height="480" densities="x1"/>
+        
+        <nuxt-img 
+            v-if="post.coverId" 
+            :src="post.cover.filename" 
+            :alt="post.cover.filename" 
+            class="aspect-[1] w-full rounded-xl bg-gray-100 object-cover" 
+            width="480"   
+            sizes="100vw md:480px"
+            height="480" 
+            densities="x1"
+        />
+
+        <nuxt-img 
+            v-else 
+            src="placeholder.webp" 
+            alt="cover" 
+            class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" 
+            width="480" 
+            height="480"
+            sizes="100vw md:480px"
+            densities="x1"
+        />
 
         <nuxt-link :to="'/blog/'+post.slug" class="absolute inset-0"></nuxt-link>
 
