@@ -27,7 +27,7 @@
     "@tiptap/pm": "^2.5.8",
     "@tiptap/starter-kit": "^2.5.8",
     "@tiptap/vue-3": "^2.5.8",
-    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "drizzle-orm": "^0.32.2",
     "nuxt-auth-utils": "^0.3.4",
     "vue-ellipse-progress": "^2.1.2",

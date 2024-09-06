@@ -9,9 +9,9 @@ export const users = sqliteTable('users', {
     avatarId: integer('avatarId').references(() => files.id, {onDelete: 'cascade'}),
     name: text('name'),
     other: text('other'),
-    iems: text('iems', {mode: 'json'}).default('[]'),
-    daps: text('daps', {mode: 'json'}).default('[]'),
-    dacs: text('dacs', {mode: 'json'}).default('[]'),
+    iems: text('iems', {mode: 'json'}),
+    daps: text('daps', {mode: 'json'}),
+    dacs: text('dacs', {mode: 'json'}),
     createdAt: text("createdAt").default(sql`(CURRENT_TIMESTAMP)`),
 })
 

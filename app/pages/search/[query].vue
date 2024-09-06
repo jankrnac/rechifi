@@ -12,8 +12,8 @@
         
         <div class="mx-auto lg:mt-4 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-app lg:grid-cols-4">
 
-            <template v-for="post in posts" :key="post._path">
-                    <BlogPostBox :post="post" />
+            <template v-for="post in posts">
+                    <ArticleBox :post="post" />
             </template>
         </div>
     </div>
@@ -44,13 +44,14 @@
 </template>
 
 <script setup lang="ts">
+
     useSeoMeta({
         title: 'Search - Rechifi - Chi-fi audio',
     })
 
     const route = useRoute()
     
-    const posts = await queryContent('blog').where({ 'title': { $icontains: route.params.query } }).where({ visible: { $ne: false } }).find()
+    const { data:posts } = await useFetch('/api/posts/search/' +  route.params.query)
     const iems = await queryContent('iems').where({ 'title': { $icontains: route.params.query } }).find()
     const daps = await queryContent('daps').where({ 'title': { $icontains: route.params.query } }).find()
 

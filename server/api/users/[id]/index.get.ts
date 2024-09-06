@@ -1,6 +1,5 @@
 export default eventHandler(async (event) => 
 {
-
     const id = getRouterParam(event, 'id')
 
     let posts = await useDrizzle().query.users.findFirst({

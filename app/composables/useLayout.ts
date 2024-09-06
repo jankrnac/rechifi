@@ -1,6 +1,6 @@
 export const useLayout = () => {
 
-    const save = async (post: Object, data  ) => {
+    const save = async (post: Ref) => {
 
         const activeElements = [...post.value.elements]
 
@@ -83,12 +83,12 @@ export const useLayout = () => {
 
 
         // Last save the review
-        if (data.uploadNeeded)
+        if (post.value.uploadNeeded)
         {
             // upload the file
             const uploadResult = await $fetch('/api/files/blob', {
                 method: 'POST',
-                body: data.upload,
+                body: post.value.upload,
             })
 
             // Save the file to DB
@@ -101,21 +101,21 @@ export const useLayout = () => {
 
             console.log(file)
             // Attach the coverId to post
-            await $fetch('/api/posts/' + article.value.id, {
+            await $fetch('/api/posts/' + post.value.id, {
                 method: "PATCH",
                 body: {
                     coverId: file.id,
                 }
             })
 
-            article.value.coverId = file.id
+            post.value.coverId = file.id
 
         }
 
         // Save the post itself
         await $fetch('/api/posts/' + post.value.id, {
             method: "PUT",
-            body: data
+            body: post.value
         })
     }
 

@@ -28,10 +28,10 @@
                 <div class="flex flex-1 justify-between gap-4 mt-0" :class="[size == 'normal' ? 'text-sm' : 'text-xs']">
                     <div class="text-gray-500 dark:text-gray-200 flex items-center justify-center">
                         <UIcon name="i-ph-user" class="mr-1" />
-                        <nuxt-link :to="'/users/'+post.user.username" class="text">{{ post.user.username }}</nuxt-link>
+                        <nuxt-link :to="'/users/'+post.user.username" class="text hover:underline">{{ post.user.username }}</nuxt-link>
                     </div>
                     <div class="text-gray-500 dark:text-gray-200  italic flex items-center justify-center">
-                        <UIcon name="i-ph-calendar" class="w-4 h-4 mr-1" />
+                        <UIcon name="i-ph-calendar" class="mr-1" />
                         {{ new Date(post.createdAt).toLocaleString('en-us',{month:'short', day:'numeric', year:'numeric'}) }}
                     </div>
                 </div>

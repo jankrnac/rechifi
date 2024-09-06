@@ -1,6 +1,6 @@
 <template>
 
-<div class="flex flex-col items-center justify-center max-w-app  text-xl font-light py-24">
+<div class="flex flex-col items-center justify-center max-w-[1200px]  text-xl font-light py-24">
 
     <h1 class="text-3xl lg:text-6xl my-4 lg:mt-16 lg:mb-24">
         <span class="font-bold">About </span> 

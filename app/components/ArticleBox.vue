@@ -23,7 +23,7 @@
 		<div class="flex flex-1 justify-between items-center text-gray-500 dark:text-gray-200">
             <div class="text-sm flex items-center justify-center">
                 <UIcon name="i-ph-user" class="mr-1" />
-                {{ post.user.username }}
+                <nuxt-link :to="'/users/'+post.user.username" class="hover:underline">{{ post.user.username }}</nuxt-link>
             </div>
             <div class="text-sm italic flex items-center justify-center">
                 <UIcon name="i-ph-calendar" class="mr-1" />

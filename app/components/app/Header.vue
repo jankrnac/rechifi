@@ -77,7 +77,7 @@
         <!-- Search -->
         <div class="hidden md:block flex-1 mr-2 lg:mr-6 2xl:mr-12 relative">
 			<Icon name="ph:magnifying-glass-light" class="w-5 h-5 absolute top-3.5 left-4 text-gray-400 hidden lg:block" />
-            <input 	class="bg-gray-50 p-3 pl-4 lg:pl-12 rounded-lg border w-full text-sm lg:text-base dark:bg-gray-800 dark:border-gray-700" 
+            <input class="bg-gray-50 p-3 pl-4 lg:pl-12 rounded-lg border w-full text-sm lg:text-base dark:bg-gray-800 dark:border-gray-700" 
 					type="text" 
 					:placeholder="t('search-placeholder')"
 					v-model="query"
@@ -167,12 +167,17 @@
 					<!-- Search -->
 					<div class="block flex-1 relative mt-10">
 					<Icon name="ph:magnifying-glass-light" size="20" class="absolute top-3.5 left-4 text-gray-400 hidden lg:block" />
-					<input class="bg-gray-50 p-3 pl-12 rounded-lg border w-full text-sm focus:outline-none lg:text-base dark:bg-gray-800 dark:border-gray-700" 
+					<UInput class="bg-gray-50 p-3 pl-12 rounded-lg border w-full text-sm focus:outline-none lg:text-base dark:bg-gray-800 dark:border-gray-700" 
 							type="text" 
+							icon="i-ph-magnifying-glass-thin"
 							:placeholder="t('search-placeholder')"
 							v-model="query"
 							@keypress.enter="search()"
-						/>
+					>
+						<template #trailing>
+							<UKbd>CTRL+K</UKbd>
+						</template>
+					</UInput>
 				</div>
 				
 				<!-- Navigation section -->

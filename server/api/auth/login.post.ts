@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt"
+import bcryptjs from "bcryptjs"
 
 export default eventHandler(async (event) => {
     
@@ -11,7 +11,15 @@ export default eventHandler(async (event) => {
         }
     })
 
-    const check = await bcrypt.compare(body.password, user!.password) // Check password
+    if (!user)
+    {
+        return createError({
+            statusCode: 401,
+            statusMessage: "Account not found",
+        }); 
+    }
+
+    const check = await bcryptjs.compare(body.password, user!.password) // Check password
 
     if (!check)
     {

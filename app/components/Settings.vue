@@ -71,7 +71,9 @@ const settingsVisible = ref(false)
 const emit = defineEmits(['save','editableChanged'])
 
 const coverChanged = (data) => {
-    local.value.cover.filename = data.blob
+    local.value.cover = {
+        filename: data.blob
+    }
     local.value.upload  = data.form
     local.value.uploadNeeded = true
 }

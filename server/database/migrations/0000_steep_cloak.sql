@@ -61,9 +61,9 @@ CREATE TABLE `users` (
 	`avatarId` integer,
 	`name` text,
 	`other` text,
-	`iems` text DEFAULT '[]',
-	`daps` text DEFAULT '[]',
-	`dacs` text DEFAULT '[]',
+	`iems` text,
+	`daps` text,
+	`dacs` text,
 	`createdAt` text DEFAULT (CURRENT_TIMESTAMP),
 	FOREIGN KEY (`avatarId`) REFERENCES `files`(`id`) ON UPDATE no action ON DELETE cascade
 );

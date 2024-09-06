@@ -1,10 +1,10 @@
-import bcrypt from "bcrypt";
+import bcryptjs from "bcryptjs";
 
 export default eventHandler(async (event) => {
         
     const body = await readBody(event)
 
-    const hashedPassword = await bcrypt.hash(body.password, 10); // Hash password
+    const hashedPassword = await bcryptjs.hash(body.password, 10); // Hash password
     
     const user = await useDrizzle().insert(tables.users).values({
         email: body.email,

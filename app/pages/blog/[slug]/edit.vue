@@ -43,7 +43,7 @@
     }
 
     const save = () => {
-        saveLayout(article, article.value.elements)
+        saveLayout(article)
     }
 
     // Extract sections elements for navigation (in Header element)

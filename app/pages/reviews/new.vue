@@ -56,7 +56,7 @@ definePageMeta({
 
 const { user, fetch:fetchSession } = useUserSession()
 
-const username = ref()
+const username = ref(user.value.username)
 const usernameValid = ref(false)
 
 const manualMode = ref(false)
@@ -142,7 +142,7 @@ const save = async () => {
                 }
             })
 
-            await navigateTo(`/reviews/${user.username}/${brandPayload}/${modelPayload}/edit`)
+            await navigateTo(`/reviews/${username.value}/${brandPayload}/${modelPayload}/edit`)
         }
     }
 }
