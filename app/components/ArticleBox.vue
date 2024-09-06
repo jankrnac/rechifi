@@ -5,6 +5,8 @@
 
     <div class="flex gap-2">
         <UBadge class="mb-2 capitalize" color="sky">article</UBadge>
+        <UBadge class="mb-2 uppercase" color="red">{{post.gearType}}</UBadge>
+
     </div>
 
     <div class="flex gap-2">

@@ -1,6 +1,6 @@
 <template>
 
-<div class="flex flex-1 min-h-screen content border relative z-[49]" :class="[editable ? 'rounded-xl border-gray-300' : 'border-transparent']">
+<div class="flex flex-1 min-h-screen content border relative z-[1]" :class="[editable ? 'rounded-xl border-gray-300' : 'border-transparent']">
     <!--Classic, non editable mode -->
 
     <template v-if="!editable">
@@ -87,6 +87,7 @@ const onRemove = async (elementid) => {
 const onImageChange = async (path) => {
     menuElement.value.data.banner.value = path
 }
+
 
 
 </script>

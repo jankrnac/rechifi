@@ -31,7 +31,7 @@
 
     
     <!-- Settings -->
-    <div v-if="settingsVisible && editable" class="border rounded-lg p-6 my-6">
+    <div v-if="settingsVisible && editable" class="border rounded-lg p-6 mb-6">
         <div class="flex gap-5">
             <div>
                 <div class="mb-2 font-semibold text-sm">Cover</div>
@@ -53,6 +53,43 @@
 
                 <div class="text-sm font-semibold mt-4 mb-2">Description</div>
                 <textarea type="text" v-model="local.description" class="border rounded-lg px-4 py-2 resize-none h-full text-sm"></textarea>
+            </div>
+
+            <div class="flex flex-col flex-1 items-center justify-center">
+                <div class="text-sm font-semibold mb-12">Article type and associated gear</div>
+
+                <ul class="flex gap-6 lg:gap-12 justify-center">
+                    <li><IconsIem class="w-20 h-20 cursor-pointer" :class="[local.gearType == 'iem' ? 'opacity-100' : 'opacity-40']" @click="local.gearType  = 'iem'"/></li>
+                    <li><IconsDap class="w-20 h-20 cursor-pointer" :class="[local.gearType  == 'dap' ? 'opacity-100' : 'opacity-40']" @click="local.gearType  = 'dap'" /></li>
+                    <li><IconsDac class="w-20 h-20 cursor-pointer" :class="[local.gearType  == 'dac' ? 'opacity-100' : 'opacity-40']" @click="local.gearType  = 'dac'" /></li>
+                </ul>
+
+                <ul class="mb-12">
+                    <li v-for="error in errors" class="bg-red-100 rounded-lg px-5 py-4">
+                        {{ error }}
+                    </li>
+                </ul>
+
+        <h1 class="text-3xl font-bold mb-6">Choose {{ type }} model</h1>
+
+        <ModelCombobox v-if="!manualMode" v-model="headphone" :model="type" />
+
+        <div v-else class="mt-6">
+            <div class="font-semibold">Brand</div>
+            <input v-model="brand" type="text" class="border rounded-lg px-5 py-4 w-[400px] text-sm dark:bg-gray-800 dark:border-gray-600 focus:outline-none" placeholder="Type the brand and model name"/>
+
+            <div class="font-semibold mt-6">Model</div>
+            <input v-model="model" type="text" class="border rounded-lg px-5 py-4 w-[400px] text-sm dark:bg-gray-800 dark:border-gray-600 focus:outline-none" placeholder="Type the brand and model name"/>
+
+        </div>
+
+        <div v-if="!manualMode" class="text-sm mt-5 cursor-pointer flex items-center" @click="manualMode = true">Item not in list?
+            <div class="border rounded ml-2 px-2 py-0.5 hover:bg-gray-100 dark:hover:bg-gray-700 dark:border-gray-600 transition">Enter manually</div>
+        </div>
+        <div v-else class="border rounded ml-2 px-2 py-0.5 hover:bg-gray-100 transition text-sm mt-5 cursor-pointer dark:hover:bg-gray-700 dark:border-gray-600" @click="manualMode = false">Choose from list</div>
+
+        <div class="mt-6 rounded-lg px-4 py-2 bg-green-700 text-white opacity-0 cursor-default hover:bg-green-800" :class="{'opacity-100 cursor-pointer':headphone || (model && brand)}" @click="save">Next</div>
+
             </div>
         </div>
     </div>
@@ -93,5 +130,15 @@ const save = () => {
     },400)
 }
 
+
+const manualMode = ref(false)
+const headphone = ref()
+
+const brand = ref()
+const model = ref()
+
+const type = ref('iem')
+
+const errors = ref([])
 
 </script>

@@ -9,7 +9,10 @@ export default eventHandler(async (event) => {
             user: true,
             cover: true
         },
-        where: query && query.type ? inArray(tables.posts.type, [query.type]) : inArray(tables.posts.type, ['article', 'review']),
+        where: and( 
+            query && query.type ? inArray(tables.posts.type, [query.type]) : inArray(tables.posts.type, ['article', 'review']),
+            query && query.gearType ? inArray(tables.posts.gearType, query.gearType) : inArray(tables.posts.gearType, ['iem', 'dap','dac']),
+        ),
         orderBy: [desc(tables.posts.id)],
 
 

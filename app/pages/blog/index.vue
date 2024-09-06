@@ -9,20 +9,46 @@
     <Wave />
 
     <ul class="flex gap-4 my-6 lg:my-12">
-        <div class="rounded-xl bg-yellow-200 px-5 py-2 font-semibold cursor-pointer hover:bg-yellow-300 transition" @click="activeFilters = ['IEM', 'DAP','DAC']">All</div>
-        <div class="border-r m-1"></div>
-        <div class="rounded-xl bg-blue-200 px-5 py-2 font-semibold cursor-pointer hover:bg-blue-300 transition" :class="[ activeFilters.includes('IEM') ? 'opacity-100' : 'opacity-30']" @click="activeFilters = ['IEM']">IEM</div>
-        <div class="rounded-xl bg-green-200 px-5 py-2 font-semibold cursor-pointer hover:bg-green-300 transition" :class="[ activeFilters.includes('DAP') ? 'opacity-100' : 'opacity-30']" @click="activeFilters = ['DAP']">DAP</div>
-        <div class="rounded-xl bg-red-200 px-5 py-2 font-semibold cursor-pointer hover:bg-red-300 transition" :class="[ activeFilters.includes('DAC') ? 'opacity-100' : 'opacity-30']" @click="activeFilters = ['DAC']">DAC</div>
+
+        <div class="rounded-xl bg-blue-200 px-5 py-2 font-semibold cursor-pointer hover:bg-blue-300 transition" 
+            :class="[ activeFilters.includes('iem') ? 'opacity-100' : 'opacity-30']" 
+            @click="toggleFilter('iem')"
+        >
+            IEM
+        </div>
+
+        <div class="rounded-xl bg-green-200 px-5 py-2 font-semibold cursor-pointer hover:bg-green-300 transition" 
+            :class="[ activeFilters.includes('dap') ? 'opacity-100' : 'opacity-30']" 
+            @click="toggleFilter('dap')"
+        >
+        DAP
+    </div>
+
+        <div class="rounded-xl bg-red-200 px-5 py-2 font-semibold cursor-pointer hover:bg-red-300 transition" 
+            :class="[ activeFilters.includes('dac') ? 'opacity-100' : 'opacity-30']" 
+            @click="toggleFilter('dac')"
+        >
+        DAC
+        </div>
     </ul>
 
-    <div class="mx-auto mb-24 mt-6 lg:mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-app lg:grid-cols-4">
+    <template v-if="posts.length">
 
-        <template v-for="post in posts" :key="post._path">
-            <ArticleBox :post="post" />
-        </template>
+        <div class="mx-auto mb-24 mt-6 lg:mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-app lg:grid-cols-4">
 
-    </div>
+            <template v-for="post in posts" :key="post._path">
+                <ArticleBox :post="post" />
+            </template>
+
+        </div>
+
+    </template>
+
+    <template v-else>
+        <div class="text-2xl font-light">
+            No articles found
+        </div>
+    </template>
 
 </div>
 
@@ -37,11 +63,24 @@
     premium sound experiences from top Chinese brands. Elevate your audio journey with our curated knowledge hub. Dive into the articles now!`
 })
 
-const activeFilters = ref(['IEM','DAP','DAC'])
+const activeFilters = ref(['iem','dap','dac'])
 
-const { data:posts } =  await useAsyncData('articles', () => $fetch('/api/articles'),
-{ 
-    watch:[activeFilters]
+const toggleFilter = (value) => {
+    if (activeFilters.value.includes(value))
+    {
+        activeFilters.value.splice(activeFilters.value.findIndex(e=>e==value),1)
+    }
+    else
+    {
+        activeFilters.value.push(value)
+    }
+}
+
+const { data:posts, refresh } =  await useFetch('/api/posts', {
+    query: {
+        type: 'article',
+        gearType: activeFilters.value
+    }
 })
   
 </script>

@@ -4,7 +4,7 @@
 
     <div v-if="useRoute().name != 'iems-brand-model'" class="flex gap-2">
         <UBadge class="mb-2 capitalize" color="orange">review</UBadge>
-        <UBadge class="mb-2" color="red">{{post.gearType}}</UBadge>
+        <UBadge class="mb-2 uppercase" color="red">{{post.gearType}}</UBadge>
     </div>
 
     <div class="relative w-full transition flex items-center">
