@@ -7,7 +7,7 @@
             <span class="font-playfair">new</span>
         </h1>
 
-        <div class="flex gap-12">
+        <div class="md:flex space-12">
             <nuxt-link to="/blog/new" class="font-light flex flex-col items-center gap-5 border rounded-xl px-20 py-12 hover:border-blue-400 transition-all hover:text-blue-800 hover:font-bold">
                 <UIcon name="i-ph-newspaper-duotone" size="90px" />
                 <div class="text-4xl w-32 text-center">Article</div>
