@@ -100,6 +100,12 @@ export default defineNuxtConfig({
 		cache: true
 	},
 
+	routeRules: {
+		'/iems/**': { swr: 600 },
+		'/dacs/**': { swr: 600 },
+		'/daps/**': { swr: 600 },
+	},
+
 	runtimeConfig: {
 		session: {
 			maxAge: 60 * 60 * 24 * 7 // 1 week
