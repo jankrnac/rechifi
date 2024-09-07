@@ -1,6 +1,8 @@
+import type { H3Event } from "h3";
+
 import {  inArray, desc } from 'drizzle-orm';
 
-export default eventHandler(async (event) => {
+export default cachedEventHandler(async (event) => {
 
     const query = getQuery(event)
 
@@ -19,4 +21,9 @@ export default eventHandler(async (event) => {
     })
 
     return articles
+}, {
+    maxAge: 60 * 30,
+    swr: true,
+    staleMaxAge: 60 * 60,
+    getKey: (event: H3Event) => event.path
 })
