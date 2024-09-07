@@ -10,7 +10,11 @@
     <div class="relative w-full transition flex items-center">
     
         <nuxt-img v-if="post.cover" :src="post.cover.filename" alt="" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" densities="x1" format="webp" width="480" height="480" fit="contain" />
-        <nuxt-img v-else src="placeholder.webp" alt="cover" class="aspect-square w-full rounded-2xl bg-gray-100 object-cover"  densities="x1" format="webp" width="480" height="480" fit="contain" />
+        <nuxt-img v-else 
+            src="placeholder.webp" 
+            alt="cover" 
+            class="aspect-square w-full rounded-2xl bg-gray-100 object-cover  dark:opacity-50"  
+            densities="x1" format="webp" width="480" height="480" fit="contain" />
 
         <nuxt-link :to="'/reviews/' + post.user.username + '/' + post.brand + '/' + post.model" class="absolute inset-0 flex"></nuxt-link>
 

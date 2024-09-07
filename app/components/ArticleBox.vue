@@ -30,7 +30,7 @@
             v-else 
             src="placeholder.webp" 
             alt="cover" 
-            class="aspect-square w-full rounded-2xl bg-gray-100 object-cover" 
+            class="aspect-square w-full rounded-2xl bg-gray-100 object-cover dark:opacity-50" 
             width="480" 
             height="480"
             sizes="100vw md:480px"

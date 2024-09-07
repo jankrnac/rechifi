@@ -48,7 +48,7 @@
             :id="switchId"
             :key="filter.name" 
             v-model="activeFilters[filter.id]"
-            :class="activeFilters[filter.id] ? 'bg-blue-600' : 'bg-gray-200'"
+            :class="activeFilters[filter.id] ? 'bg-blue-600' : 'bg-gray-200 dark:bg-gray-500'"
             class="relative inline-flex h-6 w-11 items-center rounded-full"
         >
             <span class="sr-only">{{filter.name}}</span>
