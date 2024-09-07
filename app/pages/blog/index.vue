@@ -10,21 +10,21 @@
 
     <ul class="flex gap-4 my-6 lg:my-12">
 
-        <div class="rounded-xl bg-blue-200 px-5 py-2 font-semibold cursor-pointer hover:bg-blue-300 transition" 
+        <div class="rounded-xl bg-blue-200 dark:bg-blue-600 px-5 py-2 font-semibold cursor-pointer hover:bg-blue-300 transition" 
             :class="[ activeFilters.includes('iem') ? 'opacity-100' : 'opacity-30']" 
             @click="toggleFilter('iem')"
         >
             IEM
         </div>
 
-        <div class="rounded-xl bg-green-200 px-5 py-2 font-semibold cursor-pointer hover:bg-green-300 transition" 
+        <div class="rounded-xl bg-green-200 dark:bg-green-600 px-5 py-2 font-semibold cursor-pointer hover:bg-green-300 transition" 
             :class="[ activeFilters.includes('dap') ? 'opacity-100' : 'opacity-30']" 
             @click="toggleFilter('dap')"
         >
         DAP
     </div>
 
-        <div class="rounded-xl bg-red-200 px-5 py-2 font-semibold cursor-pointer hover:bg-red-300 transition" 
+        <div class="rounded-xl bg-red-200 dark:bg-red-500 px-5 py-2 font-semibold cursor-pointer hover:bg-red-300 transition" 
             :class="[ activeFilters.includes('dac') ? 'opacity-100' : 'opacity-30']" 
             @click="toggleFilter('dac')"
         >
