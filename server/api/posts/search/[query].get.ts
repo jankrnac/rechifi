@@ -1,6 +1,6 @@
 import { like } from "drizzle-orm"
 
-export default eventHandler(async (event) => {
+export default cachedEventHandler(async (event) => {
 
 	const query = getRouterParam(event,'query')
 
@@ -12,4 +12,10 @@ export default eventHandler(async (event) => {
     })
 
     return posts
+}, {
+  	maxAge: 60 * 60,
+	swr: true,
+	staleMaxAge: 30,
+	getKey: (event: H3Event) => event.path
+
 })
