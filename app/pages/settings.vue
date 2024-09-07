@@ -1,39 +1,39 @@
 <template>
     
-    <div class="flex flex-col flex-grow dark:bg-gray-800 mb-24">
+    <div class="flex flex-col flex-grow mb-24">
             
         <div class="space-y-10 max-w-7xl mx-auto lg:px-8 mt-16 px-4">
 
             <!-- Profile -->
             <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
                 <div class="px-4 sm:px-0">
-                    <h2 class="text-base font-semibold leading-7 text-gray-900">Profile</h2>
-                    <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
+                    <h2 class="text-base font-semibold leading-7">Profile</h2>
+                    <p class="mt-1 text-sm leading-6">This information will be displayed publicly so be careful what you share.</p>
                 </div>
                 
-                <form @submit.prevent="submitProfileForm" class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
+                <form @submit.prevent="submitProfileForm" class="dark:bg-gray-900 shadow-sm ring-1 ring-gray-900/5 dark:ring-gray-700 sm:rounded-xl md:col-span-2">
                     <div class="px-4 py-6 sm:p-8">
     
                         <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
 
                             <div class="sm:col-span-full">
-                                <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">Username</label>
-                                <input type="text" name="username" id="name" class="border rounded px-4 py-2 w-full" :class="[usernameValid ? '':'bg-red-200']" v-model="profile.username"/>
+                                <label for="name" class="block text-sm font-semibold leading-6 mb-1">Username</label>
+                                <UInput type="text" name="username" id="name" size="xl" :class="[usernameValid ? '':'bg-red-200']" v-model="profile.username"/>
                                 <div v-if="!usernameValid" class="text-xs mt-1">Username already taken</div>
                             </div>
 
                             <div class="sm:col-span-full">
-                                <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">Name</label>
-                                <input type="text" name="name" id="username" class="border rounded px-4 py-2 w-full" v-model="profile.name"/>
+                                <label for="name" class="block text-sm font-semibold leading-6 mb-1">Name</label>
+                                <UInput type="text" name="name" id="username" size="xl" v-model="profile.name"/>
                             </div>
     
                             <div class="sm:col-span-full">
-                                <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">Email</label>
-                                <input type="text" name="email" id="email" class="border rounded px-4 py-2 w-full" :value="profile.email" :disabled="true" />
+                                <label for="name" class="block text-sm font-semibold leading-6 mb-1">Email</label>
+                                <UInput type="text" name="email" id="email" size="xl" :value="profile.email" :disabled="true" />
                             </div>
     
                             <div class="col-span-full">
-                                <label class="block text-sm font-semibold leading-6 text-gray-700 mb-1">Avatar</label>
+                                <label class="block text-sm font-semibold leading-6 mb-1">Avatar</label>
                                 <div class="mt-2 flex items-center gap-x-3">
 
                                     <div v-if="avatar" class="w-14 h-14">
@@ -43,7 +43,7 @@
                                     <UIcon name="i-ph-user" v-else class="w-8 h-8" aria-hidden="true" />
 
                                     <UploadSingle @uploaded="setAvatar" :aspectRatio="1">
-                                        <button type="button" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Change</button>
+                                        <button type="button" class="rounded-md px-2.5 py-1.5 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Change</button>
                                     </UploadSingle>
 
                                 </div>
@@ -62,17 +62,17 @@
               <!-- Gear -->
               <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
                 <div class="px-4 sm:px-0">
-                    <h2 class="text-base font-semibold leading-7 text-gray-900">Owned audio gear</h2>
-                    <p class="mt-1 text-sm leading-6 text-gray-600">Share with us, what audio devices you have or currently using</p>
+                    <h2 class="text-base font-semibold leading-7">Owned audio gear</h2>
+                    <p class="mt-1 text-sm leading-6">Share with us, what audio devices you have or currently using</p>
                 </div>
                 
-                <form @submit.prevent="submitSetupForm" class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
+                <form @submit.prevent="submitSetupForm"  class="dark:bg-gray-900 shadow-sm ring-1 ring-gray-900/5 dark:ring-gray-700 sm:rounded-xl md:col-span-2">
                     <div class="px-4 py-6 sm:p-8">
     
                         <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
 
                             <div class="sm:col-span-full">
-                                <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">IEMs</label>
+                                <label for="name" class="block text-sm font-semibold leading-6 mb-1">IEMs</label>
                                 <ul class="mb-3">
                                     <li v-for="ownedIem in iems" class="flex items-center gap-2">  
                                         <div>{{ ownedIem?.model ? ownedIem?.model : ownedIem._dir + ' '+ ownedIem._path.split('/')[3] }}</div>
@@ -86,7 +86,7 @@
                             </div>
 
                             <div class="sm:col-span-full">
-                                <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">DAP(s)</label>
+                                <label for="name" class="block text-sm font-semibold leading-6 mb-1">DAP(s)</label>
                                 <ul class="mb-3">
                                     <li v-for="ownedDap in daps" class="flex items-center gap-2">  
                                         <div>{{ ownedDap?.model ? ownedDap?.model : ownedDap._dir + ' '+ ownedDap._path.split('/')[3] }}</div>
@@ -100,7 +100,7 @@
                             </div>
     
                             <div class="sm:col-span-full">
-                                <label for="name" class="block text-sm font-semibold leading-6 text-gray-700 mb-1">DAC(s)</label>
+                                <label for="name" class="block text-sm font-semibold leading-6 mb-1">DAC(s)</label>
                                 <ul class="mb-3">
                                     <li v-for="ownedDac in dacs" class="flex items-center gap-2">  
                                         <div>{{ ownedDac?.model ? ownedDac?.model : ownedDac._dir + ' '+ ownedDac._path.split('/')[3] }}</div>
@@ -114,9 +114,9 @@
                             </div>
     
                             <div class="col-span-full">
-                                <label class="block text-sm font-semibold leading-6 text-gray-700 mb-1">Other, tips, cable, etc</label>
+                                <label class="block text-sm font-semibold leading-6 mb-1">Other, tips, cable, etc</label>
                                 <div class="mt-2 flex items-center gap-x-3">
-                                    <textarea class="w-full border rounded p-2" rows="4"></textarea>
+                                    <UTextarea class="w-full" rows="4"></UTextarea>
                                 </div>
                             </div>
     
