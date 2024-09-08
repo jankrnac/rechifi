@@ -1,7 +1,7 @@
 <template>
 
 <header>
-    <nav class="flex items-center p-6 border-b lg:border-none" aria-label="Global">
+    <nav class="flex items-center p-6 border-b dark:border-gray-700 lg:border-none" aria-label="Global">
         <div class="flex mr-0 lg:mr-6 flex-1 md:grow-0">
           	<nuxt-link to="/" class="flex items-center ">
             	<span class="sr-only">Your Company</span>
@@ -26,7 +26,7 @@
 
 				<UPopover mode="hover">
 
-					<UButton variant="ghost" color="gray" trailing-icon="i-ph-caret-down"><span class="font-semibold">Products</span></UButton>
+					<UButton variant="ghost" color="gray" trailing-icon="i-ph-caret-down"><span class="font-semibold">Gear</span></UButton>
 
 				    <template #panel>
 

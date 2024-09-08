@@ -10,6 +10,8 @@ brand: hiby
 
 priceRange: high
 
+showInIndex: true
+
 releaseDate: 
 
 released: true

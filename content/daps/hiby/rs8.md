@@ -12,6 +12,8 @@ priceRange: high
 
 releaseDate: 
 
+showInIndex: true
+
 released: true
 
 cover: /hiby/rs8/cover.webp

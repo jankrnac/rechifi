@@ -33,6 +33,8 @@
   
     <div class="my-10 sm:mx-auto sm:w-full sm:max-w-sm">
 		<UForm :schema="schema" :state="state" class="space-y-6" @submit="login">
+			<NuxtTurnstile v-model="token" />
+
 			<UFormGroup label="Email" name="email">
 				<UInput v-model="state.email" size="xl"/>
 			</UFormGroup>

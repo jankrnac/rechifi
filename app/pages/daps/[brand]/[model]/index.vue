@@ -5,13 +5,6 @@
             <!-- Title -->
             <ProductsTitle :doc="doc">{{ doc.title }}</ProductsTitle>
     
-            <!-- Description
-            <ProductsDescription>{{ doc.description }}</ProductsDescription>
-            -->
-
-            <!-- Hero -->
-            <ProductsHero v-if="doc.hero" :hero="doc.hero" />
-    
             <!-- Images -->
             <ProductsImages v-if="doc.images" :images="doc.images" />
     
@@ -36,10 +29,8 @@
     
     </template>
     
-    <script setup>
-    
-    const client = useSupabaseClient()
-    
+<script setup>
+        
     const { data:doc } = await useAsyncData('product', () => queryContent(useRoute().path).findOne())
     
     const { data:rating } = await useAsyncData(async () => {

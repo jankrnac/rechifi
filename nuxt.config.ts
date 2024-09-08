@@ -39,7 +39,8 @@ export default defineNuxtConfig({
 		'@nuxtjs/i18n',
 		'vue3-carousel-nuxt',
 		'@nuxtjs/device',
-		'nuxt-auth-utils'
+		'nuxt-auth-utils',
+		'@nuxtjs/turnstile'
 	],
 
 	googleFonts: {
@@ -69,6 +70,12 @@ export default defineNuxtConfig({
 
 	colorMode: {
 		classSuffix: ''
+	},
+
+	icon: {
+		serverBundle: {
+		  collections: ['ph'] 
+		}
 	},
 
 	content: {
@@ -106,16 +113,24 @@ export default defineNuxtConfig({
 		'/daps/**': { swr: 600 },
 	},
 
+	turnstile: {
+		siteKey: '0x4AAAAAAAi-FEfxpHRU6ZN8',
+	},
+
 	runtimeConfig: {
 		session: {
 			maxAge: 60 * 60 * 24 * 7 // 1 week
 		},
-		
+
+		turnstile: {
+			// This can be overridden at runtime via the NUXT_TURNSTILE_SECRET_KEY
+			// environment variable.
+			secretKey: '0x4AAAAAAAi-FPhL7WViQ1C1_5idX9J2jPM',
+		},
+
 		public: {
 			googleAuth: Boolean(process.env.GOOGLE_AUTH || (process.env.NUXT_OAUTH_GOOGLE_CLIENT_ID && process.env.NUXT_OAUTH_GOOGLE_CLIENT_SECRET)),
 		},
-	
-	},
 
-	compatibilityDate: '2024-08-25'
+	},
 })
