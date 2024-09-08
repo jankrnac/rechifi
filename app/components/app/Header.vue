@@ -184,8 +184,11 @@
 							<a :href="item.href" :class="[item.current ? 'bg-gray-50' : 'dark:hover:bg-gray-700  hover:bg-gray-50', 'block rounded-md py-2 p-2 text-sm leading-6 font-semibold']">{{ t(item.name) }}</a>
 							<ul v-if="item.children">
 								<li v-for="child in item.children">
-									<a :href="child.href" 
-										:class="[child.current ? 'bg-gray-50' : 'dark:hover:bg-gray-700  hover:bg-gray-50', 'block ml-6 rounded-md py-2 p-2 text-sm leading-6 font-semibold']">{{ t(child.name) }}</a>
+									<nuxt-link :to="child.href" 
+										:class="[child.current ? 'bg-gray-50' : 'dark:hover:bg-gray-700  hover:bg-gray-50', 'block ml-6 rounded-md py-2 p-2 text-sm leading-6 font-semibold']"
+										@click="mobileMenuOpen = false"
+										>{{ t(child.name) }}
+									</nuxt-link>
 								</li>
 							</ul>
 								
