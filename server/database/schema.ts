@@ -12,6 +12,14 @@ export const users = sqliteTable('users', {
     iems: text('iems', {mode: 'json'}),
     daps: text('daps', {mode: 'json'}),
     dacs: text('dacs', {mode: 'json'}),
+    activated: integer('activated', { mode: 'boolean' }).default(false),
+    createdAt: text("createdAt").default(sql`(CURRENT_TIMESTAMP)`),
+})
+
+export const tokens = sqliteTable('tokens', {
+    id: integer('id').primaryKey({ autoIncrement: true }),
+    userId: integer('userId').references(() => users.id, {onDelete: 'cascade'}),
+    value: text('value').notNull(),
     createdAt: text("createdAt").default(sql`(CURRENT_TIMESTAMP)`),
 })
 

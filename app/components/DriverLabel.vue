@@ -7,7 +7,7 @@
         'border-teal-500' :Object.keys(driver)[0] == 'est',
         'border-teal-500' :Object.keys(driver)[0] == 'pr',
         'text-sm border-2 lg:border-[3px] lg:text-lg' : size == 'normal',
-        'px-2 py-1 text-sm border-[2px]' : size == 'small',
+        'px-1 py-0.5 md:px-2 md:py-1 text-xs md:text-sm border-[1px] md:border-[2px]' : size == 'small',
     }"
 >
 
@@ -35,10 +35,10 @@
                 {{ Object.values(driver)[0] }}
             </div>
             <template v-if="Object.keys(driver)[0] == 'dd'">DD</template>
-           <template v-if="Object.keys(driver)[0] == 'ba'">BA</template>
-           <template v-if="Object.keys(driver)[0] == 'est'">EST</template>
-           <template v-if="Object.keys(driver)[0] == 'planar'">Planar</template>
-           <template v-if="Object.keys(driver)[0] == 'pr'">+ PR</template>
+            <template v-if="Object.keys(driver)[0] == 'ba'">BA</template>
+            <template v-if="Object.keys(driver)[0] == 'est'">EST</template>
+            <template v-if="Object.keys(driver)[0] == 'planar'">Planar</template>
+            <template v-if="Object.keys(driver)[0] == 'pr'">+ PR</template>
 
 
         </template>

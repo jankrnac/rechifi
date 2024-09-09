@@ -40,7 +40,8 @@ export default defineNuxtConfig({
 		'vue3-carousel-nuxt',
 		'@nuxtjs/device',
 		'nuxt-auth-utils',
-		'@nuxtjs/turnstile'
+		'@nuxtjs/turnstile',
+		'@nuxt/scripts',
 	],
 
 	googleFonts: {
@@ -74,7 +75,7 @@ export default defineNuxtConfig({
 
 	icon: {
 		serverBundle: {
-		  collections: ['ph'] 
+			collections: ['ph']
 		}
 	},
 
@@ -114,18 +115,21 @@ export default defineNuxtConfig({
 	},
 
 	turnstile: {
-		siteKey: '0x4AAAAAAAi-FEfxpHRU6ZN8',
+		siteKey: '',
 	},
+
 
 	runtimeConfig: {
 		session: {
 			maxAge: 60 * 60 * 24 * 7 // 1 week
 		},
 
+		resendApiKey: '',
+
 		turnstile: {
 			// This can be overridden at runtime via the NUXT_TURNSTILE_SECRET_KEY
 			// environment variable.
-			secretKey: '0x4AAAAAAAi-FPhL7WViQ1C1_5idX9J2jPM',
+			secretKey: '',
 		},
 
 		public: {

@@ -53,6 +53,14 @@ CREATE TABLE `posts` (
 	FOREIGN KEY (`coverId`) REFERENCES `files`(`id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint
+CREATE TABLE `tokens` (
+	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+	`userId` integer,
+	`value` text NOT NULL,
+	`createdAt` text DEFAULT (CURRENT_TIMESTAMP),
+	FOREIGN KEY (`userId`) REFERENCES `users`(`id`) ON UPDATE no action ON DELETE cascade
+);
+--> statement-breakpoint
 CREATE TABLE `users` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`username` text,
@@ -64,6 +72,7 @@ CREATE TABLE `users` (
 	`iems` text,
 	`daps` text,
 	`dacs` text,
+	`activated` integer DEFAULT false,
 	`createdAt` text DEFAULT (CURRENT_TIMESTAMP),
 	FOREIGN KEY (`avatarId`) REFERENCES `files`(`id`) ON UPDATE no action ON DELETE cascade
 );
