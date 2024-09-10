@@ -21,6 +21,8 @@ export const tokens = sqliteTable('tokens', {
     userId: integer('userId').references(() => users.id, {onDelete: 'cascade'}),
     value: text('value').notNull(),
     createdAt: text("createdAt").default(sql`(CURRENT_TIMESTAMP)`),
+    activatedAt: text("activatedAt")
+
 })
 
 export const posts = sqliteTable('posts', {
