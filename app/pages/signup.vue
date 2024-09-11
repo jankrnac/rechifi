@@ -78,7 +78,7 @@ const sendEmail = async (activationToken) => {
         method: "POST",
         body: {
             from: 'Rechifi<rechifi@rechifi.com>',
-            to: 'gtorch@gmail.com',
+            to: state.email,
             subject: 'Activate your account',
             html: `<p>Activate your accout using this link:<br/><a href="${link}">${link}<a/></p>`
         }

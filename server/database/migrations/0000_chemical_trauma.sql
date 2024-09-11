@@ -58,6 +58,7 @@ CREATE TABLE `tokens` (
 	`userId` integer,
 	`value` text NOT NULL,
 	`createdAt` text DEFAULT (CURRENT_TIMESTAMP),
+	`activatedAt` text,
 	FOREIGN KEY (`userId`) REFERENCES `users`(`id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint

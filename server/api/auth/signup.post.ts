@@ -21,20 +21,8 @@ export default eventHandler(async (event) => {
 
     const activationToken = await useDrizzle().insert(tables.tokens).values({
         userId: user.id,
-        value: token()
+        value: token
     }).returning().get()
-
-    console.log(activationToken)
-
-    const userData = {
-        id: user?.id,
-        username: user.username,
-        email: user.email,
-    };
-    
-    await setUserSession(event, {
-        user: userData,
-    })
         
     return {
         user: user,
