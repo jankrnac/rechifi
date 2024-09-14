@@ -3,9 +3,16 @@
 <div class="max-w-app mx-auto flex-1 flex flex-col items-center justify-center">
 
     <template v-if="user.username == user.email">
-        <h2 class="text-lg mb-4">We need to know your username first</h2>
-        <UInput size="xl" block class="mb-4" v-model="username" @change="checkUsername"/>
-        <UButton :disabled="!usernameValid" @click="setUsername">Save username</UButton>
+        <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
+
+            <h2 class="text-lg mb-4">We need to know your username first</h2>
+            <UFormGroup label="Username" name="username">
+                <UInput size="xl" block v-model="state.username" @change="checkUsername"/>
+            </UFormGroup>
+
+            <UButton type="submit">Save username</UButton>
+            
+        </UForm>
     </template>
 
     <template v-else>
@@ -49,6 +56,7 @@
 
 <script setup>
 
+import { z } from 'zod'
 
 definePageMeta({
     middleware: ['auth']
@@ -69,32 +77,25 @@ const type = ref('iem')
 
 const errors = ref([])
 
+const schema = z.object({
+  username: z.string().min('3'),
+})
+
+const state = reactive({
+    username: undefined,
+})
+
 const checkUsername = async () => {
-    const check = await $fetch('/api/users/checkusername/' + username.value)
+    const check = await $fetch('/api/users/checkusername/' + state.username)
 
     if (check.length > 0) return false
     usernameValid.value = true
     return true
 }
 
-const setUsername = async () => {
-    const result = await $fetch('/api/users/'+ user.value.id, {
-        method: "PUT",
-        body: {
-            username:username.value
-        }
-    })
+const onSubmit = (a) => {
 
-    await $fetch('/api/auth', {
-        method: "PUT",
-        body: {
-            username: username.value
-        }
-    })
-
-    fetchSession()
-
-    
+    console.log(a)
 }
 
 const save = async () => {

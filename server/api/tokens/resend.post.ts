@@ -1,10 +1,16 @@
-import bcryptjs from "bcryptjs";
-
 export default eventHandler(async (event) => {
-        
+
     const body = await readBody(event)
 
-    const hashedPassword = await bcryptjs.hash(body.password, 10); // Hash password
+    let user = await useDrizzle().query.users.findFirst({
+        where: and(
+            eq(tables.users.email, body.email),
+        )
+    })
+
+    await useDrizzle().delete(tables.tokens).where(
+        eq(tables.tokens.userId, user.id)
+    )
 
     var rand = function() {
         return Math.random().toString(36).slice(2); // remove `0.`
@@ -12,20 +18,11 @@ export default eventHandler(async (event) => {
     
     var token = rand() + rand()
 
-    const user = await useDrizzle().insert(tables.users).values({
-        email: body.email,
-        password: hashedPassword,
-        username: body.email,
-    }).returning().get()
-
     const activationToken = await useDrizzle().insert(tables.tokens).values({
         userId: user.id,
         value: token
     }).returning().get()
         
-    return {
-        user: user,
-        token: activationToken
-    }
 
+    return activationToken
 })

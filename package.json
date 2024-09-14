@@ -19,7 +19,7 @@
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/turnstile": "^0.9.4",
     "drizzle-kit": "^0.23.2",
-    "nuxt": "^3.13.0",
+    "nuxt": "^3.13.1",
     "wrangler": "^3.68.0"
   },
   "dependencies": {

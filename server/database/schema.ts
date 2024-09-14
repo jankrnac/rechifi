@@ -94,7 +94,7 @@ export const usersRelations = relations(users, ({one,  many }) => ({
         references: [files.id]
     }),
     posts: many(posts),
-
+    token: one(tokens)
 }));
 
 export const elementsRelations = relations(elements, ({ one }) => ({
@@ -111,7 +111,6 @@ export const commentsRelations = relations(comments, ({ one }) => ({
     }),
 }));
 
-
 export const likesRelations = relations(likes, ({ one }) => ({
     post: one(posts, {
       fields: [likes.postId],
@@ -119,3 +118,9 @@ export const likesRelations = relations(likes, ({ one }) => ({
     }),
 }));
 
+export const tokensRelations = relations(tokens, ({ one }) => ({
+    user: one(users, {
+      fields: [tokens.userId],
+      references: [users.id],
+    }),
+}));

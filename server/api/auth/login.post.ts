@@ -7,9 +7,11 @@ export default eventHandler(async (event) => {
     let user = await useDrizzle().query.users.findFirst({
         where: eq(tables.users.email, body.email),
         with: {
-            avatar: true
+            avatar: true,
+            token: true
         }
     })
+    
 
     if (!user)
     {
@@ -17,6 +19,22 @@ export default eventHandler(async (event) => {
             statusCode: 401,
             statusMessage: "Account not found",
         }); 
+    }
+    else if (!user.token)
+    {
+        return createError({
+            statusCode: 404,
+            statusMessage: "Something went wrong",
+        }); 
+        
+    }
+    else if (!user.token.activatedAt)
+    {
+        return createError({
+            statusCode: 404,
+            statusMessage: "Account not activated",
+        }); 
+        
     }
 
     const check = await bcryptjs.compare(body.password, user!.password) // Check password

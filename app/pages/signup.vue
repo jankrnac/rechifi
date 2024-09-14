@@ -6,11 +6,26 @@
         </div>
       
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <template v-if="emailSent">
+                <UAlert
+                    v-if="emailSent"
+                    icon="i-heroicons-mail"
+                    color="green"
+                    variant="solid"
+                    title="Activation email sent"
+                    description="Activation link sent. Check your email address."
+                    class="w-[530px]"
+                />
 
-            </template>
 
-            <template v-else>
+                <UAlert
+                    v-if="error"
+                    icon="i-heroicons-x-mark"
+                    color="red"
+                    variant="solid"
+                    title="Signup error"
+                    description="Some error occured. Please try again."
+                    class="w-full"
+                />
 
             <UForm :schema="schema" :state="state" class="space-y-6" @submit.prvent="signup">
     			<NuxtTurnstile v-model="state.token" />
@@ -24,7 +39,14 @@
                 </UFormGroup>
 			
                   <div>
-                    <button :disabled="!state.token" type="submit" class="flex w-full justify-center rounded-md bg-blue-400 px-4 py-2.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500">Sign up</button>
+                    <UButton
+                        block
+                        size="xl"
+                        :disabled="typeof state.token != 'string'" 
+                        type="submit" 
+                    >
+                        Sign up
+                    </UButton>
                   </div>
     
                 <div class="text-center">
@@ -47,8 +69,6 @@
 			</button>
             </UForm>    
 
-            </template>
-
         </div>
     </div>
     
@@ -69,6 +89,8 @@ const state = reactive({
 })
 
 const emailSent = ref(false)
+const loading = ref(false)
+const error = ref()
 
 const sendEmail = async (activationToken) => {
 
@@ -87,6 +109,8 @@ const sendEmail = async (activationToken) => {
 
 const signup = async (data) => {
 
+    loading.value = true
+
     const turnstile = await $fetch('/api/validateTurnstile', {
         method: "POST",
         body: {
@@ -102,11 +126,15 @@ const signup = async (data) => {
                 email: state.email,
                 password: state.password
             }
+        }).catch((value) => {
+            error.value = value
         })
 
         if (result) {
             sendEmail(result.token)
+            emailSent.value = true
         }
+
     }
 }
     
