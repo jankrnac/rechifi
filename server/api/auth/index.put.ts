@@ -3,7 +3,8 @@ export default eventHandler(async (event) => {
 
     await setUserSession(event, {
         user: {
-          username: body.username
+          	username: body.username,
+			avatar: body.avatar
         },
     })
 

@@ -5,27 +5,26 @@
         <div class="flex gap-2">
             <UButton color="orange" @click="$emit('editableChanged', !editable)">
                 <template #leading>
-                    <UIcon name="i-ph-eye-light" v-if="editable" />
-                    <UIcon name="i-ph-pencil-simple-light" v-else />
+                    <UIcon name="i-ph-eye" v-if="editable" />
+                    <UIcon name="i-ph-pencil-simple" v-else />
                 </template>
 
                 <span v-if="editable">Preview</span>
                 <span v-else>Edit</span>
             </UButton>
 
-            <div class="mr-2 bg-blue-300 px-4 py-1.5 rounded-lg text-sm flex items-center cursor-pointer" @click="settingsVisible = !settingsVisible">
-                <Icon name="ph:gear-thin" class="w-4 h-4 lg:mr-2"/>
+            <UButton  @click="settingsVisible = !settingsVisible" icon="i-ph-gear">
                 <span class="hidden lg:inline">Settings</span>
-            </div>
+            </UButton>
         </div>
         <div class="flex items-center gap-2">
            
             <UButton v-show="editable" :loading="loading" color="green" @click="save()" label="Save" icon="i-ph-download-simple-light"/>
             
-            <div v-show="editable" class="bg-gray-100 px-4 py-1.5 rounded-lg flex items-center cursor-pointer">
-                <Icon name="ph:upload-simple" class="w-4 h-4 lg:mr-2"/>
-                <span class="hidden lg:inline">Publish</span>
-            </div>
+            <UButton v-show="editable" icon="i-ph-upload-simple">
+                Publish
+            </UButton>
+
         </div>
     </div> 
 

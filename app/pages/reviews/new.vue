@@ -3,7 +3,7 @@
 <div class="max-w-app mx-auto flex-1 flex flex-col items-center justify-center">
 
     <template v-if="user.username == user.email">
-        <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
+        <UForm ref="form" :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
 
             <h2 class="text-lg mb-4">We need to know your username first</h2>
             <UFormGroup label="Username" name="username">
@@ -47,7 +47,15 @@
         </div>
         <div v-else class="border rounded ml-2 px-2 py-0.5 hover:bg-gray-100 transition text-sm mt-5 cursor-pointer dark:hover:bg-gray-700 dark:border-gray-600" @click="manualMode = false">Choose from list</div>
 
-        <div class="mt-6 rounded-lg px-4 py-2 bg-green-700 text-white opacity-0 cursor-default hover:bg-green-800" :class="{'opacity-100 cursor-pointer':headphone || (model && brand)}" @click="save">Next</div>
+        <UButton
+            class="mt-6"
+            size="xl"
+            :disabled="!(headphone || (model && brand))" 
+            @click="save"
+            :loading="loading"
+        >
+            Create review
+    </UButton>
 
     </template>
 </div>
@@ -65,7 +73,6 @@ definePageMeta({
 const { user, fetch:fetchSession } = useUserSession()
 
 const username = ref(user.value.username)
-const usernameValid = ref(false)
 
 const manualMode = ref(false)
 const headphone = ref()
@@ -76,6 +83,8 @@ const model = ref()
 const type = ref('iem')
 
 const errors = ref([])
+
+const loading = ref(false)
 
 const schema = z.object({
   username: z.string().min('3'),
@@ -88,14 +97,29 @@ const state = reactive({
 const checkUsername = async () => {
     const check = await $fetch('/api/users/checkusername/' + state.username)
 
-    if (check.length > 0) return false
-    usernameValid.value = true
-    return true
+    if (check.length > 0) form.value.setErrors({a:1})
 }
 
-const onSubmit = (a) => {
+const onSubmit = async () => {
+    
+    loading.value = true
+    
+    const result = await $fetch('/api/users/'+ user.value.id, {
+        method: "PUT",
+        body: {
+            username: state.username
+        }
+    })
 
-    console.log(a)
+    await $fetch('/api/auth', {
+        method: "PUT",
+        body: {
+            username: state.username
+        }
+    })
+
+    fetchSession()
+    
 }
 
 const save = async () => {

@@ -108,11 +108,6 @@ export default defineNuxtConfig({
 		cache: true
 	},
 
-	routeRules: {
-		'/iems/**': { swr: 600 },
-		'/dacs/**': { swr: 600 },
-		'/daps/**': { swr: 600 },
-	},
 
 	turnstile: {
 		siteKey: '',

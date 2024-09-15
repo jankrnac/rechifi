@@ -3,10 +3,11 @@
     <Combobox as="div" v-model="selected">
       	<div class="relative w-[400px]">
         	<ComboboxInput 
-				:id="inputId" 
-				class="w-full rounded-md border-0 bg-white py-2.5 pl-4 pr-12 dark:bg-gray-800 shadow-sm focus:outline-none ring-1 ring-inset ring-gray-300 dark:ring-gray-600 sm:leading-6" 
+				:id="inputId"
+				spellcheck="false"
+				class="capitalize w-full rounded-md border-0 bg-white py-2.5 pl-4 pr-12 dark:bg-gray-800 shadow-sm focus:outline-none ring-1 ring-inset ring-gray-300 dark:ring-gray-600 sm:leading-6" 
 				@change="query = $event.target.value" 
-				:display-value="(headphone) => headphone?.model ? headphone?.model : headphone._dir + ' '+ headphone._path.split('/')[3] " 
+				:display-value="(headphone) => headphone?.model ? headphone?.brand + ' ' +headphone?.model : headphone._dir + ' '+ headphone._path.split('/')[3]" 
 			/>
 
 			<ComboboxButton :id="buttonId" class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
@@ -36,7 +37,7 @@
 						</div>
 			
 						<span v-if="selected" :class="['absolute inset-y-0 right-0 flex items-center pr-4', active ? 'text-white' : 'text-indigo-600']">
-							<IconsCheck class="h-5 w-5" aria-hidden="true" />
+							<UIcon name="i-ph-check" aria-hidden="true" />
 						</span>
 					</li>
 				</ComboboxOption>

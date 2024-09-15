@@ -189,18 +189,25 @@
         await $fetch('/api/users/' + user.value.id, {
             method: "PUT",
             body: {
-                username: profile.value.username,
+                username: useSlug(profile.value.username),
                 name: profile.value.name,
                 avatarId: profile.value.avatarId
             }
-        })
+        })  
 
+
+        let bodyPayload = {
+            username: profile.value.username
+        }
+
+        if (preview.value)
+        {
+            bodyPayload['filename'] = uploadResult[0].pathname
+        }
         
         await $fetch('/api/auth', {
             method: "PUT",
-            body: {
-                username: profile.value.username
-            }
+            body: bodyPayload
         })
 
         fetchSession()
