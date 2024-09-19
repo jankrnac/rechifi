@@ -87,8 +87,6 @@
         </div>
         <div v-else class="border rounded ml-2 px-2 py-0.5 hover:bg-gray-100 transition text-sm mt-5 cursor-pointer dark:hover:bg-gray-700 dark:border-gray-600" @click="manualMode = false">Choose from list</div>
 
-        <div class="mt-6 rounded-lg px-4 py-2 bg-green-700 text-white opacity-0 cursor-default hover:bg-green-800" :class="{'opacity-100 cursor-pointer':headphone || (model && brand)}" @click="save">Next</div>
-
             </div>
         </div>
     </div>

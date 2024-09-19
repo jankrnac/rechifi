@@ -1,3 +1,6 @@
+import {  asc, desc } from 'drizzle-orm';
+
+
 export default eventHandler(async (event) => {
 
     const slug = getRouterParam(event, 'slug')
@@ -8,7 +11,9 @@ export default eventHandler(async (event) => {
             eq(tables.posts.slug, slug)
         ),
         with: {
-            elements: true,
+            elements: {
+                orderBy: asc(tables.elements.order)
+            },
             comments: true,
             user: true,
             cover: true

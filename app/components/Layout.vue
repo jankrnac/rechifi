@@ -76,7 +76,6 @@ const emit = defineEmits(['change'])
 
 const onChange = (elementid, data) => {
     local.value.find(obj => obj.id == elementid).data[Object.values(data)[0]] = Object.values(data)[1]
-    console.log(local.value)
     emit('change', local.value)
 }
 

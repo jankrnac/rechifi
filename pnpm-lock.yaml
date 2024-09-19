@@ -38,6 +38,9 @@ dependencies:
   vue-ellipse-progress:
     specifier: ^2.1.2
     version: 2.1.2(vue@3.5.4)
+  vue-resizable:
+    specifier: ^2.1.7
+    version: 2.1.7
   vue3-carousel-nuxt:
     specifier: ^1.1.2
     version: 1.1.2(rollup@4.21.3)(vue@3.5.4)
@@ -13767,6 +13770,10 @@ packages:
       '@intlify/shared': 9.14.0
       '@vue/devtools-api': 6.6.4
       vue: 3.5.4(typescript@5.5.4)
+    dev: false
+
+  /vue-resizable@2.1.7:
+    resolution: {integrity: sha512-zEbWhRR8iXT8+nt3u8rkfrNpkPNsPkf7HteBh+AlPIsJ7rf9fyNwMqr0Q4FRzIpNIpZD5Zrr4+3+YELU0vc1Iw==}
     dev: false
 
   /vue-router@4.4.5(vue@3.5.4):

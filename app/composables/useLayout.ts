@@ -27,7 +27,7 @@ export const useLayout = () => {
                 // is not image
                 if (!(element.type in ['image','images']))
                 {
-                    await  $fetch('/api/elements/' + element.id, {
+                    await $fetch('/api/elements/' + element.id, {
                         method: "PUT",
                         body: {
                             data: element.data,
@@ -38,22 +38,35 @@ export const useLayout = () => {
             }
 
             // Upload Single
-            if(element.data.uploadNeeded)
+            if(element.uploadNeeded)
             {
-                // Uploade the file and get the name from CDN
-                const { data:cdnFilename } = await useFetch(`/api/files/${profile.value.username}`, {
+
+                // upload the file
+                const uploadResult = await $fetch('/api/files/blob', {
                     method: 'POST',
-                    body: element.data.upload
+                    body: element.upload,
+                })
+
+                // Save the file to DB
+                const file = await $fetch('/api/files/', {
+                    method: "POST",
+                    body: {
+                        filename: uploadResult[0].pathname,
+                    }
                 })
 
                 // Change the name
-                element.data.image = cdnFilename.value
-                element.data.uploadNeeded = false
+                element.data.image = uploadResult[0].pathname
+                element.uploadNeeded = false
 
                 // Update our DB with
-                await client.from('elements').update({
-                    data: element.data,
-                }).eq('id', element.id)
+                await $fetch('/api/elements/' + element.id, {
+                    method: "PUT",
+                    body: {
+                        data: element.data,
+                        order: index
+                    }
+                })
             }
 
 
@@ -99,7 +112,6 @@ export const useLayout = () => {
                 }
             })
 
-            console.log(file)
             // Attach the coverId to post
             await $fetch('/api/posts/' + post.value.id, {
                 method: "PATCH",

@@ -5,7 +5,7 @@
 
         <UButton icon="i-ph-gear" color="sky" />
   
-
+		
 		<template #panel>
 			<div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black/5">
                 	<div class="relative bg-white p-2 text-gray-800 text-left flex flex-col items-start gap-2">
@@ -19,7 +19,7 @@
 							/>
 						</div>
 						
-                    	<UButton color="red" icon="i-ph-x" @click="$emit('delete')">
+                    	<UButton v-if="element.type != 'title'" color="red" size="xs" icon="i-ph-x" @click="$emit('delete')">
                         	Delete
 						</UButton>
 					</div>
