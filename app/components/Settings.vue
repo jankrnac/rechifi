@@ -30,7 +30,7 @@
 
     
     <!-- Settings -->
-    <div v-if="settingsVisible && editable" class="border rounded-lg p-6 mb-6">
+    <div v-if="settingsVisible && editable" class="border dark:border-gray-700 rounded-lg p-6 mb-6">
         <div class="flex gap-5">
             <div>
                 <div class="mb-2 font-semibold text-sm">Cover</div>
@@ -45,13 +45,13 @@
 
             <div class="flex flex-col w-full max-w-[500px]">
                 <div class="text-sm font-semibold mb-2">Title</div>
-                <input type="text" v-model="local.title" class="border rounded-lg px-4 py-2"/>
+                <UInput v-model="local.title"/>
 
                 <div class="text-sm font-semibold my-2">Slug</div>
-                <input type="text" v-model="local.slug" disabled class="border rounded-lg px-4 py-2"/>
+                <UInput v-model="local.slug" disabled />
 
                 <div class="text-sm font-semibold mt-4 mb-2">Description</div>
-                <textarea type="text" v-model="local.description" class="border rounded-lg px-4 py-2 resize-none h-full text-sm"></textarea>
+                <UTextarea type="text" v-model="local.description" rows="6"></UTextarea>
             </div>
 
             <div class="flex flex-col flex-1 items-center justify-center">

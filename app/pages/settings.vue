@@ -18,7 +18,7 @@
 
                             <div class="sm:col-span-full">
                                 <label for="name" class="block text-sm font-semibold leading-6 mb-1">Username</label>
-                                <UInput type="text" name="username" id="name" size="xl" :class="[usernameValid ? '':'bg-red-200']" v-model="profile.username"/>
+                                <UInput type="text" name="username" id="name" size="xl" :class="[usernameValid ? '':'bg-red-200']" v-model="profile.username" @change="checkUsername"/>
                                 <div v-if="!usernameValid" class="text-xs mt-1">Username already taken</div>
                             </div>
 
@@ -75,7 +75,7 @@
                                 <label for="name" class="block text-sm font-semibold leading-6 mb-1">IEMs</label>
                                 <ul class="mb-3">
                                     <li v-for="ownedIem in iems" class="flex items-center gap-2">  
-                                        <div>{{ ownedIem?.model ? ownedIem?.model : ownedIem._dir + ' '+ ownedIem._path.split('/')[3] }}</div>
+                                        <div>{{ ownedIem?.brand + " " + ownedIem?.model }}</div>
                                         <UIcon name="i-ph-x" class="w-4 h-4 text-red-600 cursor-pointer" @click="removeIEM(ownedIem)" />
                                     </li>
                                 </ul>
@@ -103,7 +103,7 @@
                                 <label for="name" class="block text-sm font-semibold leading-6 mb-1">DAC(s)</label>
                                 <ul class="mb-3">
                                     <li v-for="ownedDac in dacs" class="flex items-center gap-2">  
-                                        <div>{{ ownedDac?.model ? ownedDac?.model : ownedDac._dir + ' '+ ownedDac._path.split('/')[3] }}</div>
+                                        <div>{{ ownedDac.brand + ownedDac.model  }}</div>
                                         <UIcon name="i-ph-x" class="w-4 h-4 text-red-600 cursor-pointer" @click="removeDAC(ownedDac)" />
                                     </li>
                                 </ul>
@@ -116,7 +116,7 @@
                             <div class="col-span-full">
                                 <label class="block text-sm font-semibold leading-6 mb-1">Other, tips, cable, etc</label>
                                 <div class="mt-2 flex items-center gap-x-3">
-                                    <UTextarea class="w-full" rows="4"></UTextarea>
+                                    <UTextarea class="w-full" :rows="4"></UTextarea>
                                 </div>
                             </div>
     
@@ -124,7 +124,7 @@
                     </div>
     
                     <div class="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
-                          <UButton color="green" type="submit" :loading="pending" class="disabled:opacity-50">Save</UButton>
+                          <UButton color="green" type="submit" :loading="pending2" class="disabled:opacity-50">Save</UButton>
                     </div>
     
                   </form>
@@ -217,16 +217,16 @@
     
     const usernameValid = ref(true)
 
-    watch(() => user.username, async (value) => {
-        const { data } = await client.from('profiles').select().neq('id', user.id).eq('username',value)
+    const checkUsername = async () => {
+        const { data:check } = await useFetch('/api/users/checkusername/' + profile.value.username)
 
-        usernameValid.value = !data.length
-    })
+        usernameValid.value = !check.value.length
+    }
 
     const iems = ref([])
-    if(user.iems && user.iems.length)
+    if(profile.value.iems && profile.value.iems.length)
     {
-        for(const temp of user.iems) {
+        for(const temp of profile.value.iems) {
             const result = await queryContent(temp).findOne()
             iems.value.push(result)
         };
@@ -234,18 +234,18 @@
 
 
     const daps = ref([])
-    if(user.daps && user.daps.length)
+    if(profile.value.daps && profile.value.daps.length)
     {
-        for(const temp of user.daps) {
+        for(const temp of profile.value.daps) {
             const result = await queryContent(temp).findOne()
             daps.value.push(result)
         };
     }
 
     const dacs = ref([])
-    if(user.dacs && user.dacs.length)
+    if(profile.value.dacs && profile.value.dacs.length)
     {
-        for(const temp of user.dacs) {
+        for(const temp of profile.value.dacs) {
             const result = await queryContent(temp).findOne()
             dacs.value.push(result)
         };
@@ -285,19 +285,22 @@
         dacs.value.splice(dacs.value.findIndex(e => e._path == data._path), 1)
     }
 
+    const pending2 = ref(false)
+
     const submitSetupForm = async () => {
-        pending.value = true
+        pending2.value = true
     
-        await client.from('profiles')
-            .update({
+         
+        await $fetch('/api/users/' + user.value.id, {
+            method: "PUT",
+            body: {
                 iems: iems.value.map(e=>e._path),
                 daps: daps.value.map(e=>e._path),
                 dacs: dacs.value.map(e=>e._path),
-                name: user.name
-            })
-            .eq('id', user.value.id)
+            }
+        })  
 
-        pending.value = false
+        pending2.value = false
     }
 
 </script>

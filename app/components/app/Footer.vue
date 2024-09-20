@@ -43,6 +43,7 @@ const navigation = {
   main: [
   	{ name: 'About us', href: '/about' },	
     { name: 'Privacy policy', href: '/privacy' },
+	{ name: 'Suggest gear', href: '/suggest' },
   ]
 }
 

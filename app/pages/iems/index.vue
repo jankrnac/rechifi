@@ -15,7 +15,7 @@
             
 
             <!-- Filters -->
-            <GridsFilters 
+            <GridsFilters   
                 :sort-options="sortOptions" 
                 :active-sort="activeSort" 
                 :filters="filters"

@@ -12,7 +12,7 @@
 				/>
 
 				<UploadSingle v-if="editable" @uploaded="imageChanged" class="group-hover:flex hidden absolute inset-0 flex-col flex-1 justify-center items-center">
-					<div class="bg-gray-100/80 px-4 py-2 rounded-lg">Click to change image</div>
+					<div class="bg-gray-100/80 dark:bg-gray-900/50 px-4 py-2 rounded-lg">Click to change image</div>
 				</UploadSingle>	
 		</div>
     </div>
