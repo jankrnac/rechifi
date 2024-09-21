@@ -14,11 +14,12 @@
     <div class="flex">
         <template v-if="size == 'normal'">
             <div :class="{
-                'px-4 py-2' : size == 'normal'
+                'px-2 py-1 md:px-4 md:py-2' : size == 'normal'
             }">
-                <span v-if="Object.values(driver)[0] > 1" class="mr-2">
+                <span v-if="Object.values(driver)[0] > 1" class="mr-1">
                 {{ Object.values(driver)[0] }}
                 </span>
+                <span class="text-sm md:text-base mr-1 text-gray-500">x</span>
                 <template v-if="Object.keys(driver)[0] == 'dd'">Dynamic driver</template>
                 <template v-if="Object.keys(driver)[0] == 'ba'">Balanced armature</template>
                 <template v-if="Object.keys(driver)[0] == 'est'">Electrostatic driver</template>

@@ -2,4 +2,6 @@
 
 brand: 7hz
 
+model: i-77 Pro
+
 ---

@@ -4,7 +4,7 @@
         {{doc.title}}
     </h1>
 
-    <div v-if="doc.releaseDate" class="text-center text-gray-400">Release date: <b class="font-semibold">{{ new Date(doc.releaseDate).toLocaleString('en-us',{month:'short', day:'numeric', year:'numeric'}) }}</b></div>
+    <div v-if="doc.releaseDate" class="text-center text-gray-500 text-sm md:text-base">Release date: <b class="font-semibold">{{ new Date(doc.releaseDate).toLocaleString('en-us',{month:'short', day:'numeric', year:'numeric'}) }}</b></div>
 </div>
 </template>
 
