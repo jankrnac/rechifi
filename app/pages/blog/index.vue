@@ -8,7 +8,7 @@
 
     <Wave />
 
-    <ul class="flex gap-4 my-6 lg:my-12">
+    <ul class="flex gap-4 my-6 lg:my-12 select-none">
 
         <div class="rounded-xl bg-blue-200 dark:bg-blue-600 px-5 py-2 font-semibold cursor-pointer hover:bg-blue-300 transition" 
             :class="[ activeFilters.includes('iem') ? 'opacity-100' : 'opacity-30']" 

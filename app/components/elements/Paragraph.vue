@@ -73,6 +73,11 @@ import TextAlign from '@tiptap/extension-text-align'
 				types: ['paragraph'],
 			}),
 			StarterKit.configure({
+				heading: {
+					HTMLAttributes: {
+						class: 'text-3xl'
+					}
+				},
 				paragraph: {
 					HTMLAttributes:{
 						class: 'lg:text-lg outline-none border-none'

@@ -69,11 +69,11 @@
                     </li>
                 </ul>
 
-        <h1 class="text-3xl font-bold mb-6">Choose {{ type }} model</h1>
+        <h1 class="text-3xl font-bold mb-6">Choose {{ local.gearType }} model</h1>
 
-        <ModelCombobox v-if="!manualMode" v-model="headphone" :model="type" />
+        <ModelCombobox v-if="!manualMode && local.gearType" v-model="headphone" :model="local.gearType" />
 
-        <div v-else class="mt-6">
+        <div v-else-if="local.gearType" class="mt-6">
             <div class="font-semibold">Brand</div>
             <input v-model="brand" type="text" class="border rounded-lg px-5 py-4 w-[400px] text-sm dark:bg-gray-800 dark:border-gray-600 focus:outline-none" placeholder="Type the brand and model name"/>
 
@@ -133,8 +133,6 @@ const headphone = ref()
 
 const brand = ref()
 const model = ref()
-
-const type = ref('iem')
 
 const errors = ref([])
 

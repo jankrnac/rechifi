@@ -89,7 +89,7 @@
                                 <label for="name" class="block text-sm font-semibold leading-6 mb-1">DAP(s)</label>
                                 <ul class="mb-3">
                                     <li v-for="ownedDap in daps" class="flex items-center gap-2">  
-                                        <div>{{ ownedDap?.model ? ownedDap?.model : ownedDap._dir + ' '+ ownedDap._path.split('/')[3] }}</div>
+                                        <div>{{ ownedDap.brand + " " + ownedDap.model }}</div>
                                         <UIcon name="i-ph-x" class="w-4 h-4 text-red-600 cursor-pointer" @click="removeDAP(ownedDap)" />
                                     </li>
                                 </ul>
@@ -103,7 +103,7 @@
                                 <label for="name" class="block text-sm font-semibold leading-6 mb-1">DAC(s)</label>
                                 <ul class="mb-3">
                                     <li v-for="ownedDac in dacs" class="flex items-center gap-2">  
-                                        <div>{{ ownedDac.brand + ownedDac.model  }}</div>
+                                        <div>{{ ownedDac.brand + " " + ownedDac.model  }}</div>
                                         <UIcon name="i-ph-x" class="w-4 h-4 text-red-600 cursor-pointer" @click="removeDAC(ownedDac)" />
                                     </li>
                                 </ul>

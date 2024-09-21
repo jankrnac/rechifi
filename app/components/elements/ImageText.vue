@@ -29,11 +29,6 @@
 		emits('change', data)
     }
 
-	const imageChanged = (data) => {
-		props.element.data.image = data.blob
-		props.element.data.upload = data.form
-		props.element.data.uploadNeeded = true
-	}
 
 
 </script>
