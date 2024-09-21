@@ -14,9 +14,14 @@
 		line-mode="out 5"
 		dash="10 2"
 		color="#88bedf"
-		:legend-formatter="({ currentValue }) => `<span class='font-bold'>${currentValue}</span>`"
+		:legend-formatter="myFormatter"
 	/>
     </client-only>
+
+	<div v-if="editable" class="w-[400px] mx-auto my-8">
+		<URange v-model="element.data.score" :min="0" :max="100" />
+	</div>
+
 </div>
 
 </template>
@@ -33,4 +38,9 @@
 		}
 	})
 
+	const myFormatter = ({ currentValue }) => {
+     return `
+        <span class="font-bold">${currentValue}</span>
+      `;
+    }
 </script>

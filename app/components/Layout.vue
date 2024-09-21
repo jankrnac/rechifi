@@ -21,6 +21,7 @@
             class="min-h-screen w-full max-w-app flex flex-col gap-y-6"
             v-model="local"
             group="elements"
+            handle=".dragHandle"
             item-key="id"
             @change="$emit('change', local)"
             :disabled="!editable"

@@ -29,7 +29,36 @@
         middleware: ['auth', 'owner'],
     });
 
-    const { save:saveLayout } = useLayout()
+    const nuxtApp = useNuxtApp()
+    const updateAvailable = ref(false)
+
+    nuxtApp.hook("app:manifest:update", () => {
+        updateAvailable.value = true
+    })
+    
+
+    onBeforeMount(() => {
+        window.addEventListener("beforeunload", preventNav)
+        onBeforeUnmount(() => {
+            window.removeEventListener("beforeunload", preventNav);
+        })
+    })
+
+    onBeforeRouteLeave((to, from, next) => {
+        if (updateAvailable) {
+            if (!window.confirm("Leave without saving?")) {
+                return
+            }
+        }
+        next();
+    })
+
+    const preventNav = (event) => {
+        if (!updateAvailable) return
+        event.preventDefault()
+        event.returnValue = ""
+    }
+
     
     const route = useRoute()
 
@@ -49,6 +78,7 @@
     // Extract sections elements for navigation (in Header element)
     const nav = article.value.elements.filter(e => e.type == 'section')
 
+    const { save:saveLayout } = useLayout()
 
     provide('nav',nav)
     provide('user', article.value.user)
