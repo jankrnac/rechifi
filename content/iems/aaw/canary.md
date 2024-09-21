@@ -1,5 +1,6 @@
 ---
 
 brand: aaw
+model: Canary
 
 ---

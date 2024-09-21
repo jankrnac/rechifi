@@ -8,13 +8,17 @@
     
         <Wave />
     
-        <ul class="divide-y divide-gray-100 w-full max-w-app">
+        <ul v-if="upcomings.length" class="divide-y divide-gray-100 w-full max-w-app">
     
             <template v-for="upcoming in upcomings" :key="upcoming._path">
                 <UpcomingBox :upcoming="upcoming" />
             </template>
     
         </ul>
+
+        <div v-else class="mt-12 text-2xl font-light">
+            No upcoming gear right now.
+        </div>
     
     </div>
     

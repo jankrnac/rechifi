@@ -19,7 +19,7 @@
                 <span v-if="Object.values(driver)[0] > 1" class="mr-1">
                 {{ Object.values(driver)[0] }}
                 </span>
-                <span class="text-sm md:text-base mr-1 text-gray-500">x</span>
+                <span v-if="Object.values(driver)[0] > 1" class="text-sm md:text-base mr-1 text-gray-500">x</span>
                 <template v-if="Object.keys(driver)[0] == 'dd'">Dynamic driver</template>
                 <template v-if="Object.keys(driver)[0] == 'ba'">Balanced armature</template>
                 <template v-if="Object.keys(driver)[0] == 'est'">Electrostatic driver</template>

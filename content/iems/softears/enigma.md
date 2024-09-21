@@ -20,9 +20,9 @@ priceRange: low
 
 releaseDate: 
 
-upcoming: true
+upcoming: false
 
-released: false
+released: true
     
 cover: softears/enigma/cover.webp
 

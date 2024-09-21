@@ -2,6 +2,6 @@
 
 brand: 7hz
 
-model: aurora
+model: Aurora
 
 ---

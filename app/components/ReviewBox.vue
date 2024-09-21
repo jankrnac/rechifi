@@ -4,7 +4,10 @@
 
     <div v-if="useRoute().name != 'iems-brand-model'" class="flex gap-2">
         <UBadge class="mb-2 capitalize" color="orange">review</UBadge>
-        <UBadge class="mb-2 uppercase" color="red">{{post.gearType}}</UBadge>
+        <UBadge v-if="post.gearType == 'iem'" class="mb-2 uppercase" color="red" variant="outline">{{post.gearType}}</UBadge>
+        <UBadge v-if="post.gearType == 'dap'" class="mb-2 uppercase" color="sky" variant="outline">{{post.gearType}}</UBadge>
+        <UBadge v-if="post.gearType == 'dac'" class="mb-2 uppercase" color="green" variant="outline">{{post.gearType}}</UBadge>
+
     </div>
 
     <div class="relative w-full transition flex items-center">
