@@ -2,27 +2,25 @@
 
 <div class="flex flex-1 flex-col items-center mx-auto leading-relaxed lg:leading-loose w-full">
 
-        <!-- Title -->
-        <ProductsTitle :doc="doc" />
+    <!-- Title -->
+    <ProductsTitle :doc="doc" />
 
-        <!-- Images -->
-        <ProductsImages v-if="doc.images" :images="doc.images" />
+    <!-- Images -->
+    <ProductsImages v-if="doc.images" :images="doc.images" />
 
-        <!-- Labels -->
-        <ProductsLabels :doc="doc" :signature="signature" />
+    <!-- Labels -->
+    <ProductsLabels :doc="doc" :signature="signature" />
 
-        <!-- Features and Rating -->
-        <div class="lg:flex flex-grow w-full max-w-app mb-24">
+    <!-- Features and Rating -->
+    <div class="lg:flex flex-grow w-full max-w-app mb-24">
 
-            <div class="flex flex-grow items-center justify-center">
-                <ProductsOverallRating :rating="reviewData.rating"/>
-            </div>
+        <div class="flex flex-grow items-center justify-center">
+            <ProductsOverallRating :rating="reviewData.rating"/>
         </div>
+    </div>
 
-        <!-- Reviews -->
-        <ProductsReviews :reviews="reviews" class="mb-12 max-w-app"/>
-
-
+    <!-- Reviews -->
+    <ProductsReviews :reviews="reviews" class="mb-12 max-w-app"/>
         
 </div>
 

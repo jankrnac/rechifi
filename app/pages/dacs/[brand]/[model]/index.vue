@@ -1,63 +1,42 @@
 <template>  
 
-    <div class="flex flex-1 flex-col items-center mx-auto leading-relaxed lg:leading-loose w-full">
-    
-            <!-- Title -->
-            <ProductsTitle :doc="doc">{{ doc.title }}</ProductsTitle>
-    
-            <!-- Description
-            <ProductsDescription>{{ doc.description }}</ProductsDescription>
-            -->
+<div class="flex flex-1 flex-col items-center mx-auto leading-relaxed lg:leading-loose w-full">
 
-            <!-- Hero -->
-            <ProductsHero v-if="doc.hero" :hero="doc.hero" />
-    
-            <!-- Images -->
-            <ProductsImages v-if="doc.images" :images="doc.images" />
-    
-            <!-- Labels -->
-            <ProductsLabels v-if="doc.labels" :doc="doc" />
-    
-            <!-- Features and Rating -->
-            <div class="lg:flex flex-grow w-full max-w-app mb-24">
-    
-                <div class="flex flex-grow items-center justify-center">
-                    <ProductsOverallRating :rating="rating"/>
-                </div>
-            </div>
-    
-            <!-- Reviews -->
-            <ProductsReviews class="mb-12 max-w-app"/>
-    
-            <!-- Technicals 
-            <ProductsSpecs v-if="doc.specs && doc.specs.length" :doc="doc"/>
-            -->
+    <!-- Title -->
+    <ProductsTitle :doc="doc" />
 
-            <!-- Stores -->
-            <ProductsStores v-if="doc.stores && doc.stores.length" :stores="doc.stores"/>
-    
+    <!-- Images -->
+    <ProductsImages v-if="doc.images" :images="doc.images" />
+
+    <!-- Labels -->
+    <ProductsLabels :doc="doc" :signature="signature" />
+
+    <!-- Features and Rating -->
+    <div class="lg:flex flex-grow w-full max-w-app mb-24">
+
+        <div class="flex flex-grow items-center justify-center">
+            <ProductsOverallRating :rating="reviewData.rating"/>
+        </div>
     </div>
-    
-    </template>
-    
-    <script setup>
-    
-    const client = useSupabaseClient()
-    
-    const { data:doc } = await useAsyncData('product', () => queryContent(useRoute().path).findOne())
-    
-    const { data:rating } = await useAsyncData(async () => {
-    
-        const { data } = await client
-        .from('reviews')
-        .select('brand, model, elements(data)')
-        .eq('brand', useRoute().params.brand)
-        .eq('model', useRoute().params.model)
-        .eq('elements.type', 'score')
-    
-        const temp = data.filter(e => e.elements.length).map(q=>q.elements).flat().map(r=>r.data).map(y=>y.score)
-    
-        return temp.reduce((accumulator, currentValue) => accumulator + currentValue, 0) / temp.length
-    })
-          
-    </script>
+
+    <!-- Reviews -->
+    <ProductsReviews :reviews="reviews" class="mb-12 max-w-app"/>
+        
+</div>
+
+</template>
+
+<script setup>
+
+const { data:doc } = await useAsyncData('product', () => queryContent(useRoute().path).findOne())
+
+const { data:reviews } = await useFetch('/api/reviews/data', {
+    query: {
+        brand: useRoute().params.brand,
+        model: useRoute().params.model
+    }
+})
+
+const reviewData = []
+
+</script>

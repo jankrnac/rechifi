@@ -26,7 +26,7 @@
         </div>
     
         <!-- Grid -->
-        <div class="lg:max-w-app mx-auto mt-12 mb-24">
+        <div class="lg:max-w-app mx-auto md:mt-12 mb-24">
             
             <ul role="list" class="grid garid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-4">
                 
@@ -34,6 +34,11 @@
                     <ProductBox :product="item" />
                 </template>
             </ul>
+
+            <div class="mt-8 md:mt-24 flex justify-center">
+                <Icon name="ph:arrow-circle-down-thin" size="48px" class="cursor-pointer" @click="loadMore" />
+            </div>
+
         </div>
     
     </div>
@@ -62,10 +67,10 @@
 /***** Sorting *****/
 
 const sortOptions = [
-    { label: t('name'), value:'name' },
-    { label: t('releaseDate'), value: 'releaseDate' },
+    { label: 'Name', value:'title' },
+    { label: 'Release Date', value: 'releaseDate' },
 ]
-    
+
 const activeSort = useState('activeSort', () => sortOptions[0])
 
 const sortPayload = computed(() => {
@@ -166,7 +171,7 @@ watch(activeFilters, async () => {
     
     
 /***** Products fetching data  *****/
-    
+const page = ref(1)
 const { data:daps, refresh } = await useAsyncData('daps', () => 
 
     queryContent('/daps')
@@ -177,24 +182,26 @@ const { data:daps, refresh } = await useAsyncData('daps', () =>
 
     .where({ 'showInIndex': indexFilter.value })
 
+    .skip(8 * (page.value - 1))
+    .limit(8)
+
     .sort(sortPayload.value)
 
     .find()
 )
 
     
+// help variable for infinite scroll
+const data = ref()
+data.value = daps.value
+
+const loadMore = async () => {
+    page.value++
+
+    await refresh()
+
+    data.value = [...data.value, ...daps.value]
+}
+
 </script>
     
-    
-    <i18n lang="yaml">
-        en:
-         daps: 'Digital audio players'
-         sort: 'Sort'
-         slogan: All DAPs from asian country manufacturers in one place
-         name: 'By name'
-         releaseDate: 'Newest first'
-        cz:
-         headphones: "Sluchátka"
-         slogan: Seznam všech slúchatek čínskych výrobců na jednom místě
-         sort: 'Seřadit'
-    </i18n>
