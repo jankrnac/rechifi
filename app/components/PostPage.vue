@@ -5,15 +5,8 @@
         <div v-if="user && post.userId == user.id" class="border-y dark:border-gray-700 py-2 lg:p-5 mb-2">
     
             <div class="max-w-app mx-auto flex gap-2">
-                <UButton :to="useRoute().path + '/edit'" icon="i-ph-pencil-simple" color="sky">
+                <UButton :to="useRoute().path + '/edit'" icon="i-ph-pencil-simple">
                     Edit
-                </UButton>
-    
-                <UButton v-if="post.published" icon="i-ph-x" @click="publish(false)">
-                    Unpublish
-                </UButton>
-                <UButton v-else icon="i-ph-upload" color="green" @click="publish(true)">
-                    Publish
                 </UButton>
     
             </div>

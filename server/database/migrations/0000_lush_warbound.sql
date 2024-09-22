@@ -46,6 +46,7 @@ CREATE TABLE `posts` (
 	`model` text,
 	`gearType` text,
 	`description` text,
+	`published` integer DEFAULT false,
 	`userId` integer,
 	`coverId` integer,
 	`createdAt` text DEFAULT (CURRENT_TIMESTAMP),

@@ -18,13 +18,14 @@
             </UButton>
         </div>
         <div class="flex items-center gap-2">
-           
             <UButton v-show="editable" :loading="loading" color="green" @click="save()" label="Save" icon="i-ph-download-simple-light"/>
             
-            <UButton v-show="editable" icon="i-ph-upload-simple">
+            <UButton v-if="local.published" v-show="editable" color="red" :loading="loadingPublish" icon="i-ph-eye-closed" @click="publish(false)" >
+                Unpublish
+            </UButton>
+            <UButton v-else v-show="editable" :loading="loadingPublish" icon="i-ph-upload-simple" @click="publish(true)" >
                 Publish
             </UButton>
-
         </div>
     </div> 
 
@@ -102,7 +103,7 @@ const loading = ref(false)
 
 const settingsVisible = ref(false)
 
-const emit = defineEmits(['save','editableChanged'])
+const emit = defineEmits(['save','editableChanged', 'publish'])
 
 const coverChanged = (data) => {
     local.value.cover = {
@@ -125,6 +126,20 @@ const save = () => {
     setTimeout(() => {
         loading.value = false
     },400)
+}
+
+const loadingPublish = ref(false)
+
+const publish = (value) => {
+    loadingPublish.value = true
+    emit('publish', value)
+
+    setTimeout(() => {
+        loadingPublish.value = false
+        local.value.published = value
+
+    },400)
+
 }
 
 

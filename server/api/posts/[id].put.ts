@@ -7,7 +7,8 @@ export default eventHandler(async (event) => {
         title: body.title,
         slug: body.slug,
         description: body.description,
-        gearType: body.gearType
+        gearType: body.gearType,
+        published: body.published
     }).where(eq(tables.posts.id, id))
 
 

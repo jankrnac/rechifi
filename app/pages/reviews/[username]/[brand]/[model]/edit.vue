@@ -10,6 +10,7 @@
             :post="review"
             :editable="editable"
             @save="save"
+            @publish="publish"
             @editableChanged="(data) => editable=data"
         />
 
@@ -36,37 +37,67 @@ const route = useRoute()
 const editable = ref(true)
 
 const { data:review } = await useFetch(`/api/reviews/${route.params.username}/${route.params.brand}/${route.params.model}`, {
-        deep: true
+    deep: true
 })
+
+
+const updateAvailable = ref(false)
+
+
+onBeforeMount(() => {
+    window.addEventListener("beforeunload", preventNav)
+    onBeforeUnmount(() => {
+        window.removeEventListener("beforeunload", preventNav);
+    })
+})
+
+onBeforeRouteLeave((to, from, next) => {
+    if (updateAvailable.value) {
+        if (!window.confirm("Leave without saving?")) {
+            return
+        }
+    }
+    next();
+})
+
+const preventNav = (event) => {
+    if (!updateAvailable.value) return
+    event.preventDefault()
+    event.returnValue = ""
+}
+
+const { save:saveLayout } = useLayout()
 
 
 // update elements layout from Layout
 const updateLayout = async (data) => {
-    console.log(data)
-    article.value.elements = data
+    review.value.elements = data
 }
 
-// master save from Settings
-const save = async (data) => {
+const save = () => {
+    saveLayout(review)
+}
 
+const publish = async (value) => {
+    await $fetch('/api/posts/'+review.value.id, {
+        method: "PUT",
+        body: {
+            published: value
+        }
+    })
 }
 
 // Extract sections elements for navigation (in Header element)
 const nav = review.value.elements.filter(e => e.type == 'section')
 provide('nav',nav)
-
-
-const updatePage = async (data) => {
-    console.log(data)
-    review.value.elements = data
-}
-
-const saving = ref(false)
+provide('user', review.value.user)
+provide('date', review.value.createdAt)
 
 
 
-provide('date', review.value.created_at)
-
+watch(review.value.elements, (value) => {
+    updateAvailable.value = true
+})
 
 
 

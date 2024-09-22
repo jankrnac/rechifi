@@ -20,7 +20,9 @@
 		>
 	
 			<template #actions>
-				<UButton size="xs" color="white" @click="resend">Resend</UButton>
+				<UButton to="/signup" v-if="loginError == 'Account not found'" size="xs" color="white">Signup</UButton>
+				<UButton v-else size="xs" color="white" @click="resend">Resend</UButton>
+
 			</template>
 		
 		</UAlert>
@@ -47,7 +49,7 @@
 			</UFormGroup>
 			
           	<div>
-            	<UButton block type="submit" size="xl" color="blue" :loading="loginPending">Sign in</UButton>
+            	<UButton block type="submit" size="xl" :loading="loginPending">Sign in</UButton>
           	</div>
 
 			<div class="text-center">

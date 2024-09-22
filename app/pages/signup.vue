@@ -8,12 +8,11 @@
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                 <UAlert
                     v-if="emailSent"
-                    icon="i-heroicons-mail"
+                    icon="i-ph-envelope"
                     color="green"
                     variant="solid"
                     title="Activation email sent"
                     description="Activation link sent. Check your email address."
-                    class="w-[530px]"
                 />
 
 

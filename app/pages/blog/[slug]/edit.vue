@@ -10,6 +10,7 @@
             :post="article"
             :editable="editable"
             @save="save"
+            @publish="publish"
             @editableChanged="(data) => editable=data"
         />
 
@@ -29,13 +30,8 @@
         middleware: ['auth', 'owner'],
     });
 
-    const nuxtApp = useNuxtApp()
     const updateAvailable = ref(false)
 
-    nuxtApp.hook("app:manifest:update", () => {
-        updateAvailable.value = true
-    })
-    
 
     onBeforeMount(() => {
         window.addEventListener("beforeunload", preventNav)
@@ -45,7 +41,7 @@
     })
 
     onBeforeRouteLeave((to, from, next) => {
-        if (updateAvailable) {
+        if (updateAvailable.value) {
             if (!window.confirm("Leave without saving?")) {
                 return
             }
@@ -54,7 +50,7 @@
     })
 
     const preventNav = (event) => {
-        if (!updateAvailable) return
+        if (!updateAvailable.value) return
         event.preventDefault()
         event.returnValue = ""
     }
@@ -75,6 +71,15 @@
         saveLayout(article)
     }
 
+    const publish = async (value) => {
+        await $fetch('/api/posts/'+article.value.id, {
+            method: "PUT",
+            body: {
+                published: value
+            }
+        })
+    }
+
     // Extract sections elements for navigation (in Header element)
     const nav = article.value.elements.filter(e => e.type == 'section')
 
@@ -84,6 +89,8 @@
     provide('user', article.value.user)
     provide('date', article.value.createdAt)
 
-
+    watch(article.value.elements, (value) => {
+        updateAvailable.value = true
+    })
 
 </script>

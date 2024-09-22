@@ -39,6 +39,10 @@
 					<UButton size="xs" color="sky" :to="'/blog/'+article.slug+'/edit'" >Edit</UButton>
 					<UButton size="xs" color="red" @click="deleteReview(review.id)">Delete</UButton>
 				</div>
+
+                <div v-if="!article.published" class="absolute inset-0 -mt-12 flex justify-center items-center opacity-65">
+                    <UBadge color="red">Unpublished</UBadge>
+                </div>
 				</div>
 			</template>
 
@@ -48,10 +52,15 @@
 				<ReviewBox :post="review" />
 
 				<!-- Review Options -->
-				<div class="absolute top-3 right-3 space-x-1 z-[1]"  v-if="user.id == profile.id">
+				<div class="absolute top-0 right-0 space-x-1 z-[1]"  v-if="user.id == profile.id">
 					<UButton size="xs" color="sky" :to="'/reviews/'+profile.username+'/'+review.brand+'/'+review.model+'/edit'" >Edit</UButton>
 					<UButton size="xs" color="red" @click="deleteReview(review.id)">Delete</UButton>
 				</div>
+
+                <div v-if="!review.published" class="absolute inset-0 -mt-12 flex justify-center items-center opacity-65">
+                    <UBadge color="red">Unpublished</UBadge>
+                </div>
+
 				</div>
 			</div>
 		</div>

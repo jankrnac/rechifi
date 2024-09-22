@@ -34,6 +34,7 @@ export const posts = sqliteTable('posts', {
     model: text('model'),
     gearType: text('gearType'),
     description: text('description'),
+    published: integer('published', { mode: 'boolean' }).default(false),
     userId: integer('userId').references(() => users.id, {onDelete: 'cascade'}),
     coverId: integer('coverId').references(() => files.id, {onDelete: 'cascade'}),
     createdAt: text("createdAt").default(sql`(CURRENT_TIMESTAMP)`),
