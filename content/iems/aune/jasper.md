@@ -1,5 +1,5 @@
 ---
 
 brand: aune
-
+model: Jasper
 ---

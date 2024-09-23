@@ -1,5 +1,5 @@
 ---
 
 brand: astrotec
-
+model: Phoenix
 ---

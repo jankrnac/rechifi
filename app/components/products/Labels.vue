@@ -2,11 +2,10 @@
 
 <div class="flex md:flex-row flex-col w-full max-w-app items-start justify-between mb-16 md:mb-32 flex-wrap">
 
-    <div v-if="doc.drivers && doc.drivers.length">
+    <div>
         <div class="text-sm mb-2 font-semibold">Driver composition</div>
         <div class="flex">
-            <div class="flex flex-grow justify-center items-center">
-            </div>
+            
             <div class="flex flex-col md:flex-row items-start gap-3">
                 <DriverLabel v-for="driver in doc.drivers" :driver="driver"></DriverLabel>
             </div>
