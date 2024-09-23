@@ -113,6 +113,10 @@ export default defineNuxtConfig({
 		siteKey: '',
 	},
 
+	socialShare: {
+		baseUrl:  process.env.NUXT_BASE_URL // required!
+		// other optional module options
+	},
 
 	runtimeConfig: {
 		session: {
