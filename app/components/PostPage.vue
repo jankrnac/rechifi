@@ -9,6 +9,8 @@
                     Edit
                 </UButton>
     
+                <SocialShare network="facebook" />
+
             </div>
         </div>
     
