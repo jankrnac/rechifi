@@ -136,5 +136,5 @@ export default defineNuxtConfig({
 			googleAuth: Boolean(process.env.GOOGLE_AUTH || (process.env.NUXT_OAUTH_GOOGLE_CLIENT_ID && process.env.NUXT_OAUTH_GOOGLE_CLIENT_SECRET)),
 		},
 
-	},
+	}
 })
