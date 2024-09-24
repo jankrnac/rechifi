@@ -45,7 +45,7 @@
     </template>
 
     <template v-else>
-        <div class="text-2xl font-light">
+        <div class="text-2xl mt-10 font-light">
             No articles found
         </div>
     </template>

@@ -20,7 +20,7 @@
 		>
 	
 			<template #actions>
-				<UButton to="/signup" v-if="loginError == 'Account not found'" size="xs" color="white">Signup</UButton>
+				<UButton to="/signup" external v-if="loginError == 'Account not found'" size="xs" color="white">Signup</UButton>
 				<UButton v-else size="xs" color="white" @click="resend">Resend</UButton>
 
 			</template>
