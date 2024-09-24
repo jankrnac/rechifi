@@ -2,14 +2,20 @@
 
     <div class="flex-1">
       
-        <div v-if="user && post.userId == user.id" class="border-y dark:border-gray-700 py-2 lg:p-5 mb-2">
+        <div class="border-y dark:border-gray-700 py-2 lg:p-5 mb-2">
     
-            <div class="max-w-app mx-auto flex gap-2">
-                <UButton :to="useRoute().path + '/edit'" icon="i-ph-pencil-simple">
+            <div class="max-w-app mx-auto flex justify-between gap-2">
+                <UButton  v-if="user && post.userId == user.id" :to="useRoute().path + '/edit'" icon="i-ph-pencil-simple">
                     Edit
                 </UButton>
-    
-                <SocialShare network="facebook" />
+                
+                <div class="flex space-x-5">
+                    <SocialShare network="facebook" :label="false" class="opacity-70 hover:opacity-100"/>
+                    <SocialShare network="twitter" :label="false" class="opacity-70 hover:opacity-100"/>
+                    <SocialShare network="pinterest" :label="false" class="opacity-70 hover:opacity-100"/>
+                    <SocialShare network="reddit" :label="false" class="opacity-70 hover:opacity-100"/>
+                    <SocialShare network="telegram" :label="false" class="opacity-70 hover:opacity-100"/>
+                </div>
 
             </div>
         </div>
