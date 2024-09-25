@@ -59,16 +59,18 @@
     const route = useRoute()
 
     const { data:article } = await useFetch(`/api/articles/${route.params.slug}`)
+    const activeElements = [...article.value.elements]
 
     const editable = ref(true)
 
     // update elements layout from Layout
     const updateLayout = async (data) => {
         article.value.elements = data
+
     }
 
     const save = () => {
-        saveLayout(article)
+        saveLayout(article, activeElements)
     }
 
     const publish = async (value) => {
@@ -89,7 +91,7 @@
     provide('user', article.value.user)
     provide('date', article.value.createdAt)
 
-    watch(article.value.elements, (value) => {
+    watch(() => article.value.elements, (value) => {
         updateAvailable.value = true
     })
 

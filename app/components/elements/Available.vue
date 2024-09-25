@@ -48,10 +48,11 @@ const { data:elements } = await useFetch('/api/elements')
 
 const cloneElement = ({id, type, caption, data}) => {
     return{
-        id: 'new'+id,
+        id: id,
         type: type,
         caption: caption,
-        data: data
+        data: data,
+        new: true
     }
 }
   

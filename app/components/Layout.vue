@@ -81,7 +81,8 @@ const onChange = (elementid, data) => {
 }
 
 const onRemove = async (elementid) => {
-    local.value.splice(local.value.findIndex(obj => obj.id == elementid), 1) 
+    local.value.splice(local.value.findIndex(obj => obj.id == elementid), 1)
+     
 }
 
 const onImageChange = async (path) => {

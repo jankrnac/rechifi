@@ -18,7 +18,7 @@
             </UButton>
         </div>
         <div class="flex items-center gap-2">
-            <UButton v-show="editable" :loading="loading" color="green" @click="save()" label="Save" icon="i-ph-download-simple-light"/>
+            <UButton v-show="editable" :disabled="loading" :loading="loading" color="green" @click="save()" label="Save" icon="i-ph-download-simple-light"/>
             
             <UButton v-if="local.published" v-show="editable" color="red" :loading="loadingPublish" icon="i-ph-eye-closed" @click="publish(false)" >
                 Unpublish

@@ -1,14 +1,13 @@
 export const useLayout = () => {
 
-    const save = async (post: Ref) => {
+    const save = async (post: Ref, activeElements) => {
 
-        const activeElements = [...post.value.elements]
 
         for (let [index, element] of post.value.elements.entries()) 
         {
 
             // Newly added element  
-            if (!Number.isInteger(element.id) && element.id.includes('new'))
+            if (element.new)
             {
                 await $fetch('/api/elements', {
                     method: "POST",
@@ -22,7 +21,7 @@ export const useLayout = () => {
             }
 
             // Existing element
-            if (Number.isInteger(element.id))
+            if (!element.new)
             {
                 // is not image
                 if (!(element.type in ['image','images']))
@@ -40,7 +39,7 @@ export const useLayout = () => {
             // Upload Single
             if(element.uploadNeeded)
             {
-
+                
                 // upload the file
                 const uploadResult = await $fetch('/api/files/blob', {
                     method: 'POST',
@@ -55,10 +54,17 @@ export const useLayout = () => {
                     }
                 })
 
+                if (Number.isInteger(element.id))
+                {
+                    // Delete old image
+                   
+                }
+
                 // Change the name
                 element.data.image = uploadResult[0].pathname
                 element.uploadNeeded = false
 
+        
                 // Update our DB with
                 await $fetch('/api/elements/' + element.id, {
                     method: "PUT",
@@ -92,6 +98,30 @@ export const useLayout = () => {
 
             }
 
+        }
+
+
+        // Deleting elements
+        if(post.value.elements.length > 0)
+        {
+            activeElements.forEach(async (item) => {
+
+                if(!post.value.elements.map(e => e.id).includes(item.id))
+                {
+
+                    await $fetch('/api/elements/' + item.id, {
+                        method: "DELETE",
+                    })
+                }
+            })
+        }
+        else
+        {
+            activeElements.forEach(async (item) => {
+                await $fetch('/api/elements/' + item.id, {
+                    method: "DELETE",
+                })
+            })
         }
 
 
