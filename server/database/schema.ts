@@ -71,6 +71,7 @@ export const likes = sqliteTable('likes', {
     id: integer('id').primaryKey({ autoIncrement: true }),
     postId: integer('postId').references(() => posts.id, {onDelete: 'cascade'}),
     userId: integer('userId').references(() => users.id, {onDelete: 'cascade'}),
+    commentId: integer('commentId').references(() => comments.id, {onDelete: 'cascade'}),
     createdAt: text("createdAt").default(sql`(CURRENT_TIMESTAMP)`),
 })
 
@@ -102,21 +103,30 @@ export const elementsRelations = relations(elements, ({ one }) => ({
     post: one(posts, {
       fields: [elements.postId],
       references: [posts.id],
-    }),
+    })
 }));
 
-export const commentsRelations = relations(comments, ({ one }) => ({
+export const commentsRelations = relations(comments, ({ one, many }) => ({
     post: one(posts, {
       fields: [comments.postId],
       references: [posts.id],
     }),
+    user: one(users, {
+        fields: [comments.postId],
+        references: [users.id],
+    }),
+    likes: many(likes)
 }));
 
 export const likesRelations = relations(likes, ({ one }) => ({
     post: one(posts, {
-      fields: [likes.postId],
-      references: [posts.id],
+        fields: [likes.postId],
+        references: [posts.id],
     }),
+    comment: one(comments, {
+        fields: [likes.commentId],
+        references: [comments.id],
+    })
 }));
 
 export const tokensRelations = relations(tokens, ({ one }) => ({

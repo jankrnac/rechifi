@@ -19,7 +19,7 @@
                     <UButton :label="filter.name" variant="ghost" color="gray" trailing-icon="i-heroicons-chevron-down-20-solid"></UButton>
 
                     <template #panel>
-                        <form class="p-4 space-y-4">
+                        <form class="p-4 space-y-4 max-h-[410px] overflow-y-auto">
                             <div v-for="(option, optionIdx) in filter.options" :key="option.value" class="flex items-center">
                             <input :id="`filter-${filter.id}-${optionIdx}`" :name="`${filter.id}[]`" :value="option" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600" v-model="activeFilters[filter.id]"/>
                             <label :for="`filter-${filter.id}-${optionIdx}`" class="ml-3 whitespace-nowrap pr-6 text-sm font-medium cursor-pointer">{{ option.label }}</label>

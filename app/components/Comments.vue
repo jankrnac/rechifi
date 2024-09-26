@@ -15,7 +15,7 @@
         </ul>
         <div>
             <div v-if="user" class="text-sm mb-1 text-gray-500">Commenting as 
-                <span  class="font-semibold">{{ profile.username }}</span>
+                <span  class="font-semibold">{{ user.username }}</span>
             </div>
             <textarea class="w-full border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none p-4 dark:bg-gray-800" rows="4" v-model="text"></textarea>
         </div>
@@ -30,16 +30,16 @@
 
 <script setup>
 
-const comments = ref([])
-const { user } = useUserSession()
+const props = defineProps(['post'])
 
-const profile = ref()
-
-if(user.value) 
+let model
+if (useRoute().path.includes('blog'))
 {
-    profile.value = await $fetch('/api/users/' + user.value.id )
+    model = 'posts'
 }
 
+const { data:comments } = await useFetch(`/api/comments/${model}/${props.post.id}`)
+const { user } = useUserSession()
 
 const text = ref()
 
@@ -47,13 +47,17 @@ const addComment = async () => {
 
     var commentPayload =   {
         text: text.value,
-        profile_id: user.value.id,
+        userId: user.value.id,
+        postId:     props.post.id
     }
 
-    const {data:comment}  = await client.from('comments').insert(commentPayload).select().single()
+    const comment = await $fetch(`/api/comments/${model}`, {
+        method: "POST",
+        body: commentPayload
+    })
 
     comment.profiles = {
-        username: profile.value.username
+        username: user.value.username
     }
 
     comment.likes = []

@@ -40,6 +40,7 @@
 	}
 
 	const imageChanged = (data) => {
+		props.element.oldImage = props.element.data.image
 		props.element.data.image = data.blob
 		props.element.upload = data.form
 		props.element.uploadNeeded = true

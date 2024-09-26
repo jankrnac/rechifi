@@ -132,6 +132,13 @@ export default defineEventHandler((event) => {
         },
 
         {
+            value: 'tangzu',
+            label: 'Tangzu',
+            logo: '',
+            link: ''
+        },
+
+        {
             value: 'kinera',
             label: 'Kinera',
             logo: 'kinera/logo.png',

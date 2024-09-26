@@ -27,8 +27,9 @@
                 />
 
             <UForm :schema="schema" :state="state" class="space-y-6" @submit.prvent="signup">
-    			<NuxtTurnstile v-model="state.token" />
-
+                <ClientOnly>
+    			    <NuxtTurnstile v-model="state.token" />
+                </ClientOnly>   
                 <UFormGroup label="Email" name="email">
                     <UInput v-model="state.email" size="xl"/>
                 </UFormGroup>

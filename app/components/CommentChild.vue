@@ -7,7 +7,7 @@
         <IconsUser class="w-6 h-6" />
     </div>
     <div class="flex-grow">
-        <div class="text-xs font-semibold text-gray-700 mb-1 bg-white relative z-[99]">{{ comment.profiles.username }}</div>
+        <div class="text-xs font-semibold text-gray-700 mb-1 bg-white relative z-[99]">{{ comment.user.username }}</div>
         <div class="text-sm bg-white">{{ comment.text }}</div>
         <div class="flex gap-2 mt-2 items-center mb-2">
             <div class="inline-flex items-center hover:bg-gray-200 cursor-pointer px-1 py-0.5 rounded -ml-1" @click="like(comment)">
@@ -77,14 +77,13 @@
 
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 
+const { user } = useUserSession()
+
 const props = defineProps({
     comment: {
         type: Object
     }
 })
-
-const user = useSupabaseUser()
-const client = useSupabaseClient()
 
 const replyInputId = ref(null)
 const replyText = ref()
@@ -95,11 +94,14 @@ const addReply = async (id) => {
 
     const commentPayload =   {
         text: replyText.value,
-        profile_id: user.value.id,
-        parent_id: id
+        userId: user.value.id,
+        parentId: id
     }
 
-    const { data:comment } = await client.from('comments').insert(commentPayload).select().single()
+    const comment = await $fetch(`/api/comments/${model}`, {
+        method: "POST",
+        body: commentPayload
+    })
 
     emit('comment', comment)
 

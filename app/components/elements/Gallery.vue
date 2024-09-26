@@ -1,5 +1,6 @@
 <template>
-    <div class="max-w-app overflow-hidden relative">
+
+<div class="max-w-app overflow-hidden relative">
 
     <template v-if="$device.isMobile">
         <Carousel :items-to-show="1">
@@ -21,7 +22,7 @@
         <Carousel :items-to-show="3">
 			<template v-if="element.data.images.length">
 				<Slide v-for="slide in element.data.images" :key="slide">
-					<nuxt-img :src="slide" format="webp" sizes="480px" height="480px" densities="x1" fit="contain" class="rounded-lg"/>
+					<nuxt-img :src="slide" format="webp" sizes="480px" height="480px" densities="x1" fit="contain" class="rounded-lg mr"/>
 				</Slide>
 			</template>
 

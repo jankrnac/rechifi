@@ -16,7 +16,11 @@
 		</div>
 	</div>
 		
-	<div class="text-sm text-left text-gray-400 ml-1">Navigation</div>
+	<div class="text-sm text-left text-gray-400 ml-1">Navigation
+		<UTooltip v-if="editable" text="Navigation links are created automatically based on 'Section start' elements">
+			<UIcon name="i-ph-info" />
+		</UTooltip>
+	</div>
 	<nav class="hidden lg:flex justify-center items-center gap-2 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 border p-5 rounded-lg">
 		<template v-for="(item, index) in nav">
 		<a class="text" :href="'#'+item.data.name">

@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "64a9ba93-fafa-4c06-9b0e-65d208d5eb64",
+  "id": "dd97ceaf-2d2e-45a9-88d2-b09f3a310710",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "comments": {
@@ -233,6 +233,13 @@
           "notNull": false,
           "autoincrement": false
         },
+        "commentId": {
+          "name": "commentId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
         "createdAt": {
           "name": "createdAt",
           "type": "text",
@@ -263,6 +270,19 @@
           "tableTo": "users",
           "columnsFrom": [
             "userId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "likes_commentId_comments_id_fk": {
+          "name": "likes_commentId_comments_id_fk",
+          "tableFrom": "likes",
+          "tableTo": "comments",
+          "columnsFrom": [
+            "commentId"
           ],
           "columnsTo": [
             "id"

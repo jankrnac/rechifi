@@ -9,7 +9,7 @@ export const useLayout = () => {
             // Newly added element  
             if (element.new)
             {
-                await $fetch('/api/elements', {
+                const result = await $fetch('/api/elements', {
                     method: "POST",
                     body: {
                         data: element.data,
@@ -18,6 +18,8 @@ export const useLayout = () => {
                         order: index
                     }
                 })
+
+                element.id = result.id
             }
 
             // Existing element
@@ -39,7 +41,6 @@ export const useLayout = () => {
             // Upload Single
             if(element.uploadNeeded)
             {
-                
                 // upload the file
                 const uploadResult = await $fetch('/api/files/blob', {
                     method: 'POST',
@@ -54,10 +55,12 @@ export const useLayout = () => {
                     }
                 })
 
-                if (Number.isInteger(element.id))
+                // Delete the old image if not placeholder
+                if (element.oldImage != 'placeholder.webp')
                 {
-                    // Delete old image
-                   
+                    await $fetch('/api/files/blob/' + element.oldImage, {
+                        method: "DELETE"
+                    })
                 }
 
                 // Change the name
@@ -77,27 +80,28 @@ export const useLayout = () => {
 
 
             // Upload Multi
-            if(element.data.uploads && element.data.uploads.length)
+            if(element.uploads)
             {
-                for (const upload of element.data.uploads) 
-                {
-                    // Uploade the file and get the name from CDN
-                    const { data:cdnFilename } = await $fetch(`/api/files/blob`, {
-                        method: 'POST',
-                        body: Object.values(upload)[0]
-                    })
 
-                    // Change the name
-                    element.data.images[Object.keys(upload)[0]] = cdnFilename.value
-                }
+                // Upload the file and get the name from CDN
+                const uploadResult = await $fetch(`/api/files/blob`, {
+                    method: 'POST',
+                    body: element.uploads
+                })
 
+                // Change the name
+                element.data.images = uploadResult.map(e => e.pathname)
+                
                 // Update our DB with
-                await client.from('elements').update({
-                    data: element.data
-                }).eq('id', element.id)
+                await $fetch('/api/elements/' + element.id, {
+                    method: "PUT",
+                    body: {
+                        data: element.data,
+                        order: index
+                    }
+                })
 
             }
-
         }
 
 

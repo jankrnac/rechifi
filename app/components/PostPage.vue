@@ -25,7 +25,7 @@
     
             <Layout :elements="post.elements" />
     
-            <LazyComments :comments="post.comments" />
+            <LazyComments :post="post" />
     
         </div>
     

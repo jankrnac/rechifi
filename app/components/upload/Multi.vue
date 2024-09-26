@@ -33,11 +33,9 @@
         }
 
         fileInput.value.files.forEach(element => {
-            formData.append('files[]', element)
+            formData.append('files', element)
 
             data.blobs.push(URL.createObjectURL(element))
-
-            console.log(element)
 
         })
 

@@ -22,7 +22,7 @@
     </draggable>
 
     <UploadMulti @uploaded="imagesAdded">
-        <Button color="blue">Add images</Button>
+        <UButton color="blue" size="xs">Add images</UButton>
     </UploadMulti>
 
 </div>
@@ -40,23 +40,15 @@ const currentIndex = ref()
 
 const imageChanged = (data) => {
 		props.element.data.images[currentIndex.value] = data.blob
-        props.element.data.uploads = []
-		props.element.data.uploads.push({
+        props.element.uploads = []
+		props.element.uploads.push({
             [currentIndex.value]: data.form
         })
 	}
 
 const imagesAdded = (data) => {
-    props.element.data.uploads = []
+    props.element.uploads = data.form
 
-    let i = 1
-    data.form.forEach(upload => {
-        
-        props.element.data.uploads.push({
-            [props.element.data.images.length-1 + i]: upload
-        })
-        i++
-    });
 
     props.element.data.images.push(...data.blobs)
 
