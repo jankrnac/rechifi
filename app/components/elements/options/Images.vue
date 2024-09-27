@@ -1,12 +1,13 @@
 <template>
 
 <div>
-    <div v-if="element.data.images.length" class="text-sm mb-2">Click on the image to change it. Drag to rearrange.</div>
+    <div class="text-xs font-bold mb-1">Images</div>
+
+    <div v-if="element.data.images.length" class="text-xs mb-2">Drag to rearrange.</div>
 
     <draggable
         class="list-group flex gap-2 mb-2"
         :list="element.data.images"
-  
         item-key="id"
 
         >

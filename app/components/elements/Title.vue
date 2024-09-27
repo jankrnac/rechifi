@@ -2,7 +2,10 @@
 <div>
 	<div class="mb-12">
 		<h1 class="font-bold text-4xl">
-			<span :contenteditable="editable" :spellcheck="false" class="outline-none" @input="update">{{data.text}}</span>
+			<span v-html="title" class="outline-none"></span>
+			<UTooltip v-if="editable" text="Change title in settings." class="absolute">
+				<UIcon name="i-ph-info" size="20px" class="ml-2" />
+			</UTooltip>
 		</h1>
 		<div class="flex justify-center gap-4 text-sm">
 			<div class="text-gray-500 dark:text-gray-200 italic mt-2 flex items-center justify-center">
@@ -17,7 +20,7 @@
 	</div>
 		
 	<div class="text-sm text-left text-gray-400 ml-1">Navigation
-		<UTooltip v-if="editable" text="Navigation links are created automatically based on 'Section start' elements">
+		<UTooltip v-if="editable" text="Navigation links are created automatically based on 'Section start' elements"  :ui="{ base : 'text-clip h-[40px]'}">
 			<UIcon name="i-ph-info" />
 		</UTooltip>
 	</div>
@@ -73,8 +76,6 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 		}
 	})
 
-	const data = props.element.data
-
 	const emits = defineEmits(['change'])
 
 	const update = (e) => {
@@ -87,6 +88,7 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 	const nav = inject('nav')
 	const date = inject('date')
 	const user = inject('user')
+	const title = useState('title')
 
 
 	const share = (provider) => {

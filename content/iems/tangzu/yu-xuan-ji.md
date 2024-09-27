@@ -1,5 +1,9 @@
 ---
+
+title: Tangzu Yu Xuan Ji
+
 brand: tangzu
+
 model: Yu Xuan Ji
 
 drivers: 

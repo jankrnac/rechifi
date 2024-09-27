@@ -18,7 +18,7 @@
 
                             <div class="sm:col-span-full">
                                 <label for="name" class="block text-sm font-semibold leading-6 mb-1">Username</label>
-                                <UInput type="text" name="username" id="name" size="xl" :class="[usernameValid ? '':'bg-red-200']" v-model="profile.username" @change="checkUsername"/>
+                                <UInput name="username" id="name" size="xl" :class="[usernameValid ? '':'bg-red-200']" v-model="profile.username" @change="checkUsername"/>
                                 <div v-if="!usernameValid" class="text-xs mt-1">Username already taken</div>
                             </div>
 
@@ -29,7 +29,7 @@
     
                             <div class="sm:col-span-full">
                                 <label for="name" class="block text-sm font-semibold leading-6 mb-1">Email</label>
-                                <UInput type="text" name="email" id="email" size="xl" :value="profile.email" :disabled="true" />
+                                <UInput name="email" id="email" size="xl" v-model="profile.email" :disabled="true" />
                             </div>
     
                             <div class="col-span-full">
@@ -150,7 +150,7 @@
 
     const avatar = computed(() => {
         if(preview.value) return preview.value
-        if(profile.value.avatar) return '/images/'+profile.value.avatar.filename
+        if(profile.value.avatar) return '/images/' + profile.value.avatar.filename
         return false
     })
     
@@ -166,9 +166,19 @@
     const pending = ref(false)
     
     const submitProfileForm = async () => {
+        
+        let bodyPayload = {
+            username: profile.value.username
+        }
+
+        
         pending.value = true
+
+        // if changing avatar
         if (preview.value)
         {
+
+            // upload the file
             const uploadResult = await $fetch(`/api/files/blob`, {
                 method: "POST", 
                 body: profile.value.upload
@@ -182,28 +192,39 @@
                 }
             })
 
+            if (profile.value.avatar)
+            {
+                await $fetch('/api/files/blob/' + profile.value.avatar.filename, {
+                    method: "DELETE"
+                })
+            }
+
             profile.value.avatarId = file.id
+
+            bodyPayload['filename'] = uploadResult[0].pathname
+
         }
-    
+        
+        let usernamePayload
+        if (profile.value.username == profile.value.email)
+        {
+            usernamePayload = profile.value.username
+        }
+        else
+        {
+            usernamePayload = useSlug(profile.value.username)
+        }
     
         await $fetch('/api/users/' + user.value.id, {
             method: "PUT",
             body: {
-                username: useSlug(profile.value.username),
+                username: usernamePayload,
                 name: profile.value.name,
                 avatarId: profile.value.avatarId
             }
         })  
 
-
-        let bodyPayload = {
-            username: profile.value.username
-        }
-
-        if (preview.value)
-        {
-            bodyPayload['filename'] = uploadResult[0].pathname
-        }
+    
         
         await $fetch('/api/auth', {
             method: "PUT",

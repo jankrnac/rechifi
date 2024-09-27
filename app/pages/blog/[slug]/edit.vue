@@ -87,6 +87,12 @@
 
     const { save:saveLayout } = useLayout()
 
+    const updateTitle = (value) => {
+        article.value.title = value
+    }
+
+    const title = useState('title', () => article.value.title)
+
     provide('nav',nav)
     provide('user', article.value.user)
     provide('date', article.value.createdAt)

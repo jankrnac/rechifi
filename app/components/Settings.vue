@@ -98,6 +98,7 @@
 
 const props = defineProps(['editable','post'])
 const local = ref(props.post)
+const title = useState('title')
 
 const loading = ref(false)
 
@@ -114,7 +115,10 @@ const coverChanged = (data) => {
 }
 
 watch(() => local.value.title, (value) =>
-    local.value.slug = useSlug(value)
+    {
+        local.value.slug = useSlug(value)
+        title.value = value
+    }
 , {
     deep: true
 })
@@ -141,7 +145,6 @@ const publish = (value) => {
     },400)
 
 }
-
 
 const manualMode = ref(false)
 const headphone = ref()

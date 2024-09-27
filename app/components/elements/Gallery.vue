@@ -28,7 +28,14 @@
 
 			<template v-else>
 				<Slide v-for="slide in [1,2,3]" :key="slide">
-					<nuxt-img src="placeholder.webp" format="webp" sizes="480px" height="480px" densities="x1" fit="cover" class="rounded-lg"/>
+					<div class="relative group">
+						<nuxt-img src="placeholder.webp" format="webp" sizes="480px" height="480px" densities="x1" fit="cover" class="rounded-lg"/>
+
+						<UploadSingle v-if="editable" @uploaded="imageChanged" class="group-hover:flex hidden absolute inset-0 flex-col flex-1 justify-center items-center">
+							<div class="bg-gray-100/80 dark:bg-gray-900/50 px-4 py-2 rounded-lg">Click to change image</div>
+						</UploadSingle>	
+					</div>
+
 				</Slide>
 			</template>
 			
