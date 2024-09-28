@@ -11,13 +11,13 @@
     </template>
 
     <template v-else>
-        <Carousel :items-to-show="3">
+        <Carousel :items-to-show="3" class="-m-1">
 			<Slide v-for="(slide, index) in element.data.images" :key="slide">
-				<div class="relative group">
+				<div class="relative group m-1">
 					<nuxt-img :src="slide" format="webp" sizes="480px" height="480px" densities="x1" fit="cover" class="rounded-lg"/>
 
-					<div class="group-hover:flex hidden absolute inset-0 opacity-90 flex-col space-y-2 flex-1 justify-center items-center">
-						<UploadSingle v-if="editable" @uploaded="imageChanged">
+					<div v-if="editable" class="group-hover:flex hidden absolute inset-0 opacity-90 flex-col space-y-2 flex-1 justify-center items-center">
+						<UploadSingle @uploaded="imageChanged">
 							<UButton @click="currentIndex = index">Change image</UButton>
 						</UploadSingle>
 						<UButton color="red" @click="deleteImage(index)">Delete image</UButton>

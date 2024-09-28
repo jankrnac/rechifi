@@ -89,9 +89,9 @@
 
         <!-- Right header -->
         <div class="flex justify-end">
-			<div class="hidden lg:flex items-center gap-x-2">
+			<div class="hidden lg:flex items-center gap-x-4">
 
-				<UButton variant="solid" icon="i-ph-plus-circle" size="lg" color="sky" class="cursor-pointer" label="Add" to="/add"/>
+				<UButton variant="solid" icon="i-ph-plus-circle" size="lg" color="sky" class="cursor-pointer" label="Post" to="/add"/>
 
 						<UPopover mode="hover" :popper="{ placement: 'bottom-end' }">
 							<UButton v-if="user && user.avatar" variant="ghost">

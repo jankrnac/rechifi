@@ -20,7 +20,7 @@
             <textarea class="w-full border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none p-4 dark:bg-gray-800" rows="4" v-model="text"></textarea>
         </div>
         <div class="flex justify-end">
-            <UButton v-if="user" color="sky" @click="addComment">Add comment</UButton>
+            <UButton v-if="user" color="sky" @click="addComment" :loading="loading">Add comment</UButton>
             <nuxt-link v-else :to='"/login?redirect="+useRoute().fullPath+"#comments"'>
                 <UButton color="gray">Login to comment</UButton>
             </nuxt-link>
@@ -38,17 +38,21 @@ if (useRoute().path.includes('blog'))
     model = 'posts'
 }
 
-const { data:comments } = await useFetch(`/api/comments/${model}/${props.post.id}`)
+const { data:comments } = await useFetch(`/api/comments/${model}/${props.post.id}`, {
+    deep: true
+})
 const { user } = useUserSession()
 
 const text = ref()
+const loading = ref(false)
 
 const addComment = async () => {
 
+    loading.value = true
     var commentPayload =   {
         text: text.value,
         userId: user.value.id,
-        postId:     props.post.id
+        postId: props.post.id
     }
 
     const comment = await $fetch(`/api/comments/${model}`, {
@@ -56,14 +60,15 @@ const addComment = async () => {
         body: commentPayload
     })
 
-    comment.profiles = {
+    comment.user = {
         username: user.value.username
     }
 
     comment.likes = []
 
     comments.value.push(comment)
-    
+    loading.value = false
+
 }
 
 

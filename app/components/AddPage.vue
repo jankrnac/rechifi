@@ -3,7 +3,7 @@
     <div class="flex flex-col flex-grow justify-center items-center mb-24">
 
         <h1 class="text-3xl lg:text-6xl my-4 lg:mt-16 lg:mb-24">
-            <span class="font-bold">Add </span> 
+            <span class="font-bold">Post </span> 
             <span class="font-playfair">new</span>
         </h1>
 

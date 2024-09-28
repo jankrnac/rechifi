@@ -112,7 +112,7 @@ export const commentsRelations = relations(comments, ({ one, many }) => ({
       references: [posts.id],
     }),
     user: one(users, {
-        fields: [comments.postId],
+        fields: [comments.userId],
         references: [users.id],
     }),
     likes: many(likes)
