@@ -1,6 +1,7 @@
 <template>
   
     <NuxtLoadingIndicator />
+    <UNotifications />
 
     <div class="dark:bg-gray-950 dark:text-gray-200 font-sans min-h-screen flex flex-col flex-1">
   

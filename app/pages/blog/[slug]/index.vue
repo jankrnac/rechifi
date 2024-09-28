@@ -26,7 +26,8 @@
     provide('user', article.value.user)
     provide('date', article.value.createdAt)
 
-    
+    const title = useState('title', () => article.value.title)
+
     const publish = async (value) => {
         const { error } = await client.from('reviews').update({
             'published': value

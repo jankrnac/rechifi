@@ -1,4 +1,5 @@
 export const useLayout = () => {
+    const toast = useToast()
 
     const save = async (post: Ref, activeElements) => {
 
@@ -82,15 +83,16 @@ export const useLayout = () => {
             // Upload Multi
             if(element.uploads)
             {
-
                 // Upload the file and get the name from CDN
                 const uploadResult = await $fetch(`/api/files/blob`, {
                     method: 'POST',
                     body: element.uploads
                 })
 
+                console.log(...uploadResult.map(e => e.pathname))
                 // Change the name
-                element.data.images = uploadResult.map(e => e.pathname)
+                element.data.images = element.data.images.slice(0, -uploadResult.length)
+                element.data.images.push(...uploadResult.map(e => e.pathname))
                 
                 // Update our DB with
                 await $fetch('/api/elements/' + element.id, {
@@ -100,8 +102,53 @@ export const useLayout = () => {
                         order: index
                     }
                 })
-
             }
+
+            // Image changes (Gallery)
+            if(element.imageChanges)
+            {
+                for (const [index,change] of Object.entries(element.imageChanges)) {
+                    // Upload the file and get the name from CDN
+                    const uploadResult = await $fetch(`/api/files/blob`, {
+                        method: 'POST',
+                        body: change
+                    })
+                
+
+                    // Change the name
+                    element.data.images[index] = uploadResult[0].pathname
+                }
+
+                // Update our DB with
+                await $fetch('/api/elements/' + element.id, {
+                    method: "PUT",
+                    body: {
+                        data: element.data,
+                        order: index
+                    }
+                })
+            }
+
+                // Image deletions (Gallery)
+                if(element.imageDeletions)
+                {
+                    for (const deletion of element.imageDeletions.entries()) {
+
+                        await $fetch('/api/files/blob/' + element.data.images[deletion], {
+                            method: "DELETE"
+                        })
+                    
+                    }
+    
+                    // Update our DB with
+                    await $fetch('/api/elements/' + element.id, {
+                        method: "PUT",
+                        body: {
+                            data: element.data,
+                            order: index
+                        }
+                    })
+                }
         }
 
 
@@ -163,6 +210,8 @@ export const useLayout = () => {
             method: "PUT",
             body: post.value
         })
+
+        toast.add({ title: 'Layout saved' })
     }
 
     return {

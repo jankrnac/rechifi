@@ -11,4 +11,4 @@ export default eventHandler(async (event) => {
             addRandomSuffix: true
         }
     })
-  })
+})

@@ -11,7 +11,7 @@ export default eventHandler(async (event) => {
         },
         where: and( 
             query && query.type ? inArray(tables.posts.type, [query.type]) : inArray(tables.posts.type, ['article', 'review']),
-            query && query.gearType ? or(inArray(tables.posts.gearType, [].concat(query.gearType)),isNull(tables.posts.gearType)) : inArray(tables.posts.gearType, ['iem', 'dap','dac']),
+            query && query.gearType ? or(inArray(tables.posts.gearType, [].concat(query.gearType)), isNull(tables.posts.gearType)): or(inArray(tables.posts.gearType, ['iem', 'dap','dac']), isNull(tables.posts.gearType)),
             eq(tables.posts.published, true)
         ),
         orderBy: [desc(tables.posts.id)],

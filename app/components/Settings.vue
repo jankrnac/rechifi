@@ -129,7 +129,7 @@ const save = () => {
 
     setTimeout(() => {
         loading.value = false
-    },400)
+    },100)
 }
 
 const loadingPublish = ref(false)

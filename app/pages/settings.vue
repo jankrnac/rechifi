@@ -36,11 +36,11 @@
                                 <label class="block text-sm font-semibold leading-6 mb-1">Avatar</label>
                                 <div class="mt-2 flex items-center gap-x-3">
 
-                                    <div v-if="avatar" class="w-14 h-14">
-                                        <img :src="avatar" class="rounded-full max-h-full max-w-full"/>
+                                    <div v-if="avatar">
+                                        <nuxt-img :src="avatar" width="40" densities="x1" />
                                     </div>
 
-                                    <UIcon name="i-ph-user" v-else class="w-8 h-8" aria-hidden="true" />
+                                    <UIcon v-else name="i-ph-user" class="w-8 h-8" aria-hidden="true" />
 
                                     <UploadSingle @uploaded="setAvatar" :aspectRatio="1">
                                         <button type="button" class="rounded-md px-2.5 py-1.5 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Change</button>
@@ -150,7 +150,7 @@
 
     const avatar = computed(() => {
         if(preview.value) return preview.value
-        if(profile.value.avatar) return '/images/' + profile.value.avatar.filename
+        if(profile.value.avatar) return profile.value.avatar.filename
         return false
     })
     
@@ -202,6 +202,9 @@
             profile.value.avatarId = file.id
 
             bodyPayload['filename'] = uploadResult[0].pathname
+            bodyPayload['avatar'] = {
+                filename: uploadResult[0].pathname
+            }
 
         }
         
@@ -224,8 +227,7 @@
             }
         })  
 
-    
-        
+
         await $fetch('/api/auth', {
             method: "PUT",
             body: bodyPayload
