@@ -4,7 +4,7 @@
 
 <div class="flex w-full mt-2 items-start">
     <div class="mr-4 relative text-gray-500">
-        <nuxt-img :src="user.avatar.filename" v-if="user.avatar" name="i-ph-user" width="30" />
+        <nuxt-img :src="comment.user.avatar.filename" v-if="comment.user && comment.user.avatar" name="i-ph-user" width="30" />
         <UIcon v-else name="i-ph-user" class="w-6 h-6" />
     </div>
     <div class="flex-grow">
@@ -12,10 +12,21 @@
         <div class="text-sm">{{ comment.text }}</div>
         <div class="flex gap-1 mt-2 items-center mb-2">
            
-            <UButton size="xs" variant="soft" color="red" v-if="comment.likes.map(e=>e.userId).includes(user.id)" icon="i-ph-heart-fill" @click="dislike(comment)">{{ comment.likes.length }}</UButton>
+            <UButton 
+                size="xs" 
+                variant="soft" 
+                color="red" 
+                v-if="(loggedIn && comment.likes.map(e=>e.userId).includes(user.id) || !loggedIn && comment.likes.map(e=>e.guestId).includes(guest))" 
+                icon="i-ph-heart-fill" 
+                @click="dislike(comment)"
+            >
+                {{ comment.likes.length }}
+            </UButton>
+
             <UButton size="xs" variant="soft" color="gray" v-else icon="i-ph-heart" @click="like(comment)">{{ comment.likes.length }}</UButton>
 
-            <UButton size="xs" color="gray" variant="ghost" @click="replyInputId = comment.id">Reply</UButton>
+            <UButton v-if="loggedIn" size="xs" color="gray" variant="ghost" @click="replyInputId = comment.id">Reply</UButton>
+
             <UDropdown :items="items">
                 <UButton size="xs" variant="ghost" color="gray" trailing-icon="i-ph-caret-down" />
             </UDropdown>
@@ -43,7 +54,7 @@
 
 <script setup>
 
-const { user } = useUserSession()
+const { user, loggedIn } = useUserSession()
 
 const props = defineProps({
     comment: {
@@ -80,15 +91,14 @@ const guest = useCookie('guest')
 guest.value = guest.value || Math.random().toString(36).slice(2, 14)
 
 const like = async (comment) => {
+    let bodyPayload = {}
+    loggedIn.value ? bodyPayload['userId'] = user.value.id : bodyPayload['guestId'] = guest.value
 
-    user ? like['userId'] = user.value.id : guest.value
+    bodyPayload['commentId'] = comment.id
 
     const likeReponse = await $fetch('/api/likes/' + comment.id, {
         method: "POST",
-        body: { 
-            'userId': user.value.id,
-            'commentId': comment.id
-        }
+        body: bodyPayload
     })
 
     emit('like', {
@@ -99,14 +109,14 @@ const like = async (comment) => {
 
 const dislike = async (comment) => {
 
-    user ? like['profile_id'] = user.value.id : guest.value
+    let bodyPayload = {}
+    loggedIn.value ? bodyPayload['userId'] = user.value.id : bodyPayload['guestId'] = guest.value
+
+    bodyPayload['commentId'] = comment.id
 
     await $fetch('/api/likes', {
         method: "DELETE",
-        body: {
-            userId: user.value.id,
-            commentId: comment.id
-        }
+        body: bodyPayload
     })
 
     emit('dislike', {

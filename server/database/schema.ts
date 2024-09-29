@@ -71,6 +71,7 @@ export const likes = sqliteTable('likes', {
     id: integer('id').primaryKey({ autoIncrement: true }),
     postId: integer('postId').references(() => posts.id, {onDelete: 'cascade'}),
     userId: integer('userId').references(() => users.id, {onDelete: 'cascade'}),
+    guestId: text('guestId'),
     commentId: integer('commentId').references(() => comments.id, {onDelete: 'cascade'}),
     createdAt: text("createdAt").default(sql`(CURRENT_TIMESTAMP)`),
 })

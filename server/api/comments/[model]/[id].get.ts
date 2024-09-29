@@ -8,7 +8,11 @@ export default eventHandler(async (event) => {
     let comments = await useDrizzle().query.comments.findMany({
         where: eq(tables.comments.postId, id),
         with: {
-            user: true,
+            user: {
+                with: {
+                    avatar: true
+                }
+            },
             likes: true
         },
         orderBy: [desc(tables.comments.id)],
