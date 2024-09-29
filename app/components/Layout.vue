@@ -4,7 +4,7 @@
     <!--Classic, non editable mode -->
 
     <template v-if="!editable">
-        <div class="flex flex-col gap-y-6 min-h-screen w-full">
+        <div class="flex flex-col gap-y-12 min-h-screen w-full">
             <ElementsWrapper
                 v-for="element in elements"
                 :editable="editable" 
@@ -18,7 +18,7 @@
     <template v-else>
     <ClientOnly>
         <draggable
-            class="min-h-screen w-full max-w-app flex flex-col gap-y-6"
+            class="min-h-screen w-full max-w-app flex flex-col gap-y-12"
             v-model="local"
             group="elements"
             handle=".dragHandle"

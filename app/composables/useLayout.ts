@@ -211,7 +211,7 @@ export const useLayout = () => {
             body: post.value
         })
 
-        toast.add({ title: 'Layout saved' })
+        toast.add({ title: 'Layout saved', color: "green" })
     }
 
     return {

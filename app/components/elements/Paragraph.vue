@@ -7,34 +7,34 @@
       		v-if="editor"
 			class="flex gap-0.5"
     	>
-			<button class="border border-gray-500 bg-white rounded px-3 py-2 text-sm shadow-xl" @click="editor.chain().focus().toggleHeading({ level: 2 }).run()" :class="{ 'is-active': editor.isActive('heading') }">
+			<UButton @click="editor.chain().focus().toggleHeading({ level: 2 }).run()" :variant="editor.isActive('heading') ? 'solid' : 'soft' ">
 				<UIcon name="i-ph-text-h" />
-			</button>
-			<button class="border border-gray-500 bg-white rounded px-3 py-2 text-sm shadow-xl" @click="editor.chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
+			</UButton>
+			<UButton @click="editor.chain().focus().toggleBold().run()" :variant="editor.isActive('bold') ? 'solid' : 'soft'">
 				<UIcon name="i-ph-text-b" />
-			</button>
-			<button  class="border border-gray-500 bg-white rounded px-3 py-2 text-sm shadow-xl" @click="editor.chain().focus().toggleItalic().run()" :class="{ 'is-active': editor.isActive('italic') }">
+			</UButton>
+			<UButton  @click="editor.chain().focus().toggleItalic().run()" :variant="editor.isActive('italic') ? 'solid' : 'soft'">
 				<UIcon name="i-ph-text-italic" />
-			</button>
-			<button class="border border-gray-500 bg-white rounded px-3 py-2 text-sm shadow-xl"  @click="editor.chain().focus().toggleStrike().run()" :class="{ 'is-active': editor.isActive('strike') }">
+			</UButton>
+			<UButton  @click="editor.chain().focus().toggleStrike().run()" :variant="editor.isActive('strike') ? 'solid' : 'soft'">
 				<UIcon name="i-ph-text-strikethrough" />
-			</button>
+			</UButton>
 
-			<button class="border border-gray-500 bg-white rounded px-3 py-2 text-sm shadow-xl"  @click="editor.chain().focus().setTextAlign('left').run()" :class="{ 'is-active': editor.isActive('strike') }">
+			<UButton  @click="editor.chain().focus().setTextAlign('left').run()" :variant="editor.isActive('strike') ? 'solid' : 'soft'">
 				<UIcon name="i-ph-text-align-left" />
-			</button>
+			</UButton>
 
-			<button class="border border-gray-500 bg-white rounded px-3 py-2 text-sm shadow-xl"  @click="editor.chain().focus().setTextAlign('center').run()" :class="{ 'is-active': editor.isActive('strike') }">
+			<UButton  @click="editor.chain().focus().setTextAlign('center').run()" :variant="editor.isActive('strike') ? 'solid' : 'soft'">
 				<UIcon name="i-ph-text-align-center" />
-			</button>
+			</UButton>
 			
-			<button class="border border-gray-500 bg-white rounded px-3 py-2 text-sm shadow-xl"  @click="editor.chain().focus().setTextAlign('right').run()" :class="{ 'is-active': editor.isActive('strike') }">
+			<UButton  @click="editor.chain().focus().setTextAlign('right').run()" :variant="editor.isActive('strike') ? 'solid' : 'soft'">
 				<UIcon name="i-ph-text-align-right" />
-			</button>
+			</UButton>
 			
-			<button class="border border-gray-500 bg-white rounded px-3 py-2 text-sm shadow-xl"  @click="editor.chain().focus().setTextAlign('justify').run()" :class="{ 'is-active': editor.isActive('strike') }">
+			<UButton  @click="editor.chain().focus().setTextAlign('justify').run()" :variant="editor.isActive('strike') ? 'solid' : 'soft'">
 				<UIcon name="i-ph-text-align-justify" />
-			</button>
+			</UButton>
 
     	</bubble-menu>
 
@@ -72,18 +72,7 @@ import TextAlign from '@tiptap/extension-text-align'
 			TextAlign.configure({
 				types: ['paragraph'],
 			}),
-			StarterKit.configure({
-				heading: {
-					HTMLAttributes: {
-						class: 'text-3xl'
-					}
-				},
-				paragraph: {
-					HTMLAttributes:{
-						class: 'lg:text-lg outline-none border-none'
-					}
-				}
-			}),
+			StarterKit,
 		],
 		onUpdate({ editor }) {
 			emits('change', {
@@ -113,3 +102,10 @@ import TextAlign from '@tiptap/extension-text-align'
 
 </script>
 
+<style scoped>
+ 
+:deep() h2{
+	@apply text-3xl mb-4;
+}
+
+</style>
