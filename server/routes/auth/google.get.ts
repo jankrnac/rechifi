@@ -1,3 +1,5 @@
+import bcryptjs from "bcryptjs";
+
 export default oauthGoogleEventHandler({
     config: {
         redirectURL: process.env.NUXT_BASE_URL + '/auth/google'
@@ -14,8 +16,13 @@ export default oauthGoogleEventHandler({
         
         if (!dbUser)
         {
+            const password = Math.random().toString(36).slice(2, 14)
+
+            const hashedPassword = await bcryptjs.hash(password, 10); // Hash password
+
             const newUser = await useDrizzle().insert(tables.users).values({
                 email: user.email,
+                password: hashedPassword,
                 name: user.name,
                 username: user.email,
             }).returning().get()

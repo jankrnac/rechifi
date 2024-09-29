@@ -27,7 +27,7 @@
 
             <UButton v-if="loggedIn" size="xs" color="gray" variant="ghost" @click="replyInputId = comment.id">Reply</UButton>
 
-            <UDropdown :items="items">
+            <UDropdown v-if="loggedIn" :items="items">
                 <UButton size="xs" variant="ghost" color="gray" trailing-icon="i-ph-caret-down" />
             </UDropdown>
         </div>
