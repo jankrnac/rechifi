@@ -265,7 +265,7 @@
 	}
 
 	const logout = async () => {
-		clear()
+		await clear()
 
 		window.location.href="/"
 	}

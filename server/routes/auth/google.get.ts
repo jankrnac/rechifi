@@ -1,6 +1,6 @@
 export default oauthGoogleEventHandler({
     config: {
-        redirectURL: 'http://localhost:3003/auth/google'
+        redirectURL: process.env.NUXT_BASE_URL + '/auth/google'
     },
     
     async onSuccess(event, { user }) {
