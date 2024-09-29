@@ -3,12 +3,12 @@
 <div>
 
 <div class="flex w-full mt-2 items-start">
-    <div class="mr-4 bg-white relative z-[55] text-gray-500">
+    <div class="mr-4 relative text-gray-500">
         <nuxt-img :src="user.avatar.filename" v-if="user.avatar" name="i-ph-user" width="30" />
         <UIcon v-else name="i-ph-user" class="w-6 h-6" />
     </div>
     <div class="flex-grow">
-        <nuxt-link noPrefetch :to="'/users/'+comment.user.username" class="text-xs font-bold mb-2 relative z-[99]">{{ comment.user.username }}</nuxt-link>
+        <nuxt-link noPrefetch :to="'/users/'+comment.user.username" class="text-xs font-bold mb-2 relative">{{ comment.user.username }}</nuxt-link>
         <div class="text-sm">{{ comment.text }}</div>
         <div class="flex gap-1 mt-2 items-center mb-2">
            
@@ -130,7 +130,10 @@ const items = [
   }], [{
     label: 'Delete',
     icon: 'i-ph-trash',
-    shortcuts: ['⌘', 'D']
+    shortcuts: ['⌘', 'D'],
+    click: () => {
+        emit('delete', props.comment)
+    }
   }]
 ]
 

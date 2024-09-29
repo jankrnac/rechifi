@@ -20,7 +20,7 @@
             <textarea class="w-full border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none p-4 dark:bg-gray-800" rows="4" v-model="text"></textarea>
         </div>
         <div class="flex justify-end">
-            <UButton v-if="user" color="sky" @click="addComment" :loading="loading">Add comment</UButton>
+            <UButton v-if="user" color="sky" @click="addComment" :loading="loading" :disabled="!text">Add comment</UButton>
             <nuxt-link v-else :to='"/login?redirect="+useRoute().fullPath+"#comments"'>
                 <UButton color="gray">Login to comment</UButton>
             </nuxt-link>
@@ -91,8 +91,12 @@ const removeLike = async (data) => {
     comment.likes.splice(comment.likes.findIndex(l => l.id == data.like.id),1)
 }
 
-const deleteComment = (comment) => {
+const deleteComment = async (comment) => {
     comments.value.splice(comments.value.findIndex(e => e.id == comment.id), 1)
+
+    await $fetch('/api/comments/' + comment.id, {
+        method: "DELETE"
+    })
 }
 
 
