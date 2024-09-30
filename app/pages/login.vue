@@ -14,14 +14,13 @@
 			color="red"
 			variant="solid"
 			:title="loginError"
-			class="w-full"
-			:actions="[{label: 'Resend'}]"
+			class="w-full mb-6"
 
 		>
 	
 			<template #actions>
 				<UButton to="/signup" external v-if="loginError == 'Account not found'" size="xs" color="white">Signup</UButton>
-				<UButton v-else size="xs" color="white" @click="resend">Resend</UButton>
+				<UButton v-if="loginError == 'Account not activated'" size="xs" color="white" @click="resend">Resend</UButton>
 
 			</template>
 		
@@ -45,7 +44,11 @@
   
 			<UFormGroup label="Password" name="password">
 				<UInput v-model="state.password" size="xl" type="password" />
+				<div class="mt-1 text-right">
+					<nuxt-link to="/remind" class="text-sm font-semibold">Reset password</nuxt-link>
+				</div>
 			</UFormGroup>
+			
 			
           	<div>
             	<UButton block type="submit" size="xl" :loading="loginPending">Sign in</UButton>
@@ -53,6 +56,7 @@
 
 			<div class="text-center">
 				<nuxt-link to="/signup" class="text-sm">Not a member? <b class="font-semibold">Sign up</b></nuxt-link>
+
 			</div>
 
 			<div class="relative">

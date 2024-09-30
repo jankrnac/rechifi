@@ -1,10 +1,10 @@
 <template>
 
-<div class="flex flex-1 min-h-screen content relative z-[1]" :class="[editable ? 'border dark:border-gray-700 rounded-xl border-gray-300' : 'border-transparent']">
+<div class="flex flex-1 content relative z-[1]" :class="[editable ? 'border dark:border-gray-700 rounded-xl border-gray-300' : 'border-transparent']">
     <!--Classic, non editable mode -->
 
     <template v-if="!editable">
-        <div class="flex flex-col gap-y-12 min-h-screen w-full">
+        <div class="flex flex-col gap-y-12 w-full">
             <ElementsWrapper
                 v-for="element in elements"
                 :editable="editable" 

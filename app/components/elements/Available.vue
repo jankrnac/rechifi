@@ -43,8 +43,12 @@
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 import draggable from "vuedraggable";
 
-
 const { data:elements } = await useFetch('/api/elements')
+
+if (useRoute().fullPath.includes('blog'))
+{
+    elements.value = elements.value.filter(e => e.type != 'score')
+}
 
 const cloneElement = ({id, type, caption, data}) => {
     return{

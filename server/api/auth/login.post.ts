@@ -20,7 +20,7 @@ export default eventHandler(async (event) => {
             statusMessage: "Account not found",
         }); 
     }
-    else if (!user.token)
+    else if (!user.activated && !user.token)
     {
         return createError({
             statusCode: 404,
@@ -28,7 +28,7 @@ export default eventHandler(async (event) => {
         }); 
         
     }
-    else if (!user.token.activatedAt)
+    else if (user.token && !user.token.activatedAt)
     {
         return createError({
             statusCode: 404,

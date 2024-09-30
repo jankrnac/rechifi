@@ -7,9 +7,9 @@
         <USelectMenu value-attribute="id" v-model="element.data.signature" :options="signatures" multiple placeholder="Select signatures" size="xl"/>
     </div>
 
-    <ul v-else class="flex space-x-2">
+    <ul v-else class="flex space-x-3">
         <li v-for="signature in element.data.signature" 
-            class="px-7 py-4 rounded-lg shadow-lg text-2xl font-thin flex items-center gap-x-2"
+            class="px-6 py-3 rounded-lg shadow-lg text-xl font-thin flex items-center gap-x-2"
             :class="[
                 signature == 'bright' ? 'bg-yellow-200' : '',
                 signature == 'dark' ? 'bg-gray-700  text-white' : '',

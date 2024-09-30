@@ -20,6 +20,7 @@ export const tokens = sqliteTable('tokens', {
     id: integer('id').primaryKey({ autoIncrement: true }),
     userId: integer('userId').references(() => users.id, {onDelete: 'cascade'}),
     value: text('value').notNull(),
+    type: text('type'),
     createdAt: text("createdAt").default(sql`(CURRENT_TIMESTAMP)`),
     activatedAt: text("activatedAt")
 

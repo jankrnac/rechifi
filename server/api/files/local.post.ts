@@ -2,6 +2,7 @@ import { writeFile } from 'fs/promises'
 
 export default eventHandler(async (event) => 
 {
+    await requireUserSession(event)
 
     const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
