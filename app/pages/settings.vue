@@ -79,9 +79,25 @@
                                         <UIcon name="i-ph-x" class="w-4 h-4 text-red-600 cursor-pointer" @click="removeIEM(ownedIem)" />
                                     </li>
                                 </ul>
+
                                 <div class="flex items-center gap-2">
-                                    <ModelCombobox v-model="iem" model="iem" /> 
-                                    <UButton color="blue" @click="addIEM" :disabled="!iem">Add</UButton>
+                                    <USelectMenu
+                                        v-model="iems"
+                                        size="xl"
+                                        searchable
+                                        multiple
+                                        searchable-placeholder="Search an IEM..."
+                                        class="w-full"
+                                        placeholder="Select an IEM"
+                                        :options="allIEMs"
+                                        :search-attributes="['model', 'brand']"
+                                    >
+
+                                        <template #option="{ option }">
+                                            {{ option.brand + ' ' + option.model }}
+                                        </template>
+
+                                    </USelectMenu>
                                 </div>
                             </div>
 
@@ -94,8 +110,25 @@
                                     </li>
                                 </ul>
                                 <div class="flex items-center gap-2">
-                                    <ModelCombobox v-model="dap" model="dap" />
-                                    <UButton color="blue" @click="addDAP" :disabled="!dap">Add</UButton>
+
+                                    <USelectMenu
+                                        v-model="daps"
+                                        size="xl"
+                                        searchable
+                                        multiple
+                                        searchable-placeholder="Search an DAP..."
+                                        class="w-full"
+                                        placeholder="Select an DAP"
+                                        :options="allDAPs"
+                                        :search-attributes="['model', 'brand']"
+                                    >
+
+                                        <template #option="{ option }">
+                                            {{ option.brand + ' ' + option.model }}
+                                        </template>
+
+                                    </USelectMenu>
+
                                 </div>
                             </div>
     
@@ -108,8 +141,23 @@
                                     </li>
                                 </ul>
                                 <div class="flex items-center gap-2">
-                                    <ModelCombobox v-model="dac" model="dac" />
-                                    <UButton color="blue" @click="addDAC" :disabled="!dac">Add</UButton>
+                                    <USelectMenu
+                                        v-model="dacs"
+                                        size="xl"
+                                        searchable
+                                        multiple
+                                        searchable-placeholder="Search an DAC..."
+                                        class="w-full"
+                                        placeholder="Select an DAC"
+                                        :options="allDACs"
+                                        :search-attributes="['model', 'brand']"
+                                    >
+
+                                        <template #option="{ option }">
+                                            {{ option.brand + ' ' + option.model }}
+                                        </template>
+
+                                    </USelectMenu>
                                 </div>                            
                             </div>
     
@@ -246,6 +294,11 @@
         usernameValid.value = !check.value.length
     }
 
+
+    const { data:allIEMs } = await useAsyncData(() => queryContent('/iems').find())
+    const { data:allDAPs } = await useAsyncData(() => queryContent('/daps').find())
+    const { data:allDACs } = await useAsyncData(() => queryContent('/dacs').find())
+
     const iems = ref([])
     if(profile.value.iems && profile.value.iems.length)
     {
@@ -274,12 +327,6 @@
         };
     }
 
-
-    const iem = ref()
-    const addIEM = async () => 
-    {
-        iems.value.push(await queryContent(iem.value._path).findOne())
-    }
 
     const removeIEM = (data) => 
     {

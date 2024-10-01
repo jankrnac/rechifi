@@ -3,17 +3,17 @@
 <div class="w-full mb-36">	
 
 	<div class="flex justify-center items-center md:justify-start mb-8 gap-4">
-		<h2 class="text-xl font-bold">Reviews <span class="text-gray-400 text-base">{{ reviews.length }}</span></h2>
+		<UChip :text="reviews.length" size="3xl" color="orange" :show="reviews.length"><h2 class="text-xl font-bold">Reviews</h2></UChip>
 		<div v-if="user && reviews.findIndex(e=>e.profile_id == user.id) < 0" class="bg-blue-200 rounded text-sm px-2 py-1 cursor-pointer" @click="addReview">Add review</div>
 	</div>
 
 	<template v-if="reviews.length">
 
-	<ul class="grid grid-cols-2 lg:grid-cols-5 gap-5">
-		<li v-for="review in reviews">
-			<ReviewBox :review="review" size="small" />
-		</li>
-	</ul>
+		<ul class="grid grid-cols-2 lg:grid-cols-5 gap-5">
+			<li v-for="review in reviews">
+				<ReviewBox :post="review" size="small" />
+			</li>
+		</ul>
 
 	</template>
 
@@ -38,7 +38,6 @@ const props = defineProps({
 		required: true
 	}
 })
-
 
 const addReview = async () => {
 

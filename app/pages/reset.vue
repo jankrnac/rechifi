@@ -67,6 +67,7 @@
             method: "POST",
             body: {
                 password: state.password,
+                token: useRoute().query.code
             }
         }).catch((err) => {
             resetError.value = err.data.statusMessage

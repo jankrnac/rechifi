@@ -7,8 +7,11 @@ export default eventHandler(async (event) => {
             eq(tables.posts.type, 'review'),
             eq(tables.posts.brand, query.brand),
             eq(tables.posts.model, query.model),
-
-        )
+        ),
+        with: {
+            cover: true,
+            user: true
+        }
     })
 
     return articles
