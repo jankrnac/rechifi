@@ -1,7 +1,8 @@
 <template>
 
 <div>
-    <UPopover>
+
+	<UPopover>
 
         <UButton icon="i-ph-gear" color="sky" />
 		

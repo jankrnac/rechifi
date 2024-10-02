@@ -8,7 +8,6 @@
 </template>
   
 <script setup>
-    import { SwitchGroup, Switch } from '@headlessui/vue'
 
     const props = defineProps({
         model: String
