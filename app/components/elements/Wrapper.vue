@@ -15,17 +15,17 @@
             </div>
             
             <!-- Options popup wrapper-->
-            <ElementsOptions 
-                v-if="editable"
-                @delete="deleted" 
-                @change="changed"
-                :element="element"
-                :options="elements.find(e => e.type == element.type).data"
-            />
+       
         </div>
 
         <!-- Dynamic layout component, see componentsMap variable -->
-
+    	<component 
+            :is="componentsMap[element.type]" 
+            :element="element" 
+            :editable="editable"
+            :dragging="dragging"
+            @change="changed"
+        />
 
 	</div>
 
