@@ -72,6 +72,24 @@
 
         <h1 class="text-3xl font-bold mb-6">Choose {{ local.gearType }} model</h1>
 
+        <USelectMenu
+            v-model="daps"
+            size="xl"
+            searchable
+            multiple
+            searchable-placeholder="Search an DAP..."
+            class="w-full"
+            placeholder="Select an DAP"
+            :options="allDAPs"
+            :search-attributes="['model', 'brand']"
+        >
+
+            <template #option="{ option }">
+                {{ option.brand + ' ' + option.model }}
+            </template>
+
+        </USelectMenu>
+
         <ModelCombobox v-if="!manualMode && local.gearType" v-model="headphone" :model="local.gearType" />
 
         <div v-else-if="local.gearType" class="mt-6">
