@@ -9,8 +9,10 @@
 		<template #panel>
 			<div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black/5">
                 	<div class="relative bg-white p-2 text-gray-800 text-left flex flex-col items-start space-y-5">
-					
-						<ElementsOptionsTextalign />
+						<div v-for="[key, value] of Object.entries(options)">
+							11
+						</div>
+						
                     	<UButton v-if="element.type != 'title'" color="red" size="xs" icon="i-ph-x" @click="$emit('delete')">
                         	Delete
 						</UButton>
