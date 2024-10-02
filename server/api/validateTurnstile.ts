@@ -8,5 +8,5 @@ export default defineEventHandler(async (event) => {
       })
     }
   
-    return await verifyTurnstileToken(token)
+    return await verifyTurnstileToken(token, event)
   })
