@@ -1,4 +1,6 @@
 <template>
+
+    <PostPage :post="article" />
     
 </template>
     
