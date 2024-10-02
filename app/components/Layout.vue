@@ -31,14 +31,7 @@
         >
 
             <template #item="{ element, index }">
-                <ElementsWrapper
-                    :editable="editable" 
-                    :dragging="dragging"
-                    :element="element"
-                    @deleted="onRemove(element.id, index)"
-                    @change="onChange(element.id, $event)"
-                    :elements="availableElements"
-                />
+               
             </template>
 
         </draggable> 

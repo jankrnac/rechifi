@@ -23,6 +23,7 @@
         
         <div class="w-full max-w-app mx-auto mb-24">
     
+            <Layout :elements="post.elements" />
     
             <LazyComments :post="post" />
     
