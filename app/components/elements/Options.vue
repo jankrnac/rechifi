@@ -35,7 +35,8 @@ const props = defineProps({
 		type: Object
 	},
 	options: {
-		type: Object 
+		type: Object,
+		default: () => {}
 	}
 })
 
