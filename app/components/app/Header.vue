@@ -23,8 +23,8 @@
 			
 			<div class="hidden lg:flex lg:gap-x-6">
 
-				<UButton variant="ghost" color="gray" to="/blog"><span class="font-semibold">{{ t('news') }}</span></UButton>
-				<UButton variant="ghost" color="gray" to="/reviews"><span class="font-semibold">{{ t('reviews') }}</span></UButton>
+				<UButton variant="ghost" color="gray" to="/blog"><span class="font-semibold">News</span></UButton>
+				<UButton variant="ghost" color="gray" to="/reviews"><span class="font-semibold">Reviews</span></UButton>
 
 				<UPopover mode="hover">
 
@@ -71,7 +71,7 @@
 					
 				</UPopover>
 
-				<UButton variant="ghost" color="gray" to="/upcoming"><span class="font-semibold">{{ t('upcoming') }}</span></UButton>
+				<UButton variant="ghost" color="gray" to="/upcoming"><span class="font-semibold">Upcoming</span></UButton>
 
 			</div>
         </div>
@@ -81,7 +81,7 @@
 			<Icon name="ph:magnifying-glass-light" class="w-5 h-5 absolute top-3.5 left-4 text-gray-400 hidden lg:block" />
             <input class="bg-gray-50 p-3 pl-4 lg:pl-12 rounded-lg border w-full text-sm lg:text-base dark:bg-gray-800 dark:border-gray-700" 
 					type="text" 
-					:placeholder="t('search-placeholder')"
+					placeholder="Search"
 					v-model="query"
 					@keypress.enter="search()"
 				/>
@@ -172,7 +172,7 @@
 						<UInput size="xl" 
 								type="text" 
 								icon="i-ph-magnifying-glass-thin"
-								:placeholder="t('search-placeholder')"
+								placeholder="Search"
 								v-model="query"
 								@keypress.enter="search()"
 						>
@@ -183,13 +183,13 @@
 					<!-- Navigation section -->
 					<div class="space-y-2 py-6">
 						<div v-for="item in navigation" :key="item.name" :href="item.href" class="">
-							<a :href="item.href" :class="[item.current ? 'bg-gray-50' : 'dark:hover:bg-gray-700  hover:bg-gray-50', 'block rounded-md py-2 p-2 text-sm leading-6 font-semibold']">{{ t(item.name) }}</a>
+							<a :href="item.href" :class="[item.current ? 'bg-gray-50' : 'dark:hover:bg-gray-700  hover:bg-gray-50', 'block rounded-md py-2 p-2 text-sm leading-6 font-semibold']">{{ item.name }}</a>
 							<ul v-if="item.children">
 								<li v-for="child in item.children">
 									<nuxt-link :to="child.href" 
 										:class="[child.current ? 'bg-gray-50' : 'dark:hover:bg-gray-700  hover:bg-gray-50', 'block ml-6 rounded-md py-2 p-2 text-sm leading-6 font-semibold']"
 										@click="mobileMenuOpen = false"
-										>{{ t(child.name) }}
+										>{{ child.name }}
 									</nuxt-link>
 								</li>
 							</ul>
@@ -225,10 +225,6 @@
 </template>
 
 <script setup>
-	
-	const { t } = useI18n({
-		useScope: 'local'
-	})
 
 	const { loggedIn, user, clear } = useUserSession()
 
@@ -273,25 +269,3 @@
 
 
 </script>
-
-<i18n lang="yaml">
- en:
-  home: 'Home'
-  news: 'Articles'
-  reviews: 'Reviews'
-  iems: 'In-Ear Monitors'
-  daps: 'Digital audio players'
-  dacs: 'Digital audio converters'
-  products: 'Gear'
-  upcoming: 'Upcoming'
-  search-placeholder: 'Search for articles, reviews, audio gear and users'
-  sales: 'Sales'
- cz:
-  home: 'Domů'
-  articles: 'Články'
-  reviews: 'Recenze'
-  iems: 'Sluchátka'
-  upcoming: 'Novinky'
-  search-placeholder: 'Hledej v článcích a slúchatkách'
-  sales: 'Slevy'
-</i18n>

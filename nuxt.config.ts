@@ -36,7 +36,6 @@ export default defineNuxtConfig({
 		'@nuxtjs/color-mode',
 		'@nuxtjs/google-fonts',
 		'@nuxt/image',
-		'@nuxtjs/i18n',
 		'vue3-carousel-nuxt',
 		'@nuxtjs/device',
 		'nuxt-auth-utils',

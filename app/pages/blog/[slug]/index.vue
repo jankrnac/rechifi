@@ -22,7 +22,7 @@
     // Extract sections elements for navigation (in Header element)
     const nav = article.value.elements.filter(e => e.type == 'section')
 
-    provide('nav',nav)
+    provide('nav', nav)
     provide('user', article.value.user)
     provide('date', article.value.createdAt)
 

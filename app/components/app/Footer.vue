@@ -32,12 +32,6 @@
   
 <script setup>
   
-const { locale, locales, setLocale, setLocaleCookie } = useI18n()
-
-watch(locale, (value) => {
-	setLocaleCookie(value)
-	setLocale(value)
-})
 
 const navigation = {
   main: [
