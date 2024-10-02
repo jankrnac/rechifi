@@ -5,7 +5,12 @@
 
     <template v-if="!editable">
         <div class="flex flex-col gap-y-12 w-full">
-        
+            <ElementsWrapper
+                v-for="element in elements"
+                :editable="editable" 
+                :element="element"
+                :elements="elements"
+            />
         </div>
     </template>
 
