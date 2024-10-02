@@ -20,7 +20,6 @@
                 @delete="deleted" 
                 @change="changed"
                 :element="element"
-                :options="elements.find(e => e.type == element.type).data"
             />
         </div>
 
