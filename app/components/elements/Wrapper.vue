@@ -3,12 +3,12 @@
 <div class="flex">
 
     
-	<div class="w-full text-center relative border" :class="[optionsVisible ? 'border-blue-400 border-dashed':'border-white dark:border-gray-950']" 
+	<div class="w-full text-center relative border" 
         @mouseover="showHover" 
         @mouseout="hideHover" 
     >
 
-        <div v-if="editable" class="absolute text-white flex flex-col -top-4 -left-14 z-[9] gap-1 p-4 min-h-full" v-show="optionsVisible">
+        <div class="absolute text-white flex flex-col -top-4 -left-14 z-[9] gap-1 p-4 min-h-full">
 
             <div class="cursor-move rounded dragHandle">
                 <UButton icon="i-ph-caret-up-down" color="teal"/>
