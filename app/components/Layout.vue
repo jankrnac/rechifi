@@ -5,12 +5,7 @@
 
     <template v-if="!editable">
         <div class="flex flex-col gap-y-12 w-full">
-            <ElementsWrapper
-                v-for="element in elements"
-                :editable="editable" 
-                :element="element"
-                :elements="elements"
-            />
+        
         </div>
     </template>
 
@@ -31,7 +26,14 @@
         >
 
             <template #item="{ element, index }">
-               
+                <ElementsWrapper
+                    :editable="editable" 
+                    :dragging="dragging"
+                    :element="element"
+                    @deleted="onRemove(element.id, index)"
+                    @change="onChange(element.id, $event)"
+                    :elements="availableElements"
+                />
             </template>
 
         </draggable> 
