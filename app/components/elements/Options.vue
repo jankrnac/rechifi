@@ -45,7 +45,11 @@ const changed = (data) => {
 }
 
 const componentsMap = {
-
+	textAlign: resolveComponent('ElementsOptionsTextalign'),
+	image: resolveComponent('ElementsOptionsImage'),
+	reversed: resolveComponent('ElementsOptionsToggle'),
+	images: resolveComponent('ElementsOptionsImages'),
+	text: resolveComponent('ElementsOptionsText')
 
 }
 

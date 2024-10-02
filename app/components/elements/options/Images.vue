@@ -5,6 +5,7 @@
 
     <div v-if="element.data.images.length" class="text-xs mb-2">Drag to rearrange.</div>
 
+    <ClientOnly>
     <draggable
         class="list-group flex gap-2 mb-2"
         :list="element.data.images"
@@ -18,7 +19,8 @@
         </template>
 
     </draggable>
-
+    </ClientOnly>
+    
     <UploadMulti @uploaded="imagesAdded">
         <UButton color="blue" size="xs">Add images</UButton>
     </UploadMulti>
