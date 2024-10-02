@@ -1,8 +1,7 @@
 <template>
 
 <div>
-
-	<UPopover>
+    <UPopover>
 
         <UButton icon="i-ph-gear" color="sky" />
 		
@@ -36,8 +35,7 @@ const props = defineProps({
 		type: Object
 	},
 	options: {
-		type: Object,
-		default: () => {}
+		type: Object 
 	}
 })
 
@@ -47,11 +45,7 @@ const changed = (data) => {
 }
 
 const componentsMap = {
-	textAlign: resolveComponent('ElementsOptionsTextalign'),
-	image: resolveComponent('ElementsOptionsImage'),
-	reversed: resolveComponent('ElementsOptionsToggle'),
-	images: resolveComponent('ElementsOptionsImages'),
-	text: resolveComponent('ElementsOptionsText')
+
 
 }
 

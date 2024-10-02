@@ -3,12 +3,12 @@
 <div class="flex">
 
     
-	<div class="w-full text-center relative border" 
+	<div class="w-full text-center relative border" :class="[optionsVisible ? 'border-blue-400 border-dashed':'border-white dark:border-gray-950']" 
         @mouseover="showHover" 
         @mouseout="hideHover" 
     >
 
-        <div class="absolute text-white flex flex-col -top-4 -left-14 z-[9] gap-1 p-4 min-h-full">
+        <div class="absolute text-white flex flex-col -top-4 -left-14 z-[9] gap-1 p-4 min-h-full" v-show="optionsVisible">
 
             <div class="cursor-move rounded dragHandle">
                 <UButton icon="i-ph-caret-up-down" color="teal"/>
@@ -16,10 +16,11 @@
             
             <!-- Options popup wrapper-->
             <ElementsOptions 
-                
+                v-if="editable"
                 @delete="deleted" 
                 @change="changed"
                 :element="element"
+                :options="elements.find(e => e.type == element.type).data"
             />
         </div>
 
