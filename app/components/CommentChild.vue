@@ -23,12 +23,19 @@
                 {{ comment.likes.length }}
             </UButton>
 
-            <UButton size="xs" variant="soft" color="gray" v-else icon="i-ph-heart" @click="like(comment)">{{ comment.likes.length }}</UButton>
+            <UButton v-else size="xs" variant="soft" color="gray" icon="i-ph-heart" @click="addLike(comment)">{{ comment.likes.length }}</UButton>
 
             <UButton v-if="loggedIn" size="xs" color="gray" variant="ghost" @click="replyInputId = comment.id">Reply</UButton>
 
             <UDropdown v-if="loggedIn" :items="items">
                 <UButton size="xs" variant="ghost" color="gray" trailing-icon="i-ph-caret-down" />
+
+                <template #item="{ item }">
+                    <span class="truncate">{{ item.label }}</span>
+
+                    <UIcon :name="item.icon" class="flex-shrink-0 h-4 w-4 text-gray-400 dark:text-gray-500 ms-auto" />
+                </template>
+
             </UDropdown>
         </div>
 
@@ -44,7 +51,14 @@
 
 <ul>
     <li v-for="child in comment.children" class="ml-8 relative">
-        <CommentChild :comment="child" @delete="deleteComment"/>
+        <CommentChild 
+            :comment="child"
+            @like="addLike(child)"
+            @comment="addReply(child.id)"
+            @delete="deleteComment"
+            @dislike="dislike(child)"
+
+        />
     </li>
 </ul>
 
@@ -72,15 +86,10 @@ const addReply = async (id) => {
     const commentPayload =   {
         text: replyText.value,
         userId: user.value.id,
-        parentId: id
+        parentId: id,
     }
 
-    const comment = await $fetch(`/api/comments/${model}`, {
-        method: "POST",
-        body: commentPayload
-    })
-
-    emit('comment', comment)
+    emit('comment', commentPayload)
 
     replyInputId.value = null
     replyText.value = null
@@ -90,35 +99,15 @@ const guest = useCookie('guest')
 
 guest.value = guest.value || Math.random().toString(36).slice(2, 14)
 
-const like = async (comment) => {
-    let bodyPayload = {}
-    loggedIn.value ? bodyPayload['userId'] = user.value.id : bodyPayload['guestId'] = guest.value
+const addLike = async (comment) => {
 
-    bodyPayload['commentId'] = comment.id
+    emit('like', comment)
 
-    const likeReponse = await $fetch('/api/likes/' + comment.id, {
-        method: "POST",
-        body: bodyPayload
-    })
-
-    emit('like', {
-        comment: comment,
-        like: likeReponse
-    })
 }
 
 const dislike = async (comment) => {
 
-    let bodyPayload = {}
-    loggedIn.value ? bodyPayload['userId'] = user.value.id : bodyPayload['guestId'] = guest.value
-
-    bodyPayload['commentId'] = comment.id
-
-    await $fetch('/api/likes', {
-        method: "DELETE",
-        body: bodyPayload
-    })
-
+    const like = comment.likes.find(e=>e.userId == user.value.id)
     emit('dislike', {
         comment: comment,
         like: like
@@ -128,9 +117,12 @@ const dislike = async (comment) => {
 
 
 const deleteComment = async (comment) => {
-    await client.from('comments').delete().eq('id', comment.id)
 
-    emit('delete', comment)
+    like = comment.likes.find(e=>e.userId == user.id)
+    emit('delete', {
+        comment: comment,
+        like: like
+    })
 }
 
 const items = [
@@ -140,10 +132,6 @@ const items = [
   }], [{
     label: 'Delete',
     icon: 'i-ph-trash',
-    shortcuts: ['⌘', 'D'],
-    click: () => {
-        emit('delete', props.comment)
-    }
   }]
 ]
 

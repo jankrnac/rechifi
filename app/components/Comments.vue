@@ -1,6 +1,5 @@
 <template>
     <div class="mt-24">
-
         <h2 class="font-black text-4xl mb-6">Comments</h2>
         <ul class="mb-12 flex flex-col gap-3 relative">
             <li v-for="comment in useCreateTree(comments)" class="relative">
@@ -38,7 +37,7 @@ if (useRoute().path.includes('blog'))
     model = 'posts'
 }
 
-const { data:comments } = await useFetch(`/api/comments/${model}/${props.post.id}`, {
+const { data:comments } = await useLazyFetch(`/api/comments/}/${props.post.id}`, {
     deep: true
 })
 const { user } = useUserSession()
@@ -66,7 +65,7 @@ const addComment = async () => {
 
     comment.likes = []
 
-    comments.value.push(comment)
+    comments.value.unshift(comment)
     loading.value = false
 
 }
@@ -74,21 +73,42 @@ const addComment = async () => {
 
 const addReply = async (reply) => {
 
-    reply.profiles = {
-        username: profile.value.username
+    reply.user = {
+        username: user.value.username
     }
+
     reply.likes = []
+    reply.postId = props.post.id
+
+    const response = await $fetch(`/api/comments/posts`, {
+        method: "POST",
+        body: reply
+    })
+
     comments.value.push(reply)
 
 }
 
-const addLike = async (data) => {
-    comments.value.find(e => e.id == data.comment.id).likes.push(data.like)
+const addLike = async (comment) => {
+    const like = await $fetch('/api/likes/' + comment.id, {
+        method: "POST",
+        body: {
+            commentId: comment.id,
+            userId: comment.userId
+        }
+    })
+
+    comments.value.find(e => e.id == comment.id).likes.push(like)
+
 }
 
 const removeLike = async (data) => {
-    const comment = comments.value.find(e => e.id == data.comment.id)
-    comment.likes.splice(comment.likes.findIndex(l => l.id == data.like.id),1)
+    console.log(data)
+    await $fetch('/api/likes/' + data.like.id, {
+        method: "DELETE",
+    })
+
+    data.comment.likes.splice(data.comment.likes.findIndex(l => l.id == data.like.id),1)
 }
 
 const deleteComment = async (comment) => {
