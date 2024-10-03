@@ -52,7 +52,7 @@
                 <UInput v-model="local.slug" disabled />
 
                 <div class="text-sm font-semibold mt-4 mb-2">Description</div>
-                <UTextarea type="text" v-model="local.description" rows="6"></UTextarea>
+                <UTextarea type="text" v-model="local.description" :rows="6"></UTextarea>
             </div>
 
             <div class="flex flex-col flex-1 items-center justify-center">
@@ -72,25 +72,24 @@
 
         <h1 class="text-3xl font-bold mb-6">Choose {{ local.gearType }} model</h1>
 
+       
         <USelectMenu
-            v-model="daps"
+            v-if="!manualMode && local.gearType"
+            v-model="headphone"
             size="xl"
             searchable
-            multiple
-            searchable-placeholder="Search an DAP..."
-            class="w-full"
-            placeholder="Select an DAP"
-            :options="allDAPs"
+            :searchable-placeholder="'Search '+local.gearType"
+            class="w-full max-w-[500px]"
+            :placeholder="'Select ' + local.gearType.toUpperCase()"
+            :options="allGear"
             :search-attributes="['model', 'brand']"
         >
 
             <template #option="{ option }">
-                {{ option.brand + ' ' + option.model }}
+                <span class="capitalize">{{ option.brand + ' ' + option.model }}</span>
             </template>
 
         </USelectMenu>
-
-        <ModelCombobox v-if="!manualMode && local.gearType" v-model="headphone" :model="local.gearType" />
 
         <div v-else-if="local.gearType" class="mt-6">
             <div class="font-semibold">Brand</div>
@@ -171,5 +170,9 @@ const brand = ref()
 const model = ref()
 
 const errors = ref([])
+
+const { data:allGear } = await useAsyncData(local.value.gearType, () => queryContent(local.value.gearType).find(), { 
+	watch: [() => local.value.gearType]
+})
 
 </script>

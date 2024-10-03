@@ -229,20 +229,20 @@
 	const { loggedIn, user, clear } = useUserSession()
 
 	const navigation = [
-		{ name: 'news', href: '/blog' },
-		{ name: 'reviews', href: '/reviews' },
-		{ name: 'products', children: [
+		{ name: 'News', href: '/blog' },
+		{ name: 'Reviews', href: '/reviews' },
+		{ name: 'Gear', children: [
 			{
-				name: 'iems', href: '/iems',
+				name: 'IEMs', href: '/iems',
 			},
 			{
-				name: 'daps', href: '/daps',
+				name: 'DAPs', href: '/daps',
 			},
 			{
-				name: 'dacs', href: '/dacs',
+				name: 'DACs', href: '/dacs',
 			}	
 		]},
-		{ name: 'upcoming', href: '/upcoming' },
+		{ name: 'Upcoming', href: '/upcoming' },
 	]
   
   	const mobileMenuOpen = ref(false)

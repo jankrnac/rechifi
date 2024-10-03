@@ -32,23 +32,23 @@
         <h1 class="text-3xl font-bold mb-6">Choose {{ type }} model</h1>
 
         <USelectMenu
+            v-if="!manualMode"
             v-model="headphone"
             size="xl"
             searchable
-            searchable-placeholder="Search an DAP..."
-            class="w-full"
-            placeholder="Select an DAP"
-            :options="allDAPs"
+            :searchable-placeholder="'Search '+type"
+            class="w-full max-w-[500px]"
+            :placeholder="'Select ' + type.toUpperCase()"
+            :options="allGear"
             :search-attributes="['model', 'brand']"
         >
 
             <template #option="{ option }">
-                {{ option.brand + ' ' + option.model }}
+                <span class="capitalize">{{ option.brand + ' ' + option.model }}</span>
             </template>
 
         </USelectMenu>
 
-        <ModelCombobox v-if="!manualMode" v-model="headphone" :model="type" />
 
 
         <div v-else class="mt-6">
@@ -61,9 +61,9 @@
         </div>
 
         <div v-if="!manualMode" class="text-sm mt-5 cursor-pointer flex items-center" @click="manualMode = true">Item not in list?
-            <div class="border rounded ml-2 px-2 py-0.5 hover:bg-gray-100 dark:hover:bg-gray-700 dark:border-gray-600 transition">Enter manually</div>
+            <UButton size="sm" color="gray" variant="outline" class="ml-4">Enter manually</UButton>
         </div>
-        <div v-else class="border rounded ml-2 px-2 py-0.5 hover:bg-gray-100 transition text-sm mt-5 cursor-pointer dark:hover:bg-gray-700 dark:border-gray-600" @click="manualMode = false">Choose from list</div>
+        <UButton v-else size="sm" color="gray" variant="outline" class="mt-4" @click="manualMode = false">Choose from list</UButton>
 
         <UButton
             class="mt-6"
@@ -99,6 +99,9 @@ const brand = ref()
 const model = ref()
 
 const type = ref('iem')
+const { data:allGear } = await useAsyncData(type.value, () => queryContent(type.value).find(), { 
+	watch: [type]
+})
 
 const errors = ref([])
 

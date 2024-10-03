@@ -3,6 +3,7 @@
 <div class="flex md:flex-row flex-col w-full max-w-app items-start justify-between mb-16 md:mb-32 flex-wrap">
 
     <div>
+        <template v-if="useRoute().fullPath.includes('iems')">
         <div class="text-sm mb-2 font-semibold">Driver composition</div>
         <div class="flex">
             
@@ -10,6 +11,7 @@
                 <DriverLabel v-for="driver in doc.drivers" :driver="driver"></DriverLabel>
             </div>
         </div>
+    </template>
     </div> 
 
     <div>

@@ -16,7 +16,7 @@ released: true
 
 showInIndex: true
 
-new: true
+new: false
 
 images: 
     - /hidizs/sd2/image2.webp

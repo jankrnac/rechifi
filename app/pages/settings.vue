@@ -94,7 +94,7 @@
                                     >
 
                                         <template #option="{ option }">
-                                            {{ option.brand + ' ' + option.model }}
+                                            <span class="capitalize">{{ option.brand + ' ' + option.model }}</span>
                                         </template>
 
                                     </USelectMenu>

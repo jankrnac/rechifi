@@ -198,7 +198,7 @@
 let title = ''
 if(model == 'iems') title = 'In-Ear Monitors'
 if(model == 'daps') title = 'Digital audio players'
-if(model == 'dac') title = 'Digital to analog converters'
+if(model == 'dacs') title = 'Digital to analog converters'
 
 </script>
     

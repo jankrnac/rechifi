@@ -308,6 +308,12 @@ export default defineEventHandler((event) => {
             logo: '',
             link: ''
         },
+        {
+            value: 'celest',
+            label: 'Celest',
+            logo: '',
+            link: ''
+        },
     ]
 
     brands.sort((a, b) => {

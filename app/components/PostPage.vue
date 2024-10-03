@@ -2,7 +2,7 @@
 
     <div class="flex-1">
       
-        <div class="border-y dark:border-gray-700 py-2 lg:p-5 mb-2">
+        <div class="border-b md:border-y dark:border-gray-700 py-4 lg:p-5 mb-2">
     
             <div class="max-w-app mx-auto flex justify-between gap-2">
                 <UButton  v-if="user && post.userId == user.id" :to="useRoute().path + '/edit'" icon="i-ph-pencil-simple">
