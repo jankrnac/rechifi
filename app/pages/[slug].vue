@@ -49,7 +49,7 @@
 <script setup>
     
     useSeoMeta({
-        title: 'IEMs - Rechifi',
+        title: `${useRoute().params.slug.slice(0,-1).toUpperCase()}s - Rechifi`,
         description: `Explore the pinnacle of personal audio with our curated list of chi-fi in-ear monitors. Navigate through our filterable IEMs list to find the perfect blend of technical specifications, 
         sound signature, and price. Dive into detailed reviews, comparisons. Your guide to precision awaits explore our in-ear monitors list now!"`
     })
@@ -71,7 +71,7 @@
     
     const sortPayload = computed(() => {
         return {
-            [activeSort.value.value]:activeSort.value.value == 'name' ? -1 : 1
+            [activeSort.value.value]:activeSort.value.value == 'title' ? 1 : -1
         }
     })
     
@@ -79,11 +79,6 @@
     /***** Filtering  *****/
     
     const filters = [
-        {
-            id: 'showall',
-            name: 'Show all',
-            type: 'checkbox'
-        },
         {
             id: 'signature',
             name: 'Signature',
@@ -104,7 +99,11 @@
             type: 'list',
             options:brands.value
         },
-    
+    ]
+
+    if (useRoute().params.slug == 'iems')
+    {
+        filters.push(
         {
             id: 'drivers',
             name: 'Drivers',
@@ -116,8 +115,8 @@
                 { value: 'est', label: 'EST' },
     
             ],
-        },
-    ]
+        })
+    }
     
     const activeFilters = useState('activeFilters', () => {
         return {}

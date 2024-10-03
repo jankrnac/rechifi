@@ -9,7 +9,7 @@
         <!-- Mobile filter dialog -->
         <GridsMobileFilters ref="mobileDialog" :filters="filters"/>
 
-        <USelectMenu v-model="activeSort" :options="sortOptions" placeholder="Sort by" />
+        <USelectMenu v-model="activeSort" :options="sortOptions" placeholder="Sort by" class="w-full max-w-[140px]" />
       
         <UButton class="lg:hidden" @click="openMobileDialog" variant="ghost" color="gray">Filters</UButton>
 
