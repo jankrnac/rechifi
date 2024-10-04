@@ -1,14 +1,13 @@
 <template>
     <div class="mt-24">
-        <h2 class="font-black text-4xl mb-6">Comments</h2>
-        <ul class="mb-12 flex flex-col gap-3 relative">
+        <UChip :text="comments.length" size="3xl" color="teal" :show="comments.length > 0">
+            <h2 class="font-black text-xl text-center md:text-left">Comments</h2>
+        </UChip>
+
+        <ul class="mb-12 mt-6 flex flex-col gap-3 relative">
             <li v-for="comment in useCreateTree(comments)" class="relative">
                 <CommentChild 
                     :comment="comment" 
-                    @comment="addReply"
-                    @like="addLike"
-                    @dislike="removeLike"
-                    @delete="deleteComment"
                 />
             </li>
         </ul>
@@ -16,7 +15,7 @@
             <div v-if="user" class="text-sm mb-1 text-gray-500">Commenting as 
                 <span  class="font-semibold">{{ user.username }}</span>
             </div>
-            <textarea class="w-full border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none p-4 dark:bg-gray-800" rows="4" v-model="text"></textarea>
+            <UTextarea class="w-full mb-2" :rows="4" v-model="text"></UTextarea>
         </div>
         <div class="flex justify-end">
             <UButton v-if="user" color="sky" @click="addComment" :loading="loading" :disabled="!text">Add comment</UButton>
@@ -28,16 +27,34 @@
 </template>
 
 <script setup>
+const { $listen } = useNuxtApp()
 
-const props = defineProps(['post'])
+const props = defineProps({
+        post: {
+            type: Object
+        },
+        gear: {
+            type: String
+        }
+})
 
-let model
-if (useRoute().path.includes('blog'))
+let column
+let id
+if (props.post)
 {
-    model = 'posts'
+    column = 'postId'
+    id = props.post.id
+}
+else if (props.gear)
+{
+    column = 'gear'
+    id = props.gear
 }
 
-const { data:comments } = await useLazyFetch(`/api/comments/}/${props.post.id}`, {
+const { data:comments } = await useFetch(`/api/comments/`, {
+    query: {
+        [column]: id
+    },
     deep: true
 })
 const { user } = useUserSession()
@@ -48,13 +65,24 @@ const loading = ref(false)
 const addComment = async () => {
 
     loading.value = true
+
     var commentPayload =   {
         text: text.value,
         userId: user.value.id,
-        postId: props.post.id
+    }
+    
+    if (props.post)
+    {
+        commentPayload['postId'] = id
+    }
+    else 
+    {
+        commentPayload['gear'] = id
+
     }
 
-    const comment = await $fetch(`/api/comments/${model}`, {
+
+    const comment = await $fetch(`/api/comments/`, {
         method: "POST",
         body: commentPayload
     })
@@ -71,25 +99,43 @@ const addComment = async () => {
 }
 
 
-const addReply = async (reply) => {
+$listen('comment', async (reply) => {
 
-    reply.user = {
+    var replyPayload =   {
+        text: reply.text,
+        userId: user.value.id,
+        parentId: reply.parentId,
+    }
+    
+    if (props.post)
+    {
+        replyPayload['postId'] = id
+    }
+    else 
+    {
+        replyPayload['gear'] = id
+
+    }
+
+
+    const comment = await $fetch(`/api/comments/`, {
+        method: "POST",
+        body: replyPayload
+    })
+
+    comment.user = {
         username: user.value.username
     }
 
-    reply.likes = []
-    reply.postId = props.post.id
+    comment.likes = []
 
-    const response = await $fetch(`/api/comments/posts`, {
-        method: "POST",
-        body: reply
-    })
+    comments.value.unshift(comment)
+    loading.value = false
 
-    comments.value.push(reply)
+})
 
-}
+$listen('addLike', async (comment) => {
 
-const addLike = async (comment) => {
     const like = await $fetch('/api/likes/' + comment.id, {
         method: "POST",
         body: {
@@ -100,16 +146,18 @@ const addLike = async (comment) => {
 
     comments.value.find(e => e.id == comment.id).likes.push(like)
 
-}
+})
 
-const removeLike = async (data) => {
-    console.log(data)
-    await $fetch('/api/likes/' + data.like.id, {
+$listen('removeLike', async (comment) => {
+
+    const like = comment.likes.find(e=>e.userId == user.value.id)
+
+    await $fetch('/api/likes/' + like.id, {
         method: "DELETE",
     })
 
-    data.comment.likes.splice(data.comment.likes.findIndex(l => l.id == data.like.id),1)
-}
+    comment.likes.splice(comment.likes.findIndex(l => l.id == like.id),1)
+})
 
 const deleteComment = async (comment) => {
     comments.value.splice(comments.value.findIndex(e => e.id == comment.id), 1)

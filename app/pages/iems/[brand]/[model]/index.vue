@@ -9,7 +9,7 @@
     <ProductsImages v-if="doc.images" :images="doc.images" />
 
     <!-- Labels -->
-    <ProductsLabels :doc="doc" :signature="signature" />
+    <ProductsLabels :doc="doc" />
 
     <!-- Features and Rating -->
     <div class="lg:flex flex-grow w-full max-w-app mb-24">
@@ -20,8 +20,14 @@
     </div>
 
     <!-- Reviews -->
-    <ProductsReviews :reviews="reviews" class="mb-12 max-w-app"/>
-        
+    <ProductsReviews :reviews="reviews" class="max-w-app"/>
+    
+    <div class="w-full max-w-app mx-auto mb-24">
+
+        <Comments :gear="doc._path"/>
+
+    </div>
+
 </div>
 
 </template>

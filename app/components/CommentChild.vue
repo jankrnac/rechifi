@@ -18,7 +18,7 @@
                 color="red" 
                 v-if="(loggedIn && comment.likes.map(e=>e.userId).includes(user.id) || !loggedIn && comment.likes.map(e=>e.guestId).includes(guest))" 
                 icon="i-ph-heart-fill" 
-                @click="dislike(comment)"
+                @click="removeLike(comment)"
             >
                 {{ comment.likes.length }}
             </UButton>
@@ -53,11 +53,6 @@
     <li v-for="child in comment.children" class="ml-8 relative">
         <CommentChild 
             :comment="child"
-            @like="addLike(child)"
-            @comment="addReply(child.id)"
-            @delete="deleteComment"
-            @dislike="dislike(child)"
-
         />
     </li>
 </ul>
@@ -67,6 +62,7 @@
 </template>
 
 <script setup>
+const { $event } = useNuxtApp()
 
 const { user, loggedIn } = useUserSession()
 
@@ -81,15 +77,14 @@ const replyText = ref()
 
 const emit = defineEmits(['comment', 'like', 'dislike', 'delete', 'edit'])
 
-const addReply = async (id) => {
+const addReply = (id) => {
 
     const commentPayload =   {
         text: replyText.value,
-        userId: user.value.id,
         parentId: id,
     }
 
-    emit('comment', commentPayload)
+    $event('comment', commentPayload)
 
     replyInputId.value = null
     replyText.value = null
@@ -99,20 +94,9 @@ const guest = useCookie('guest')
 
 guest.value = guest.value || Math.random().toString(36).slice(2, 14)
 
-const addLike = async (comment) => {
+const addLike = async (comment) => $event('addLike', comment)
 
-    emit('like', comment)
-
-}
-
-const dislike = async (comment) => {
-
-    const like = comment.likes.find(e=>e.userId == user.value.id)
-    emit('dislike', {
-        comment: comment,
-        like: like
-    })
-}
+const removeLike = async (comment) => $event('removeLike', comment)
 
 
 

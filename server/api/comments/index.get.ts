@@ -2,11 +2,14 @@ import { inArray, desc, isNull } from 'drizzle-orm';
 
 export default eventHandler(async (event) => {
 
-    const model = getRouterParam(event, 'model')
-    const id = getRouterParam(event, 'id')
+    const query = getQuery(event)
+
+    let column = 'postId'
+    if (query.postId) column = 'postId'
+    else column = 'gear'
 
     let comments = await useDrizzle().query.comments.findMany({
-        where: eq(tables.comments.postId, id),
+        where: eq(tables.comments[column], query[column]),
         with: {
             user: {
                 with: {

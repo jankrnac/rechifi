@@ -63,6 +63,7 @@ export const comments = sqliteTable('comments', {
     id: integer('id').primaryKey({ autoIncrement: true }),
     text: text('text'),
     postId: integer('postId').references(() => posts.id, {onDelete: 'cascade'}),
+    gear: text('gear'),
     userId: integer('userId').references(() => users.id, {onDelete: 'cascade'}),
     parentId: integer('parentId').references((): AnySQLiteColumn => comments.id, {onDelete: 'cascade'}),
     createdAt: text("createdAt").default(sql`(CURRENT_TIMESTAMP)`),
@@ -73,6 +74,7 @@ export const likes = sqliteTable('likes', {
     postId: integer('postId').references(() => posts.id, {onDelete: 'cascade'}),
     userId: integer('userId').references(() => users.id, {onDelete: 'cascade'}),
     guestId: text('guestId'),
+    gear: text('gear'),
     commentId: integer('commentId').references(() => comments.id, {onDelete: 'cascade'}),
     createdAt: text("createdAt").default(sql`(CURRENT_TIMESTAMP)`),
 })
