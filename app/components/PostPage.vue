@@ -18,12 +18,12 @@
                             v-if="(loggedIn && likes.map(e=>e.userId).includes(user.id) || !loggedIn && likes.map(e=>e.guestId).includes(guest))" 
                             icon="i-ph-heart-fill" 
                             @click="removeLike(post)"
-                            :disabled="!loading"
+                            :disabled="loading"
                         >
                             {{ likes.length }}
                         </UButton>
 
-                        <UButton v-else size="lg" variant="soft" color="gray" icon="i-ph-heart" :disabled="!loading" @click="addLike(post)">{{ likes.length }}</UButton>
+                        <UButton v-else size="lg" variant="soft" color="gray" icon="i-ph-heart" :disabled="loading" @click="addLike(post)">{{ likes.length }}</UButton>
                     </div>
                 </div>
 
