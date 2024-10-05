@@ -18,11 +18,12 @@
                             v-if="(loggedIn && likes.map(e=>e.userId).includes(user.id) || !loggedIn && likes.map(e=>e.guestId).includes(guest))" 
                             icon="i-ph-heart-fill" 
                             @click="removeLike(post)"
+                            :disabled="!loading"
                         >
                             {{ likes.length }}
                         </UButton>
 
-                        <UButton v-else size="lg" variant="soft" color="gray" icon="i-ph-heart" @click="addLike(post)">{{ likes.length }}</UButton>
+                        <UButton v-else size="lg" variant="soft" color="gray" icon="i-ph-heart" :disabled="!loading" @click="addLike(post)">{{ likes.length }}</UButton>
                     </div>
                 </div>
 
@@ -54,6 +55,7 @@
     
     const { loggedIn, user } = useUserSession()
 
+    const loading = ref(false)
     const props = defineProps({
         post: {
             type: Object,
@@ -67,7 +69,7 @@
     const likes = ref(props.post.likes)
         
     const addLike = async () => {
-
+        loading.value = true
         const bodyPayload = {
             postId: props.post.id
         }
@@ -88,12 +90,17 @@
         })
 
         likes.value.push(like)
+        loading.value = false
 
     }
     
 
     const removeLike = async () => {
+        
+        loading.value = true
+
         let like
+        
         if (loggedIn.value)
         {
             like = likes.value.find(e=>e.userId == user.value.id)
@@ -108,6 +115,9 @@
         })
 
         likes.value.splice(likes.value.findIndex(l => l.id == like.id),1)
+
+        loading.value = false
+
     }
 
 </script>
