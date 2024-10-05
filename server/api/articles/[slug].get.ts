@@ -16,7 +16,8 @@ export default eventHandler(async (event) => {
             },
             comments: true,
             user: true,
-            cover: true
+            cover: true,
+            likes: true
         }
     })
 

@@ -136,7 +136,7 @@ $listen('comment', async (reply) => {
 
 $listen('addLike', async (comment) => {
 
-    const like = await $fetch('/api/likes/' + comment.id, {
+    const like = await $fetch('/api/likes', {
         method: "POST",
         body: {
             commentId: comment.id,
@@ -159,13 +159,13 @@ $listen('removeLike', async (comment) => {
     comment.likes.splice(comment.likes.findIndex(l => l.id == like.id),1)
 })
 
-const deleteComment = async (comment) => {
+$listen('delete',  async (comment) => {
     comments.value.splice(comments.value.findIndex(e => e.id == comment.id), 1)
 
     await $fetch('/api/comments/' + comment.id, {
         method: "DELETE"
     })
-}
+})
 
 
 </script>

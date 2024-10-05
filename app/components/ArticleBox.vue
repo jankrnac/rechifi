@@ -3,16 +3,19 @@
 
 <article class="flex items-start flex-col">
 
-    <div class="flex gap-2">
-        <UBadge class="mb-2 capitalize" color="sky">article</UBadge>
-        <UBadge v-if="post.gearType == 'iem'" class="mb-2 uppercase" color="red" variant="outline">{{post.gearType}}</UBadge>
-        <UBadge v-if="post.gearType == 'dap'" class="mb-2 uppercase" color="blue" variant="outline">{{post.gearType}}</UBadge>
-        <UBadge v-if="post.gearType == 'dac'" class="mb-2 uppercase" color="green" variant="outline">{{post.gearType}}</UBadge>
+    <div class="flex items-center w-full">
+        <div class="flex gap-2">
+            <UBadge class="mb-2 capitalize" color="sky">article</UBadge>
+            <UBadge v-if="post.gearType == 'iem'" class="mb-2 uppercase" color="red" variant="outline">{{post.gearType}}</UBadge>
+            <UBadge v-if="post.gearType == 'dap'" class="mb-2 uppercase" color="blue" variant="outline">{{post.gearType}}</UBadge>
+            <UBadge v-if="post.gearType == 'dac'" class="mb-2 uppercase" color="green" variant="outline">{{post.gearType}}</UBadge>
 
-    </div>
+        </div>
 
-    <div class="flex gap-2">
-        <UBadge v-for="label in post.labels" class="mb-2 capitalize">{{ label }}</UBadge>
+        <div class="flex flex-grow justify-end mb-2 gap-1">
+            <UIcon name="i-ph-heart-light" size="20px"/>
+            <div class="text-sm">{{ post.likes.length }}</div>
+        </div>
     </div>
 
     <div class="relative w-full overflow-hidden">

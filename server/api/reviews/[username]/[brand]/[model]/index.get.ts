@@ -16,7 +16,8 @@ export default eventHandler(async (event) => {
             eq(tables.posts.model , model),
         ),
         with: {
-            elements: true
+            elements: true,
+            likes: true
         }
 
     })

@@ -7,7 +7,8 @@ export default eventHandler(async (event) => {
     let articles = await useDrizzle().query.posts.findMany({
         with: {
             user: true,
-            cover: true
+            cover: true,
+            likes: true
         },
         where: and( 
             query && query.type ? inArray(tables.posts.type, [query.type]) : inArray(tables.posts.type, ['article', 'review']),

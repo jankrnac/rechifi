@@ -11,7 +11,7 @@
                 <DriverLabel v-for="driver in doc.drivers" :driver="driver"></DriverLabel>
             </div>
         </div>
-    </template>
+        </template>
     </div> 
 
     <div>
