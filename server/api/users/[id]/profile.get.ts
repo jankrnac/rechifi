@@ -12,7 +12,8 @@ export default eventHandler(async (event) =>
                 posts: {
                     with: {
                         user: true,
-                        cover: true
+                        cover: true,
+                        likes: true
                     }
                 },
             }

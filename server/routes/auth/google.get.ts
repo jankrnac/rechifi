@@ -25,6 +25,7 @@ export default oauthGoogleEventHandler({
                 password: hashedPassword,
                 name: user.name,
                 username: user.email,
+                activated: 1
             }).returning().get()
 
             await setUserSession(event, {

@@ -7,7 +7,7 @@ export default eventHandler(async (event) =>
         with: { 
             posts: {
                 with: {
-                    user: true
+                    user: true,
                 }
             },
             avatar: true
