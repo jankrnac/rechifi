@@ -2,13 +2,28 @@
 
 <article class="flex items-start flex-col">
 
-    <div v-if="useRoute().name != 'iems-brand-model'" class="flex gap-2">
-        <UBadge class="mb-2 capitalize" color="orange">review</UBadge>
-        <UBadge v-if="post.gearType == 'iem'" class="mb-2 uppercase" color="red" variant="outline">{{post.gearType}}</UBadge>
-        <UBadge v-if="post.gearType == 'dap'" class="mb-2 uppercase" color="sky" variant="outline">{{post.gearType}}</UBadge>
-        <UBadge v-if="post.gearType == 'dac'" class="mb-2 uppercase" color="green" variant="outline">{{post.gearType}}</UBadge>
+    <div class="flex items-center w-full">
 
-    </div>
+        <div v-if="useRoute().name != 'iems-brand-model'" class="flex gap-2">
+            <UBadge class="mb-2 capitalize" color="orange">review</UBadge>
+            <UBadge v-if="post.gearType == 'iem'" class="mb-2 uppercase" color="red" variant="outline">{{post.gearType}}</UBadge>
+            <UBadge v-if="post.gearType == 'dap'" class="mb-2 uppercase" color="sky" variant="outline">{{post.gearType}}</UBadge>
+            <UBadge v-if="post.gearType == 'dac'" class="mb-2 uppercase" color="green" variant="outline">{{post.gearType}}</UBadge>
+
+        </div>
+
+        <div v-if="size == 'normal'" class="flex flex-grow justify-end mb-2 gap-2 opacity-80">
+            <UIcon 
+                v-if="(loggedIn && post.likes.map(e=>e.userId).includes(user.id) || !loggedIn && post.likes.map(e=>e.guestId).includes(guest))"  
+                name="i-ph-heart-fill" 
+                size="20px"
+                class="text-red-600"
+                />
+            <UIcon v-else  name="i-ph-heart-light"  size="20px"/>
+            <div>{{ post.likes.length }}</div>
+        </div>
+
+            </div>
 
     <div class="relative w-full transition flex items-center">
     
@@ -59,6 +74,8 @@
 </template>
     
 <script setup>
+
+const { loggedIn, user } = useUserSession()
 
 const props = defineProps({
     post: {

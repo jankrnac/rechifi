@@ -1,8 +1,8 @@
 <template>
 <div>
 	<div class="mb-12">
-		<h1 class="font-bold text-4xl">
-			<div v-html="title" class="outline-none mt-12"></div>
+		<h1 class="font-bold text-4xl relative mt-12">
+			<span v-html="title" class="outline-none"></span>
 			<UTooltip v-if="editable" text="Change title in settings." class="absolute">
 				<UIcon name="i-ph-info" size="20px" class="ml-2" />
 			</UTooltip>

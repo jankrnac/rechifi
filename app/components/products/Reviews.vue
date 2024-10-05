@@ -2,9 +2,9 @@
 
 <div class="w-full">	
 
-	<div class="flex justify-center items-center md:justify-start mb-8 gap-4">
+	<div class="flex justify-center items-center md:justify-start mb-8 gap-6">
 		<UChip :text="reviews.length" size="3xl" color="orange" :show="reviews.length > 0"><h2 class="text-xl font-bold">Reviews</h2></UChip>
-		<div v-if="user && reviews.findIndex(e=>e.profile_id == user.id) < 0" class="bg-blue-200 rounded text-sm px-2 py-1 cursor-pointer" @click="addReview">Add review</div>
+		<UButton v-if="user && reviews.findIndex(e=>e.profile_id == user.id) < 0" size="sm" @click="addReview">Add review</UButton>
 	</div>
 
 	<template v-if="reviews.length">

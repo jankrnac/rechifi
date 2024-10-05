@@ -12,9 +12,15 @@
 
         </div>
 
-        <div class="flex flex-grow justify-end mb-2 gap-1">
-            <UIcon name="i-ph-heart-light" size="20px"/>
-            <div class="text-sm">{{ post.likes.length }}</div>
+        <div class="flex flex-grow justify-end mb-2 gap-2 opacity-80">
+            <UIcon 
+                v-if="(loggedIn && post.likes.map(e=>e.userId).includes(user.id) || !loggedIn && post.likes.map(e=>e.guestId).includes(guest))"
+                name="i-ph-heart-fill" 
+                class="text-red-600"
+                size="20px"
+            />
+            <UIcon v-else name="i-ph-heart-light" size="20px"/>
+            <div>{{ post.likes.length }}</div>
         </div>
     </div>
 
@@ -75,6 +81,8 @@
 </template>
 
 <script setup>
+
+const { loggedIn, user } = useUserSession()
 
 const props = defineProps({
     post: {

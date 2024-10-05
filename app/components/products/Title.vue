@@ -1,6 +1,7 @@
 <template>
 <div class="mb-6 md:mb-12">
     <h1 class="text-center text-2xl lg:text-4xl font-bold mt-12 mb-2">
+        {{ doc }}
         {{doc.title}}
     </h1>
 
