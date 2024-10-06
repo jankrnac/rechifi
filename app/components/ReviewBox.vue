@@ -64,7 +64,7 @@
                 </nuxt-link>
             </h3>
          
-            <p v-if="size == 'normal'" class="mt-5 line-clamp-5 text-sm leading-6 min-h-[96px]">{{ post.description }}</p>
+            <p v-if="size == 'normal'" class="mt-5 line-clamp-5 text-sm leading-6 md:min-h-[96px]">{{ post.description }}</p>
         </div>
             
     </div>

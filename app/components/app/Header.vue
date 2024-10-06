@@ -207,12 +207,16 @@
 						</nuxt-link>
 
 						<!-- Authenticated -->
+						<nuxt-link v-if="user" :to="'/users/' + user.username" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="mobileMenuOpen = false">
+							<UIcon name="i-ph-user-light" size="20px" />
+							<div>My Profile</div>
+						</nuxt-link>
 						<nuxt-link v-if="user" to="/settings" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="mobileMenuOpen = false">
-							<Icon name="ph:gear-light" size="20px" />
+							<UIcon name="i-ph-gear-light" size="20px" />
 							<div>Settings</div>
 						</nuxt-link>
 						<nuxt-link v-if="user" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="logout">
-							<Icon name="ph:sign-out-light" size="20px"/>
+							<UIcon name="i-ph-sign-out-light" size="20px"/>
 							<div>Logout</div>
 						</nuxt-link>
 
@@ -233,13 +237,13 @@
 		{ name: 'Reviews', href: '/reviews' },
 		{ name: 'Gear', children: [
 			{
-				name: 'IEMs', href: '/iems',
+				name: 'In-Ear monitors', href: '/iems',
 			},
 			{
-				name: 'DAPs', href: '/daps',
+				name: 'Digital audio players', href: '/daps',
 			},
 			{
-				name: 'DACs', href: '/dacs',
+				name: 'DAC & AMP dongles', href: '/dacs',
 			}	
 		]},
 		{ name: 'Upcoming', href: '/upcoming' },

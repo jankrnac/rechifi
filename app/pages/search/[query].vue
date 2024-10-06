@@ -20,7 +20,7 @@
 
     <div v-if="iems.length" class="w-full">
         <h2 class="text-2xl font-bold mb-10">IEMs: <small class="text-gray-500 font-thin">{{ iems.length }} found</small></h2>
-        <ul class="mx-auto lg:mt-4 grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:max-w-app lg:grid-cols-4">
+        <ul class="grid grid-cols-2 gap-x-4 gap-y-2 md:gap-y-6 sm:grid-cols-3 sm:gap-x-2 lg:grid-cols-4 xl:gap-x-4">
 
             <template v-for="headphone in iems" :key="headphone._path">
                     <ProductBox :product="headphone" />
@@ -31,7 +31,7 @@
 
     <div v-if="daps.length" class="w-full">
         <h2 class="text-2xl font-bold mb-10">DAPs: <small class="text-gray-500 font-thin">{{ daps.length }} found</small></h2>
-        <ul class="mx-auto lg:mt-4 grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:max-w-app lg:grid-cols-4">
+        <ul class="grid grid-cols-2 gap-x-4 gap-y-2 md:gap-y-6 sm:grid-cols-3 sm:gap-x-2 lg:grid-cols-4 xl:gap-x-4">
 
             <template v-for="dap in daps" :key="dap._path">
                     <ProductBox :product="dap" />

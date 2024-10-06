@@ -4,12 +4,12 @@
     <div class="flex flex-col items-center">
         <div>
             <nuxt-img v-if="user.avatar" :src="user.avatar.filename" width="100px" class="mb-12" />
-            <Icon v-else name="ph:user-thin" class="w-24 h-24 mb-8" />
+            <UIcon v-else name="i-ph-user-thin" size="72px" class="mb-8" />
         </div>
-        <h1 class="font-bold text-5xl ">{{ user.username }}</h1>
+        <h1 class="font-bold text-3xl md:text-5xl ">{{ user.username }}</h1>
     </div>
     <h2 class="font-bold text-2xl">Audio gear</h2>
-        <ul class="grid grid-cols-5 gap-2" v-if="iems.length + daps.length + dacs.length > 0">
+        <ul class="grid grid-cols-2 gap-x-4 gap-y-2 md:gap-y-6 sm:grid-cols-3 sm:gap-x-2 lg:grid-cols-4 xl:gap-x-4" v-if="iems.length + daps.length + dacs.length > 0">
             <ProductBox v-for="iem in iems" :product="iem" />
             <ProductBox v-for="dap in daps" :product="dap" />
             <ProductBox v-for="dac in dacs" :product="dac" />
@@ -27,7 +27,7 @@
 		</template>
 		<template #item="{ item }">
 
-		<div class="mx-auto lg:mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-app lg:grid-cols-4">
+		<div class="mx-auto mt-8 lg:mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-app lg:grid-cols-4">
 
 			<template v-if="item.key === 'articles'">
 				<div v-for="article in profile.posts.filter(e=>e.type == 'article')" class="relative">
