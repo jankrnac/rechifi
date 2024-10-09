@@ -50,10 +50,17 @@
     
     useSeoMeta({
         title: `${useRoute().params.slug.slice(0,-1).toUpperCase()}s - Rechifi`,
-        description: `Explore the pinnacle of personal audio with our curated list of chi-fi in-ear monitors. Navigate through our filterable IEMs list to find the perfect blend of technical specifications, 
+        description: `Explore the pinnacle of personal audio with our curated list of chi-fi in-ear monitors. Navigate through our filterable ${useRoute().params.slug.slice(0,-1).toUpperCase()}s list to find the perfect blend of technical specifications, 
         sound signature, and price. Dive into detailed reviews, comparisons. Your guide to precision awaits explore our in-ear monitors list now!"`
     })
     
+    if (!['iems','daps','dacs'].includes(useRoute().params.slug))
+    {
+        showError({
+            statusCode: 404,
+            statusMessage: "Page Not Found"
+        })    
+    }
     /***** Data Init  *****/
     
     const { data:brands } = await useFetch('/api/brands')

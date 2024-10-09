@@ -3,10 +3,10 @@
 <div class="flex flex-col gap-12 mt-12 w-full max-w-app mb-24">
     <div class="flex flex-col items-center">
         <div>
-            <nuxt-img v-if="user.avatar" :src="user.avatar.filename" width="100px" class="mb-12" />
+            <nuxt-img v-if="profile.avatar" :src="profile.avatar.filename" width="100px" class="mb-12" />
             <UIcon v-else name="i-ph-user-thin" size="72px" class="mb-8" />
         </div>
-        <h1 class="font-bold text-3xl md:text-5xl ">{{ user.username }}</h1>
+        <h1 class="font-bold text-3xl md:text-5xl ">{{ profile.username }}</h1>
     </div>
     <h2 class="font-bold text-2xl">Audio gear</h2>
         <ul class="grid grid-cols-2 gap-x-4 gap-y-2 md:gap-y-6 sm:grid-cols-3 sm:gap-x-2 lg:grid-cols-4 xl:gap-x-4" v-if="iems.length + daps.length + dacs.length > 0">

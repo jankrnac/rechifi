@@ -9,7 +9,10 @@
         </div>
         <div class="flex-grow">
             <nuxt-link noPrefetch :to="'/users/'+comment.user.username" class="text-xs font-bold mb-2 relative">{{ comment.user.username }}</nuxt-link>
-            <div class="text-sm">{{ comment.text }}</div>
+
+            <UInput v-if="editMode" v-model="comment.text" />
+            <div v-else class="text-sm">{{ comment.text }}</div>
+
             <div class="flex gap-1 mt-2 items-center mb-2">
             
                 <UButton 
@@ -27,7 +30,7 @@
 
                 <UButton v-if="loggedIn" size="xs" color="gray" variant="ghost" @click="replyInputId = comment.id">Reply</UButton>
 
-                <UDropdown v-if="loggedIn" :items="items">
+                <UDropdown v-if="loggedIn && comment.userId == user.id" :items="items">
                     <UButton size="xs" variant="ghost" color="gray" trailing-icon="i-ph-caret-down" />
 
                     <template #item="{ item }">
@@ -37,6 +40,10 @@
                     </template>
 
                 </UDropdown>
+
+                <div class="flex flex-1 justify-end">
+                    <UButton v-if="editMode" size="xs" @click="saveEdit" :disabled="savePending" :loading="savePending">Save</UButton>
+                </div>
             </div>
 
             <div v-if="replyInputId == comment.id" class="ml-0">
@@ -72,6 +79,8 @@ const props = defineProps({
     }
 })
 
+const editMode = ref(false)
+
 const guest = useCookie('guest')
 
 guest.value = guest.value || Math.random().toString(36).slice(2, 14)
@@ -92,6 +101,18 @@ const addReply = (id) => {
     replyText.value = null
 }
 
+const editReply = () => {
+    editMode.value = true
+}
+
+const savePending = ref(false)
+const saveEdit = () => {
+    savePending.value = true
+    $event('edit', props.comment)
+    savePending.value = false
+    editMode.value = false
+}
+
 const deleteReply = () => $event('delete', props.comment)
 
 const addLike = (comment) => $event('addLike', comment)
@@ -103,7 +124,10 @@ const removeLike = (comment) => $event('removeLike', comment)
 const items = [
     [{
     label: 'Edit',
-    icon: 'i-ph-pencil'
+    icon: 'i-ph-pencil',
+    click: () => {
+        editReply()
+    }
   }], [{
     label: 'Delete',
     icon: 'i-ph-trash',

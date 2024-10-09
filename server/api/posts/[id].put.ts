@@ -1,3 +1,5 @@
+import { editPost } from '~/utils/abilities'
+
 export default eventHandler(async (event) => {
 
     const session = await requireUserSession(event)
@@ -9,7 +11,9 @@ export default eventHandler(async (event) => {
     let post = await useDrizzle().query.posts.findFirst({
         where: eq(tables.posts.id, id)
     })
-        
+
+    await authorize(editPost, post)
+
     if(session.user.id != post!.userId)
     {
         return createError({

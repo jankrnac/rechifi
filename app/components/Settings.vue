@@ -171,7 +171,7 @@ const model = ref()
 
 const errors = ref([])
 
-const { data:allGear } = await useAsyncData(local.value.gearType, () => queryContent(local.value.gearType).find(), { 
+const { data:allGear } = await useAsyncData(() => queryContent(local.value.gearType).find(), { 
 	watch: [() => local.value.gearType]
 })
 

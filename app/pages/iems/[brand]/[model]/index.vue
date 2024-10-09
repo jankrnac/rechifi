@@ -2,6 +2,7 @@
 
 <div class="flex flex-1 flex-col items-center mx-auto leading-relaxed lg:leading-loose w-full">
 
+    {{ doc }}
     <!-- Title -->
     <ProductsTitle :doc="doc" />
 

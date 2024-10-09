@@ -27,11 +27,20 @@
 <script setup>
 
     definePageMeta({
-        middleware: ['auth', 'owner'],
-    });
+        middleware: ['auth']
+    })
+
+    const route = useRoute()
+    const { data:article } = await useFetch(`/api/articles/${route.params.slug}`)
+
+    if (await denies(editPost, article)) {
+        showError({
+            statusCode: 404,
+            statusMessage: 'Page Not Found'
+        })
+    }
 
     const updateAvailable = ref(false)
-
 
     onBeforeMount(() => {
         window.addEventListener("beforeunload", preventNav)
@@ -55,10 +64,7 @@
         event.returnValue = ""
     }
 
-    
-    const route = useRoute()
 
-    const { data:article } = await useFetch(`/api/articles/${route.params.slug}`)
     const activeElements = [...article.value.elements]
 
     const editable = ref(true)

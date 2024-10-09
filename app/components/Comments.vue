@@ -20,7 +20,7 @@
         <div class="flex justify-end">
             <UButton v-if="user" color="sky" @click="addComment" :loading="loading" :disabled="!text">Add comment</UButton>
             <nuxt-link v-else :to='"/login?redirect="+useRoute().fullPath+"#comments"'>
-                <UButton color="gray">Login to comment</UButton>
+                <UButton color="gray" variant="soft">Login to comment</UButton>
             </nuxt-link>
         </div>
     </div>
@@ -132,6 +132,14 @@ $listen('comment', async (reply) => {
     comments.value.unshift(comment)
     loading.value = false
 
+})
+
+$listen('edit', async (comment) => {
+
+    await $fetch('/api/comments/' + comment.id, {
+        method: "PUT",
+        body: comment
+    })
 })
 
 $listen('addLike', async (comment) => {
