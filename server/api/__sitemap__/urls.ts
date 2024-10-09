@@ -4,11 +4,29 @@ import { asSitemapUrl, defineSitemapEventHandler } from '#imports'
 
 export default defineSitemapEventHandler(async (event) => {
     const contentList = (await serverQueryContent(event).find()) as ParsedContent[]
-    return contentList
-      .map((c) => {
+    const postsList = await $fetch('/api/posts')
+
+    return contentList.map((c) => {
         return asSitemapUrl({
-          loc: `${c._path}`,
-          changefreq: 'weekly'
+            loc: `${c._path}`,
+            changefreq: 'weekly'
         })
-      })
-  })
+    }).concat(postsList.map((p) => {
+
+        if(p.type == 'article')
+        {
+            return asSitemapUrl({
+                loc: `posts/${p.slug}`,
+                changefreq: 'weekly'
+            })
+        }
+        else
+        {
+            return asSitemapUrl({
+                loc: `reviews/${p.user.username}/${p.brand}/${p.model}`,
+                changefreq: 'weekly'
+            })
+        }
+    }))
+
+})

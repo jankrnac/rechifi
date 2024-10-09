@@ -5,7 +5,8 @@
 </template>
     
 <script setup>
-    
+      defineOgImageComponent('NuxtSeo')
+
     const route = useRoute()
 
     const { data:article } = await useFetch(`/api/articles/${route.params.slug}`)
