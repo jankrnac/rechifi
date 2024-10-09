@@ -16,14 +16,14 @@ export default defineSitemapEventHandler(async (event) => {
         if(p.type == 'article')
         {
             return asSitemapUrl({
-                loc: `blog/${p.slug}`,
+                loc: `/blog/${p.slug}`,
                 changefreq: 'weekly'
             })
         }
         else
         {
             return asSitemapUrl({
-                loc: `reviews/${p.user.username}/${p.brand}/${p.model}`,
+                loc: `/reviews/${p.user.username}/${p.brand}/${p.model}`,
                 changefreq: 'weekly'
             })
         }
