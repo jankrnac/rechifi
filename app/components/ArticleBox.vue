@@ -67,8 +67,7 @@
     
         <div class="group relative">
             <h3 class="mt-6 text-2xl font-bold leading-6">
-                <nuxt-link v-if="post.type == 'article'" :to="post._path" class="text">{{ post.title }}</nuxt-link>
-                <nuxt-link v-if="post.type == 'product'" :to="post.link" class="text">{{ post.title }}</nuxt-link>
+                <nuxt-link :to="'/blog/'+post.slug" class="text">{{ post.title }}</nuxt-link>
 
             </h3>
             <p class="mt-5 line-clamp-5 text-sm leading-6">{{ post.description }}</p>
