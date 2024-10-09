@@ -16,6 +16,7 @@ export default defineNuxtConfig({
 		name: 'Rechifi',
 		description: 'Chifi user articles and reviews',
 		defaultLocale: 'en',
+		indexable:false
 	},
 
 	sitemap: {
