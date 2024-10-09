@@ -16,7 +16,7 @@ export default defineSitemapEventHandler(async (event) => {
         if(p.type == 'article')
         {
             return asSitemapUrl({
-                loc: `posts/${p.slug}`,
+                loc: `blog/${p.slug}`,
                 changefreq: 'weekly'
             })
         }
