@@ -117,7 +117,7 @@ export default defineNuxtConfig({
 		database: true,
 		kv: true,
 		blob: true,
-		cache: false
+		cache: true
 	},
 
 
