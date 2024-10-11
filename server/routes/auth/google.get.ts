@@ -32,6 +32,8 @@ export default oauthGoogleEventHandler({
                 user: {
                     id: newUser.id,
                     username: user.email,
+                    email: user.email,
+
                 },
             })
 
@@ -44,6 +46,7 @@ export default oauthGoogleEventHandler({
                     name: dbUser.name,
                     avatar: dbUser.avatar,
                     username: dbUser.username,
+                    email: dbUser.email,
                 },
             })
         }
