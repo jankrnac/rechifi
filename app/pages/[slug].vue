@@ -8,6 +8,7 @@
                 <div class="pb-10 mt-10 lg:mt-16 lg:pb-24">
                     <h1 class="text-3xl lg:text-6xl font-bold tracking-tigh">{{title}}</h1>
                     <p class="text-center mx-auto mt-4 max-w-3xl text-lg lg:text-xl">All {{model.slice(0,-1).toUpperCase()}}s from asian country manufacturers in one place</p>
+                    <div class="mt-2 text-sm opacity-75">We are working hard to expand the list. Stay tuned as we continue to add more exciting {{model.slice(0,-1).toUpperCase()}}s.</div>
                 </div>
                 
                 <!-- Active filters -->
