@@ -94,10 +94,10 @@
 				<UButton variant="solid" icon="i-ph-plus-circle" size="lg" color="sky" class="cursor-pointer" label="Post" to="/add"/>
 
 						<UPopover mode="hover" :popper="{ placement: 'bottom-end' }">
-							<UButton v-if="user && user.avatar" variant="ghost">
+							<UButton v-if="user && user.avatar" variant="ghost" aria-label="user">
 								<nuxt-img width="30" :src="user.avatar.filename" />
 							</UButton>
-							<UButton v-else icon="i-ph-user-light" color="gray" variant="ghost" size="xl"/>
+							<UButton v-else icon="i-ph-user-light" color="gray" aria-label="user" variant="ghost" size="xl"/>
 
 							<template #panel>
 
@@ -130,8 +130,8 @@
 					
 						</UPopover>
 				
-					<UButton variant="ghost" size="xl"icon="i-ph-sun-light" color="gray" v-if="colorMode.preference == 'dark'" class="cursor-pointer"  @click="setColorMode('light')"/>
-					<UButton variant="ghost" size="xl" icon="i-ph-moon-light" color="gray" v-else class="cursor-pointer"  @click="setColorMode('dark')"/>
+					<UButton variant="ghost" size="xl"icon="i-ph-sun-light" color="gray" aria-label="color-light" v-if="colorMode.preference == 'dark'" class="cursor-pointer"  @click="setColorMode('light')"/>
+					<UButton variant="ghost" size="xl" icon="i-ph-moon-light" color="gray" aria-label="color-dark" v-else class="cursor-pointer"  @click="setColorMode('dark')"/>
 			</div>
 
 			<!-- Mobile only, hamburger -->

@@ -48,7 +48,7 @@
             densities="x1"
         />
 
-        <nuxt-link :to="'/blog/'+post.slug" class="absolute inset-0"></nuxt-link>
+        <nuxt-link :to="'/blog/'+post.slug" class="absolute inset-0" :aria-label="post.title"></nuxt-link>
 
     </div>
     

@@ -11,7 +11,7 @@
             sizes="200px md:300px lg:351px" 
             :modifiers="{alwaysCDN: true}"
         />
-        <nuxt-link class="absolute inset-0" :to="product._path"></nuxt-link>
+        <nuxt-link class="absolute inset-0" :to="product._path" :aria-label="product.title"></nuxt-link>
     </div>
 
     <div v-if="product.showInIndex" class="flex items-center pointer-events-none mt-2 truncate font-semibold" :class="{'text-orange-500': product.released == false}">
