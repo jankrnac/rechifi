@@ -1,7 +1,9 @@
 <template>
     
 <div class="max-w-app mx-auto flex-1 flex flex-col items-center justify-center">
+    {{user}}
 
+    {{user.username == user.email}}
     <template v-if="user.username == user.email">
         <UForm ref="form" :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
 
