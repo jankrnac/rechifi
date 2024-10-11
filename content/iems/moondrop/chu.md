@@ -24,6 +24,9 @@ signature:
     - neutral
     - bass boost
 
+showInIndex: true
+
+
 features:
     - Nano-titanium crystal PVD coating composite diaphragm greatly improves the damping while maintaining excellent damping characteristics
     - 10mm composite cavity dynamic driver structure, offers the dynamic and full details
