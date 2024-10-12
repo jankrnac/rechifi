@@ -16,7 +16,7 @@ driverTypes:
 
 priceRange: low
 
-releaseDate:
+releaseDate: 2022-04-08
 
 released: true
 

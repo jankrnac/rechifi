@@ -18,7 +18,7 @@ driverTypes:
 
 priceRange: low
 
-releaseDate: 
+releaseDate: 2024-06-28
 
 upcoming: false
 
