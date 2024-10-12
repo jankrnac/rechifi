@@ -25,7 +25,7 @@
                 <template v-if="Object.keys(driver)[0] == 'ba'">Balanced armature</template>
                 <template v-if="Object.keys(driver)[0] == 'est'">Electrostatic driver</template>
                 <template v-if="Object.keys(driver)[0] == 'planar'">Planar</template>
-                <template v-if="Object.keys(driver)[0] == 'planar'">Bone Conductor</template>
+                <template v-if="Object.keys(driver)[0] == 'bc'">Bone Conductor</template>
                 <template v-if="Object.keys(driver)[0] == 'pr'">+ Passive radiator</template>
 
             </div>
