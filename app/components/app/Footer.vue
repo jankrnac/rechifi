@@ -9,7 +9,7 @@
       	</nav>
 
       	<div class="mt-10 flex justify-center space-x-10">
-			<a href="#" class="opacity-50 hover:opacity-100">
+			<a href="https://www.facebook.com/rechifi" class="opacity-50 hover:opacity-100" target="_blank">
 				<span class="sr-only">facebook</span>
 				<Icon name="ph:facebook-logo" size="34px" aria-hidden="true" />
 			</a>
