@@ -39,9 +39,8 @@
 <script setup>
 
 useSeoMeta({
-    title: 'Rechifi - Chi-fi news and user reviews - About us',
-    description: `The goal of this site is to provide users a tool to filter and find the audio gear based on their preferences, and mainly to aggregate users reviews to extract common features of 
-        particular product reviewed by many different users.`
+    title: 'Suggest gear',
+    description: `Missing some piece of audio equipment in our databases? Let us know and we will add it right away. Your suggestion will help to make this site even more awesome.`
 })
 
 import { z } from 'zod'
