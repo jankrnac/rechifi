@@ -314,6 +314,12 @@ export default defineEventHandler((event) => {
             logo: '',
             link: ''
         },
+        {
+            value: 'sivga',
+            label: 'Sivga',
+            logo: '',
+            link: ''
+        },
     ]
 
     brands.sort((a, b) => {
