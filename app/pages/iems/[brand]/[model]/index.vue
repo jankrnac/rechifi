@@ -27,14 +27,19 @@
         <Comments :gear="doc._path"/>
 
     </div>
-
+    
 </div>
 
 </template>
 
 <script setup>
 
+
 const { data:doc } = await useAsyncData('product', () => queryContent(useRoute().path).findOne())
+
+useContentHead({
+    title : doc.value.title != doc.value.model ? doc.value.title : doc.value.brand.charAt(0).toUpperCase() + doc.value.brand.slice(1) + ' ' + doc.value.model
+})
 
 const { data:reviews } = await useFetch('/api/reviews/data', {
     query: {

@@ -26,7 +26,7 @@
 
 
 useSeoMeta({
-    title: 'Chi-fi news and user reviews',
+    title: 'Chi-fi user articles and reviews',
     description: `Collection of Chi-fi audio news and user reviews all created by users, for users. Explore reviews, comparisons, and user insights to find the perfect audio companion for your 
     unique preferences. In the ever-changing world of Chi-Fi, one can easily become lost. But fear not, Rechifi is all you need to stay informed and make the best decisions to fully satisfy 
     your audiophile needs.`
