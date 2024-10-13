@@ -5,6 +5,8 @@
         'border-green-500 dark:border-green-800': Object.keys(driver)[0] == 'ba',
         'border-blue-500 dark:border-blue-900' : Object.keys(driver)[0]== 'planar',
         'border-teal-500 dark:border-teal-900' : Object.keys(driver)[0]== 'bc',
+        'border-yellow-500 dark:border-yellow-900' : Object.keys(driver)[0]== 'pzt',
+
         'border-teal-500' :Object.keys(driver)[0] == 'est',
         'border-teal-500' :Object.keys(driver)[0] == 'pr',
         'text-sm border-2 lg:border-[3px] lg:text-lg' : size == 'normal',
@@ -21,11 +23,12 @@
                 {{ Object.values(driver)[0] }}
                 </span>
                 <span v-if="Object.values(driver)[0] > 1" class="text-sm md:text-base mr-1 text-gray-500">x</span>
-                <template v-if="Object.keys(driver)[0] == 'dd'">Dynamic driver</template>
+                <template v-if="Object.keys(driver)[0] == 'dd'">Dynamic</template>
                 <template v-if="Object.keys(driver)[0] == 'ba'">Balanced armature</template>
-                <template v-if="Object.keys(driver)[0] == 'est'">Electrostatic driver</template>
+                <template v-if="Object.keys(driver)[0] == 'est'">Electrostatic</template>
                 <template v-if="Object.keys(driver)[0] == 'planar'">Planar</template>
                 <template v-if="Object.keys(driver)[0] == 'bc'">Bone Conductor</template>
+                <template v-if="Object.keys(driver)[0] == 'pzt'">Piezoelectric</template>
                 <template v-if="Object.keys(driver)[0] == 'pr'">+ Passive radiator</template>
 
             </div>
@@ -42,6 +45,7 @@
             <template v-if="Object.keys(driver)[0] == 'est'">EST</template>
             <template v-if="Object.keys(driver)[0] == 'planar'">Planar</template>
             <template v-if="Object.keys(driver)[0] == 'bc'">BC</template>
+            <template v-if="Object.keys(driver)[0] == 'pzt'">PZT</template>
             <template v-if="Object.keys(driver)[0] == 'pr'">+ PR</template>
 
 
