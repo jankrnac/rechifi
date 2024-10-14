@@ -40,6 +40,16 @@
         </ul>
     </div>
 
+    <div v-if="dacs.length" class="w-full">
+        <h2 class="text-2xl font-bold mb-10">DAPs: <small class="text-gray-500 font-thin">{{ dacs.length }} found</small></h2>
+        <ul class="grid grid-cols-2 gap-x-4 gap-y-2 md:gap-y-6 sm:grid-cols-3 sm:gap-x-2 lg:grid-cols-4 xl:gap-x-4">
+
+            <template v-for="dac in dacs" :key="dac._path">
+                    <ProductBox :product="dac" />
+            </template>
+            
+        </ul>
+    </div>
 </div>
 </template>
 
@@ -52,7 +62,22 @@
     const route = useRoute()
     
     const { data:posts } = await useFetch('/api/posts/search/' +  route.params.query)
-    const iems = await queryContent('iems').where({ 'title': { $icontains: route.params.query } }).find()
-    const daps = await queryContent('daps').where({ 'title': { $icontains: route.params.query } }).find()
+    const iems = await queryContent('iems').where({ $or: [
+        { 'title': { $icontains: route.params.query }},
+        { 'brand': { $icontains: route.params.query }},
+        { 'model': { $icontains: route.params.query }}
 
+    ]}).find()
+    const daps = await queryContent('daps').where({ $or: [
+        { 'title': { $icontains: route.params.query }},
+        { 'brand': { $icontains: route.params.query }},
+        { 'model': { $icontains: route.params.query }}
+
+    ]}).find()
+    const dacs = await queryContent('dacs').where({ $or: [
+        { 'title': { $icontains: route.params.query }},
+        { 'brand': { $icontains: route.params.query }},
+        { 'model': { $icontains: route.params.query }}
+
+    ]}).find()
 </script>
