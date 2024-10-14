@@ -83,6 +83,8 @@
 
 const { loggedIn, user } = useUserSession()
 
+const guest = useCookie('guest')
+
 const props = defineProps({
     post: {
         type: Object,

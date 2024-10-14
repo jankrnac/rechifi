@@ -46,7 +46,7 @@
 <script setup lang="ts">
 
     useSeoMeta({
-        title: 'Search - Rechifi - Chi-fi audio',
+        title: 'Search',
     })
 
     const route = useRoute()

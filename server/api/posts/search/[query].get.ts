@@ -7,7 +7,9 @@ export default eventHandler(async (event) => {
     let posts = await useDrizzle().query.posts.findMany({
 		  where: like(sql`lower(${tables.posts.title})`, "%"+query+"%"),
       with: {
-        user: true
+        user: true,
+        cover: true,
+        likes: true
       }
     })
 
