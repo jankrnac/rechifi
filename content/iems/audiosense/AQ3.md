@@ -1,6 +1,6 @@
 ---
-
+title: Audiosense AQ3
 brand: audiosense
-model: AQ0
+model: AQ3
 
 ---
