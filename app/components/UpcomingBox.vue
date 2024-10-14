@@ -11,8 +11,9 @@
                     {{ upcoming.title }}
                 </nuxt-link>
             </p>
-            
-            <Label class="mt-1">{{ upcoming._path.split('/')[1].slice(0,-1).toUpperCase() }}</Label>
+            <UBadge v-if="upcoming._path.includes('iems')" class="mb-2 uppercase" color="red" variant="outline">IEM</UBadge>
+            <UBadge v-if="upcoming._path.includes('daps')"  class="mb-2 uppercase" color="blue" variant="outline">DAP</UBadge>
+            <UBadge v-if="upcoming._path.includes('dacs')"  class="mb-2 uppercase" color="green" variant="outline">DAC</UBadge>        
         </div>
     </div>
 

@@ -320,6 +320,12 @@ export default defineEventHandler((event) => {
             logo: '',
             link: ''
         },
+        {
+            value: 'tripowin',
+            label: 'Tripowin',
+            logo: '',
+            link: ''
+        },
     ]
 
     brands.sort((a, b) => {

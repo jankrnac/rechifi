@@ -12,6 +12,7 @@ drivers:
 driverTypes:
     - dd 
     
+release: false 
 new: true
 
 cover: /tangzu/yu-xuan-ji/cover.webp

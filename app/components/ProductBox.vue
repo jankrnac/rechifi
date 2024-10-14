@@ -23,12 +23,10 @@
     
 
 
-    <div v-if="product.released == true" class="flex gap-x-2 mb-1">
+    <div v-if="product.drivers" class="flex gap-x-2 mb-1">
         <DriverLabel size="small" class="my-1" v-for="driver in product.drivers" :driver="driver"></DriverLabel>
     </div>
     
-    <div v-if="product.released == false">Release date: <b class="font-bold">{{product.releaseDate}}</b></div>
-
     <div v-if="product.priceRange" class="pointer-events-none flex mt -ml-0.5 text-sm font-medium">
         <UIcon name="i-ph-currency-dollar-simple" class="w-4 h-4" :class="[product.priceRange == 'low' || product.priceRange == 'medium' || product.priceRange == 'high' ? 'text-blue-500' : 'text-gray-400']" />
         <UIcon name="i-ph-currency-dollar-simple" class="w-4 h-4" :class="[product.priceRange == 'medium' ||  product.priceRange == 'high'  ? 'text-blue-500' : 'text-gray-400']" />
