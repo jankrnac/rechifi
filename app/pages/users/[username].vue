@@ -94,55 +94,25 @@ const items = [{
   label: 'Reviews',
 }]
 
-
-const { data:iems } = await useAsyncData( async () =>  
-{   
-    const iems = []
-
-    if(profile.value.iems && profile.value.iems.length)
-    {
-        for (const iem of profile.value.iems)
-        {
-            iems.push(await queryContent(iem).findOne())
+const { data:iems } = await useAsyncData(() => queryContent('/iems').where({
+        _path: {
+            $in: profile.value.iems
         }
-    }
+}).find())
 
-    return iems
-
-})
-
-const { data:daps } = await useAsyncData( async () =>  
-{           const daps = []
-
-    if(profile.value.daps && profile.value.daps.length)
-    {
-        for (const dap of profile.value.daps)
-        {
-            daps.push(await queryContent(dap).findOne())
+const { data:daps } = await useAsyncData(() => queryContent('/daps').where({
+        _path: {
+            $in: profile.value.daps
         }
-
-    }
-
-    return daps
-
-})
+}).find())
 
 
-const { data:dacs } = await useAsyncData( async () =>  
-{           const dacs = []
-
-    if(profile.value.dacs && profile.value.dacs.length)
-    {
-        for (const dac of profile.dacs)
-        {
-            dacs.push(await queryContent(dac).findOne())
+const { data:dacs } = await useAsyncData(() => queryContent('/dacs').where({
+        _path: {
+            $in: profile.value.dacs
         }
+}).find())
 
-    }
-
-    return dacs
-
-})
 
 const deletedReviewId = ref()
 
