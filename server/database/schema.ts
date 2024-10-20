@@ -23,7 +23,6 @@ export const tokens = sqliteTable('tokens', {
     type: text('type'),
     createdAt: text("createdAt").default(sql`(CURRENT_TIMESTAMP)`),
     activatedAt: text("activatedAt")
-
 })
 
 export const posts = sqliteTable('posts', {
@@ -31,13 +30,28 @@ export const posts = sqliteTable('posts', {
     slug: text('slug').notNull().unique(),
     title: text('tile').notNull(),
     type: text('type').notNull(),
-    brand: text('brand'),
-    model: text('model'),
-    gearType: text('gearType'),
+    productSlug: text('productSlug'),
+    productId: integer('productId').references(() => products.id, {onDelete: 'cascade'}),
     description: text('description'),
     published: integer('published', { mode: 'boolean' }).default(false),
     userId: integer('userId').references(() => users.id, {onDelete: 'cascade'}),
     coverId: integer('coverId').references(() => files.id, {onDelete: 'cascade'}),
+    createdAt: text("createdAt").default(sql`(CURRENT_TIMESTAMP)`),
+
+})
+
+export const products = sqliteTable('products', {
+    id: integer('id').primaryKey({ autoIncrement: true }),
+    slug: text('slug').notNull(),
+    brand: text('brand').notNull().unique(),
+    model: text('model').notNull(),
+    title: text('title').notNull(),
+    type: text('type'),
+    priceRange: text('priceRange'),
+    drivers: text('drivers', { mode: 'json' }),
+    released: integer('released', { mode: 'boolean' }).default(true),
+    releaseDate: text("releaseDate"),
+    showInIndex: integer('showInIndex', { mode: 'boolean' }).default(true),
     createdAt: text("createdAt").default(sql`(CURRENT_TIMESTAMP)`),
 
 })
@@ -63,7 +77,7 @@ export const comments = sqliteTable('comments', {
     id: integer('id').primaryKey({ autoIncrement: true }),
     text: text('text'),
     postId: integer('postId').references(() => posts.id, {onDelete: 'cascade'}),
-    gear: text('gear'),
+    productId: integer('productId').references(() => products.id, {onDelete: 'cascade'}),
     userId: integer('userId').references(() => users.id, {onDelete: 'cascade'}),
     parentId: integer('parentId').references((): AnySQLiteColumn => comments.id, {onDelete: 'cascade'}),
     createdAt: text("createdAt").default(sql`(CURRENT_TIMESTAMP)`),
@@ -74,7 +88,7 @@ export const likes = sqliteTable('likes', {
     postId: integer('postId').references(() => posts.id, {onDelete: 'cascade'}),
     userId: integer('userId').references(() => users.id, {onDelete: 'cascade'}),
     guestId: text('guestId'),
-    gear: text('gear'),
+    productId: integer('productId').references(() => products.id, {onDelete: 'cascade'}),
     commentId: integer('commentId').references(() => comments.id, {onDelete: 'cascade'}),
     createdAt: text("createdAt").default(sql`(CURRENT_TIMESTAMP)`),
 })
@@ -88,10 +102,20 @@ export const postsRelations = relations(posts, ({one,  many }) => ({
         fields: [posts.userId],
         references: [users.id],
     }),
+    product: one(products, {
+        fields: [posts.productId],
+        references: [products.id],
+    }),
     cover: one(files, {
         fields: [posts.coverId],
         references: [files.id]
     })
+}));
+
+export const productsRelations = relations(products, ({ many }) => ({
+    comments: many(comments),
+    likes: many(likes),
+    posts: many(posts)
 }));
 
 export const usersRelations = relations(users, ({one,  many }) => ({

@@ -1,22 +1,27 @@
 <template>
+
+<div class="w-full max-w-app mx-auto mb-24">
+
     <div class="mt-24">
         <UChip :text="comments.length" size="3xl" color="teal" :show="comments.length > 0">
-            <h2 class="font-black text-xl text-center md:text-left">Comments</h2>
+            <h2 class="font-black text-xl text-center md:text-left mb-6">Comments</h2>
         </UChip>
 
-        <ul class="mb-12 mt-6 flex flex-col gap-3 relative">
+        <ul v-if="comments.length" class="mb-12 mt-6 flex flex-col gap-3 relative">
             <li v-for="comment in useCreateTree(comments)" class="relative">
                 <CommentChild 
                     :comment="comment" 
                 />
             </li>
         </ul>
+
         <div>
             <div v-if="user" class="text-sm mb-1 text-gray-500">Commenting as 
                 <span  class="font-semibold">{{ user.username }}</span>
             </div>
             <UTextarea class="w-full mb-2" :rows="4" v-model="text"></UTextarea>
         </div>
+        
         <div class="flex justify-end">
             <UButton v-if="user" color="sky" @click="addComment" :loading="loading" :disabled="!text">Add comment</UButton>
             <nuxt-link v-else :to='"/login?redirect="+useRoute().fullPath+"#comments"'>
@@ -24,6 +29,7 @@
             </nuxt-link>
         </div>
     </div>
+</div>
 </template>
 
 <script setup>
@@ -33,22 +39,23 @@ const props = defineProps({
         post: {
             type: Object
         },
-        gear: {
-            type: String
+        product: {
+            type: Object
         }
 })
 
 let column
 let id
+
 if (props.post)
 {
     column = 'postId'
     id = props.post.id
 }
-else if (props.gear)
+else if (props.product)
 {
-    column = 'gear'
-    id = props.gear
+    column = 'productId'
+    id = props.product.id
 }
 
 const { data:comments } = await useFetch(`/api/comments/`, {
@@ -77,7 +84,7 @@ const addComment = async () => {
     }
     else 
     {
-        commentPayload['gear'] = id
+        commentPayload['productId'] = id
 
     }
 
@@ -113,7 +120,7 @@ $listen('comment', async (reply) => {
     }
     else 
     {
-        replyPayload['gear'] = id
+        replyPayload['productId'] = id
 
     }
 

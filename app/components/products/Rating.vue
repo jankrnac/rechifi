@@ -1,6 +1,6 @@
 <template>
 
-    <div class="flex flex-col items-center justify-center">
+<div class="flex flex-col items-center justify-center mb-24">
 		<h2 class="text-xl font-bold mb-6">User rating</h2>
 
 		<template v-if="rating">

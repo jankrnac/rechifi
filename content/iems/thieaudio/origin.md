@@ -1,5 +1,6 @@
 ---
 
+
 title: Thieaudio Origin
 
 model: Origin
@@ -34,4 +35,6 @@ images:
 
 showInIndex: true
 
+createdAt: 2024-05-29
 ---
+

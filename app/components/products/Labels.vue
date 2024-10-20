@@ -8,7 +8,7 @@
         <div class="flex">
             
             <div class="flex flex-col md:flex-row items-start gap-3">
-                <DriverLabel v-for="driver in doc.drivers" :driver="driver"></DriverLabel>
+                <DriverLabel v-for="driver in product.drivers" :driver="driver"></DriverLabel>
             </div>
         </div>
         </template>
@@ -46,5 +46,5 @@
 </template>
 
 <script setup>
-defineProps(['doc','signature'])
+defineProps(['product','signature'])
 </script>

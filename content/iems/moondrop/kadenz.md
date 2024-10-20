@@ -1,5 +1,6 @@
 ---
 
+
 title: Moondrop Kadenz
 
 model: Kadenz
@@ -27,4 +28,6 @@ images:
 
 showInIndex: true
 
+createdAt: 2024-05-29
 ---
+

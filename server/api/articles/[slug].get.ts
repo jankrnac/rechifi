@@ -1,6 +1,5 @@
 import {  asc, desc } from 'drizzle-orm';
 
-
 export default eventHandler(async (event) => {
 
     const slug = getRouterParam(event, 'slug')

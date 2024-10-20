@@ -3,16 +3,16 @@
 
 <template v-if="$device.isMobile">
     <Carousel :items-to-show="1">
-        <Slide v-for="slide in images" :key="slide">
-            <nuxt-img :src="slide" format="webp" sizes="480px" height="480px" densities="x1" fit="cover" class="rounded-lg"  :modifiers="{alwaysCDN: true}"/>
+        <Slide v-for="slide in [1,2,3]" :key="slide">
+            <nuxt-img :src="useRoute().params.brand+'/'+useRoute().params.model+`/image${slide}.webp`" format="webp" sizes="480px" height="480px" densities="x1" fit="cover" class="rounded-lg" :modifiers="{alwaysCDN: true}"/>
         </Slide>
     </Carousel>
 </template>
 
 <template v-else>
     <Carousel :items-to-show="3">
-        <Slide v-for="slide in images" :key="slide">
-            <nuxt-img :src="slide" format="webp" sizes="480px" height="480px" densities="x1" fit="cover" class="rounded-lg"  :modifiers="{alwaysCDN: true}"/>
+        <Slide v-for="slide in [1,2,3]" :key="slide">
+            <nuxt-img :src="useRoute().params.brand+'/'+useRoute().params.model+`/image${slide}.webp`" format="webp" sizes="480px" height="480px" densities="x1" fit="cover" class="rounded-lg"  :modifiers="{alwaysCDN: true}"/>
         </Slide>
         <template #addons>
             <Navigation />

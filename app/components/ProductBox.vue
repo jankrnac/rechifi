@@ -3,7 +3,7 @@
 
 <li :key="product.source" class="relative">
     <div class="bg-[#f6f7f8] dark:bg-gray-800 relative aspect-[1] block w-full overflow-hidden rounded-lg hover:-translate-y-1 transition md:p-5">
-        <nuxt-img :src="product.cover ? product.cover : 'iem.webp'"
+        <nuxt-img :src="product.slug + '/cover.webp'"
             alt="" 
             class="pointer-events-none object-cover rounded-lg" 
             densities="x1" 
@@ -11,7 +11,7 @@
             sizes="200px md:300px lg:351px" 
             :modifiers="{alwaysCDN: true}"
         />
-        <nuxt-link class="absolute inset-0" :to="product._path" :aria-label="product.title"></nuxt-link>
+        <nuxt-link class="absolute inset-0" :to="'/'+product.type + '/' + product.slug" :aria-label="product.title"></nuxt-link>
     </div>
 
     <div v-if="product.showInIndex" class="flex items-center pointer-events-none mt-2 truncate font-semibold" :class="{'text-orange-500': product.released == false}">

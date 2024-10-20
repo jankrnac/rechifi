@@ -39,16 +39,6 @@ features:
     - 2-Pin 0.78 MM Cable and High-Purity OCC Copper
 
 showInIndex: true
+createdAt: 2024-05-29
 
-technicals:
-    - Impedance: 16ohms
-    - Sensitivity: 102dB
-    - Driver: 10mm LDP dynamic diaphragm
-    - Cable material: High Purity OCC
-    - Cable Interface: 0.78mm 2pin connector
-    - Plug: 3.5mm Stereo Plug
-
-package: 
-    - 1x Kiwi Ears Dolce
-    - User Manual
 ---

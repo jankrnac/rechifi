@@ -1,16 +1,16 @@
 <template>
 
-<div class="w-full">	
+<div class="w-full max-w-app">	
 
 	<div class="flex justify-center items-center md:justify-start mb-8 gap-6">
-		<UChip :text="reviews.length" size="3xl" color="orange" :show="reviews.length > 0"><h2 class="text-xl font-bold">Reviews</h2></UChip>
-		<UButton v-if="user && reviews.findIndex(e=>e.profile_id == user.id) < 0" size="sm" @click="addReview">Add review</UButton>
+		<UChip :text="product.posts.length" size="3xl" color="orange" :show="product.posts.length > 0"><h2 class="text-xl font-bold">Reviews</h2></UChip>
+		<UButton v-if="user && product.posts.findIndex(e=>e.profile_id == user.id) < 0" size="sm" @click="addReview">Add review</UButton>
 	</div>
 
-	<template v-if="reviews.length">
+	<template v-if="product.posts.length">
 
 		<ul class="grid grid-cols-2 lg:grid-cols-5 gap-5">
-			<li v-for="review in reviews">
+			<li v-for="review in product.posts">
 				<ReviewBox :post="review" size="small" />
 			</li>
 		</ul>
@@ -35,8 +35,8 @@ const { user } = useUserSession()
 const route = useRoute()
 
 const props = defineProps({
-	reviews: {
-		type: Array,
+	product: {
+		type: Object,
 		required: true
 	}
 })

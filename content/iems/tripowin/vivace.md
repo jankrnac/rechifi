@@ -1,5 +1,6 @@
 ---
 
+
 title: Tripowin x 0diBi Vivace
 
 model: Vivace
@@ -30,4 +31,6 @@ images:
 
 showInIndex: true
 
+createdAt: 2024-05-29
 ---
+

@@ -8,7 +8,8 @@
 
             <template v-for="post in posts">
                 <ArticleBox v-if="post.type == 'article'" :post="post" />
-                <ReviewBox v-else :post="post"/>
+                <ReviewBox v-else-if="post.type == 'review'" :post="post"/>
+                <ProductPostBox v-else :product="post"/>
             </template>
         </div>
 
@@ -32,7 +33,7 @@ useSeoMeta({
     your audiophile needs.`
 })
 
-const { data:posts } = await useFetch('/api/posts')
 
+const { data:posts } = await useFetch('/api/posts/all')
 
 </script>

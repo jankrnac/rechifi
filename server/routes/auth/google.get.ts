@@ -1,6 +1,6 @@
 import bcryptjs from "bcryptjs";
 
-export default oauthGoogleEventHandler({
+export default defineOAuthGoogleEventHandler({
     config: {
         redirectURL: process.env.NUXT_BASE_URL + '/auth/google'
     },

@@ -76,12 +76,7 @@
     
     
     const activeSort = useState('activeSort', () => sortOptions[0])
-    
-    const sortPayload = computed(() => {
-        return {
-            [activeSort.value.value]:activeSort.value.value == 'title' ? 1 : -1
-        }
-    })
+
     
     
     /***** Filtering  *****/
@@ -127,28 +122,29 @@
     }
     
     const activeFilters = useState('activeFilters', () => {
-        return {}
+        return {
+            signature: useRoute().query.signature ? [useRoute().query.signature].flat() : [],
+            drivers: useRoute().query.drivers ? [useRoute().query.drivers].flat() : [],
+            brand: useRoute().query.brand ? [useRoute().query.brand].flat() : []
+        }
     })
     
-    activeFilters.value.signature = useRoute().query.signature ?  [useRoute().query.signature].flat() : []
-    activeFilters.value.drivers = useRoute().query.drivers ?  [useRoute().query.drivers].flat() : []
-    activeFilters.value.brand = useRoute().query.brand ?  [useRoute().query.brand].flat() : []
-    activeFilters.value.showall = useRoute().query.showall == 'true' ? true:false
+
     
     const signatureFilter = computed(() => {
         if (activeFilters.value && activeFilters.value.signature.length) return { $in: activeFilters.value.signature.map(e=>e.value) }
-        return  {}
+        return  undefined
     })
     
     const driverFilter = computed(() => {
         if (activeFilters.value && activeFilters.value.drivers.length) return { $in: activeFilters.value.drivers.map(e=>e.value) }
-        return  {}
+        return null
     })
     
     
     const brandFilter = computed(() => {
-        if (activeFilters.value && activeFilters.value.brand.length) return { $in: activeFilters.value.brand.map(e=>e.value) }
-        return  {}
+        if (activeFilters.value && activeFilters.value.brand.length) return activeFilters.value.brand.map(e=>e.value)
+        return null
     })
     
     const indexFilter = computed(() => {
@@ -156,7 +152,7 @@
         return  { $in: [true] }
     })
     
-    watch([activeFilters,sortPayload], async () => {
+    watch([activeFilters,activeSort], async () => {
         
         await refresh()
         
@@ -170,25 +166,24 @@
     const model = useRoute().params.slug
     
     const page = ref(1)
-    const { data:iems, refresh } = await useAsyncData(model, () => 
-    
-    
-        queryContent('/' + model)
-        .where({ _partial: false }) // exclude the Partial files
-    
-        .where({ 'signature': signatureFilter.value })
-        .where({ 'driverTypes': driverFilter.value })
-        .where({ 'brand': brandFilter.value })
+    const { data:iems, refresh } = await useAsyncData('iems', () => { 
         
-        .where({ 'showInIndex': indexFilter.value })
+        const data = $fetch(`/api/products/${model}`, {
+            query: {
+                'signature': signatureFilter.value,
+                'driverTypes': driverFilter.value,
+                'brand': brandFilter.value,
+                'showInIndex': indexFilter.value,
+                'page': page.value,
+                'sort': activeSort.value.value
+            }
+        })
+
+        if (data) return data
     
-        .skip(20 * (page.value - 1))
-        .limit(20)
-    
-        .sort(sortPayload.value)
-    
-        .find()
-    )
+        return []
+    })
+
     
     // help variable for infinite scroll
     const data = ref()

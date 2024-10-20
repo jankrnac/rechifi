@@ -1,5 +1,6 @@
 ---
 
+
 title: Celest IgniteX Beast
 
 brand: celest
@@ -23,4 +24,5 @@ releaseDate: 2024-09-25
 
 released: true
 
+createdAt: 2024-05-29
 ---

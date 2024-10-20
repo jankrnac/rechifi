@@ -6,7 +6,7 @@ export default eventHandler(async (event) => {
 
     let column = 'postId'
     if (query.postId) column = 'postId'
-    else column = 'gear'
+    else column = 'productId'
 
     let comments = await useDrizzle().query.comments.findMany({
         where: eq(tables.comments[column], query[column]),
