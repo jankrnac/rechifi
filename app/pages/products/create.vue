@@ -67,7 +67,7 @@ const changeDriverCount = (value, data) => {
 
 const onSubmit = async (event) => {
 
-    state.title = state.brand + ' ' + state.model
+    state.title = state.brand.charAt(0).toUpperCase() + state.brand.slice(1) + ' ' + state.model
     state.slug = useSlug(state.brand) + '/' + useSlug(state.model)
 
     await $fetch('/api/products', {
