@@ -1,6 +1,6 @@
 <template>
 
-    <div class="flex flex-col flex-grow gap-12 justify-center items-center">
+    <div class="flex flex-col flex-grow gap-12 justify-center items-center py-12">
 
         <h1 class="text-3xl lg:text-6xl">
             <span class="font-bold">Enter article </span> 

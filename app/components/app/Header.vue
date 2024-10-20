@@ -157,20 +157,24 @@
 	  
 		
 	<USlideover v-model="mobileMenuOpen">
-			<div class="flex items-center justify-end p-6">
-		
-				<div>
-					<UIcon name="ph-sun-light" v-if="colorMode.preference == 'dark'" class="mr-5 cursor-pointer"  @click="setColorMode('light')" size="24px"/>
-					<UIcon name="ph-moon-light" v-else class="cursor-pointer mr-5"  @click="setColorMode('dark')" size="24px"/>
-				</div>
+			<div class="flex items-center justify-between py-6 px-4">
+				
+				<UButton variant="solid" icon="i-ph-plus-circle" size="sm" label="Post" to="/add" @click="mobileMenuOpen = false" />
 
-				<button type="button" @click="mobileMenuOpen = false">
-					<span class="sr-only">Close menu</span>
-					<UIcon name="ph-x-light" aria-hidden="true" size="24px"/>
-				</button>
+				<div class="flex">
+					<div>
+						<UIcon name="ph-sun-light" v-if="colorMode.preference == 'dark'" class="mr-5 cursor-pointer"  @click="setColorMode('light')" size="24px"/>
+						<UIcon name="ph-moon-light" v-else class="cursor-pointer mr-5"  @click="setColorMode('dark')" size="24px"/>
+					</div>
+
+					<button type="button" @click="mobileMenuOpen = false">
+						<span class="sr-only">Close menu</span>
+						<UIcon name="ph-x-light" aria-hidden="true" size="24px"/>
+					</button>
+				</div>
 			</div>
 			
-			<div class="flow-root p-2">
+			<div class="flow-root px-4" >
 				<div class="divide-y divide-gray-500/10">
 				
 						<!-- Search -->
@@ -189,6 +193,8 @@
 					
 					<!-- Navigation section -->
 					<div class="space-y-2 py-6">
+
+
 						<div v-for="item in navigation" :key="item.name" :href="item.href" class="">
 							<a :href="item.href" :class="[item.current ? 'bg-gray-50' : 'dark:hover:bg-gray-700  hover:bg-gray-50', 'block rounded-md py-2 p-2 text-sm leading-6 font-semibold']">{{ item.name }}</a>
 							<ul v-if="item.children">
