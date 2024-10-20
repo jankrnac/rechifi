@@ -156,5 +156,7 @@ export default defineNuxtConfig({
 		'/remind/': { robots: false },
 		'/reset/': { robots: false },
 		'/suggest/': { robots: false },
+		'/products/': { robots: false },
+		'/products/create/': { robots: false },
 	  }
 })

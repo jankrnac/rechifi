@@ -1,14 +1,12 @@
-import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
-import { serverQueryContent } from '#content/server'
 import { asSitemapUrl, defineSitemapEventHandler } from '#imports'
 
 export default defineSitemapEventHandler(async (event) => {
-    const contentList = (await serverQueryContent(event).find()) as ParsedContent[]
+    const productsList = await $fetch('/api/products/all')
     const postsList = await $fetch('/api/posts')
 
-    return contentList.map((c) => {
+    return productsList.map((product) => {
         return asSitemapUrl({
-            loc: `${c._path}`,
+            loc: `${product.type}/${product.slug}`,
             changefreq: 'weekly'
         })
     }).concat(postsList.map((p) => {

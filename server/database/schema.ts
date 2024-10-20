@@ -31,6 +31,7 @@ export const posts = sqliteTable('posts', {
     title: text('tile').notNull(),
     type: text('type').notNull(),
     productSlug: text('productSlug'),
+    gearType: text('gearType'),
     productId: integer('productId').references(() => products.id, {onDelete: 'cascade'}),
     description: text('description'),
     published: integer('published', { mode: 'boolean' }).default(false),
