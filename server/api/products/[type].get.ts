@@ -1,19 +1,19 @@
-import {  eq, desc, inArray } from 'drizzle-orm';
+import {  eq, desc, asc, inArray } from 'drizzle-orm';
 
 export default eventHandler(async (event) => {
 
     const query = getQuery(event)
     const type = getRouterParam(event, 'type')
 
-    let orderColumn = tables.products.id
+    let orderColumn = asc(tables.products.title)
 
     if(query.sort == 'title')
     {
-        orderColumn = tables.products.title
+        orderColumn = asc(tables.products.title)
     }
     else if(query.sort == 'releaseDate')
     {
-        orderColumn = tables.products.releaseDate
+        orderColumn = desc(tables.products.releaseDate)
     }
 
     let products = await useDrizzle().query.products.findMany({
@@ -23,7 +23,7 @@ export default eventHandler(async (event) => {
         ),
         limit: query.page,
         offset: 20*(query.page - 1),
-        orderBy: [desc(orderColumn)],
+        orderBy: [orderColumn],
     })
 
     function intersect(a, b) {
