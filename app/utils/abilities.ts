@@ -16,3 +16,7 @@ export const deleteComment = defineAbility((user, comment) => {
 export const createProduct = defineAbility((user) => {
     return user.id === 1
 })
+
+export const editProduct = defineAbility((user) => {
+    return user.id === 1
+})
