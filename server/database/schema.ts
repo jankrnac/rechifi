@@ -44,7 +44,7 @@ export const posts = sqliteTable('posts', {
 export const products = sqliteTable('products', {
     id: integer('id').primaryKey({ autoIncrement: true }),
     slug: text('slug').notNull(),
-    brand: text('brand').notNull().unique(),
+    brand: text('brand').notNull(),
     model: text('model').notNull(),
     title: text('title').notNull(),
     type: text('type'),
