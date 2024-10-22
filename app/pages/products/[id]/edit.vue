@@ -80,7 +80,7 @@
         state.title = state.brand.charAt(0).toUpperCase() + state.brand.slice(1) + ' ' + state.model
         state.slug = useSlug(state.brand) + '/' + useSlug(state.model)
     
-        await $fetch('/api/products/'+useRoute().params.id, {
+        await $fetch('/api/admin/products/'+useRoute().params.id, {
             method: "PUT",
             body: state
         })

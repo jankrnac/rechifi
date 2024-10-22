@@ -18,7 +18,7 @@ export default eventHandler(async (event) => {
 
     let products = await useDrizzle().query.products.findMany({
         where: and(
-            type != 'all' ? eq(tables.products.type, type) : undefined,
+            eq(tables.products.type, type),
             query.brand ? (Array.isArray(query.brand) ? inArray(tables.products.brand, query.brand) : eq(tables.products.brand, query.brand)) : undefined,
         ),
         limit: query.page,
