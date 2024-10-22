@@ -24,5 +24,16 @@ export default eventHandler(async (event) => {
         orderBy: [desc(orderColumn)],
     })
 
+    function intersect(a, b) {
+        var setB = new Set(b);
+        return [...new Set(a)].filter(x => setB.has(x)).length
+    }
+
+    if(query.drivers) 
+    {
+        products = products.filter(product => intersect(product.drivers.map(e=>e.value), [query.drivers].flat()))
+    }
+
     return products
+
 })

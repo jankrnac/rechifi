@@ -137,7 +137,7 @@
     })
     
     const driverFilter = computed(() => {
-        if (activeFilters.value && activeFilters.value.drivers.length) return { $in: activeFilters.value.drivers.map(e=>e.value) }
+        if (activeFilters.value && activeFilters.value.drivers.length) return activeFilters.value.drivers.map(e=>e.value)
         return null
     })
     
@@ -147,10 +147,6 @@
         return null
     })
     
-    const indexFilter = computed(() => {
-        if (activeFilters.value && activeFilters.value.showall == true) return { $in: [true, false, null] }
-        return  { $in: [true] }
-    })
     
     watch([activeFilters,activeSort], async () => {
         
@@ -171,9 +167,8 @@
         const data = $fetch(`/api/products/${model}`, {
             query: {
                 'signature': signatureFilter.value,
-                'driverTypes': driverFilter.value,
+                'drivers': driverFilter.value,
                 'brand': brandFilter.value,
-                'showInIndex': indexFilter.value,
                 'page': page.value,
                 'sort': activeSort.value.value
             }
