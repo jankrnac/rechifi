@@ -126,7 +126,10 @@ export const productsRelations = relations(products, ({ one, many }) => ({
     comments: many(comments),
     likes: many(likes),
     posts: many(posts),
-    hero: one(heroes)
+    hero: one(heroes, {
+        fields: [products.id],
+        references: [heroes.productId],
+    })
 }));
 
 export const usersRelations = relations(users, ({one,  many }) => ({

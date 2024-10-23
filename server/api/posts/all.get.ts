@@ -12,7 +12,7 @@ export default eventHandler(async (event) => {
         },
         where: and( 
             query && query.type ? inArray(tables.posts.type, [query.type]) : inArray(tables.posts.type, ['article', 'review']),
-            eq(tables.posts.published, true)
+            eq(tables.posts.published, true),
         ),
         orderBy: [desc(tables.posts.id)],
         limit: 20
@@ -21,11 +21,12 @@ export default eventHandler(async (event) => {
 
     let products = await useDrizzle().query.products.findMany({
         with: {
-            likes: true
+            likes: true,
+            hero: true
         },
         limit: 20
     })
 
 
-    return posts.concat(products)
+    return posts.concat(products.filter(e=>e.hero == null))
 })
