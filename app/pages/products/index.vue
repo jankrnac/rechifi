@@ -54,7 +54,12 @@ const columns = [{
 }, {
     key: 'drivers',
     label: 'Drivers'
-}, {
+}, 
+{
+    key: 'releaseDate',
+    label: 'Release Date'
+},
+{
     key: 'actions'
 }]
 
