@@ -16,7 +16,7 @@
             class="pointer-events-none object-cover rounded-lg" 
             densities="x1" 
             format="webp" 
-            sizes="200px md:300px lg:351px" 
+            sizes="400px md:500px lg:351px" 
             :modifiers="{alwaysCDN: true}"
         />
         <nuxt-link class="absolute inset-0" :to="'/'+product.type+'/'+product.slug" :aria-label="product.title"></nuxt-link>
