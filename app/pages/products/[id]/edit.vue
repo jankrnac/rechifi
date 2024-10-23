@@ -15,6 +15,10 @@
             <USelectMenu v-model="state.type" :options="types" />
         </UFormGroup>
     
+        <UFormGroup label="Release Date" name="releaseDate">
+            <UInput v-model="state.releaseDate" />
+        </UFormGroup>
+        
         <UCheckbox v-model="state.released" name="released" label="Released" :checked="true" />
         <UCheckbox v-model="state.showInIndex" name="showInIndex" label="Show in index" />
     
@@ -42,6 +46,7 @@
         model: product.value.model,
         type: product.value.type,
         released: product.value.released,
+        releaseDate: product.value.releaseDate,
         showInIndex: product.value.released,
         drivers: product.value.drivers
     })
