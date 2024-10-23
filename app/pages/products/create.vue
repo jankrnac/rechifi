@@ -15,6 +15,10 @@
         <USelectMenu v-model="state.type" :options="types" />
     </UFormGroup>
 
+    <UFormGroup label="Release Date" name="releaseDate">
+        <UInput v-model="state.releaseDate" />
+    </UFormGroup>
+
     <UCheckbox v-model="state.released" name="released" label="Released" />
     <UCheckbox v-model="state.showInIndex" name="showInIndex" label="Show in index" />
 
@@ -42,6 +46,7 @@ const state = reactive({
     model: undefined,
     type: undefined,
     released: true,
+    releaseDate: undefined,
     showInIndex: true,
     drivers: []
 })
