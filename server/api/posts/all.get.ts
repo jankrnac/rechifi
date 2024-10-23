@@ -19,6 +19,13 @@ export default eventHandler(async (event) => {
 
     })
 
+    let products = await useDrizzle().query.products.findMany({
+        with: {
+            likes: true
+        },
+        limit: 20
+    })
 
-    return posts
+
+    return posts.concat(products)
 })

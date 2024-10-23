@@ -19,7 +19,7 @@
             sizes="200px md:300px lg:351px" 
             :modifiers="{alwaysCDN: true}"
         />
-        <nuxt-link class="absolute inset-0" :to="product._path" :aria-label="product.title"></nuxt-link>
+        <nuxt-link class="absolute inset-0" :to="'/'+product.type+'/'+product.slug" :aria-label="product.title"></nuxt-link>
     </div>
 
     <div class="mt-2 w-full">

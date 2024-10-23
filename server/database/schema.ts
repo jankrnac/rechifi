@@ -155,7 +155,11 @@ export const likesRelations = relations(likes, ({ one }) => ({
     comment: one(comments, {
         fields: [likes.commentId],
         references: [comments.id],
-    })
+    }),
+    product: one(products, {
+        fields: [likes.productId],
+        references: [products.id],
+    }),
 }));
 
 export const tokensRelations = relations(tokens, ({ one }) => ({
