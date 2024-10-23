@@ -95,10 +95,19 @@ export const likes = sqliteTable('likes', {
 })
 
 
+export const heroes = sqliteTable('heroes', {
+    id: integer('id').primaryKey({ autoIncrement: true }),
+    postId: integer('postId').references(() => posts.id, {onDelete: 'cascade'}),
+    productId: integer('productId').references(() => products.id, {onDelete: 'cascade'}),
+    order: integer('order').default(0),
+    createdAt: text("createdAt").default(sql`(CURRENT_TIMESTAMP)`),
+})
+
 export const postsRelations = relations(posts, ({one,  many }) => ({
     elements: many(elements),
     comments: many(comments),
     likes: many(likes),
+    hero: one(heroes),
     user: one(users, {
         fields: [posts.userId],
         references: [users.id],
@@ -113,10 +122,11 @@ export const postsRelations = relations(posts, ({one,  many }) => ({
     })
 }));
 
-export const productsRelations = relations(products, ({ many }) => ({
+export const productsRelations = relations(products, ({ one, many }) => ({
     comments: many(comments),
     likes: many(likes),
-    posts: many(posts)
+    posts: many(posts),
+    hero: one(heroes)
 }));
 
 export const usersRelations = relations(users, ({one,  many }) => ({
@@ -161,6 +171,18 @@ export const likesRelations = relations(likes, ({ one }) => ({
         references: [products.id],
     }),
 }));
+
+export const heroesRelations = relations(heroes, ({ one }) => ({
+    post: one(posts, {
+        fields: [heroes.postId],
+        references: [posts.id],
+    }),
+    product: one(products, {
+        fields: [heroes.productId],
+        references: [products.id],
+    }),
+}));
+
 
 export const tokensRelations = relations(tokens, ({ one }) => ({
     user: one(users, {

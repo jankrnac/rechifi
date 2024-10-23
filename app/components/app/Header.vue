@@ -112,6 +112,10 @@
 								 <template v-if="loggedIn">
 
 									<Can :ability="createProduct">
+										<nuxt-link to="/heroes" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer">
+											<Icon name="ph:image-light" />
+											<div>Heroes</div>
+										</nuxt-link>
 										<nuxt-link to="/products" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer">
 											<Icon name="ph:cube-light" />
 											<div>Products</div>
@@ -220,6 +224,16 @@
 						</nuxt-link>
 
 						<!-- Authenticated -->
+						<Can :ability="createProduct">
+							<nuxt-link to="/heroes" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer">
+								<Icon name="ph:image-light" />
+								<div>Heroes</div>
+							</nuxt-link>
+							<nuxt-link to="/products" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer">
+								<Icon name="ph:cube-light" />
+								<div>Products</div>
+							</nuxt-link>
+						</Can>
 						<nuxt-link v-if="user" :to="'/users/' + user.username" class="flex gap-2 items-center hover:bg-gray-50 p-2 rounded cursor-pointer" @click="mobileMenuOpen = false">
 							<UIcon name="i-ph-user-light" size="20px" />
 							<div>My Profile</div>

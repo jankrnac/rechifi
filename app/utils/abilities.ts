@@ -20,3 +20,7 @@ export const createProduct = defineAbility((user) => {
 export const editProduct = defineAbility((user) => {
     return user.id === 1
 })
+
+export const createHero = defineAbility((user) => {
+    return user.id === 1
+})

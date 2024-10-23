@@ -1,9 +1,10 @@
 <template>
 
-    <template v-if="posts.length">
 
-    <div class="w-full max-w-app mt-6 lg:mt-12">
+    <div class="w-full max-w-app mt-6 lg:mt-12">   
 
+        <Hero />
+        
         <div class="mx-auto lg:mb-32 mb-16 lg:mt-16 grid grid-cols-1 gap-x-8 gap-y-8 md:gap-y-20 md:grid-cols-2 lg:grid-cols-3 lg:mx-0 lg:max-w-none xl:grid-cols-4">
 
             <template v-for="post in posts">
@@ -15,11 +16,6 @@
 
     </div>
 
-    </template>
-
-    <template v-else>
-        <AddPage />
-    </template>
 
 </template>
 

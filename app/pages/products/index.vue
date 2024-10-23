@@ -3,7 +3,9 @@
 
     <div class="w-full">
 
-        <UButton icon="i-ph-plus" class="mb-6" size="lg" to="/products/create">Add</UButton>
+        <div class="flex justify-between">
+            <UButton icon="i-ph-plus" class="mb-6" size="lg" to="/products/create">Add</UButton>
+        </div>
 
         <UTable :rows="products" :columns="columns" class="w-full">
             <template #title-data="{ row }">
