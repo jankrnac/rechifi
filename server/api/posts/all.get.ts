@@ -24,7 +24,8 @@ export default cachedEventHandler(async (event) => {
             likes: true,
             hero: true
         },
-        limit: 20
+        limit: 20,
+        orderBy: [desc(tables.products.id)]
     })
 
 
