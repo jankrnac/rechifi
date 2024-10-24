@@ -26,7 +26,7 @@
 
 <script setup>
 
-useSeoMeta({
+useHead({
     title: 'About us',
     description: `The goal of this site is to provide users a tool to filter and find the audio gear based on their preferences, and mainly to aggregate users reviews to extract common features of 
         particular product reviewed by many different users.`

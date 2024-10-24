@@ -1,6 +1,6 @@
 import {  inArray, desc, isNull } from 'drizzle-orm';
 
-export default eventHandler(async (event) => {
+export default cachedEventHandler(async (event) => {
 
     const query = getQuery(event)
 
@@ -29,4 +29,9 @@ export default eventHandler(async (event) => {
 
 
     return posts.concat(products.filter(e=>e.hero == null))
+},
+{
+    maxAge: 60 * 60, // 1 hour
+    name: 'getAllPosts',
+    getKey: (event) => event.path
 })
