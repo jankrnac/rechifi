@@ -35,7 +35,7 @@
         </div>
         
         <div class="group relative">
-            <h3 class="mt-6 text-2xl font-bold leading-6">
+            <h3 class="my-3 text-2xl font-bold leading-6">
                 <nuxt-link :to="product._path" class="text">{{ product.title }}</nuxt-link>
             </h3>
         </div>

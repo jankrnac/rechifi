@@ -78,7 +78,7 @@
 
         <!-- Search -->
         <div class="hidden md:block flex-1 mr-2 lg:mr-6 2xl:mr-12 relative">
-			<Icon name="ph:magnifying-glass-light" class="w-5 h-5 absolute top-3.5 left-4 text-gray-400 hidden lg:block" />
+			<UIcon name="i-ph-magnifying-glass-light" class="w-5 h-5 absolute top-3.5 left-4 text-gray-400 hidden lg:block" />
             <input class="bg-gray-50 p-3 pl-4 lg:pl-12 rounded-lg border w-full text-sm lg:text-base dark:bg-gray-800 dark:border-gray-700" 
 					type="text" 
 					placeholder="Search"
@@ -104,7 +104,7 @@
 							<div class="p-2"> 
 								<!-- Guest -->
 								<nuxt-link v-if="!loggedIn" to="/login" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer">
-									<Icon name="ph:sign-in-light" size="20px" />
+									<UIcon name="i-ph-sign-in-light" size="20px" />
 									<div>Login</div>
 								</nuxt-link>
 								
@@ -113,24 +113,24 @@
 
 									<Can :ability="createProduct">
 										<nuxt-link to="/heroes" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer">
-											<Icon name="ph:image-light" />
+											<UIcon name="i-ph-image-light" />
 											<div>Heroes</div>
 										</nuxt-link>
 										<nuxt-link to="/products" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer">
-											<Icon name="ph:cube-light" />
+											<UIcon name="i-ph-cube-light" />
 											<div>Products</div>
 										</nuxt-link>
 									</Can>
 									<nuxt-link :to="'/users/' + user.username" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer">
-										<Icon name="ph:user-light" />
+										<UIcon name="i-ph-user-light" />
 										<div>My profile</div>
 									</nuxt-link>
 									<nuxt-link to="/settings" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer">
-										<Icon name="ph:gear-light" />
+										<UIcon name="i-ph-gear-light" />
 										<div>Settings</div>
 									</nuxt-link>
 									<nuxt-link class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="logout">
-										<Icon name="ph:sign-out-light" />
+										<UIcon name="i-ph-sign-out-light" />
 										<div>Logout</div>
 									</nuxt-link>
 								</template>
@@ -149,7 +149,7 @@
 			<div class="flex ml-4 justify-end xl:hidden">
 				<button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5" @click="mobileMenuOpen = true">
 					<span class="sr-only">Open main menu</span>
-					<Icon name="ph:list-light" class="w-6 h-6"/>
+					<UIcon name="i-ph-list-light" class="w-6 h-6"/>
 				</button>
 			</div>
 
@@ -183,7 +183,7 @@
 				
 						<!-- Search -->
 						<div class="block flex-1 relative">
-						<Icon name="ph:magnifying-glass-light" size="20" class="absolute top-3.5 left-4 text-gray-400 hidden lg:block" />
+						<UIcon name="i-ph-magnifying-glass-light" size="20" class="absolute top-3.5 left-4 text-gray-400 hidden lg:block" />
 						<UInput size="xl" 
 								type="text" 
 								icon="i-ph-magnifying-glass-thin"
@@ -219,18 +219,18 @@
 
 						<!-- Guest -->
 						<nuxt-link v-if="!user" to="/login" class="flex gap-2 items-center p-2 hover:bg-gray-50 rounded cursor-pointer" @click="mobileMenuOpen = false">
-							<Icon name="ph:sign-in-light" size="20px" />
+							<UIcon name="i-ph-sign-in-light" size="20px" />
 							<div>Login</div>
 						</nuxt-link>
 
 						<!-- Authenticated -->
 						<Can :ability="createProduct">
-							<nuxt-link to="/heroes" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer">
-								<Icon name="ph:image-light" />
+							<nuxt-link to="/heroes" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer">
+								<UIcon name="i-ph-image-light" size="20px" />
 								<div>Heroes</div>
 							</nuxt-link>
-							<nuxt-link to="/products" class="flex gap-6 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer">
-								<Icon name="ph:cube-light" />
+							<nuxt-link to="/products" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer">
+								<UIcon name="i-ph-cube-light"  size="20px" />
 								<div>Products</div>
 							</nuxt-link>
 						</Can>

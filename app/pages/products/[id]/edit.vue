@@ -15,6 +15,11 @@
             <USelectMenu v-model="state.type" :options="types" />
         </UFormGroup>
     
+        <UFormGroup label="Price Range" name="priceRange">
+            <USelectMenu v-model="state.priceRange" :options="['low','medium','high']" />
+        </UFormGroup>
+
+
         <UFormGroup label="Release Date" name="releaseDate">
             <UInput v-model="state.releaseDate" />
         </UFormGroup>
@@ -48,6 +53,7 @@
         released: product.value.released,
         releaseDate: product.value.releaseDate,
         showInIndex: product.value.released,
+        priceRange: product.value.priceRange,
         drivers: product.value.drivers
     })
 

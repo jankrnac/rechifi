@@ -16,16 +16,13 @@
             </div>
         </div>
 
-        <div class="relative rounded-xl overflow-hidden shadow-xl mb-4">
+        <div class="relative rounded-xl overflow-hidden shadow-lg shadow-gray-400 mb-4">
         
         <!-- Bg -->
-        <div class="w-full select-none relative z-[1]">
+        <div class="w-full select-none relative z-[1] ">
             <nuxt-img v-if="$device.isDesktop" :src="hero.product.slug + '/hero.webp'" sizes="100vw lg:1500px" format="webp" densities="x1" width="1500" height="660" :modifiers="{alwaysCDN: true}"            />
             <nuxt-img v-if="$device.isMobile" :src="hero.product.slug + '/hero.webp'" class="object-cover" sizes="400px" fit="contain" format="webp" densities="x1" width="660" height="660" :modifiers="{alwaysCDN: true}" />
         </div>
-
-        <!-- Overlay -->
-        <div class="absolute inset-0 bg-gray-900 opacity-0 z-9"></div>
 
         <!-- Link -->
         <nuxt-link :to="'/'+ hero.product.type + '/' + hero.product.slug" class="block absolute inset-0 z-20"></nuxt-link>

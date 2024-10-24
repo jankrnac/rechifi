@@ -58,6 +58,10 @@ const columns = [{
     label: 'Drivers'
 }, 
 {
+    key: 'priceRange',
+    label: 'Price Range'
+}, 
+{
     key: 'releaseDate',
     label: 'Release Date'
 },
