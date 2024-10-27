@@ -8,7 +8,7 @@
     
         <Wave />
     
-        <ul v-if="upcomings.length" class="divide-y divide-gray-100 w-full max-w-app">
+        <ul v-if="upcomings.length" class="divide-y w-full max-w-app">
     
             <template v-for="upcoming in upcomings" :key="upcoming._path">
                 <UpcomingBox :upcoming="upcoming" />
@@ -34,15 +34,8 @@ useSeoMeta({
 })
 
 
-      const upcomings = await queryContent('/')
+    const { data:upcomings } = await useFetch('/api/products/upcoming')
       
-        .sort({ releaseDate: 1 }) // show latest articles first
-      
-        .where({ _partial: false }) // exclude the Partial files
-
-        .where({ upcoming: true })
-      
-        .find()
         
       
 </script>
