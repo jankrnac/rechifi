@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <div class="relative rounded-xl overflow-hidden shadow-lg shadow-gray-400 mb-4">
+        <div class="relative rounded-xl overflow-hidden shadow-lg shadow-gray-400 dark:shadow-gray-800 dark:shadow-xl mb-4">
         
         <!-- Bg -->
         <div class="w-full select-none relative z-[1] ">
