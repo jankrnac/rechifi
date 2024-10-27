@@ -22,8 +22,8 @@
         <h2 class="text-2xl font-bold mb-10">IEMs: <small class="text-gray-500 font-thin">{{ iems.length }} found</small></h2>
         <ul class="grid grid-cols-2 gap-x-4 gap-y-2 md:gap-y-6 sm:grid-cols-3 sm:gap-x-2 lg:grid-cols-4 xl:gap-x-4">
 
-            <template v-for="headphone in iems" :key="headphone._path">
-                    <ProductBox :product="headphone" />
+            <template v-for="iem in iems">
+                    <ProductBox :product="iem" />
             </template>
             
         </ul>
@@ -62,22 +62,9 @@
     const route = useRoute()
     
     const { data:posts } = await useFetch('/api/posts/search/' +  route.params.query)
-    const iems = await queryContent('iems').where({ $or: [
-        { 'title': { $icontains: route.params.query }},
-        { 'brand': { $icontains: route.params.query }},
-        { 'model': { $icontains: route.params.query }}
 
-    ]}).find()
-    const daps = await queryContent('daps').where({ $or: [
-        { 'title': { $icontains: route.params.query }},
-        { 'brand': { $icontains: route.params.query }},
-        { 'model': { $icontains: route.params.query }}
-
-    ]}).find()
-    const dacs = await queryContent('dacs').where({ $or: [
-        { 'title': { $icontains: route.params.query }},
-        { 'brand': { $icontains: route.params.query }},
-        { 'model': { $icontains: route.params.query }}
-
-    ]}).find()
+    const { data:iems } = await useFetch('/api/products/iems')
+    const { data:daps } = await useFetch('/api/products/daps')
+    const { data:dacs } = await useFetch('/api/products/dacs')
+    
 </script>

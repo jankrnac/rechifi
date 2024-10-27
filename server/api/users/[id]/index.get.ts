@@ -10,6 +10,11 @@ export default eventHandler(async (event) =>
                     user: true,
                 }
             },
+            usersToProducts: {
+                with: {
+                    product: true
+                }
+            },
             avatar: true
         }
     })

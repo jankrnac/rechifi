@@ -9,10 +9,10 @@
         <h1 class="font-bold text-3xl md:text-5xl ">{{ profile.username }}</h1>
     </div>
     <h2 class="font-bold text-2xl">Audio gear</h2>
-        <ul class="grid grid-cols-2 gap-x-4 gap-y-2 md:gap-y-6 sm:grid-cols-3 sm:gap-x-2 lg:grid-cols-4 xl:gap-x-4" v-if="iems.length + daps.length + dacs.length > 0">
-            <ProductBox v-for="iem in iems" :product="iem" />
-            <ProductBox v-for="dap in daps" :product="dap" />
-            <ProductBox v-for="dac in dacs" :product="dac" />
+        <ul class="grid grid-cols-2 gap-x-4 gap-y-2 md:gap-y-6 sm:grid-cols-3 sm:gap-x-2 lg:grid-cols-4 xl:gap-x-4" v-if="profile.usersToProducts.length > 0">
+            <ProductBox v-for="iem in profile.usersToProducts.map(e=>e.product).filter(e=>e.type == 'iems')" :product="iem" />
+            <ProductBox v-for="dap in profile.usersToProducts.map(e=>e.product).filter(e=>e.type == 'daps')" :product="dap" />
+            <ProductBox v-for="dac in profile.usersToProducts.map(e=>e.product).filter(e=>e.type == 'dacs')" :product="dac" />
         </ul>
         <div v-else class="text-xl font-light">
             No gear
@@ -93,25 +93,6 @@ const items = [{
   key: 'reviews',
   label: 'Reviews',
 }]
-
-const { data:iems } = await useAsyncData(() => queryContent('/iems').where({
-        _path: {
-            $in: profile.value.iems
-        }
-}).find())
-
-const { data:daps } = await useAsyncData(() => queryContent('/daps').where({
-        _path: {
-            $in: profile.value.daps
-        }
-}).find())
-
-
-const { data:dacs } = await useAsyncData(() => queryContent('/dacs').where({
-        _path: {
-            $in: profile.value.dacs
-        }
-}).find())
 
 
 const deletedReviewId = ref()

@@ -3,7 +3,7 @@ export default eventHandler(async (event) =>
     
         const id = getRouterParam(event, 'id')
     
-        let posts = await useDrizzle().query.users.findFirst({
+        let user = await useDrizzle().query.users.findFirst({
             where: or(
                 eq(tables.users.email, id),
                 eq(tables.users.username, id),
@@ -13,12 +13,17 @@ export default eventHandler(async (event) =>
                     with: {
                         user: true,
                         cover: true,
-                        likes: true
+                        likes: true,
                     }
                 },
+                usersToProducts: {
+                    with: {
+                        product: true
+                    }
+                } 
             }
         })
     
-        return posts
+        return user
         
     })

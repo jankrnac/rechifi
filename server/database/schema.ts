@@ -9,9 +9,6 @@ export const users = sqliteTable('users', {
     avatarId: integer('avatarId').references(() => files.id, {onDelete: 'cascade'}),
     name: text('name'),
     other: text('other'),
-    iems: text('iems', {mode: 'json'}),
-    daps: text('daps', {mode: 'json'}),
-    dacs: text('dacs', {mode: 'json'}),
     activated: integer('activated', { mode: 'boolean' }).default(false),
     createdAt: text("createdAt").default(sql`(CURRENT_TIMESTAMP)`),
 })
@@ -138,7 +135,8 @@ export const usersRelations = relations(users, ({one,  many }) => ({
         references: [files.id]
     }),
     posts: many(posts),
-    token: one(tokens)
+    token: one(tokens),
+    usersToProducts: many(usersToProducts)
 }));
 
 export const elementsRelations = relations(elements, ({ one }) => ({
@@ -191,5 +189,24 @@ export const tokensRelations = relations(tokens, ({ one }) => ({
     user: one(users, {
       fields: [tokens.userId],
       references: [users.id],
+    }),
+}));
+
+
+export const usersToProducts = sqliteTable('usersToProducts', {
+    userId: integer('userId').references(() => users.id, { onDelete: 'cascade'}),
+    productId: integer('productId').references(() => products.id, { onDelete: 'cascade'}),  
+  }, (t) => ({
+    unq: unique().on(t.userId, t.productId)
+}))
+  
+export const usersToProductsRelations = relations(usersToProducts, ({ one }) => ({
+    user: one(users, {
+        fields: [usersToProducts.userId],
+        references: [users.id],
+    }),
+    product: one(products, {
+        fields: [usersToProducts.productId],
+        references: [products.id],
     }),
 }));

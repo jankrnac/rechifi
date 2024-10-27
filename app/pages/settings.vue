@@ -295,80 +295,41 @@
     }
 
 
-    const { data:allIEMs } = await useAsyncData(() => queryContent('/iems').find())
-    const { data:allDAPs } = await useAsyncData(() => queryContent('/daps').find())
-    const { data:allDACs } = await useAsyncData(() => queryContent('/dacs').find())
+    const { data:allIEMs } = await useFetch('/api/products/iems')
+    const { data:allDAPs } = await useFetch('/api/products/daps')
+    const { data:allDACs } = await useFetch('/api/products/dacs')
 
-    const iems = ref([])
-    if(profile.value.iems && profile.value.iems.length)
-    {
-        for(const temp of profile.value.iems) {
-            const result = await queryContent(temp).findOne()
-            iems.value.push(result)
-        };
-    }
-
-
-    const daps = ref([])
-    if(profile.value.daps && profile.value.daps.length)
-    {
-        for(const temp of profile.value.daps) {
-            const result = await queryContent(temp).findOne()
-            daps.value.push(result)
-        };
-    }
-
-    const dacs = ref([])
-    if(profile.value.dacs && profile.value.dacs.length)
-    {
-        for(const temp of profile.value.dacs) {
-            const result = await queryContent(temp).findOne()
-            dacs.value.push(result)
-        };
-    }
-
+    const iems = ref(profile.value.usersToProducts.map(e=>e.product).filter(e=>e.type == 'iems'))
+    const daps = ref(profile.value.usersToProducts.map(e=>e.product).filter(e=>e.type == 'daps'))
+    const dacs = ref(profile.value.usersToProducts.map(e=>e.product).filter(e=>e.type == 'dacs'))
 
     const removeIEM = (data) => 
     {
-        iems.value.splice(iems.value.findIndex(e => e._path == data._path), 1)
-    }
-
-    const dap = ref()
-    const addDAP = async () => 
-    {
-        daps.value.push(await queryContent(dap.value._path).findOne())
+        iems.value.splice(iems.value.findIndex(e => e.id == data.id), 1)
     }
 
     const removeDAP = (data) => 
     {
-        daps.value.splice(daps.value.findIndex(e => e._path == data._path), 1)
-    }
-
-    const dac = ref()
-    const addDAC = async () => 
-    {
-        dacs.value.push(await queryContent(dac.value._path).findOne())
+        daps.value.splice(daps.value.findIndex(e => e.id == data.id), 1)
     }
     
     const removeDAC = (data) => 
     {
-        dacs.value.splice(dacs.value.findIndex(e => e._path == data._path), 1)
+        dacs.value.splice(dacs.value.findIndex(e => e.id == data.id), 1)
     }
 
     const pending2 = ref(false)
 
     const submitSetupForm = async () => {
+
         pending2.value = true
-    
          
-        await $fetch('/api/users/' + user.value.id, {
+        await $fetch('/api/users/' + user.value.id + '/products', {
             method: "PUT",
             body: {
-                iems: iems.value.map(e=>e._path),
-                daps: daps.value.map(e=>e._path),
-                dacs: dacs.value.map(e=>e._path),
+                products: iems.value.concat(daps.value, dacs.value),
             }
-        })  
+        }) 
 
         pending2.value = false
     }
