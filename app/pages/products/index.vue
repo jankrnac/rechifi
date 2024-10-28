@@ -4,12 +4,24 @@
     <div class="w-full">
 
         <div class="flex justify-between">
-            <UButton icon="i-ph-plus" class="mb-6" size="lg" to="/products/create">Add</UButton>
+
+            <div class="flex gap-2">
+                <div>
+                    <UInput v-model="query" placeholder="Search..." />
+                </div>
+                <div>
+                    <USelect v-model="type" :options="['iems','daps','dacs']" placeholder="Type" />
+                </div>
+            </div>
+
+            <div class="flex justify-between">
+                <UButton icon="i-ph-plus" class="mb-6" size="lg" to="/products/create">Add</UButton>
+            </div>
         </div>
 
-        <UTable :rows="products" :columns="columns" class="w-full">
+        <UTable :rows="filteredRows" :columns="columns" class="w-full">
             <template #title-data="{ row }">
-                <nuxt-link :to="row.slug">{{ row.title }}</nuxt-link>
+                <nuxt-link :to="'/products/' + row.id + '/edit'">{{ row.title }}</nuxt-link>
             </template>
 
             <template #drivers-data="{ row }">
@@ -39,7 +51,28 @@
 
 <script setup>  
 
-const { data:products } = await useFetch('/api/products/all')
+const query = ref()
+const type = ref()
+
+const { data:products } = await useFetch('/api/products/all', {
+    query: {
+        type: type
+    }
+}, {
+    deep: true
+})
+
+const filteredRows = computed(() => {
+  if (!query.value) {
+    return products.value
+  }
+
+  return products.value.filter((person) => {
+    return Object.values(person).some((value) => {
+      return String(value).toLowerCase().includes(query.value.toLowerCase())
+    })
+  })
+})
 
 const columns = [{
     key: 'id',
@@ -53,7 +86,10 @@ const columns = [{
 }, {
     key: 'title',
     label: 'Title'
-}, {
+},  {
+    key: 'type',
+    label: 'Type'
+},{
     key: 'drivers',
     label: 'Drivers'
 }, 
