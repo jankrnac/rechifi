@@ -326,6 +326,12 @@ export default defineEventHandler((event) => {
             logo: '',
             link: ''
         },
+        {
+            value: 'artti',
+            label: 'Artti',
+            logo: '',
+            link: ''
+        },
     ]
 
     brands.sort((a, b) => {
