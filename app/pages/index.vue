@@ -1,17 +1,22 @@
 <template>
 
 
-    <div class="w-full max-w-app mt-6 lg:mt-12">   
+    <div class="w-full max-w-app mt-6 lg:my-12">   
 
         <Hero />
         
         <div class="mx-auto lg:mb-32 mb-16 lg:mt-16 grid grid-cols-1 gap-x-8 gap-y-8 md:gap-y-20 md:grid-cols-2 lg:grid-cols-3 lg:mx-0 lg:max-w-none xl:grid-cols-4">
 
-            <template v-for="post in posts">
+            <template v-for="post in data">
                 <ArticleBox v-if="post.type == 'article'" :post="post" />
                 <ReviewBox v-else-if="post.type == 'review'" :post="post"/>
                 <ProductPostBox v-else :product="post"/>
             </template>
+        </div>
+
+        
+        <div class="mt-8 md:mt-24 flex justify-center">
+            <UIcon name="i-ph-arrow-circle-down-thin" size="48px" class="cursor-pointer" @click="loadMore" />
         </div>
 
     </div>
@@ -29,7 +34,29 @@ useSeoMeta({
     your audiophile needs.`
 })
 
+const page = ref(1)
 
-const { data:posts } = await useFetch('/api/posts/all')
+const { data:posts, refresh } = await useAsyncData(() => {
+
+    const data = $fetch(`/api/posts/all`, {
+        query: {
+            'page': page.value,
+        }
+    })
+
+    return data
+})
+
+// help variable for infinite scroll
+const data = ref()
+data.value = posts.value
+
+const loadMore = async () => {
+    page.value++
+
+    await refresh()
+
+    data.value = [...data.value, ...posts.value]
+}
 
 </script>

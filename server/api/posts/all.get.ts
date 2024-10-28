@@ -15,8 +15,8 @@ export default cachedEventHandler(async (event) => {
             eq(tables.posts.published, true),
         ),
         orderBy: [desc(tables.posts.id)],
-        limit: 20
-
+        limit: 20,
+        offset: 20*(query.page - 1),
     })
 
     let products = await useDrizzle().query.products.findMany({
@@ -25,6 +25,7 @@ export default cachedEventHandler(async (event) => {
             hero: true
         },
         limit: 20,
+        offset: 20*(query.page - 1),
         orderBy: [desc(tables.products.id)]
     })
 
