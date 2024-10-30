@@ -332,6 +332,12 @@ export default defineEventHandler((event) => {
             logo: '',
             link: ''
         },
+        {
+            value: 'questyle',
+            label: 'Questyle',
+            logo: '',
+            link: ''
+        },
     ]
 
     brands.sort((a, b) => {
