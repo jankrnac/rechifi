@@ -16,7 +16,7 @@
             class="pointer-events-none object-cover rounded-lg" 
             densities="x1" 
             format="webp" 
-            sizes="400px md:500px lg:351px" 
+            sizes="200px md:350px lg:351px" 
             :modifiers="{alwaysCDN: true}"
         />
         <nuxt-link class="absolute inset-0" :to="'/'+product.type+'/'+product.slug" :aria-label="product.title"></nuxt-link>
@@ -24,7 +24,7 @@
 
     <div class="mt-2 w-full">
 		<div class="flex flex-1 justify-between items-center text-gray-500 dark:text-gray-200">
-            <div class="text-sm flex items-center justify-center">
+            <div class="text-sm flex items-center justify-center hidden md:block">
                 <UIcon name="i-ph-factory" class="mr-1" />
                 <nuxt-link class="capitalize">{{product.brand}}</nuxt-link>
             </div>
@@ -35,7 +35,7 @@
         </div>
         
         <div class="group relative">
-            <h3 class="my-3 text-2xl font-bold leading-6">
+            <h3 class="my-1 md:my-3 lg:text-2xl font-bold leading-6">
                 <nuxt-link :to="product._path" class="text">{{ product.title }}</nuxt-link>
             </h3>
         </div>
