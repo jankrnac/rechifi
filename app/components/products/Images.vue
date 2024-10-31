@@ -29,7 +29,6 @@
                 fit="cover" class="rounded-lg"  
                 :modifiers="{alwaysCDN: true}"
                 placeholder="/images/placeholder.webp"
-
             />
         </Slide>
         <template #addons>

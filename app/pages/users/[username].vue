@@ -69,7 +69,7 @@
     </template>
 
     <div v-else class="text-xl font-light">
-        No gear
+        No posts
     </div>
 
 
