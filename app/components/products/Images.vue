@@ -11,7 +11,7 @@
                 densities="x1" fit="cover" 
                 class="rounded-lg" 
                 :modifiers="{alwaysCDN: true}"
-                placeholder="./placeholder.webp"
+                placeholder="/images/placeholder.webp"
             />
         </Slide>
     </Carousel>
