@@ -3,12 +3,20 @@
 <div class="flex w-full max-w-app justify-center py-12">
 <UForm :state="state" class="space-y-4 w-full max-w-[500px]" @submit="onSubmit">
 
+    <UAlert
+    v-if="existing"
+    icon="i-ph-warning"
+    color="red"
+    variant="solid"
+    title="Existing product"
+    />
+
     <UFormGroup label="Brand" name="brand">
         <USelectMenu searchable v-model="state.brand"  :options="brands" value-attribute="value" />
     </UFormGroup>
   
     <UFormGroup label="Model" name="model">
-        <UInput v-model="state.model" />
+        <UInput v-model="state.model" @change="checkExisting"/>
     </UFormGroup>
 
     <UFormGroup label="Type" name="type">
@@ -35,7 +43,7 @@
 
     </UFormGroup>
 
-    <UButton type="submit" size="xl">Submit</UButton>
+    <UButton type="submit" size="xl" :disabled="existing">Submit</UButton>
 </UForm>
 
 </div>
@@ -86,6 +94,15 @@ const onSubmit = async (event) => {
     })
 
     await navigateTo('/products')
+}
+
+const existing = ref(false)
+
+const checkExisting = async () => {
+    const result = await $fetch(`/api/products/profile/${useSlug(state.brand)}/${useSlug(state.model)}`)
+
+    if (result) existing.value = true 
+    else existing.value = false
 }
 
 const types = ['iems', 'daps', 'dacs']
