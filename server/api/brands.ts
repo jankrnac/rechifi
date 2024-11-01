@@ -63,9 +63,9 @@ export default defineEventHandler((event) => {
 
         },
         {
-            value: 'hidisz',
-            label: 'Hidisz',
-            logo: 'hidisz/logo.webp',
+            value: 'hidizs',
+            label: 'Hidizs',
+            logo: 'hidizs/logo.webp',
             link: 'https://www.hidizs.net/'
 
         },
