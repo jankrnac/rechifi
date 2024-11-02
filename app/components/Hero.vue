@@ -1,9 +1,9 @@
 <template>
 
-<UCarousel v-slot="{ item }" :items="heroes" class="rounded-xl overflow-hidden" ref="carouselRef">
-    <div class="rounded-xl overflow-hidden">
+<UCarousel v-slot="{ item }" :items="heroes" :ui="{ item: 'basis-full' }" ref="carouselRef" class="mb-6">
+    <div>
     
-        <div class="flex items-end justify-between mb-2 gap-2 rounded-xl overflow-hidden">
+        <div class="flex items-end justify-between mb-2 gap-2">
             <h1 class="text-xl lg:text-2xl font-bold">
                 <nuxt-link class="text leading-normal" :to="'/'+ item.product.type + '/' + item.product.slug">{{ item.product.title }}</nuxt-link>
             </h1>
