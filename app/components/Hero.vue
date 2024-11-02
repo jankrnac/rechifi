@@ -1,37 +1,38 @@
 <template>
 
-   <article class="mb-12 lg:mb-32" v-if="heroes" v-for="hero in heroes">
-   
-        <div class="flex items-end justify-between mb-2 gap-2">
+<UCarousel v-slot="{ item }" :items="heroes" class="rounded-xl overflow-hidden" ref="carouselRef">
+    <div class="rounded-xl overflow-hidden">
+    
+        <div class="flex items-end justify-between mb-2 gap-2 rounded-xl overflow-hidden">
             <h1 class="text-xl lg:text-2xl font-bold">
-                <nuxt-link class="text leading-normal" :to="'/'+ hero.product.type + '/' + hero.product.slug">{{ hero.product.title }}</nuxt-link>
+                <nuxt-link class="text leading-normal" :to="'/'+ item.product.type + '/' + item.product.slug">{{ item.product.title }}</nuxt-link>
             </h1>
 
             <div class="flex gap-x-2">
-                <UBadge v-if="hero.product.type == 'iems'" class="mb-2" color="orange">New</UBadge>
+                <UBadge class="mb-2" color="orange">Featured</UBadge>
 
-                <UBadge v-if="hero.product.type == 'iems'" class="mb-2 uppercase" color="red" variant="outline">IEM</UBadge>
-                <UBadge v-if="hero.product.type == 'daps'" class="mb-2 uppercase" color="blue" variant="outline">DAP</UBadge>
-                <UBadge v-if="hero.product.type == 'dacs'" class="mb-2 uppercase" color="green" variant="outline">DAC</UBadge>        
+                <UBadge v-if="item.product.type == 'iems'" class="mb-2 uppercase" color="red" variant="outline">IEM</UBadge>
+                <UBadge v-if="item.product.type == 'daps'" class="mb-2 uppercase" color="blue" variant="outline">DAP</UBadge>
+                <UBadge v-if="item.product.type == 'dacs'" class="mb-2 uppercase" color="green" variant="outline">DAC</UBadge>        
             </div>
         </div>
 
-        <div class="relative rounded-xl overflow-hidden shadow-lg shadow-gray-400 dark:shadow-gray-800 dark:shadow-xl mb-4">
+        <div class="relative rounded-xl mb-4">
         
-        <!-- Bg -->
-        <div class="w-full select-none relative z-[1] ">
-            <nuxt-img v-if="$device.isDesktop" :src="hero.product.slug + '/hero.webp'" sizes="100vw lg:1500px" format="webp" densities="x1" width="1500" height="660" :modifiers="{alwaysCDN: true}"            />
-            <nuxt-img v-if="$device.isMobile" :src="hero.product.slug + '/hero.webp'" class="object-cover" sizes="400px" fit="contain" format="webp" densities="x1" width="660" height="660" :modifiers="{alwaysCDN: true}" />
-        </div>
+            <!-- Bg -->
+            <div class="w-full select-none relative z-[1] rounded-xl overflow-hidden">
+                <nuxt-img v-if="$device.isDesktop" :src="item.product.slug + '/hero.webp'" sizes="100vw lg:1500px" format="webp" densities="x1" width="1500" height="660" :modifiers="{alwaysCDN: true}"            />
+                <nuxt-img v-if="$device.isMobile" :src="item.product.slug + '/hero.webp'" class="object-cover" sizes="400px" fit="contain" format="webp" densities="x1" width="660" height="660" :modifiers="{alwaysCDN: true}" />
+            </div>
 
-        <!-- Link -->
-        <nuxt-link :to="'/'+ hero.product.type + '/' + hero.product.slug" class="block absolute inset-0 z-20"></nuxt-link>
+            <!-- Link -->
+            <nuxt-link :to="'/'+ item.product.type + '/' + item.product.slug" class="block absolute inset-0 z-20"></nuxt-link>
+        
+        </div>
         
     </div>
+</UCarousel>
 
-
-
-</article>
 
 </template>
 
@@ -40,5 +41,19 @@
 defineProps(['image','bg', 'type', 'link', 'subtitle','title', 'text', 'desc'])
 
 const { data:heroes } = await useFetch('/api/heroes') 
+
+const carouselRef = ref()
+
+onMounted(() => {
+  setInterval(() => {
+    if (!carouselRef.value) return
+
+    if (carouselRef.value.page === carouselRef.value.pages) {
+      return carouselRef.value.select(0)
+    }
+
+    carouselRef.value.next()
+  }, 6000)
+})
 
 </script>
