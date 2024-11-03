@@ -2,7 +2,7 @@
 
 <li :key="product.source" class="relative">
 
-    <div class="flex flex-grow items-center justify-end mb-1 md:mb-2 gap-1 mad:gap-2gap-2 opacity-60 text-sm">
+    <div v-if="useRoute().name != 'users-username'" class="flex flex-grow items-center justify-end mb-1 md:mb-2 gap-1 mad:gap-2gap-2 opacity-60 text-sm">
         <UIcon 
             v-if="(loggedIn && product.likes.map(e=>e.userId).includes(user.id) || !loggedIn && product.likes.map(e=>e.guestId).includes(guest))"
             name="i-ph-heart-fill" 
