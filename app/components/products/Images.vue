@@ -2,7 +2,7 @@
 <div class="max-w-app overflow-hidden relative mb-5">
 
 <template v-if="$device.isMobile">
-    <Carousel :items-to-show="1">
+    <Carousel :items-to-show="1.3">
         <Slide v-for="slide in [1,2,3]" :key="slide">
             <nuxt-img 
                 :src="useRoute().params.brand+'/'+useRoute().params.model+`/image${slide}.webp`" 
