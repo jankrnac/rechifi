@@ -12,7 +12,7 @@
 
         </div>
 
-        <div class="flex flex-grow justify-end mb-2 gap-2 opacity-80">
+        <div class="flex flex-grow justify-end mb-2 gap-2 opacity-60">
             <UIcon 
                 v-if="(loggedIn && post.likes.map(e=>e.userId).includes(user.id) || !loggedIn && post.likes.map(e=>e.guestId).includes(guest))"
                 name="i-ph-heart-fill" 

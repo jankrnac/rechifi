@@ -21,6 +21,9 @@ export default eventHandler(async (event) => {
             eq(tables.products.type, type),
             query.brand ? (Array.isArray(query.brand) ? inArray(tables.products.brand, query.brand) : eq(tables.products.brand, query.brand)) : undefined,
         ),
+        with: {
+            likes: true
+        },
         limit: 20,
         offset: 20*(query.page - 1),
         orderBy: [orderColumn],

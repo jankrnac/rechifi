@@ -1,7 +1,18 @@
 <template>
 
-
 <li :key="product.source" class="relative">
+
+    <div class="flex flex-grow justify-end mb-2 gap-2 opacity-60">
+        <UIcon 
+            v-if="(loggedIn && product.likes.map(e=>e.userId).includes(user.id) || !loggedIn && product.likes.map(e=>e.guestId).includes(guest))"
+            name="i-ph-heart-fill" 
+            class="text-red-600"
+            size="20px"
+        />
+        <UIcon v-else name="i-ph-heart-light" size="20px"/>
+        <div>{{ product.likes.length }}</div>
+    </div>
+
     <div class="bg-[#f6f7f8] dark:bg-gray-800 relative aspect-[1] block w-full overflow-hidden rounded-lg hover:-translate-y-1 transition md:p-5">
         <nuxt-img :src="product.slug + '/cover.webp'"
             alt="" 
@@ -48,4 +59,9 @@ const props = defineProps({
     }
 })
 
+const { loggedIn, user } = useUserSession()
+
+const guest = useCookie('guest')
+
 </script>
+
