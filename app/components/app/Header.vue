@@ -7,7 +7,7 @@
         <div class="flex mr-0 lg:mr-6 flex-1 md:grow-0">
           	<nuxt-link to="/" class="flex items-center ">
             	<span class="sr-only">Your Company</span>
-            	<Logo class="w-10 h-10 mr-6 lg:w-12 lg:h-12" />
+				<nuxt-img src="logo.webp" width="30px" class="md:ml-4 mr-6" />
 				<h1 class="2xl:flex text-xl">
 					<span class="relative">
 						<span class="text-xl font-bold tracking-wide">Re</span>
