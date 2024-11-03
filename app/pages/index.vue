@@ -1,7 +1,7 @@
 <template>
 
 
-    <div class="w-full max-w-app mt-6 lg:my-12">   
+    <div class="w-full max-w-app mt-6 mb-12 lg:my-12">   
 
         <Hero />
         

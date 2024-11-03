@@ -225,11 +225,11 @@
 
 						<!-- Authenticated -->
 						<Can :ability="createProduct">
-							<nuxt-link to="/heroes" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer">
+							<nuxt-link to="/heroes" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="mobileMenuOpen = false">
 								<UIcon name="i-ph-image-light" size="20px" />
 								<div>Heroes</div>
 							</nuxt-link>
-							<nuxt-link to="/products" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer">
+							<nuxt-link to="/products" class="flex gap-2 items-center hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded cursor-pointer" @click="mobileMenuOpen = false">
 								<UIcon name="i-ph-cube-light"  size="20px" />
 								<div>Products</div>
 							</nuxt-link>
