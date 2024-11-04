@@ -27,10 +27,8 @@
 <script setup lang="ts">
 
 useSeoMeta({
-    title: 'Upcoming - Rechifi',
-    description: `Get a sneak peek into the future of audio excellence with our upcoming chi-fi audio devices. Stay ahead of the curve as we unveil the latest innovations, designs, 
-    and cutting-edge technology in the world of sound. Explore our curated collection of upcoming products, 
-    where anticipation meets superior sound. Be the first to experience the next wave of audio brilliance stay tuned for exclusive insights and previews on Rechifi.`
+    title: 'Upcoming',
+    description: `Upcoming chifi gear information.`
 })
 
 
