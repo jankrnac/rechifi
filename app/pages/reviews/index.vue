@@ -33,8 +33,8 @@
 
 useSeoMeta({
     title: 'Reviews',
-    description: `Dive deep into the world of chi-fi perfection with our in-depth reviews. Uncover the nuances of sound, design, and innovation as we meticulously
-     evaluate the latest audio headphones and devices from top Chinese brands. Make informed decisions with our expert insights, comparisons, and unbiased critiques.`
+    description: `User created reviews of chifi gear.`
+
 })
 
 
