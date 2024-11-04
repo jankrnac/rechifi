@@ -50,7 +50,7 @@
 <script setup>
     
     useSeoMeta({
-        title: `${useRoute().params.slug.slice(0,-1).toUpperCase()}s - Rechifi`,
+        title: `${useRoute().params.slug.slice(0,-1).toUpperCase()}s`,
         description: `Explore the pinnacle of personal audio with our curated list of chi-fi in-ear monitors. Navigate through our filterable ${useRoute().params.slug.slice(0,-1).toUpperCase()}s list to find the perfect blend of technical specifications, 
         sound signature, and price.`
     })
