@@ -95,7 +95,9 @@
 
 						<UPopover mode="hover" :popper="{ placement: 'bottom-end' }">
 							<UButton v-if="user && user.avatar" variant="ghost" aria-label="user">
-								<nuxt-img width="30" :src="user.avatar.filename" />
+								<div class="flex w-8 h-8 rounded-full overflow-hidden">
+                                    <nuxt-img :src="user.avatar.filename" densities="x1" sizes="50px" class="min-h-full min-w-full flex-shrink-0 object-cover" />
+                                </div>
 							</UButton>
 							<UButton v-else icon="i-ph-user-light" color="gray" aria-label="user" variant="ghost" size="xl"/>
 

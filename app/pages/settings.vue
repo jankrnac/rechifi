@@ -36,8 +36,8 @@
                                 <label class="block text-sm font-semibold leading-6 mb-1">Avatar</label>
                                 <div class="mt-2 flex items-center gap-x-3">
 
-                                    <div v-if="avatar">
-                                        <nuxt-img :src="avatar" width="40" densities="x1" />
+                                    <div v-if="avatar" class="flex w-24 h-24 rounded-full overflow-hidden">
+                                        <nuxt-img :src="avatar" densities="x1" sizes="200px md:300px lg:351px" class="min-h-full min-w-full flex-shrink-0 object-cover" />
                                     </div>
 
                                     <UIcon v-else name="i-ph-user" class="w-8 h-8" aria-hidden="true" />

@@ -9,6 +9,7 @@ export default eventHandler(async (event) =>
                 eq(tables.users.username, id),
             ),
             with: { 
+                avatar: true,
                 posts: {
                     with: {
                         user: true,

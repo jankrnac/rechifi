@@ -3,7 +3,9 @@
 <div class="flex flex-col gap-12 mt-12 w-full max-w-app mb-24">
     <div class="flex flex-col items-center">
         <div>
-            <nuxt-img v-if="profile.avatar" :src="profile.avatar.filename" width="100px" class="mb-12" />
+            <div v-if="profile.avatar" class="flex w-24 h-24 mb-6 rounded-full overflow-hidden">
+                <nuxt-img :src="profile.avatar.filename" densities="x1" sizes="200px md:300px lg:351px" class="min-h-full min-w-full flex-shrink-0 object-cover" />
+            </div>
             <UIcon v-else name="i-ph-user-thin" size="72px" class="mb-8" />
         </div>
         <h1 class="font-bold text-3xl md:text-5xl ">{{ profile.username }}</h1>
