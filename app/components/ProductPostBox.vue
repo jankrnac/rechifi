@@ -10,7 +10,7 @@
  
     </div>
 
-    <div class="bg-[#f6f7f8] dark:bg-gray-800 relative aspect-[1] block w-full overflow-hidden rounded-lg hover:-translate-y-1 transition md:p-5">
+    <div class="bg-[#f6f7f8] dark:bg-gray-900 relative aspect-[1] block w-full overflow-hidden rounded-lg hover:-translate-y-1 transition md:p-5">
         <nuxt-img :src="product.slug + '/cover.webp'"
             alt="" 
             class="pointer-events-none object-cover rounded-lg" 
@@ -24,7 +24,7 @@
 
     <div class="mt-2 w-full">
 		<div class="flex flex-1 justify-between items-center text-gray-500 dark:text-gray-200">
-            <div class="text-sm flex items-center justify-center hidden md:block">
+            <div class="text-sm items-center justify-center hidden md:block">
                 <UIcon name="i-ph-factory" class="mr-1" />
                 <nuxt-link class="capitalize">{{product.brand}}</nuxt-link>
             </div>

@@ -13,7 +13,7 @@
         <div>{{ product.likes.length }}</div>
     </div>
 
-    <div class="bg-[#f6f7f8] dark:bg-gray-800 relative aspect-[1] block w-full overflow-hidden rounded-lg hover:-translate-y-1 transition md:p-5">
+    <div class="bg-[#f6f7f8] dark:bg-gray-900 relative aspect-[1] block w-full overflow-hidden rounded-lg hover:-translate-y-1 transition md:p-5">
         <nuxt-img :src="product.slug + '/cover.webp'"
             alt="" 
             class="pointer-events-none object-cover rounded-lg" 
