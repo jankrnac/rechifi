@@ -106,7 +106,7 @@ export default defineEventHandler((event) => {
         },
         {
             value: 'fiio',
-            label: 'Fiio',
+            label: 'FIIO',
             logo: 'fiio/logo.webp',
             link: 'https://www.fiio.com/'
         },
