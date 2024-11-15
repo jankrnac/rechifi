@@ -30,7 +30,12 @@
                 {{ likes.length }}
             </UButton>
 
-            <UButton v-else size="lg" variant="soft" color="gray" icon="i-ph-heart" :disabled="loading" @click="addLike(product)">{{ likes.length }}</UButton>       
+            <UButton v-else size="lg" variant="soft" color="gray" icon="i-ph-heart" :disabled="loading" @click="addLike(product)">{{ likes.length }}</UButton>      
+           
+            <Can :ability="editProduct">
+                <UButton :to="'/products/'+product.id+'/edit'" size="lg" icon="i-ph-pencil" class="ml-2" :disabled="loading">Edit</UButton>
+            </Can>
+            
         </div>
 
     </div>
