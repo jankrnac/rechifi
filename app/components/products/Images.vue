@@ -9,7 +9,7 @@
                 format="webp" sizes="480px"
                 height="480px" 
                 densities="x1" fit="cover" 
-                class="rounded-lg" 
+                class="rounded-lg dark:invert" 
                 :modifiers="{alwaysCDN: true}"
                 placeholder="/images/placeholder.webp"
             />
@@ -21,12 +21,13 @@
     <Carousel :items-to-show="3">
         <Slide v-for="slide in [1,2,3]" :key="slide">
             <nuxt-img 
-                :src="useRoute().params.brand+'/'+useRoute().params.model+`/image${slide}.webp`" 
-                format="webp" 
-                sizes="480px" 
-                height="480px" 
-                densities="x1" 
-                fit="cover" class="rounded-lg"  
+                :src="useRoute().params.brand+'/'+useRoute().params.model+`/image${slide}.webp`"
+                format="webp"
+                sizes="480px"
+                height="480px"
+                densities="x1"
+                fit="cover"
+                class="rounded-lg dark:invert"
                 :modifiers="{alwaysCDN: true}"
                 placeholder="/images/placeholder.webp"
             />
