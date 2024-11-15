@@ -1,8 +1,8 @@
 <template>
 <div class="mb-6 md:mb-12 w-full max-w-app">
-    <div class="flex-col md:flex-row flex w-full justify-between">
-        <div></div>
-        <div>
+    <div class="flex-col md:flex-row flex w-full relative">
+
+        <div class="flex-1">
             <h1 class="text-center text-2xl lg:text-4xl font-bold mt-12 mb-2">
                 {{product.title}}
             </h1>
@@ -17,7 +17,7 @@
 
         </div>
 
-        <div class="self-center mt-6 md:mt-0 md:self-end">
+        <div class="relative md:absolute text-center right-0 mt-6 md:mt-0 md:self-end">
             <UButton 
                 size="lg" 
                 variant="soft" 
