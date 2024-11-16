@@ -1,4 +1,4 @@
-export default defineEventHandler((event) => {
+export default defineCachedEventHandler((event) => {
     const brands = [
         {
             value: 'moondrop',
@@ -335,6 +335,12 @@ export default defineEventHandler((event) => {
         {
             value: 'questyle',
             label: 'Questyle',
+            logo: '',
+            link: ''
+        },
+        {
+            value: 'kefine',
+            label: 'Kefine',
             logo: '',
             link: ''
         },
