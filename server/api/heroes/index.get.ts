@@ -6,7 +6,7 @@ export default eventHandler(async (event) => {
         with: {
             product: true
         },
-        orderBy: [asc(tables.heroes.id)],
+        orderBy: [asc(tables.heroes.order)],
 
     })
 
