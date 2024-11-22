@@ -12,8 +12,7 @@ export default eventHandler(async (event) => {
         where: and(
             eq(tables.posts.type , 'review'),
             eq(tables.posts.userId , user.id),
-            eq(tables.posts.brand , brand),
-            eq(tables.posts.model , model),
+            eq(tables.posts.productSlug , brand+'/'+model),
         ),
         with: {
             elements: true,
