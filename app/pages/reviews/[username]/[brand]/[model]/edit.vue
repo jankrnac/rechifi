@@ -93,6 +93,7 @@ provide('nav',nav)
 provide('user', review.value.user)
 provide('date', review.value.createdAt)
 
+const title = useState('title', () => review.value.title)
 
 
 watch(review.value.elements, (value) => {

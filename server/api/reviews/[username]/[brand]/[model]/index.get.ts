@@ -16,7 +16,8 @@ export default eventHandler(async (event) => {
         ),
         with: {
             elements: true,
-            likes: true
+            likes: true,
+            user: true
         }
 
     })
