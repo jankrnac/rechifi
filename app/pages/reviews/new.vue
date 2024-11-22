@@ -46,6 +46,11 @@
             <template #option="{ option }">
                 <span class="capitalize">{{ option.brand + ' ' + option.model }}</span>
             </template>
+            
+            <template #label>
+                <span v-if="headphone" class="truncate">{{  headphone.brand + ' ' + headphone.model }}</span>
+                <span v-else>Select {{type.toUpperCase()}}</span>
+            </template>
 
         </USelectMenu>
 
@@ -63,6 +68,7 @@
         <div v-if="!manualMode" class="text-sm mt-5 cursor-pointer flex items-center" @click="manualMode = true">Item not in list?
             <UButton size="sm" color="gray" variant="outline" class="ml-4">Enter manually</UButton>
         </div>
+
         <UButton v-else size="sm" color="gray" variant="outline" class="mt-4" @click="manualMode = false">Choose from list</UButton>
 
         <UButton
@@ -99,8 +105,13 @@ const brand = ref()
 const model = ref()
 
 const type = ref('iem')
-const { data:allGear } = await useAsyncData(type.value, () => queryContent(type.value).find(), { 
-	watch: [type]
+const { data:allGear } = await useAsyncData(() => $fetch('/api/products/all', {
+    query: {
+        type: type.value+'s'
+    },
+}),
+{
+    watch: [type]
 })
 
 const errors = ref([])
@@ -139,6 +150,8 @@ const onSubmit = async () => {
         }
     })
 
+    loading.value = false
+
     fetchSession()
     
 }
@@ -153,8 +166,7 @@ const save = async () => {
         const check = await $fetch('/api/reviews/check', {
             method: "POST",
             body: {
-                brand: headphone.value.brand,
-                model: headphone.value.model,
+                productId: headphone.value.id,
                 userId: user.value.id
             }
         })
@@ -180,8 +192,8 @@ const save = async () => {
                 body: {
                     title: brandPayload + ' ' + modelPayload,
                     slug: slug,
-                    brand: brandPayload,
-                    model: modelPayload,
+                    productSlug: brandPayload + '/' + modelPayload,
+                    productId: headphone.value.id,
                     type: 'review',
                     userId: user.value.id,
                     gearType: type.value

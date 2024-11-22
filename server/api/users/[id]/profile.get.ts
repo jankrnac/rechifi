@@ -15,6 +15,7 @@ export default eventHandler(async (event) =>
                         user: true,
                         cover: true,
                         likes: true,
+                        product: true
                     }
                 },
                 usersToProducts: {

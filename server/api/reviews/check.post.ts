@@ -5,8 +5,7 @@ export default eventHandler(async (event) => {
     let reviews = await useDrizzle().query.posts.findMany({
         where: and(
             eq(tables.posts.type, 'review'),
-            eq(tables.posts.brand, body.brand),
-            eq(tables.posts.model, body.model),
+            eq(tables.posts.productId, body.productId),
             eq(tables.posts.userId, body.userId),
         )
     })
