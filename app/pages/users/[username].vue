@@ -39,7 +39,7 @@
 				<!-- Review Options -->
 				<div class="absolute top-0 right-0 space-x-1 z-[1]" v-if="user.id == profile.id">
 					<UButton size="xs" color="sky" :to="'/blog/'+article.slug+'/edit'" >Edit</UButton>
-					<UButton size="xs" color="red" @click="deleteReview(review.id)">Delete</UButton>
+					<UButton size="xs" color="red" @click="deletePost(article.id)">Delete</UButton>
 				</div>
 
                 <div v-if="!article.published" class="absolute inset-0 -mt-12 flex justify-center items-center opacity-65">
@@ -56,7 +56,7 @@
 				<!-- Review Options -->
 				<div class="absolute top-0 right-0 space-x-1 z-[1]"  v-if="user.id == profile.id">
 					<UButton size="xs" color="sky" :to="'/reviews/'+profile.username+'/'+review.product.slug+'/edit'" >Edit</UButton>
-					<UButton size="xs" color="red" @click="deleteReview(review.id)">Delete</UButton>
+					<UButton size="xs" color="red" @click="deletePost(review.id)">Delete</UButton>
 				</div>
 
                 <div v-if="!review.published" class="absolute inset-0 -mt-12 flex justify-center items-center opacity-65">
@@ -74,6 +74,26 @@
         No posts
     </div>
 
+    <UModal v-model="isOpen">
+        <UCard :ui="{ ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
+            <template #header>
+                <div class="flex items-center justify-between">
+                    <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-white">
+                    Delete
+                    </h3>
+                    <UButton color="gray" variant="ghost" icon="i-heroicons-x-mark-20-solid" class="-my-1" @click="isOpen = false" />
+                </div>
+            </template>
+
+            Are you sure you want to delete this?
+
+            <template #footer>
+                <div class="text-right">
+                    <UButton @click="confirmDelete">Delete</UButton>
+                </div>
+            </template>
+        </UCard>
+    </UModal>
 
 </div>
 
@@ -84,6 +104,10 @@
 definePageMeta({
     middleware: 'auth'
 });
+
+const isOpen = ref(false)
+
+
 const { user } = useUserSession()
 
 const { data:profile } = await useFetch('/api/users/' + useRoute().params.username + '/profile')
@@ -97,21 +121,23 @@ const items = [{
 }]
 
 
-const deletedReviewId = ref()
+const deletedPostId = ref()
 
-const deleteReview = (id) => {
-    openModal()
+const deletePost = (id) => {
+    deletedPostId.value = id
 
-    deletedReviewId.value = id
+    isOpen.value = true
 }
 
 const confirmDelete = async () => {
 
-    await client.from('reviews').delete().eq('id', deletedReviewId.value)
+    await $fetch(`/api/posts/${deletedPostId.value}`, {
+        method: "DELETE"
+    })
 
-    reviews.value.splice(reviews.value.findIndex(e => e.id ===  deletedReviewId.value), 1)
+    profile.value.posts.splice(profile.value.posts.findIndex(e => e.id ===  deletedPostId.value), 1)
 
-    closeModal()
+    isOpen.value = false
 }
 
 

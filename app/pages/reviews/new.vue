@@ -190,9 +190,9 @@ const save = async () => {
             await $fetch('/api/posts', {
                 method: "POST",
                 body: {
-                    title: brandPayload + ' ' + modelPayload,
+                    title: productTitle,
                     slug: slug,
-                    productSlug: productTitle,
+                    productSlug:brandPayload + '/' + modelPayload,
                     productId: headphone.value.id,
                     type: 'review',
                     userId: user.value.id,
