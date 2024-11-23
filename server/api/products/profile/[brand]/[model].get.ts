@@ -10,7 +10,11 @@ export default eventHandler(async (event) => {
     let product = await useDrizzle().query.products.findFirst({
         where: eq(tables.products.slug, slug),
         with: {
-            posts: true,
+            posts: {
+                with: {
+                    user: true
+                }
+            },
             likes: true
         }
     })

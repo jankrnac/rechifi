@@ -4,7 +4,6 @@
 
 	<div class="flex justify-center items-center md:justify-start mb-8 gap-6">
 		<UChip :text="product.posts.length" size="3xl" color="orange" :show="product.posts.length > 0"><h2 class="text-xl font-bold">Reviews</h2></UChip>
-		<UButton v-if="user && product.posts.findIndex(e=>e.profile_id == user.id) < 0" size="sm" @click="addReview">Add review</UButton>
 	</div>
 
 	<template v-if="product.posts.length">
@@ -48,13 +47,6 @@ const addReview = async () => {
 	const brandPayload =  useSlug(route.params.brand)
 	const modelPayload = useSlug(route.params.model)
 
-	await client.from('reviews').insert({
-		slug: slug,
-		brand: brandPayload,
-		model: modelPayload,
-		type: useRoute().path.split('/')[1].slice(0, -1),
-		profile_id: user.value.id
-	})
 	
 
 
