@@ -21,7 +21,7 @@ export default defineSitemapEventHandler(async (event) => {
         else
         {
             return asSitemapUrl({
-                loc: `/reviews/${p.user.username}/${p.brand}/${p.model}`,
+                loc: `/reviews/${p.user.username}/${p.slug}`,
                 changefreq: 'weekly'
             })
         }
