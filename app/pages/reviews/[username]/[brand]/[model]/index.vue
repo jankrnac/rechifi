@@ -14,8 +14,8 @@
         
     useSeoMeta
     ({
-        title: review.value.title + ' - Rechifi',
-        ogTitle: review.value.title + ' - Rechifi',
+        title: route.params.username + `'s ` + review.value.title + ' review',
+        ogTitle: route.params.username + `'s ` + review.value.title + ' review',
         description: review.value.description,
         ogDescription: review.value.description,
         ogImage: review.value.cover,
