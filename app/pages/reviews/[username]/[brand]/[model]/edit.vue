@@ -74,8 +74,10 @@ const updateLayout = async (data) => {
     review.value.elements = data
 }
 
+const activeElements = [...review.value.elements]
+
 const save = () => {
-    saveLayout(review)
+    saveLayout(review, activeElements)
 }
 
 const publish = async (value) => {

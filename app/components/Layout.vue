@@ -22,7 +22,7 @@
             v-model="local"
             group="elements"
             handle=".dragHandle"
-            item-key="id"
+            item-key="index"
             @change="$emit('change', local)"
             :disabled="!editable"
             @start="dragging=true"
