@@ -58,7 +58,7 @@
                     </div>
                 </div>
             </div>
-            <h3 v-if="size == 'normal'" class="mt-6 mb-1 text-2xl font-bold leading-6 h-12 align-top">
+            <h3 v-if="size == 'normal'" class="my-1 md:my-3 lg:text-2xl font-bold leading-6">
                 <nuxt-link :to="'/reviews/' + post.user.username + '/' + post.brand + '/' + post.model" class="text">
                     {{ post.title }}
                 </nuxt-link>
