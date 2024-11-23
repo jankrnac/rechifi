@@ -192,7 +192,7 @@ const save = async () => {
                 body: {
                     title: brandPayload + ' ' + modelPayload,
                     slug: slug,
-                    productSlug: brandPayload + '/' + modelPayload,
+                    productSlug: productTitle,
                     productId: headphone.value.id,
                     type: 'review',
                     userId: user.value.id,

@@ -24,8 +24,10 @@
     // Extract sections elements for navigation (in Header element)
     const nav = review.value.elements.filter(e => e.type == 'section')
     provide('nav',nav)
+    provide('user', review.value.user)
 
-    provide('date', review.value.created_at)
+    provide('date', review.value.createdAt)
+    const title = useState('title', () => review.value.title)
 
     
     const publish = async (value) => {
