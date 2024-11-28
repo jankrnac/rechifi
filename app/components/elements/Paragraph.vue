@@ -77,7 +77,7 @@ import HardBreak from '@tiptap/extension-hard-break'
 			HardBreak.extend({
 				addKeyboardShortcuts () {
 					return {
-					Enter: () => this.editor.commands.setHardBreak()
+						'Shift-Enter': () => this.editor.commands.setHardBreak()
 					}
 				}
 			})

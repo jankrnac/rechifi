@@ -1,4 +1,5 @@
 <template>
+        {{ local }}
 
 <div class="flex flex-1 content relative z-[1]" :class="[editable ? 'border dark:border-gray-700 rounded-xl border-gray-300' : 'border-transparent']">
     <!--Classic, non editable mode -->
@@ -16,13 +17,14 @@
 
     <!-- Editable mode -->
     <template v-else>
+
     <ClientOnly>
         <draggable
             class="min-h-screen w-full max-w-app flex flex-col gap-y-12"
             v-model="local"
             group="elements"
             handle=".dragHandle"
-            item-key="index"
+            item-key="id"
             @change="$emit('change', local)"
             :disabled="!editable"
             @start="dragging=true"
