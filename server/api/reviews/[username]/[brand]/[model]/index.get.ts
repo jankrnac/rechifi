@@ -1,3 +1,5 @@
+import { asc } from 'drizzle-orm';
+
 export default eventHandler(async (event) => {
 
     const username = getRouterParam(event, 'username')
@@ -15,7 +17,9 @@ export default eventHandler(async (event) => {
             eq(tables.posts.productSlug , brand+'/'+model),
         ),
         with: {
-            elements: true,
+            elements: {
+                orderBy: [asc(tables.elements.order)]
+            },
             likes: true,
             user: true
         }

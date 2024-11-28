@@ -1,4 +1,5 @@
 <template>
+        {{ local }}
 
 <div class="flex flex-1 content relative z-[1]" :class="[editable ? 'border dark:border-gray-700 rounded-xl border-gray-300' : 'border-transparent']">
     <!--Classic, non editable mode -->
