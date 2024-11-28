@@ -48,6 +48,7 @@
 import { useEditor, EditorContent, BubbleMenu } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
 import TextAlign from '@tiptap/extension-text-align'
+import HardBreak from '@tiptap/extension-hard-break'
 
 	const props = defineProps({
 		element: {
@@ -73,6 +74,13 @@ import TextAlign from '@tiptap/extension-text-align'
 				types: ['paragraph'],
 			}),
 			StarterKit,
+			HardBreak.extend({
+				addKeyboardShortcuts () {
+					return {
+					Enter: () => this.editor.commands.setHardBreak()
+					}
+				}
+			})
 		],
 		onUpdate({ editor }) {
 			emits('change', {
