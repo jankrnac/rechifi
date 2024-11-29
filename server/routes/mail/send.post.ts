@@ -4,7 +4,7 @@ export default eventHandler(async (event) => {
     const config = useRuntimeConfig(event)
     const body = await readBody(event)
 
-    const resend = new Resend(config.resendApiKey);
+    const resend = new Resend(process.env.NUXT_RESEND_API_KEY);
 
     const { data, error } = await resend.emails.send(body);
 
