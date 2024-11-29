@@ -28,8 +28,8 @@
             icon="i-ph-envelope-simple"
             color="green"
             variant="solid"
-            title="Activation email sent"
-            description="Activation link sent. Check your email address."
+            title="Reset email sent"
+            description="Reset link sent. Check your email address."
             class="w-full"
         />
     
