@@ -1,7 +1,6 @@
 import { Resend } from 'resend';
 
 export default eventHandler(async (event) => {
-    const config = useRuntimeConfig(event)
     const body = await readBody(event)
 
     const resend = new Resend(process.env.NUXT_RESEND_API_KEY);
