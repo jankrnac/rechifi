@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 
 export default eventHandler(async (event) => {
-    const config = useRuntimeConfig()
+    const config = useRuntimeConfig(event)
     const body = await readBody(event)
 
     const resend = new Resend(config.resendApiKey);
