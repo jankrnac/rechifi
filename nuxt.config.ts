@@ -42,7 +42,6 @@ export default defineNuxtConfig({
 	modules: [
 		'@nuxt/ui',
 		'@nuxthub/core',
-		'@nuxt/content',
 		'@nuxtjs/color-mode',
 		'@nuxtjs/google-fonts',
 		'@nuxt/image',
@@ -153,6 +152,12 @@ export default defineNuxtConfig({
 		'/products/create/': { robots: false },
 		'/heroes/': { robots: false },
 		'/settings/': { robots: false },
+	},
+
+	nitro: {
+		imports: {
+		  dirs: ["server/utils"],
+		},
 	},
 
 	compatibilityDate: '2024-11-30'

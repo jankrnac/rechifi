@@ -1,6 +1,0 @@
----
-
-brand: cca
-model: CKX
-
----

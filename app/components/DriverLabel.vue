@@ -7,8 +7,8 @@
         'border-teal-500 dark:border-teal-900' : driver.value== 'bc',
         'border-yellow-500 dark:border-yellow-900' : driver.value== 'pzt',
 
-        'border-teal-500' :driver.value == 'est',
-        'border-teal-500' :driver.value == 'pr',
+        'border-teal-400' : driver.value == 'est',
+        'border-teal-600' : driver.value == 'pr',
         'text-sm border-2 lg:border-[3px] lg:text-lg' : size == 'normal',
         'px-1 py-0.5 md:px-2 md:py-1 text-xs md:text-sm border-[1px] md:border-[2px]' : size == 'small',
     }"
