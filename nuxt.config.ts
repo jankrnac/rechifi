@@ -16,12 +16,12 @@ export default defineNuxtConfig({
 		name: 'Rechifi',
 		description: 'Chifi user articles and reviews',
 		defaultLocale: 'en',
-		indexable:true
+		indexable: true
 	},
 
 	sitemap: {
 		sources: [
-		  '/api/__sitemap__/urls',
+			'/api/__sitemap__/urls',
 		]
 	},
 
@@ -91,12 +91,6 @@ export default defineNuxtConfig({
 		}
 	},
 
-	content: {
-		experimental: {
-			search: true
-		}
-	},
-
 	i18n: {
 		strategy: 'no_prefix',
 		locales: [
@@ -119,7 +113,6 @@ export default defineNuxtConfig({
 		blob: true,
 		cache: true
 	},
-
 
 	turnstile: {
 		siteKey: '',
@@ -160,5 +153,7 @@ export default defineNuxtConfig({
 		'/products/create/': { robots: false },
 		'/heroes/': { robots: false },
 		'/settings/': { robots: false },
-	  }
+	},
+
+	compatibilityDate: '2024-11-30'
 })
