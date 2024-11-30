@@ -23,7 +23,7 @@
 
 const { data:product } = await useFetch(`/api/products/profile/${useRoute().params.brand}/${useRoute().params.model}`)
 
-useContentHead({
+useSeoMeta({
     title : product.value.title != product.value.model ? product.value.title : product.value.brand.charAt(0).toUpperCase() + product.value.brand.slice(1) + ' ' + product.value.model
 })
 
