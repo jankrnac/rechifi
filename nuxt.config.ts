@@ -147,7 +147,6 @@ export default defineNuxtConfig({
 		'/confirm/': { robots: false },
 		'/remind/': { robots: false },
 		'/reset/': { robots: false },
-		'/suggest/': { robots: false },
 		'/products/': { robots: false },
 		'/products/create/': { robots: false },
 		'/heroes/': { robots: false },
